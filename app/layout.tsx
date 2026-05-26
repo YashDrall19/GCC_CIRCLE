@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import ParticlesBackground from '@/components/particles-background';
+import CursorGlow from '@/components/cursor-glow';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,10 +20,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#070b14]`}>
+      <body className={`${inter.className} bg-[#070b14] antialiased`}>
+        <ParticlesBackground />
+        <CursorGlow />
         <Navbar />
         {children}
         <Footer />
+
+        {/* Scan line effect overlay */}
+        <div className="fixed inset-0 pointer-events-none z-[60] overflow-hidden opacity-[0.03]">
+          <div
+            className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-[#1a6cff] to-transparent animate-scan-line"
+          />
+        </div>
       </body>
     </html>
   );
