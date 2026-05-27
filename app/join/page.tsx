@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, CircleCheck as CheckCircle, Users, Zap, Globe } from 'lucide-react';
+import { urls } from '@/constants/api';
 
 const benefits = [
   'Exclusive access to closed-door leadership events',
@@ -23,8 +24,8 @@ const memberTypes = [
 
 export default function JoinPage() {
   const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     email: '',
     phone: '',
     company: '',
@@ -49,9 +50,18 @@ export default function JoinPage() {
     e.preventDefault();
     if (!form.agreed) return;
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
+    const res = await fetch(urls.joincircle, {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(form)
+    });
+    // const res = await fetch(urls.joinAPI);
+    const data = await res.json();
+    if (data?.success) {
+      setSubmitted(true);
+    }
     setLoading(false);
-    setSubmitted(true);
+    
   };
 
   return (
@@ -139,8 +149,8 @@ export default function JoinPage() {
                     </label>
                     <input
                       type="text"
-                      name="firstName"
-                      value={form.firstName}
+                      name="first_name"
+                      value={form.first_name}
                       onChange={handleChange}
                       required
                       placeholder="Ravi"
@@ -153,8 +163,8 @@ export default function JoinPage() {
                     </label>
                     <input
                       type="text"
-                      name="lastName"
-                      value={form.lastName}
+                      name="last_name"
+                      value={form.last_name}
                       onChange={handleChange}
                       required
                       placeholder="Sharma"
@@ -240,7 +250,7 @@ export default function JoinPage() {
                   >
                     <option value="" className="bg-[#0a0e1a]">Select your role...</option>
                     {memberTypes.map((m) => (
-                      <option key={m.value} value={m.value} className="bg-[#0a0e1a]">{m.label}</option>
+                      <option key={m.value} value={m.label} className="bg-[#0a0e1a]">{m.label}</option>
                     ))}
                   </select>
                 </div>
@@ -304,7 +314,7 @@ export default function JoinPage() {
 
                 <button
                   type="submit"
-                  disabled={!form.agreed || loading}
+                  disabled={!(form.agreed && form.whatsapp) || loading}
                   className="w-full py-4 bg-[#1a6cff] hover:bg-[#1558d6] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.4)] flex items-center justify-center gap-2"
                 >
                   {loading ? (

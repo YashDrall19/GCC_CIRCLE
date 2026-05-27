@@ -3,73 +3,74 @@
 import Link from 'next/link';
 import { ArrowRight, MapPin, Calendar, Users, Coffee, Wind } from 'lucide-react';
 
-const experienceFeatures = [
-  {
-    icon: <Users size={24} />,
-    title: 'Networking with Purpose',
-    desc: 'Build relationships that go beyond LinkedIn connections — exchange ideas, insights, and opportunities in a relaxed setting.',
-  },
-  {
-    icon: <Coffee size={24} />,
-    title: 'Casual Meet & Greet',
-    desc: 'Informal gatherings designed to spark authentic conversations and meaningful connections between industry peers.',
-  },
-  {
-    icon: <Wind size={24} />,
-    title: 'A Room to Let Loose',
-    desc: 'Because even leaders need a space to breathe, laugh, and engage outside of the corporate grind.',
-  },
-];
-
-const upcomingEvents = [
-  {
-    city: 'Hyderabad',
-    month: 'May',
-    date: '22',
-    year: '2026',
-    type: 'Leadership Mixer',
-    desc: 'A closed-door gathering of senior GCC leaders in Hyderabad. Peer-level exchange in a relaxed, curated setting.',
-    spots: '40 seats',
-  },
-  {
-    city: 'Hyderabad',
-    month: 'May',
-    date: '29',
-    year: '2026',
-    type: 'Tech Mixer',
-    desc: 'Deep-dive into technology trends shaping GCCs, with hands-on discussions and lightning talks from tech leaders.',
-    spots: '35 seats',
-  },
-];
-
-const pastEvents = [
-  {
-    city: 'Delhi',
-    month: 'Feb',
-    year: '2026',
-    type: 'Executive Summit',
-    img: 'https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=600',
-    attendees: '60+',
-  },
-  {
-    city: 'Bangalore',
-    month: 'Mar',
-    year: '2026',
-    type: 'Leadership Mixer',
-    img: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600',
-    attendees: '55+',
-  },
-  {
-    city: 'Hyderabad',
-    month: 'Apr',
-    year: '2026',
-    type: 'CXO Roundtable',
-    img: 'https://images.pexels.com/photos/1181605/pexels-photo-1181605.jpeg?auto=compress&cs=tinysrgb&w=600',
-    attendees: '45+',
-  },
-];
-
 export default function EventsPage() {
+
+  const experienceFeatures = [
+    {
+      icon: <Users size={24} />,
+      title: 'Networking with Purpose',
+      desc: 'Build relationships that go beyond LinkedIn connections — exchange ideas, insights, and opportunities in a relaxed setting.',
+    },
+    {
+      icon: <Coffee size={24} />,
+      title: 'Casual Meet & Greet',
+      desc: 'Informal gatherings designed to spark authentic conversations and meaningful connections between industry peers.',
+    },
+    {
+      icon: <Wind size={24} />,
+      title: 'A Room to Let Loose',
+      desc: 'Because even leaders need a space to breathe, laugh, and engage outside of the corporate grind.',
+    },
+  ];
+
+  const upcomingEvents = [
+    {
+      city: 'Hyderabad',
+      month: 'May',
+      date: '22',
+      year: '2026',
+      type: 'Leadership Mixer',
+      desc: 'A closed-door gathering of senior GCC leaders in Hyderabad. Peer-level exchange in a relaxed, curated setting.',
+      spots: '40 seats',
+    },
+    {
+      city: 'Hyderabad',
+      month: 'May',
+      date: '29',
+      year: '2026',
+      type: 'Tech Mixer',
+      desc: 'Deep-dive into technology trends shaping GCCs, with hands-on discussions and lightning talks from tech leaders.',
+      spots: '35 seats',
+    },
+  ];
+
+  const pastEvents = [
+    {
+      city: 'Delhi',
+      month: 'Feb',
+      year: '2026',
+      type: 'Executive Summit',
+      img: 'https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=600',
+      attendees: '60+',
+    },
+    {
+      city: 'Bangalore',
+      month: 'Mar',
+      year: '2026',
+      type: 'Leadership Mixer',
+      img: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600',
+      attendees: '55+',
+    },
+    {
+      city: 'Hyderabad',
+      month: 'Apr',
+      year: '2026',
+      type: 'CXO Roundtable',
+      img: 'https://images.pexels.com/photos/1181605/pexels-photo-1181605.jpeg?auto=compress&cs=tinysrgb&w=600',
+      attendees: '45+',
+    },
+  ];
+
   return (
     <main className="bg-[#070b14] text-white pt-20">
       {/* Hero */}

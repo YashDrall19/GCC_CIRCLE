@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Mail, Phone, Linkedin, Instagram, ArrowRight, CircleCheck as CheckCircle, MapPin } from 'lucide-react';
+import { urls } from '@/constants/api';
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', message: '', phone: '', linkedin: '' });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -16,9 +17,16 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
+    const res = await fetch(urls.contact, {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(form)
+    });
+    const data = await res.json();
+    if (data?.success) {
+      setSubmitted(true);
+    }
     setLoading(false);
-    setSubmitted(true);
   };
 
   return (
@@ -181,6 +189,33 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div>
+                  <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">Phone (India) *</label>
+                  <div className="flex gap-2 w-full">
+                    <span className="bg-white/[0.05] border border-white/15 rounded-xl px-3 py-3 text-sm text-white/50 flex-shrink-0">+91</span>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      required
+                      placeholder="9876543210"
+                      className="flex-1 bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">LinkedIn URL *</label>
+                  <input
+                    type="url"
+                    name="linkedin"
+                    value={form.linkedin}
+                    onChange={handleChange}
+                    required
+                    placeholder="https://linkedin.com/in/yourname"
+                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                  />
+                </div>
+                {/* <div>
                   <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">Subject</label>
                   <select
                     name="subject"
@@ -195,7 +230,7 @@ export default function ContactPage() {
                     <option value="media" className="bg-[#0a0e1a]">Media / Press</option>
                     <option value="other" className="bg-[#0a0e1a]">Other</option>
                   </select>
-                </div>
+                </div> */}
                 <div>
                   <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">Message *</label>
                   <textarea
