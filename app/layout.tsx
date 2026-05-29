@@ -30,7 +30,7 @@ export default function RootLayout({
         {/* Scan line effect overlay */}
         <div className="fixed inset-0 pointer-events-none z-[60] overflow-hidden opacity-[0.03]">
           <div
-            className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-[#1a6cff] to-transparent animate-scan-line"
+            className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D2A679] to-transparent animate-scan-line"
           />
         </div>
       </body>

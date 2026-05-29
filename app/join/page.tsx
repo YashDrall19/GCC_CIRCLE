@@ -69,13 +69,13 @@ export default function JoinPage() {
       {/* Hero */}
       <section className="relative py-20 px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-[#1a6cff]/8 blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-[#D2A679]/8 blur-[120px]" />
         </div>
         <div className="relative max-w-2xl mx-auto text-center">
-          <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-5 block">Membership</span>
+          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-5 block">Membership</span>
           <h1 className="text-5xl md:text-6xl font-bold mb-5">
             Let&apos;s Connect.{' '}
-            <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#B87333] to-[#D2A679] bg-clip-text text-transparent">
               Let&apos;s Collaborate.
             </span>
           </h1>
@@ -97,7 +97,7 @@ export default function JoinPage() {
               <div className="space-y-3 mb-10">
                 {benefits.map((b) => (
                   <div key={b} className="flex items-start gap-3">
-                    <CheckCircle size={16} className="text-[#1a6cff] flex-shrink-0 mt-0.5" />
+                    <CheckCircle size={16} className="text-[#D2A679] flex-shrink-0 mt-0.5" />
                     <span className="text-white/65 text-sm leading-snug">{b}</span>
                   </div>
                 ))}
@@ -111,7 +111,7 @@ export default function JoinPage() {
                     { icon: <Zap size={18} />, value: '25+', label: 'Events' },
                   ].map((s) => (
                     <div key={s.label}>
-                      <div className="text-[#1a6cff] flex justify-center mb-1">{s.icon}</div>
+                      <div className="text-[#D2A679] flex justify-center mb-1">{s.icon}</div>
                       <div className="text-white font-bold">{s.value}</div>
                       <div className="text-white/35 text-xs">{s.label}</div>
                     </div>
@@ -154,7 +154,7 @@ export default function JoinPage() {
                       onChange={handleChange}
                       required
                       placeholder="Ravi"
-                      className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                      className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                     />
                   </div>
                   <div>
@@ -168,7 +168,7 @@ export default function JoinPage() {
                       onChange={handleChange}
                       required
                       placeholder="Sharma"
-                      className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                      className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                     />
                   </div>
                 </div>
@@ -184,7 +184,7 @@ export default function JoinPage() {
                     onChange={handleChange}
                     required
                     placeholder="ravi@company.com"
-                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                   />
                 </div>
 
@@ -202,7 +202,7 @@ export default function JoinPage() {
                         onChange={handleChange}
                         required
                         placeholder="9876543210"
-                        className="flex-1 bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                        className="flex-1 bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                       />
                     </div>
                   </div>
@@ -217,7 +217,7 @@ export default function JoinPage() {
                       onChange={handleChange}
                       required
                       placeholder="Acme GCC India"
-                      className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                      className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                     />
                   </div>
                 </div>
@@ -233,7 +233,7 @@ export default function JoinPage() {
                     onChange={handleChange}
                     required
                     placeholder="VP Engineering & India Site Leader"
-                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                   />
                 </div>
 
@@ -246,7 +246,7 @@ export default function JoinPage() {
                     value={form.role}
                     onChange={handleChange}
                     required
-                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#1a6cff] transition-colors appearance-none"
+                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors appearance-none"
                   >
                     <option value="" className="bg-[#0a0e1a]">Select your role...</option>
                     {memberTypes.map((m) => (
@@ -265,7 +265,7 @@ export default function JoinPage() {
                     value={form.linkedin}
                     onChange={handleChange}
                     placeholder="https://linkedin.com/in/yourname"
-                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                   />
                 </div>
 
@@ -279,7 +279,7 @@ export default function JoinPage() {
                         onChange={handleChange}
                         className="peer sr-only"
                       />
-                      <div className="w-4 h-4 rounded border border-white/30 peer-checked:bg-[#1a6cff] peer-checked:border-[#1a6cff] transition-colors" />
+                      <div className="w-4 h-4 rounded border border-white/30 peer-checked:bg-[#D2A679] peer-checked:border-[#D2A679] transition-colors" />
                       <svg className="absolute inset-0 w-4 h-4 text-white opacity-0 peer-checked:opacity-100 pointer-events-none" fill="none" viewBox="0 0 16 16">
                         <path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -297,16 +297,16 @@ export default function JoinPage() {
                         required
                         className="peer sr-only"
                       />
-                      <div className="w-4 h-4 rounded border border-white/30 peer-checked:bg-[#1a6cff] peer-checked:border-[#1a6cff] transition-colors" />
+                      <div className="w-4 h-4 rounded border border-white/30 peer-checked:bg-[#D2A679] peer-checked:border-[#D2A679] transition-colors" />
                       <svg className="absolute inset-0 w-4 h-4 text-white opacity-0 peer-checked:opacity-100 pointer-events-none" fill="none" viewBox="0 0 16 16">
                         <path d="M3 8l3.5 3.5 6.5-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </div>
                     <span className="text-white/55 text-sm leading-relaxed">
                       I agree to the{' '}
-                      <span className="text-[#1a6cff] hover:underline cursor-pointer">Terms &amp; Conditions</span>
+                      <span className="text-[#D2A679] hover:underline cursor-pointer">Terms &amp; Conditions</span>
                       {' '}and{' '}
-                      <span className="text-[#1a6cff] hover:underline cursor-pointer">Terms of Use</span>
+                      <span className="text-[#D2A679] hover:underline cursor-pointer">Terms of Use</span>
                       {' '}of The GCC Circle Community *
                     </span>
                   </label>
@@ -315,7 +315,7 @@ export default function JoinPage() {
                 <button
                   type="submit"
                   disabled={!(form.agreed && form.whatsapp) || loading}
-                  className="w-full py-4 bg-[#1a6cff] hover:bg-[#1558d6] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.4)] flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-[#D2A679] hover:bg-[#B87333] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.4)] flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

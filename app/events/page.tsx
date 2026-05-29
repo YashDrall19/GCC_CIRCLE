@@ -76,12 +76,13 @@ export default function EventsPage() {
       {/* Hero */}
       <section className="relative py-28 px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[#1a6cff]/8 blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[#D2A679]/8 blur-[100px]" />
         </div>
         <div className="relative max-w-4xl mx-auto text-center">
-          <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-5 block">GCC Circle Events</span>
+          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-5 block">GCC Circle Events</span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
             Where leaders unwind,<br />
+            {/* <span className="bg-gradient-to-r from-[#D2A679] to-[#B87333] bg-clip-text text-transparent"> */}
             <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
               connect and inspire
             </span>
@@ -96,16 +97,16 @@ export default function EventsPage() {
       <section className="py-20 px-6 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-4 block">The Experience</span>
+            <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 block">The Experience</span>
             <h2 className="text-4xl md:text-5xl font-bold">What to expect</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {experienceFeatures.map((f) => (
               <div
                 key={f.title}
-                className="group p-8 rounded-2xl border border-white/10 bg-white/[0.03] hover:border-[#1a6cff]/40 hover:bg-white/[0.05] transition-all duration-300"
+                className="group p-8 rounded-2xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/40 hover:bg-white/[0.05] transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#1a6cff]/15 flex items-center justify-center text-[#1a6cff] mb-5 group-hover:bg-[#1a6cff]/25 transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679] mb-5 group-hover:bg-[#D2A679]/25 transition-colors duration-300">
                   {f.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{f.title}</h3>
@@ -121,7 +122,7 @@ export default function EventsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-14 gap-4">
             <div>
-              <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-3 block">What&apos;s Coming</span>
+              <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-3 block">What&apos;s Coming</span>
               <h2 className="text-4xl md:text-5xl font-bold">Upcoming Events</h2>
             </div>
           </div>
@@ -129,13 +130,13 @@ export default function EventsPage() {
             {upcomingEvents.map((e, i) => (
               <div
                 key={i}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] hover:border-[#1a6cff]/50 transition-all duration-300"
+                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/50 transition-all duration-300"
               >
-                <div className="absolute top-0 right-0 w-56 h-56 bg-[#1a6cff]/5 rounded-full -translate-y-1/2 translate-x-1/3 group-hover:bg-[#1a6cff]/10 transition-colors duration-300 pointer-events-none" />
+                <div className="absolute top-0 right-0 w-56 h-56 bg-[#D2A679]/5 rounded-full -translate-y-1/2 translate-x-1/3 group-hover:bg-[#D2A679]/10 transition-colors duration-300 pointer-events-none" />
                 <div className="relative p-10">
                   <div className="flex items-start justify-between mb-6">
                     <div>
-                      <div className="flex items-center gap-2 text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-2">
+                      <div className="flex items-center gap-2 text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-2">
                         <Calendar size={12} />
                         {e.date} {e.month} {e.year}
                       </div>
@@ -150,7 +151,7 @@ export default function EventsPage() {
                   <p className="text-white/55 text-sm leading-relaxed mb-8">{e.desc}</p>
                   <Link
                     href="/join"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#1a6cff] hover:bg-[#1558d6] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(26,108,255,0.4)]"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#D2A679] hover:bg-[#B87333] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(26,108,255,0.4)]"
                   >
                     Register Now <ArrowRight size={14} />
                   </Link>
@@ -165,7 +166,7 @@ export default function EventsPage() {
       <section id="past" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-4 block">We&apos;ve Been Busy</span>
+            <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 block">We&apos;ve Been Busy</span>
             <h2 className="text-4xl md:text-5xl font-bold">Past Events</h2>
             <p className="text-white/50 mt-4 text-lg max-w-xl mx-auto">
               A glimpse into the circles we&apos;ve created across India&apos;s leading GCC cities.
@@ -175,7 +176,7 @@ export default function EventsPage() {
             {pastEvents.map((e, i) => (
               <div
                 key={i}
-                className="group overflow-hidden rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300"
+                className="group overflow-hidden rounded-2xl border border-white/10 hover:border-[#B87333] hover:bg-[#D2A679] transition-all duration-300"
               >
                 <div className="relative overflow-hidden aspect-video">
                   <img
@@ -185,7 +186,7 @@ export default function EventsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4">
-                    <div className="text-[#1a6cff] text-xs font-semibold uppercase tracking-wide mb-1">{e.month} {e.year}</div>
+                    <div className="text-[#D2A679] text-xs font-semibold uppercase tracking-wide mb-1">{e.month} {e.year}</div>
                     <div className="text-white font-bold text-xl">{e.city}</div>
                   </div>
                 </div>
@@ -211,7 +212,7 @@ export default function EventsPage() {
         <div className="max-w-3xl mx-auto text-center">
           <div className="relative rounded-3xl border border-[#1a6cff]/30 bg-gradient-to-br from-[#1a6cff]/10 to-transparent p-14">
             <div className="absolute inset-0 pointer-events-none rounded-3xl overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#1a6cff]/15 rounded-full blur-[60px]" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#D2A679]/15 rounded-full blur-[60px]" />
             </div>
             <div className="relative">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Want to be in the room?</h2>
@@ -220,7 +221,7 @@ export default function EventsPage() {
               </p>
               <Link
                 href="/join"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#1a6cff] hover:bg-[#1558d6] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)]"
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)]"
               >
                 Join the Community <ArrowRight size={15} />
               </Link>

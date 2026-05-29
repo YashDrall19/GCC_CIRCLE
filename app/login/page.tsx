@@ -14,7 +14,7 @@ export default function LoginPage() {
               id="email"
               name="email"
               required
-              className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-[#1a6cff]"
+              className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-[#D2A679]"
               autoComplete="email"
             />
           </div>
@@ -25,20 +25,20 @@ export default function LoginPage() {
               id="password"
               name="password"
               required
-              className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-[#1a6cff]"
+              className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-[#D2A679]"
               autoComplete="current-password"
             />
           </div>
           <button
             type="submit"
-            className="w-full py-2 rounded-lg bg-[#1a6cff] text-white font-semibold hover:bg-[#155bb5] transition-colors tech-hover"
+            className="w-full py-2 rounded-lg bg-[#D2A679] text-white font-semibold hover:bg-[#155bb5] transition-colors tech-hover"
           >
             Login
           </button>
         </form>
         <div className="mt-6 text-center text-white/60 text-sm">
           Don&apos;t have an account?{' '}
-          <Link href="/join" className="text-[#1a6cff] hover:underline font-medium">Join now</Link>
+          <Link href="/join" className="text-[#D2A679] hover:underline font-medium">Join now</Link>
         </div>
       </div>
     </div>

@@ -34,13 +34,14 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="relative py-24 px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-[#1a6cff]/8 blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-[#D2A679]/8 blur-[100px]" />
         </div>
         <div className="relative max-w-2xl mx-auto text-center">
-          <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-5 block">Get in Touch</span>
+          <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-5 block">Get in Touch</span>
           <h1 className="text-5xl md:text-6xl font-bold mb-5">
             Let&apos;s{' '}
             <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
+            {/* <span className="bg-gradient-to-r from-[#B87333] to-[#D2A679] bg-clip-text text-transparent"> */}
               Talk
             </span>
           </h1>
@@ -60,9 +61,9 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <a
                     href="mailto:hello@gcccircle.com"
-                    className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-[#1a6cff]/40 transition-all duration-200 group"
+                    className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/40 transition-all duration-200 group"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#1a6cff]/15 flex items-center justify-center text-[#1a6cff] group-hover:bg-[#1a6cff]/25 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679] group-hover:bg-[#D2A679]/25 transition-colors">
                       <Mail size={18} />
                     </div>
                     <div>
@@ -72,9 +73,9 @@ export default function ContactPage() {
                   </a>
                   <a
                     href="tel:+918505823013"
-                    className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-[#1a6cff]/40 transition-all duration-200 group"
+                    className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/40 transition-all duration-200 group"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#1a6cff]/15 flex items-center justify-center text-[#1a6cff] group-hover:bg-[#1a6cff]/25 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679] group-hover:bg-[#D2A679]/25 transition-colors">
                       <Phone size={18} />
                     </div>
                     <div>
@@ -83,7 +84,7 @@ export default function ContactPage() {
                     </div>
                   </a>
                   <div className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.03]">
-                    <div className="w-10 h-10 rounded-xl bg-[#1a6cff]/15 flex items-center justify-center text-[#1a6cff]">
+                    <div className="w-10 h-10 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679]">
                       <MapPin size={18} />
                     </div>
                     <div>
@@ -116,14 +117,14 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl border border-[#1a6cff]/25 bg-[#1a6cff]/5">
+              <div className="p-5 rounded-2xl border border-[#D2A679]/25 bg-[#D2A679]/5">
                 <h3 className="font-semibold mb-2 text-sm">Partnership inquiries?</h3>
                 <p className="text-white/50 text-xs leading-relaxed mb-3">
                   For partnership and sponsorship opportunities, reach out directly to our partnerships team.
                 </p>
                 <a
                   href="mailto:partnerships@gcccircle.com"
-                  className="text-[#1a6cff] text-xs font-semibold hover:underline"
+                  className="text-[#D2A679] text-xs font-semibold hover:underline"
                 >
                   partnerships@gcccircle.com
                 </a>
@@ -136,7 +137,7 @@ export default function ContactPage() {
                 </p>
                 <Link
                   href="/join"
-                  className="inline-flex items-center gap-1.5 text-[#1a6cff] text-xs font-semibold hover:gap-3 transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 text-[#D2A679] text-xs font-semibold hover:gap-3 transition-all duration-200"
                 >
                   Join the Circle <ArrowRight size={12} />
                 </Link>
@@ -172,7 +173,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       placeholder="Your full name"
-                      className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                      className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                     />
                   </div>
                   <div>
@@ -184,7 +185,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       placeholder="you@company.com"
-                      className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                      className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                     />
                   </div>
                 </div>
@@ -199,7 +200,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       placeholder="9876543210"
-                      className="flex-1 bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                      className="flex-1 bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                     />
                   </div>
                 </div>
@@ -212,7 +213,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     placeholder="https://linkedin.com/in/yourname"
-                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors"
+                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                   />
                 </div>
                 {/* <div>
@@ -221,7 +222,7 @@ export default function ContactPage() {
                     name="subject"
                     value={form.subject}
                     onChange={handleChange}
-                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#1a6cff] transition-colors appearance-none"
+                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors appearance-none"
                   >
                     <option value="" className="bg-[#0a0e1a]">Select a topic...</option>
                     <option value="membership" className="bg-[#0a0e1a]">Membership Inquiry</option>
@@ -240,13 +241,13 @@ export default function ContactPage() {
                     required
                     rows={6}
                     placeholder="Tell us how we can help..."
-                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#1a6cff] transition-colors resize-none"
+                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors resize-none"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 bg-[#1a6cff] hover:bg-[#1558d6] disabled:opacity-60 text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.4)] flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-[#D2A679] hover:bg-[#B87333] disabled:opacity-60 text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.4)] flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

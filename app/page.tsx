@@ -72,7 +72,7 @@ export default function HomePage() {
           <div className="relative w-[600px] h-[600px] md:w-[800px] md:h-[800px]">
             {/* Outer ring */}
             <div
-              className="absolute inset-0 rounded-full border border-[#1a6cff]/20 animate-[spin_20s_linear_infinite] opacity-0"
+              className="absolute inset-0 rounded-full border border-[#D2A679]/20 animate-[spin_20s_linear_infinite] opacity-0"
               style={{ opacity: mounted ? 1 : 0, transition: 'opacity 0.5s' }}
             >
               <CircleDot className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 text-[#38bdf8]" fill="currentColor" />
@@ -82,26 +82,26 @@ export default function HomePage() {
               className="absolute inset-8 rounded-full border border-[#38bdf8]/15 animate-[spin_15s_linear_infinite_reverse] opacity-0"
               style={{ opacity: mounted ? 1 : 0, transition: 'opacity 0.7s', transitionDelay: '0.2s' }}
             >
-              <CircleDot className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 text-[#1a6cff]" fill="currentColor" />
+              <CircleDot className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 text-[#D2A679]" fill="currentColor" />
             </div>
             {/* Inner ring */}
             <div
-              className="absolute inset-16 rounded-full border border-[#1a6cff]/10 animate-[spin_25s_linear_infinite] opacity-0"
+              className="absolute inset-16 rounded-full border border-[#D2A679]/10 animate-[spin_25s_linear_infinite] opacity-0"
               style={{ opacity: mounted ? 1 : 0, transition: 'opacity 0.9s', transitionDelay: '0.4s' }}
             >
               <CircleDot className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 w-1 h-1 text-[#6ea8fe]" fill="currentColor" />
             </div>
 
             {/* Center hologram core */}
-            <div className="absolute inset-[35%] rounded-full bg-gradient-to-br from-[#1a6cff]/30 via-[#38bdf8]/20 to-transparent animate-pulse-glow" />
+            <div className="absolute inset-[35%] rounded-full bg-gradient-to-br from-[#D2A679]/30 via-[#38bdf8]/20 to-transparent animate-pulse-glow" />
           </div>
         </div>
 
         {/* Radial glows */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full bg-[#1a6cff]/8 blur-[150px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full bg-[#D2A679]/8 blur-[150px]" />
           <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-[#38bdf8]/5 blur-[100px]" />
-          <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] rounded-full bg-[#1a6cff]/5 blur-[80px]" />
+          <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] rounded-full bg-[#D2A679]/5 blur-[80px]" />
         </div>
 
         {/* Circuit pattern overlay */}
@@ -138,7 +138,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/join"
-              className="group px-8 py-3.5 bg-[#0a0e1a]/60 backdrop-blur-md border border-[#1a6cff]/50 hover:bg-[#1a6cff] hover:border-[#1a6cff] text-white font-semibold rounded-full transition-all duration-300 flex items-center gap-2 glow-box"
+              className="group px-8 py-3.5 bg-[#0a0e1a]/60 backdrop-blur-md border border-[#D2A679]/50 hover:bg-[#D2A679] hover:border-[#D2A679] text-white font-semibold rounded-full transition-all duration-300 flex items-center gap-2 glow-box"
             >
               <span>Join the Circle</span>
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -160,13 +160,13 @@ export default function HomePage() {
 
       {/* Stats with animated counters */}
       <ScrollReveal>
-        <section className="py-16 border-y border-[#1a6cff]/20 bg-[#0a0e1a]/50 backdrop-blur-sm">
+        <section className="py-16 border-y border-[#D2A679]/20 bg-[#0a0e1a]/50 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((s, i) => (
                 <ScrollReveal key={s.label} delay={i * 100}>
                   <div className="text-center group">
-                    <div className="text-4xl md:text-5xl font-bold text-[#1a6cff] mb-2 glow-text group-hover:scale-110 transition-transform duration-300">{s.value}</div>
+                    <div className="text-4xl md:text-5xl font-bold text-[#D2A679] mb-2 glow-text group-hover:scale-110 transition-transform duration-300">{s.value}</div>
                     <div className="text-white/50 text-sm font-medium">{s.label}</div>
                   </div>
                 </ScrollReveal>
@@ -182,7 +182,7 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <ScrollReveal delay={100}>
               <div>
-                <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-4 block glow-text">Our Vision</span>
+                <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 block glow-text">Our Vision</span>
                 <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
                   Leaders of today &amp; tomorrow, together.
                 </h2>
@@ -196,7 +196,7 @@ export default function HomePage() {
                 </p>
                 <Link
                   href="/join"
-                  className="inline-flex items-center gap-2 text-[#1a6cff] hover:text-[#38bdf8] font-semibold transition-colors duration-200 group"
+                  className="inline-flex items-center gap-2 text-[#D2A679] hover:text-[#B87333] font-semibold transition-colors duration-200 group"
                 >
                   Become a member
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -205,12 +205,12 @@ export default function HomePage() {
             </ScrollReveal>
             <ScrollReveal delay={200}>
               <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1a6cff]/30 to-[#38bdf8]/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#D2A679]/30 to-[#38bdf8]/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" />
                 <div className="absolute inset-0 hologram-border rounded-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
                 <img
                   src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800"
                   alt="Leaders collaborating"
-                  className="relative rounded-3xl w-full object-cover aspect-[4/3] border border-[#1a6cff]/20 group-hover:border-[#1a6cff]/40 transition-colors duration-300"
+                  className="relative rounded-3xl w-full object-cover aspect-[4/3] border border-[#D2A679]/20 group-hover:border-[#D2A679]/40 transition-colors duration-300"
                 />
               </div>
             </ScrollReveal>
@@ -223,7 +223,7 @@ export default function HomePage() {
         <section className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0e1a]/50 to-transparent pointer-events-none" />
           <div className="relative max-w-4xl mx-auto text-center">
-            <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-4 block glow-text">What is GCC Circle?</span>
+            <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 block glow-text">What is GCC Circle?</span>
             <h2 className="text-4xl md:text-5xl font-bold mb-8">Your executive ecosystem</h2>
             <p className="text-white/60 text-lg leading-relaxed mb-6">
               The GCC Circle, launched by Talentiser, is India&apos;s foremost leadership community for
@@ -246,15 +246,15 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto">
             <ScrollReveal>
               <div className="text-center mb-16">
-                <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-4 block glow-text">What We Offer</span>
+                <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 block glow-text">What We Offer</span>
                 <h2 className="text-4xl md:text-5xl font-bold">Built for leaders, by leaders</h2>
               </div>
             </ScrollReveal>
             <div className="grid md:grid-cols-3 gap-8">
               {pillars.map((p, i) => (
                 <ScrollReveal key={p.title} delay={i * 100}>
-                  <div className="group h-full p-8 rounded-2xl border border-[#1a6cff]/20 bg-[#0a0e1a]/60 backdrop-blur-sm hover:bg-[#0a0e1a]/80 hover:border-[#1a6cff]/50 transition-all duration-300 glow-box">
-                    <div className="w-14 h-14 rounded-xl bg-[#1a6cff]/15 flex items-center justify-center text-[#1a6cff] mb-6 group-hover:bg-[#1a6cff]/25 group-hover:shadow-[0_0_20px_rgba(26,108,255,0.3)] transition-all duration-300">
+                  <div className="group h-full p-8 rounded-2xl border border-[#D2A679]/20 bg-[#0a0e1a]/60 backdrop-blur-sm hover:bg-[#0a0e1a]/80 hover:border-[#D2A679]/50 transition-all duration-300 glow-box">
+                    <div className="w-14 h-14 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679] mb-6 group-hover:bg-[#D2A679]/25 group-hover:shadow-[0_0_20px_rgba(26,108,255,0.3)] transition-all duration-300">
                       {p.icon}
                     </div>
                     <h3 className="text-2xl font-bold mb-3">{p.title}</h3>
@@ -269,18 +269,18 @@ export default function HomePage() {
 
       {/* Upcoming Events preview */}
       <ScrollReveal>
-        <section className="py-24 px-6 bg-[#0a0e1a]/40 border-y border-[#1a6cff]/15">
+        <section className="py-24 px-6 bg-[#0a0e1a]/40 border-y border-[#D2A679]/15">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-14 gap-4">
               <ScrollReveal>
                 <div>
-                  <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-3 block glow-text">Calendar</span>
+                  <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-3 block glow-text">Calendar</span>
                   <h2 className="text-4xl md:text-5xl font-bold">Upcoming Events</h2>
                 </div>
               </ScrollReveal>
               <Link
                 href="/events"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-[#1a6cff]/30 hover:border-[#1a6cff] hover:bg-[#1a6cff]/10 text-white/70 hover:text-white rounded-full text-sm font-semibold transition-all duration-200"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-[#D2A679]/30 hover:border-[#D2A679] hover:bg-[#D2A679]/10 text-white/70 hover:text-white rounded-full text-sm font-semibold transition-all duration-200"
               >
                 View all events <ArrowRight size={14} />
               </Link>
@@ -288,15 +288,15 @@ export default function HomePage() {
             <div className="grid md:grid-cols-3 gap-6">
               {upcomingEvents.map((e, i) => (
                 <ScrollReveal key={e.city + e.month} delay={i * 100}>
-                  <div className="group relative overflow-hidden rounded-2xl border border-[#1a6cff]/20 bg-[#0a0e1a]/60 backdrop-blur-sm hover:border-[#1a6cff]/50 transition-all duration-300 p-8 glow-box">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#1a6cff]/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-[#1a6cff]/20 transition-colors duration-300" />
+                  <div className="group relative overflow-hidden rounded-2xl border border-[#D2A679]/20 bg-[#0a0e1a]/60 backdrop-blur-sm hover:border-[#D2A679]/50 transition-all duration-300 p-8 glow-box">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#D2A679]/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-[#D2A679]/20 transition-colors duration-300" />
                     <div className="relative">
-                      <div className="text-[#1a6cff] text-sm font-semibold uppercase tracking-widest mb-1 glow-text">{e.month} {e.year}</div>
+                      <div className="text-[#D2A679] text-sm font-semibold uppercase tracking-widest mb-1 glow-text">{e.month} {e.year}</div>
                       <div className="text-3xl font-bold mb-2">{e.city}</div>
                       <div className="text-white/50 text-sm">{e.type}</div>
                       <Link
                         href="/events"
-                        className="mt-6 inline-flex items-center gap-1.5 text-sm text-[#1a6cff] font-medium hover:gap-3 transition-all duration-200"
+                        className="mt-6 inline-flex items-center gap-1.5 text-sm text-[#D2A679] font-medium hover:gap-3 transition-all duration-200"
                       >
                         Register <ArrowRight size={14} />
                       </Link>
@@ -315,17 +315,17 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto">
             <ScrollReveal>
               <div className="text-center mb-14">
-                <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-4 block glow-text">Experts Speak</span>
+                <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 block glow-text">Experts Speak</span>
                 <h2 className="text-4xl md:text-5xl font-bold">Voices from the Circle</h2>
               </div>
             </ScrollReveal>
             <div className="grid md:grid-cols-3 gap-8">
               {testimonials.map((t, i) => (
                 <ScrollReveal key={t.name} delay={i * 100}>
-                  <div className="p-8 rounded-2xl border border-[#1a6cff]/20 bg-[#0a0e1a]/60 backdrop-blur-sm hover:border-[#38bdf8]/40 transition-all duration-300 group">
-                    <div className="text-4xl text-[#1a6cff] font-serif mb-4 glow-text">&ldquo;</div>
+                  <div className="p-8 rounded-2xl border border-[#D2A679] bg-[#0a0e1a] backdrop-blur-sm hover:border-[#B87333] transition-all duration-300 group">
+                    <div className="text-4xl text-[#D2A679] font-serif mb-4 glow-text">&ldquo;</div>
                     <p className="text-white/70 leading-relaxed mb-6 italic">{t.quote}</p>
-                    <div className="border-t border-[#1a6cff]/20 pt-5">
+                    <div className="border-t border-[#D2A679]/20 pt-5">
                       <div className="font-semibold text-white">{t.name}</div>
                       <div className="text-white/45 text-sm mt-0.5">{t.title}</div>
                     </div>
@@ -341,9 +341,9 @@ export default function HomePage() {
       <ScrollReveal>
         <section className="py-24 px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="relative rounded-3xl overflow-hidden border border-[#1a6cff]/40 bg-gradient-to-br from-[#0a0e1a]/80 to-[#070b14]/90 p-16 glow-box">
+            <div className="relative rounded-3xl overflow-hidden border border-[#D2A679]/40 bg-gradient-to-br from-[#0a0e1a]/80 to-[#070b14]/90 p-16 glow-box">
               <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#1a6cff]/10 rounded-full blur-[80px]" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#D2A679]/10 rounded-full blur-[80px]" />
               </div>
               <div className="relative">
                 <h2 className="text-4xl md:text-5xl font-bold mb-5 glow-text">Ready to join the Circle?</h2>
@@ -352,7 +352,7 @@ export default function HomePage() {
                 </p>
                 <Link
                   href="/join"
-                  className="inline-flex items-center gap-2 px-10 py-4 bg-[#1a6cff] hover:bg-[#1558d6] text-white font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(26,108,255,0.6)]"
+                  className="inline-flex items-center gap-2 px-10 py-4 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(26,108,255,0.6)]"
                 >
                   Join the GCC Circle <ArrowRight size={16} />
                 </Link>

@@ -25,7 +25,7 @@ export default function HologramText({ children, className = '', delay = 0 }: Ho
         className={`relative ${glitch ? 'animate-hologram-glitch' : ''}`}
         style={{
           textShadow: glitch
-            ? '2px 0 #1a6cff, -2px 0 #38bdf8'
+            ? '2px 0 #D2A679, -2px 0 #38bdf8'
             : '0 0 20px rgba(26,108,255,0.3), 0 0 40px rgba(56,189,248,0.2)',
         }}
       >
@@ -34,7 +34,7 @@ export default function HologramText({ children, className = '', delay = 0 }: Ho
       {glitch && (
         <>
           <span
-            className="absolute inset-0 text-[#1a6cff] opacity-70"
+            className="absolute inset-0 text-[#D2A679] opacity-70"
             style={{ transform: 'translate(-2px, 0)', clipPath: 'inset(0 0 50% 0)' }}
             aria-hidden
           >

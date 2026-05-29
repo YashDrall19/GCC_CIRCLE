@@ -36,7 +36,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-full bg-[#1a6cff] flex items-center justify-center text-white font-bold text-sm tracking-tight">
+          <div className="w-10 h-10 rounded-full bg-[#B87333] flex items-center justify-center text-white font-bold text-sm tracking-tight">
             GCC
           </div>
           <span className="text-white font-semibold text-lg tracking-wide">Circle</span>
@@ -51,14 +51,14 @@ export default function Navbar() {
               className={cn(
                 'text-sm font-medium transition-colors duration-200 relative group',
                 pathname === link.href
-                  ? 'text-[#1a6cff]'
+                  ? 'text-[#D2A679]'
                   : 'text-white/70 hover:text-white'
               )}
             >
               {link.label}
               <span
                 className={cn(
-                  'absolute -bottom-1 left-0 h-px bg-[#1a6cff] transition-all duration-200',
+                  'absolute -bottom-1 left-0 h-px bg-[#D2A679] transition-all duration-200',
                   pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
                 )}
               />
@@ -70,7 +70,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <Link
             href="/join"
-            className="px-5 py-2 bg-[#1a6cff] hover:bg-[#1558d6] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(26,108,255,0.4)]"
+            className="px-5 py-2 bg-[#D2A679] hover:bg-[#B87333] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(26,108,255,0.4)]"
           >
             Join the Circle
           </Link>
@@ -101,7 +101,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className={cn(
                 'text-sm font-medium py-2 border-b border-white/10',
-                pathname === link.href ? 'text-[#1a6cff]' : 'text-white/70'
+                pathname === link.href ? 'text-[#D2A679]' : 'text-white/70'
               )}
             >
               {link.label}
@@ -110,7 +110,7 @@ export default function Navbar() {
           <Link
             href="/join"
             onClick={() => setOpen(false)}
-            className="mt-2 px-5 py-3 bg-[#1a6cff] text-white text-sm font-semibold rounded-full text-center"
+            className="mt-2 px-5 py-3 bg-[#D2A679] text-white text-sm font-semibold rounded-full text-center"
           >
             Join the Circle
           </Link>

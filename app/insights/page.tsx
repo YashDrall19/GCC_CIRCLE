@@ -96,17 +96,17 @@ export default function InsightsPage() {
       {/* Hero */}
       <section className="relative py-24 px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#1a6cff]/8 blur-[100px]" />
+          <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#D2A679]/8 blur-[100px]" />
         </div>
         <div className="relative max-w-3xl mx-auto text-center">
-          <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-5 block">Knowledge Hub</span>
+          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-5 block">Knowledge Hub</span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">Insights</h1>
           <p className="text-white/55 text-lg leading-relaxed">
             Industry news, updates, and insights curated especially for GCC leaders. Sharp, no-noise, and always relevant.
           </p>
           <p className="text-white/35 text-sm mt-4">
             Want to get an article featured?{' '}
-            <a href="mailto:hello@gcccircle.com" className="text-[#1a6cff] hover:underline">hello@gcccircle.com</a>
+            <a href="mailto:hello@gcccircle.com" className="text-[#D2A679] hover:underline hover:text-[#B87333]">hello@gcccircle.com</a>
           </p>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function InsightsPage() {
       {/* Featured article */}
       <section className="px-6 pb-16">
         <div className="max-w-7xl mx-auto">
-          <div className="group relative overflow-hidden rounded-3xl border border-white/10 hover:border-[#1a6cff]/30 transition-all duration-300 cursor-pointer">
+          <div className="group relative overflow-hidden rounded-3xl border border-[#B87333] hover:border-[#D2A679] transition-all duration-300 cursor-pointer">
             <div className="grid md:grid-cols-2">
               <div className="relative overflow-hidden aspect-[4/3] md:aspect-auto">
                 <img
@@ -132,7 +132,7 @@ export default function InsightsPage() {
                   </span>
                   <span className="text-white/35 text-xs">Featured</span>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold leading-tight mb-4 group-hover:text-[#6ea8fe] transition-colors duration-200">
+                <h2 className="text-2xl md:text-3xl font-bold leading-tight mb-4 group-hover:text-[#B87333] transition-colors duration-200">
                   {featuredArticle.title}
                 </h2>
                 <p className="text-white/55 leading-relaxed mb-8 text-sm">{featuredArticle.excerpt}</p>
@@ -140,7 +140,7 @@ export default function InsightsPage() {
                   <span>{featuredArticle.date}</span>
                   <span className="flex items-center gap-1"><Clock size={10} /> {featuredArticle.readTime}</span>
                 </div>
-                <div className="inline-flex items-center gap-2 text-[#1a6cff] text-sm font-semibold group-hover:gap-4 transition-all duration-200">
+                <div className="inline-flex items-center gap-2 text-[#D2A679] text-sm font-semibold group-hover:gap-4 transition-all duration-200">
                   Read Article <ArrowRight size={14} />
                 </div>
               </div>
@@ -160,7 +160,7 @@ export default function InsightsPage() {
             {articles.map((a, i) => (
               <article
                 key={i}
-                className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] hover:border-[#1a6cff]/30 hover:bg-white/[0.05] transition-all duration-300 cursor-pointer flex flex-col"
+                className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679] hover:bg-white/[0.05] transition-all duration-300 cursor-pointer flex flex-col"
               >
                 <div className="relative overflow-hidden aspect-video">
                   <img
@@ -176,13 +176,13 @@ export default function InsightsPage() {
                   </div>
                 </div>
                 <div className="p-5 flex flex-col flex-1">
-                  <h3 className="font-semibold text-sm leading-snug mb-2 group-hover:text-[#6ea8fe] transition-colors duration-200 line-clamp-3">
+                  <h3 className="font-semibold text-sm leading-snug mb-2 group-hover:text-[#B87333] transition-colors duration-200 line-clamp-3">
                     {a.title}
                   </h3>
                   <p className="text-white/45 text-xs leading-relaxed mb-4 line-clamp-2 flex-1">{a.excerpt}</p>
                   <div className="flex items-center justify-between text-white/30 text-xs pt-3 border-t border-white/10">
                     <span className="flex items-center gap-1"><Clock size={9} /> {a.readTime}</span>
-                    <span className="text-[#1a6cff] font-medium flex items-center gap-0.5 group-hover:gap-2 transition-all duration-200">
+                    <span className="text-[#D2A679] font-medium flex items-center gap-0.5 group-hover:gap-2 transition-all duration-200">
                       Read <ArrowRight size={10} />
                     </span>
                   </div>
@@ -197,7 +197,7 @@ export default function InsightsPage() {
       <section className="py-20 px-6 border-t border-white/10 bg-white/[0.02]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-4 block">Perspectives</span>
+            <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 block">Perspectives</span>
             <h2 className="text-4xl font-bold">Experts Speak</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -205,8 +205,8 @@ export default function InsightsPage() {
               { name: 'Ritu Vohra', title: 'CHRO, ABC', quote: 'The insights from the GCC Circle have helped me reframe how we approach talent strategy across our India operations. The signal-to-noise ratio is unlike anything else in this space.' },
               { name: 'Ravi Wadhwa', title: 'Founder, Talentiser', quote: 'We built the Insights section because GCC leaders deserve better than generic management content. Everything here is built around the specific challenges this community faces.' },
             ].map((e) => (
-              <div key={e.name} className="p-8 rounded-2xl border border-white/10 bg-white/[0.03]">
-                <div className="text-4xl text-[#1a6cff] font-serif mb-4">&ldquo;</div>
+              <div key={e.name} className="p-8 rounded-2xl border border-[#D2A679] hover:border-[#B87333] bg-white/[0.03]">
+                <div className="text-4xl text-[#D2A679] font-serif mb-4">&ldquo;</div>
                 <p className="text-white/70 leading-relaxed italic mb-6">{e.quote}</p>
                 <div className="border-t border-white/10 pt-5">
                   <div className="font-semibold">{e.name}</div>

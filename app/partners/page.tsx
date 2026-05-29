@@ -42,7 +42,7 @@ const partnerTiers = [
   {
     name: 'Premium Partner',
     tag: 'Most Popular',
-    color: 'border-[#1a6cff]/60',
+    color: 'border-[#D2A679]/60',
     highlight: true,
     perks: [
       'Everything in Associate tier',
@@ -83,13 +83,14 @@ export default function PartnersPage() {
       {/* Hero */}
       <section className="relative py-28 px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[600px] rounded-full bg-[#1a6cff]/8 blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[600px] rounded-full bg-[#D2A679]/8 blur-[100px]" />
         </div>
         <div className="relative max-w-3xl mx-auto text-center">
-          <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-5 block">Partnership</span>
+          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-5 block">Partnership</span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
             GCC Circle{' '}
             <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
+            {/* <span className="bg-gradient-to-r from-[#B87333] to-[#D2A679] bg-clip-text text-transparent"> */}
               Premium Partners
             </span>
           </h1>
@@ -103,16 +104,16 @@ export default function PartnersPage() {
       <section className="py-20 px-6 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-4 block">The Value</span>
+            <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 block">The Value</span>
             <h2 className="text-4xl md:text-5xl font-bold">Why partner with us?</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((b) => (
               <div
                 key={b.title}
-                className="group p-8 rounded-2xl border border-white/10 bg-white/[0.03] hover:border-[#1a6cff]/40 hover:bg-white/[0.05] transition-all duration-300"
+                className="group p-8 rounded-2xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/40 hover:bg-white/[0.05] transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#1a6cff]/15 flex items-center justify-center text-[#1a6cff] mb-5 group-hover:bg-[#1a6cff]/25 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679] mb-5 group-hover:bg-[#D2A679]/25 transition-colors">
                   {b.icon}
                 </div>
                 <h3 className="font-bold text-lg mb-2">{b.title}</h3>
@@ -127,17 +128,17 @@ export default function PartnersPage() {
       <section className="py-24 px-6 bg-white/[0.02] border-y border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-4 block">Options</span>
+            <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 block">Options</span>
             <h2 className="text-4xl md:text-5xl font-bold">Partnership Tiers</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {partnerTiers.map((t) => (
               <div
                 key={t.name}
-                className={`relative rounded-2xl border ${t.color} ${t.highlight ? 'bg-[#1a6cff]/5' : 'bg-white/[0.03]'} p-8 transition-all duration-300`}
+                className={`relative rounded-2xl border ${t.color} ${t.highlight ? 'bg-[#D2A679]/5' : 'bg-white/[0.03]'} p-8 transition-all duration-300`}
               >
                 {t.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#1a6cff] text-white text-xs font-bold rounded-full">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#D2A679] text-white text-xs font-bold rounded-full">
                     {t.tag}
                   </div>
                 )}
@@ -151,8 +152,8 @@ export default function PartnersPage() {
                 <ul className="space-y-3 mb-8">
                   {t.perks.map((p) => (
                     <li key={p} className="flex items-start gap-2.5 text-sm text-white/65">
-                      <span className="w-4 h-4 rounded-full bg-[#1a6cff]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#1a6cff]" />
+                      <span className="w-4 h-4 rounded-full bg-[#D2A679]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#D2A679]" />
                       </span>
                       {p}
                     </li>
@@ -160,7 +161,7 @@ export default function PartnersPage() {
                 </ul>
                 <a
                   href="mailto:partnerships@gcccircle.com"
-                  className={`w-full py-3 rounded-full text-sm font-semibold text-center block transition-all duration-200 ${t.highlight ? 'bg-[#1a6cff] hover:bg-[#1558d6] text-white hover:shadow-[0_0_20px_rgba(26,108,255,0.4)]' : 'border border-white/20 hover:border-white/40 text-white/70 hover:text-white'}`}
+                  className={`w-full py-3 rounded-full text-sm font-semibold text-center block transition-all duration-200 ${t.highlight ? 'bg-[#D2A679] hover:bg-[#1558d6] text-white hover:shadow-[0_0_20px_rgba(26,108,255,0.4)]' : 'border border-white/20 hover:border-white/40 text-white/70 hover:text-white'}`}
                 >
                   Get in Touch
                 </a>
@@ -174,20 +175,20 @@ export default function PartnersPage() {
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-4 block">Our Network</span>
+            <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 block">Our Network</span>
             <h2 className="text-4xl font-bold">Current Partners</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {currentPartners.map((p) => (
               <div
                 key={p.name}
-                className="group p-6 rounded-2xl border border-white/10 bg-white/[0.03] hover:border-white/20 transition-all duration-300 text-center"
+                className="group p-6 rounded-2xl border border-[#D2A679]/30 bg-white/[0.03] hover:border-[#B87333] transition-all duration-300 text-center"
               >
                 <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-4 border border-white/10">
                   <img src={p.img} alt={p.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" />
                 </div>
                 <div className="font-semibold text-sm">{p.name}</div>
-                <div className="text-[#1a6cff] text-xs mt-1">{p.category}</div>
+                <div className="text-[#B87333] text-xs mt-1">{p.category}</div>
               </div>
             ))}
           </div>
@@ -197,9 +198,9 @@ export default function PartnersPage() {
       {/* Contact CTA */}
       <section className="py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="relative rounded-3xl border border-[#1a6cff]/30 bg-gradient-to-br from-[#1a6cff]/10 to-transparent p-14">
+          <div className="relative rounded-3xl border border-[#D2A679]/30 bg-gradient-to-br from-[#D2A679]/10 to-transparent p-14">
             <div className="absolute inset-0 pointer-events-none rounded-3xl overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#1a6cff]/15 rounded-full blur-[60px]" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#D2A679]/15 rounded-full blur-[60px]" />
             </div>
             <div className="relative">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to partner?</h2>
@@ -209,7 +210,7 @@ export default function PartnersPage() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
                   href="mailto:partnerships@gcccircle.com"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#1a6cff] hover:bg-[#1558d6] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)]"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)]"
                 >
                   <Mail size={15} /> partnerships@gcccircle.com
                 </a>
@@ -217,7 +218,7 @@ export default function PartnersPage() {
                   href="https://wa.me/918505823013"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-white/20 hover:border-white/40 text-white/70 hover:text-white font-semibold rounded-full transition-all duration-200"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#D2A679] hover:[#B87333] text-white/70 hover:text-white font-semibold rounded-full transition-all duration-200"
                 >
                   <Phone size={15} /> +91 8505823013
                 </a>

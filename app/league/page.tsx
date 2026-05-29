@@ -84,13 +84,14 @@ export default function LeaguePage() {
       {/* Hero */}
       <section className="relative py-28 px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-[#1a6cff]/8 blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-[#D2A679]/8 blur-[120px]" />
         </div>
         <div className="relative max-w-3xl mx-auto text-center">
-          <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-5 block">Membership</span>
+          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-5 block">Membership</span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
             The League of{' '}
             <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
+            {/* <span className="bg-gradient-to-r from-[#B87333] to-[#D2A679] bg-clip-text text-transparent"> */}
               Legends
             </span>
           </h1>
@@ -100,7 +101,7 @@ export default function LeaguePage() {
           <div className="mt-8">
             <Link
               href="/join"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#1a6cff] hover:bg-[#1558d6] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.5)]"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.5)]"
             >
               Join the League <ArrowRight size={16} />
             </Link>
@@ -118,7 +119,7 @@ export default function LeaguePage() {
               { value: '10+', label: 'Cities' },
             ].map((s) => (
               <div key={s.label}>
-                <div className="text-3xl md:text-4xl font-bold text-[#1a6cff]">{s.value}</div>
+                <div className="text-3xl md:text-4xl font-bold text-[#D2A679]">{s.value}</div>
                 <div className="text-white/45 text-sm mt-1">{s.label}</div>
               </div>
             ))}
@@ -130,7 +131,7 @@ export default function LeaguePage() {
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <span className="text-[#1a6cff] text-xs font-semibold uppercase tracking-widest mb-4 block">Our Members</span>
+            <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 block">Our Members</span>
             <h2 className="text-4xl md:text-5xl font-bold">Meet the Circle</h2>
             <p className="text-white/50 mt-4 text-lg max-w-xl mx-auto">
               India&apos;s most influential GCC leaders, all in one place.
@@ -140,7 +141,7 @@ export default function LeaguePage() {
             {legends.map((l) => (
               <div
                 key={l.name}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] hover:border-[#1a6cff]/40 transition-all duration-300"
+                className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300"
               >
                 <div className="aspect-[3/4] overflow-hidden">
                   <img
@@ -153,7 +154,7 @@ export default function LeaguePage() {
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <div className="font-semibold text-sm leading-tight">{l.name}</div>
                   <div className="text-white/55 text-xs mt-0.5 leading-tight">{l.title}</div>
-                  <div className="text-[#1a6cff] text-xs font-semibold mt-1">{l.company}</div>
+                  <div className="text-[#D2A679] text-xs font-semibold mt-1">{l.company}</div>
                 </div>
                 <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   <div className="w-7 h-7 rounded-full bg-[#1a6cff]/90 flex items-center justify-center">
@@ -169,9 +170,9 @@ export default function LeaguePage() {
       {/* CTA */}
       <section className="py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="relative rounded-3xl border border-[#1a6cff]/30 bg-gradient-to-br from-[#1a6cff]/10 to-transparent p-14">
+          <div className="relative rounded-3xl border border-[#D2A679]/30 bg-gradient-to-br from-[#D2A679]/10 to-transparent p-14">
             <div className="absolute inset-0 pointer-events-none rounded-3xl overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#1a6cff]/15 rounded-full blur-[60px]" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#D2A679]/15 rounded-full blur-[60px]" />
             </div>
             <div className="relative">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Want to be listed here?</h2>
@@ -180,7 +181,7 @@ export default function LeaguePage() {
               </p>
               <Link
                 href="/join"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#1a6cff] hover:bg-[#1558d6] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)]"
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)]"
               >
                 Join the Circle <ArrowRight size={15} />
               </Link>
