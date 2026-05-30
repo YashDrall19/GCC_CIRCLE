@@ -75,7 +75,8 @@ export default function JoinPage() {
           <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-5 block">Membership</span>
           <h1 className="text-5xl md:text-6xl font-bold mb-5">
             Let&apos;s Connect.{' '}
-            <span className="bg-gradient-to-r from-[#B87333] to-[#D2A679] bg-clip-text text-transparent">
+            {/* <span className="bg-gradient-to-r from-[#B87333] to-[#D2A679] bg-clip-text text-transparent"> */}
+            <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
               Let&apos;s Collaborate.
             </span>
           </h1>

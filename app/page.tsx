@@ -123,7 +123,7 @@ export default function HomePage() {
           </div>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight mb-6">
-            <HologramText className="block text-white">Connect.</HologramText>
+            <HologramText className="block text-white">Connect.</HologramText>{""}
             <HologramText className="block text-white" delay={100}>Network.</HologramText>
             <GeneratorText className="block bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
               Influence.

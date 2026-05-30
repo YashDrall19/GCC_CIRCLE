@@ -3,80 +3,157 @@
 import Link from 'next/link';
 import { ArrowRight, Linkedin } from 'lucide-react';
 
-const legends = [
+interface Leader {
+  id: string;
+  name: string;
+  title: string;
+  company: string;
+  img: string;
+  type: 'tech' | 'hr';
+  bio?: string;
+  email?: string;
+  linkedin?: string;
+}
+
+const leaders: Leader[] = [
+  // Tech Leaders
   {
+    id: 'supriya-rao',
     name: 'Supriya Rao',
     title: 'MD India',
     company: 'ClearRoute',
     img: 'https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg?auto=compress&cs=tinysrgb&w=300',
+    type: 'tech',
+    bio: 'Leading technology innovation across India with a focus on digital transformation and engineering excellence.',
+    email: 'supriya@clearroute.com',
+    linkedin: 'https://linkedin.com',
   },
   {
+    id: 'paras-nigam',
     name: 'Paras Nigam',
     title: 'VP, Engineering and AI | Site Leader',
     company: 'iCIMS',
     img: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=300',
+    type: 'tech',
+    bio: 'Spearheading AI and engineering initiatives across the region with a passion for cutting-edge technology.',
+    email: 'paras@icims.com',
+    linkedin: 'https://linkedin.com',
   },
   {
+    id: 'amod-deshpande',
     name: 'Amod Deshpande',
     title: 'GCC Leader & Country Director',
     company: 'Allvue Systems',
     img: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=300',
+    type: 'tech',
+    bio: 'Driving strategic technology initiatives and global delivery excellence for India operations.',
+    email: 'amod@allvue.com',
+    linkedin: 'https://linkedin.com',
   },
   {
+    id: 'anurag-garg',
     name: 'Anurag Garg',
     title: 'Global Engineering Executive',
     company: 'Ryan',
     img: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300',
+    type: 'tech',
+    bio: 'Transforming engineering teams and accelerating product development with global best practices.',
+    email: 'anurag@ryan.com',
+    linkedin: 'https://linkedin.com',
   },
   {
-    name: 'Rajesh Puneyani',
-    title: 'Vice President & Site Leader',
-    company: 'Kenvue',
-    img: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=300',
-  },
-  {
+    id: 'yogesh-more',
     name: 'Yogesh More',
     title: 'General Manager',
     company: 'isolved',
     img: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300',
+    type: 'tech',
+    bio: 'Managing technical operations and scaling engineering teams with focus on innovation.',
+    email: 'yogesh@isolved.com',
+    linkedin: 'https://linkedin.com',
   },
   {
+    id: 'srinivas-chamarthy',
     name: 'Srinivas Chamarthy',
     title: 'SVP Engineering & India Site Leader',
     company: 'Diligent',
     img: 'https://images.pexels.com/photos/936119/pexels-photo-936119.jpeg?auto=compress&cs=tinysrgb&w=300',
+    type: 'tech',
+    bio: 'Leading engineering excellence and technology strategy with a focus on quality and innovation.',
+    email: 'srinivas@diligent.com',
+    linkedin: 'https://linkedin.com',
   },
   {
+    id: 'abhishek-chauhan',
     name: 'Abhishek Chauhan',
     title: 'India Site Leader',
     company: 'SONATYPE',
     img: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=300',
+    type: 'tech',
+    bio: 'Orchestrating technology infrastructure and engineering practices for regional excellence.',
+    email: 'abhishek@sonatype.com',
+    linkedin: 'https://linkedin.com',
   },
   {
-    name: 'Priya Sharma',
-    title: 'Country Head & SVP',
-    company: 'FinTech Corp',
-    img: 'https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?auto=compress&cs=tinysrgb&w=300',
-  },
-  {
-    name: 'Kiran Bhat',
-    title: 'Director of Engineering',
-    company: 'GlobalEdge',
-    img: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=300',
-  },
-  {
-    name: 'Neha Kulkarni',
-    title: 'VP Operations & Site Lead',
-    company: 'Nexus Systems',
-    img: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=300',
-  },
-  {
+    id: 'vikram-mehta',
     name: 'Vikram Mehta',
     title: 'CTO & India Head',
     company: 'CloudBase Inc',
     img: 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=300',
+    type: 'tech',
+    bio: 'Building next-generation cloud solutions and leading technology vision for the region.',
+    email: 'vikram@cloudbase.com',
+    linkedin: 'https://linkedin.com',
+  },
+  // HR Leaders
+  {
+    id: 'rajesh-puneyani',
+    name: 'Rajesh Puneyani',
+    title: 'Vice President & Site Leader',
+    company: 'Kenvue',
+    img: 'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=300',
+    type: 'hr',
+    bio: 'Transforming human resources and driving organizational excellence across the region.',
+    email: 'rajesh@kenvue.com',
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    id: 'priya-sharma',
+    name: 'Priya Sharma',
+    title: 'Country Head & SVP',
+    company: 'FinTech Corp',
+    img: 'https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?auto=compress&cs=tinysrgb&w=300',
+    type: 'hr',
+    bio: 'Leading talent strategy and people operations with a focus on employee development and culture.',
+    email: 'priya@fintech.com',
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    id: 'kiran-bhat',
+    name: 'Kiran Bhat',
+    title: 'Director of Engineering',
+    company: 'GlobalEdge',
+    img: 'https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=300',
+    type: 'hr',
+    bio: 'Championing talent acquisition and people development initiatives across global operations.',
+    email: 'kiran@globaledge.com',
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    id: 'neha-kulkarni',
+    name: 'Neha Kulkarni',
+    title: 'VP Operations & Site Lead',
+    company: 'Nexus Systems',
+    img: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=300',
+    type: 'hr',
+    bio: 'Optimizing organizational operations and building high-performing teams with a people-first approach.',
+    email: 'neha@nexus.com',
+    linkedin: 'https://linkedin.com',
   },
 ];
+
+const techLeaders = leaders.filter((l) => l.type === 'tech');
+const hrLeaders = leaders.filter((l) => l.type === 'hr');
 
 export default function LeaguePage() {
   return (
@@ -137,32 +214,77 @@ export default function LeaguePage() {
               India&apos;s most influential GCC leaders, all in one place.
             </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            {legends.map((l) => (
-              <div
-                key={l.name}
-                className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300"
-              >
-                <div className="aspect-[3/4] overflow-hidden">
-                  <img
-                    src={l.img}
-                    alt={l.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <div className="font-semibold text-sm leading-tight">{l.name}</div>
-                  <div className="text-white/55 text-xs mt-0.5 leading-tight">{l.title}</div>
-                  <div className="text-[#D2A679] text-xs font-semibold mt-1">{l.company}</div>
-                </div>
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <div className="w-7 h-7 rounded-full bg-[#1a6cff]/90 flex items-center justify-center">
-                    <Linkedin size={12} className="text-white" />
-                  </div>
-                </div>
+
+          {/* Tech Leaders Section */}
+          <div className="mb-20">
+            <h3 className="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-3">
+              <span className="w-2 h-2 bg-[#1a6cff] rounded-full"></span>
+              Tech Leaders
+            </h3>
+            <div className="overflow-x-auto pb-4 -mx-6 px-6">
+              <div className="flex gap-6 min-w-min">
+                {techLeaders.map((leader) => (
+                  <Link key={leader.id} href={`/league/${leader.id}`}>
+                    <div className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300 cursor-pointer w-56 flex-shrink-0">
+                      <div className="aspect-[3/4] overflow-hidden">
+                        <img
+                          src={leader.img}
+                          alt={leader.name}
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <div className="font-semibold text-sm leading-tight">{leader.name}</div>
+                        <div className="text-white/55 text-xs mt-0.5 leading-tight">{leader.title}</div>
+                        <div className="text-[#D2A679] text-xs font-semibold mt-1">{leader.company}</div>
+                      </div>
+                      <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        <div className="w-7 h-7 rounded-full bg-[#1a6cff]/90 flex items-center justify-center">
+                          <Linkedin size={12} className="text-white" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
-            ))}
+            </div>
+          </div>
+
+          {/* HR Leaders Section */}
+          <div>
+            <h3 className="text-2xl md:text-3xl font-bold mb-8 flex items-center gap-3">
+              <span className="w-2 h-2 bg-[#D2A679] rounded-full"></span>
+              HR Leaders
+            </h3>
+            <div className="overflow-x-auto pb-4 -mx-6 px-6">
+              <div className="flex gap-6 min-w-min">
+                {hrLeaders.map((leader) => (
+                  <Link key={leader.id} href={`/league/${leader.id}`}>
+                    <div className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300 cursor-pointer w-56 flex-shrink-0">
+                      <div className="aspect-[3/4] overflow-hidden">
+                        <img
+                          src={leader.img}
+                          alt={leader.name}
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <div className="font-semibold text-sm leading-tight">{leader.name}</div>
+                        <div className="text-white/55 text-xs mt-0.5 leading-tight">{leader.title}</div>
+                        <div className="text-[#D2A679] text-xs font-semibold mt-1">{leader.company}</div>
+                      </div>
+                      <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        <div className="w-7 h-7 rounded-full bg-[#D2A679]/90 flex items-center justify-center">
+                          <Linkedin size={12} className="text-white" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

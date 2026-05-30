@@ -82,10 +82,10 @@ export default function EventsPage() {
           <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-5 block">GCC Circle Events</span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
             Where leaders unwind,<br />
-            {/* <span className="bg-gradient-to-r from-[#D2A679] to-[#B87333] bg-clip-text text-transparent"> */}
-            <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
+            {/* <div className="bg-gradient-to-r from-[#D2A679] to-[#B87333] bg-clip-text text-transparent"> */}
+            <div className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
               connect and inspire
-            </span>
+            </div>
           </h1>
           <p className="text-white/55 text-lg max-w-2xl mx-auto leading-relaxed">
             Exclusive, closed-door gatherings for India&apos;s top GCC executives. Every event is crafted for meaningful peer exchange, not surface-level networking.

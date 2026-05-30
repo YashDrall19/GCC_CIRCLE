@@ -89,10 +89,10 @@ export default function PartnersPage() {
           <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-5 block">Partnership</span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
             GCC Circle{' '}
-            <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
-            {/* <span className="bg-gradient-to-r from-[#B87333] to-[#D2A679] bg-clip-text text-transparent"> */}
+            <div className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
+            {/* <div className="bg-gradient-to-r from-[#B87333] to-[#D2A679] bg-clip-text text-transparent"> */}
               Premium Partners
-            </span>
+            </div>
           </h1>
           <p className="text-white/55 text-lg leading-relaxed">
             Partner with us to engage India&apos;s premier GCC leaders — where every collaboration adds value to our events and impact to our Circle.
