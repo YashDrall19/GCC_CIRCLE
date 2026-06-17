@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { ArrowRight, MapPin, Calendar, Users, Coffee, Wind } from 'lucide-react';
+import CardBackgroundCarousel from '@/components/CardBackgroundCarousel';
+import { pastEvents } from './data';
 
 export default function EventsPage() {
 
@@ -27,47 +29,32 @@ export default function EventsPage() {
     {
       city: 'Hyderabad',
       month: 'May',
-      date: '22',
+      date: '04',
       year: '2026',
-      type: 'Leadership Mixer',
-      desc: 'A closed-door gathering of senior GCC leaders in Hyderabad. Peer-level exchange in a relaxed, curated setting.',
+      type: 'HR Mixer',
+      // desc: 'A closed-door gathering of senior GCC leaders in Hyderabad. Peer-level exchange in a relaxed, curated setting.',
+      desc: 'Exclusively for GCC HR & Talent Leaders.',
       spots: '40 seats',
+      images: [
+        'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?q=80&w=1600&auto=format&fit=crop', // Charminar
+        'https://images.unsplash.com/photo-1621909321963-2276c9660298?q=80&w=2117&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Golconda Fort
+        'https://plus.unsplash.com/premium_photo-1697730430283-7e4456c78375?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Hussain Sagar
+      ],
     },
     {
       city: 'Hyderabad',
       month: 'May',
-      date: '29',
+      date: '05',
       year: '2026',
       type: 'Tech Mixer',
-      desc: 'Deep-dive into technology trends shaping GCCs, with hands-on discussions and lightning talks from tech leaders.',
+      // desc: 'Deep-dive into technology trends shaping GCCs, with hands-on discussions and lightning talks from tech leaders.',
+      desc: 'Exclusively for GCC Tech Leaders.',
       spots: '35 seats',
-    },
-  ];
-
-  const pastEvents = [
-    {
-      city: 'Delhi',
-      month: 'Feb',
-      year: '2026',
-      type: 'Executive Summit',
-      img: 'https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=600',
-      attendees: '60+',
-    },
-    {
-      city: 'Bangalore',
-      month: 'Mar',
-      year: '2026',
-      type: 'Leadership Mixer',
-      img: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600',
-      attendees: '55+',
-    },
-    {
-      city: 'Hyderabad',
-      month: 'Apr',
-      year: '2026',
-      type: 'CXO Roundtable',
-      img: 'https://images.pexels.com/photos/1181605/pexels-photo-1181605.jpeg?auto=compress&cs=tinysrgb&w=600',
-      attendees: '45+',
+      images: [
+        'https://images.unsplash.com/photo-1551161242-b5af797b7233?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        'https://images.unsplash.com/photo-1470075446540-4391a96ec621?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        'https://images.unsplash.com/photo-1569596732936-4e06a8afee28?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      ],
     },
   ];
 
@@ -132,6 +119,7 @@ export default function EventsPage() {
                 key={i}
                 className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/50 transition-all duration-300"
               >
+                <CardBackgroundCarousel images={e?.images} />
                 <div className="absolute top-0 right-0 w-56 h-56 bg-[#D2A679]/5 rounded-full -translate-y-1/2 translate-x-1/3 group-hover:bg-[#D2A679]/10 transition-colors duration-300 pointer-events-none" />
                 <div className="relative p-10">
                   <div className="flex items-start justify-between mb-6">
@@ -140,12 +128,13 @@ export default function EventsPage() {
                         <Calendar size={12} />
                         {e.date} {e.month} {e.year}
                       </div>
-                      <h3 className="text-3xl font-bold mb-1">{e.city}</h3>
-                      <p className="text-white/50 text-sm font-medium">{e.type}</p>
+                      <h3 className="text-3xl font-bold mb-1">{e.type}</h3>
+                      <p className="text-white/50 text-sm font-medium">{e.city}</p>
                     </div>
                     <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
                       <MapPin size={10} />
-                      {e.spots}
+                      {/* {e.spots} */}
+                      Registration Open
                     </div>
                   </div>
                   <p className="text-white/55 text-sm leading-relaxed mb-8">{e.desc}</p>
@@ -174,34 +163,35 @@ export default function EventsPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {pastEvents.map((e, i) => (
-              <div
-                key={i}
-                className="group overflow-hidden rounded-2xl border border-white/10 hover:border-[#B87333] hover:bg-[#D2A679] transition-all duration-300"
-              >
-                <div className="relative overflow-hidden aspect-video">
-                  <img
-                    src={e.img}
-                    alt={`${e.city} event`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <div className="text-[#D2A679] text-xs font-semibold uppercase tracking-wide mb-1">{e.month} {e.year}</div>
-                    <div className="text-white font-bold text-xl">{e.city}</div>
-                  </div>
-                </div>
-                <div className="p-6 bg-white/[0.03]">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="text-white font-semibold">{e.type}</div>
-                      <div className="text-white/40 text-sm mt-1">{e.attendees} attendees</div>
-                    </div>
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                      <ArrowRight size={14} className="text-white/50" />
+              <Link key={i} href={`events/${e?.id}`}>
+                <div
+                  className="group overflow-hidden rounded-2xl border border-white/10 hover:border-[#B87333] hover:bg-[#D2A679] transition-all duration-300"
+                >
+                  <div className="relative overflow-hidden aspect-video">
+                    <img
+                      src={e.img}
+                      alt={`${e.city} event`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-transparent" />
+                    <div className="absolute bottom-4 left-4">
+                      <div className="text-white font-bold text-xl">{e.city}</div>
+                      <div className="text-[#D2A679] text-xs font-semibold uppercase tracking-wide mb-1">{e.date} {e.month} {e.year}</div>
                     </div>
                   </div>
+                  <div className="p-6 bg-white/[0.03]">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-white font-semibold">{e.type}</div>
+                        <div className="text-white/40 text-sm mt-1">{e.attendees} attendees</div>
+                      </div>
+                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                        <ArrowRight size={14} className="text-white/50" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -223,7 +213,7 @@ export default function EventsPage() {
                 href="/join"
                 className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)]"
               >
-                Join the Community <ArrowRight size={15} />
+                Join the Circle <ArrowRight size={15} />
               </Link>
             </div>
           </div>

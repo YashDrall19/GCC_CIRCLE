@@ -43,22 +43,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-[#070b14] antialiased`}>
-        {loading && <IntroLoader onFinish={handleFinish} />}
+        {loading ? (
+          <IntroLoader onFinish={handleFinish} />
+        ) : (
+          <>
+            <ParticlesBackground />
+            <CursorGlow />
+            <Navbar />
 
-        <>
-          <ParticlesBackground />
-          <CursorGlow />
-          <Navbar />
+            {children}
 
-          {children}
+            <Footer />
 
-          <Footer />
-
-          {/* Scan line effect overlay */}
-          <div className="fixed inset-0 pointer-events-none z-[60] overflow-hidden opacity-[0.03]">
-            <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D2A679] to-transparent animate-scan-line" />
-          </div>
-        </>
+            <div className="fixed inset-0 pointer-events-none z-[60] overflow-hidden opacity-[0.03]">
+              <div className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D2A679] to-transparent animate-scan-line" />
+            </div>
+          </>
+        )}
       </body>
     </html>
   );

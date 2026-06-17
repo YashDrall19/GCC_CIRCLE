@@ -176,7 +176,7 @@ export default function JoinPage() {
 
                 <div>
                   <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">
-                    Work Email *
+                    Email *
                   </label>
                   <input
                     type="email"
@@ -192,12 +192,13 @@ export default function JoinPage() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">
-                      Phone (India) *
+                      Mobile (India) *
                     </label>
                     <div className="flex gap-2">
                       <span className="bg-white/[0.05] border border-white/15 rounded-xl px-3 py-3 text-sm text-white/50 flex-shrink-0">+91</span>
                       <input
                         type="tel"
+                        maxLength={10}
                         name="phone"
                         value={form.phone}
                         onChange={handleChange}
@@ -225,7 +226,7 @@ export default function JoinPage() {
 
                 <div>
                   <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">
-                    Job Title *
+                    Designation *
                   </label>
                   <input
                     type="text"
@@ -240,7 +241,7 @@ export default function JoinPage() {
 
                 <div>
                   <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">
-                    Role Category *
+                    How did you hear about us? *
                   </label>
                   <select
                     name="role"

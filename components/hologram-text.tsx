@@ -20,7 +20,7 @@ export default function HologramText({ children, className = '', delay = 0 }: Ho
   }, []);
 
   return (
-    <span className={`relative inline-block ${className}`}>
+    <span className={`relative ${className}`}>
       <span
         className={`relative ${glitch ? 'animate-hologram-glitch' : ''}`}
         style={{

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Mail, Phone, Linkedin, Instagram, ArrowRight, CircleCheck as CheckCircle, MapPin } from 'lucide-react';
+import { Mail, Phone, Linkedin, ArrowRight, CircleCheck as CheckCircle, MapPin } from 'lucide-react';
 import { urls } from '@/constants/api';
 
 export default function ContactPage() {
@@ -106,14 +106,14 @@ export default function ContactPage() {
                   >
                     <Linkedin size={15} /> LinkedIn
                   </a>
-                  <a
+                  {/* <a
                     href="https://instagram.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.03] hover:border-pink-500/50 hover:bg-pink-500/10 text-white/60 hover:text-white transition-all duration-200 text-sm font-medium"
                   >
                     <Instagram size={15} /> Instagram
-                  </a>
+                  </a> */}
                 </div>
               </div>
 

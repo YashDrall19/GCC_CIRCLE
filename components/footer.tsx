@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Linkedin, Instagram, Mail, Phone } from 'lucide-react';
+import { Linkedin, Mail, Phone } from 'lucide-react';
 
 const circleLinks = [
   { label: 'Join the Community', href: '/join' },
@@ -45,7 +45,7 @@ export default function Footer() {
               >
                 <Linkedin size={16} className="text-white" />
               </a>
-              <a
+              {/* <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -53,7 +53,7 @@ export default function Footer() {
                 aria-label="Instagram"
               >
                 <Instagram size={16} className="text-white" />
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -127,9 +127,31 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/30 text-sm">Copyright &copy; 2025 GCC Circle. All rights reserved.</p>
-          <p className="text-white/30 text-sm">Powered by Talentiser</p>
+        <div className="flex flex-col sm:flex-row justify-between gap-4 mt-10">
+          <div
+            className="flex items-center gap-4 cursor-pointer self-start"
+            onClick={() =>
+              window.open(
+                "https://talentiser.com/",
+                "_blank",
+                "noopener,noreferrer"
+              )
+            }
+          >
+            <div className="h-10 w-px bg-white/10" />
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-white">
+                Ecosystem Partner
+              </p>
+              <p className="text-base font-semibold bg-[linear-gradient(210deg,_#0051B0_0%,_#9C65B8_100%)] bg-clip-text text-transparent">
+                Talentiser
+              </p>
+            </div>
+          </div>
+
+          <p className="text-white/30 text-sm text-center sm:text-right self-center sm:self-auto">
+            Copyright &copy; 2025 GCC Circle. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

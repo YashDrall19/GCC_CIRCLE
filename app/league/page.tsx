@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight, Linkedin } from 'lucide-react';
 import type { Leader } from './data';
 import { leaderTypeMap, leaders1, slugify } from './data';
+import Image from 'next/image';
 
 
 const leaders: Leader[] = leaders1.map((leader) => ({
@@ -26,10 +27,10 @@ export default function LeaguePage() {
         <div className="relative max-w-3xl mx-auto text-center">
           <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-5 block">Membership</span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-            The League of{' '}
+            The Inner Circle of{' '}
             <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
             {/* <span className="bg-gradient-to-r from-[#B87333] to-[#D2A679] bg-clip-text text-transparent"> */}
-              Legends
+              GCC Leadership
             </span>
           </h1>
           <p className="text-white/55 text-lg leading-relaxed max-w-2xl mx-auto">
@@ -40,7 +41,7 @@ export default function LeaguePage() {
               href="/join"
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.5)]"
             >
-              Join the League <ArrowRight size={16} />
+              Join the Circle <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -69,7 +70,7 @@ export default function LeaguePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 block">Our Members</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Meet the Circle</h2>
+            <h2 className="text-4xl md:text-5xl font-bold">Inside the League</h2>
             <p className="text-white/50 mt-4 text-lg max-w-xl mx-auto">
               India&apos;s most influential GCC leaders, all in one place.
             </p>
@@ -90,10 +91,11 @@ export default function LeaguePage() {
                   <Link key={leader.id} href={`/league/${leader.id}`}>
                     <div className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300 cursor-pointer w-56 flex-shrink-0">
                       <div className="aspect-[3/4] overflow-hidden">
-                        <img
+                        <Image
                           src={leader.image}
                           alt={leader.name}
-                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                          fill
+                          className="object-cover object-top group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
                       </div>
@@ -133,10 +135,11 @@ export default function LeaguePage() {
                   <Link key={leader.id} href={`/league/${leader.id}`}>
                     <div className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300 cursor-pointer w-56 flex-shrink-0">
                       <div className="aspect-[3/4] overflow-hidden">
-                        <img
+                        <Image
                           src={leader.image}
                           alt={leader.name}
-                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                          fill
+                          className="object-cover object-top group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
                       </div>

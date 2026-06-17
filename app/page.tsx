@@ -68,32 +68,41 @@ export default function HomePage() {
       {/* Hero with hologram intro */}
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden tech-grid">
         {/* Animated orbital rings - hologram effect */}
-        <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-          <div className="relative w-[600px] h-[600px] md:w-[800px] md:h-[800px]">
-            {/* Outer ring */}
-            <div
-              className="absolute inset-0 rounded-full border border-[#D2A679]/20 animate-[spin_20s_linear_infinite] opacity-0"
-              style={{ opacity: mounted ? 1 : 0, transition: 'opacity 0.5s' }}
-            >
-              <CircleDot className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 text-[#38bdf8]" fill="currentColor" />
-            </div>
-            {/* Middle ring */}
-            <div
-              className="absolute inset-8 rounded-full border border-[#38bdf8]/15 animate-[spin_15s_linear_infinite_reverse] opacity-0"
-              style={{ opacity: mounted ? 1 : 0, transition: 'opacity 0.7s', transitionDelay: '0.2s' }}
-            >
-              <CircleDot className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 text-[#D2A679]" fill="currentColor" />
-            </div>
-            {/* Inner ring */}
-            <div
-              className="absolute inset-16 rounded-full border border-[#D2A679]/10 animate-[spin_25s_linear_infinite] opacity-0"
-              style={{ opacity: mounted ? 1 : 0, transition: 'opacity 0.9s', transitionDelay: '0.4s' }}
-            >
-              <CircleDot className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 w-1 h-1 text-[#6ea8fe]" fill="currentColor" />
-            </div>
+        <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden">
+          <div className="relative w-[90vw] max-w-[800px] aspect-square">
 
-            {/* Center hologram core */}
-            <div className="absolute inset-[35%] rounded-full bg-gradient-to-br from-[#D2A679]/30 via-[#38bdf8]/20 to-transparent animate-pulse-glow" />
+            {/* Ripple 1 */}
+            <div
+              className="absolute inset-[20%] rounded-full border border-[#1a6cff]/20 animate-ripple"
+              style={{
+                opacity: mounted ? 1 : 0,
+                transition: 'opacity 0.5s',
+              }}
+            />
+
+            {/* Ripple 2 */}
+            <div
+              className="absolute inset-[20%] rounded-full border border-[#1a6cff]/15 animate-ripple"
+              style={{
+                animationDelay: '2s',
+                opacity: mounted ? 1 : 0,
+                transition: 'opacity 0.7s',
+              }}
+            />
+
+            {/* Ripple 3 */}
+            <div
+              className="absolute inset-[20%] rounded-full border border-[#D2A679]/15 animate-ripple"
+              style={{
+                animationDelay: '4s',
+                opacity: mounted ? 1 : 0,
+                transition: 'opacity 0.9s',
+              }}
+            />
+
+            {/* Center glow */}
+            <div className="absolute inset-[42%] rounded-full bg-gradient-to-br from-[#1a6cff]/40 to-[#D2A679]/30 blur-xl" />
+
           </div>
         </div>
 
@@ -138,7 +147,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/join"
-              className="group px-8 py-3.5 bg-[#0a0e1a]/60 backdrop-blur-md border border-[#D2A679]/50 hover:bg-[#D2A679] hover:border-[#D2A679] text-white font-semibold rounded-full transition-all duration-300 flex items-center gap-2 glow-box"
+              className="group px-8 py-3.5 bg-[#0a0e1a] backdrop-blur-md border border-[#D2A679] hover:bg-[#D2A679] hover:border-[#D2A679] text-white font-semibold rounded-full transition-all duration-300 flex items-center gap-2 glow-box"
             >
               <span>Join the Circle</span>
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -180,7 +189,7 @@ export default function HomePage() {
       <ScrollReveal>
         <section className="py-28 px-6">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <ScrollReveal delay={100}>
+            {/* <ScrollReveal delay={100}>
               <div>
                 <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 block glow-text">Our Vision</span>
                 <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
@@ -197,6 +206,33 @@ export default function HomePage() {
                 <Link
                   href="/join"
                   className="inline-flex items-center gap-2 text-[#D2A679] hover:text-[#B87333] font-semibold transition-colors duration-200 group"
+                >
+                  Become a member
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </ScrollReveal> */}
+
+            <ScrollReveal delay={100}>
+              <div>
+                <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 block glow-text">What is GCC Circle?</span>
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                  Your executive ecosystem.
+                </h2>
+                <p className="text-white/60 text-lg leading-relaxed mb-6">
+                  The GCC Circle, launched by Talentiser, is India&apos;s foremost leadership community for
+                  top-tier professionals across GCCs.
+                </p>
+                <p className="text-white/60 text-lg leading-relaxed mb-6">
+                  It&apos;s where CXOs, Site Heads, and senior leaders come together to exchange insights,
+                  tackle business challenges, and shape the future of their organizations.
+                </p>
+                <p className="text-white/80 text-xl font-semibold italic glow-text">
+                  Think of it as your executive ecosystem — curated, connected, and collaborative.
+                </p>
+                <Link
+                  href="/join"
+                  className="inline-flex items-center gap-2 text-[#D2A679] hover:text-[#B87333] font-semibold transition-colors duration-200 group mt-8"
                 >
                   Become a member
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -219,7 +255,7 @@ export default function HomePage() {
       </ScrollReveal>
 
       {/* What is GCC Circle */}
-      <ScrollReveal>
+      {/* <ScrollReveal>
         <section className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0e1a]/50 to-transparent pointer-events-none" />
           <div className="relative max-w-4xl mx-auto text-center">
@@ -238,11 +274,11 @@ export default function HomePage() {
             </p>
           </div>
         </section>
-      </ScrollReveal>
+      </ScrollReveal> */}
 
       {/* Three Pillars */}
       <ScrollReveal>
-        <section className="py-24 px-6">
+        <section className="py-20 px-6">
           <div className="max-w-7xl mx-auto">
             <ScrollReveal>
               <div className="text-center mb-16">

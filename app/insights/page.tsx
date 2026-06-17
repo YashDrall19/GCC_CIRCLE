@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Clock, Tag } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, Tag } from 'lucide-react';
 
 const featuredArticle = {
   title: 'Owning the AI Stack vs Renting It: The Strategic Trade-off No Leadership Team Can Ignore',
@@ -181,7 +181,7 @@ export default function InsightsPage() {
                   </h3>
                   <p className="text-white/45 text-xs leading-relaxed mb-4 line-clamp-2 flex-1">{a.excerpt}</p>
                   <div className="flex items-center justify-between text-white/30 text-xs pt-3 border-t border-white/10">
-                    <span className="flex items-center gap-1"><Clock size={9} /> {a.readTime}</span>
+                    <span className="flex items-center gap-1"><Calendar size={9} /> {a.date}</span>
                     <span className="text-[#D2A679] font-medium flex items-center gap-0.5 group-hover:gap-2 transition-all duration-200">
                       Read <ArrowRight size={10} />
                     </span>
@@ -194,7 +194,7 @@ export default function InsightsPage() {
       </section>
 
       {/* Expert quotes section */}
-      <section className="py-20 px-6 border-t border-white/10 bg-white/[0.02]">
+      {/* <section className="py-20 px-6 border-t border-white/10 bg-white/[0.02]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 block">Perspectives</span>
@@ -214,6 +214,27 @@ export default function InsightsPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section> */}
+
+      {/* CTA */}
+      <section className="py-20 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="relative rounded-3xl border border-[#1a6cff]/30 bg-gradient-to-br from-[#1a6cff]/10 to-transparent p-11">
+            <div className="absolute inset-0 pointer-events-none rounded-3xl overflow-hidden">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#D2A679]/15 rounded-full blur-[60px]" />
+            </div>
+            <div className="relative">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Got a Perspective the Industry Should Hear?</h2>
+              <p className="text-white/55 mb-8 leading-relaxed">Whether it's leadership, talent, AI, innovation, or the future of GCCs, share your insights with a community of professionals driving India's next wave of growth.</p>
+              <Link
+                href="/join"
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)]"
+              >
+                Join the Circle <ArrowRight size={15} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

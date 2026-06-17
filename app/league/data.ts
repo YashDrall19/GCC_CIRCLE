@@ -1,3 +1,20 @@
+import { StaticImageData } from "next/image";
+// import hemant from "../../public/images/Hemant Gupta.webp";
+import nitin from "../../public/images/Nitin Srivastava.webp";
+import priji from "../../public/images/Priji Thomas.webp";
+import uma from "../../public/images/Uma Seetharaman.webp";
+import abhishek from "../../public/images/Abhishek Chauhan.webp";
+import amod from "../../public/images/Amod Deshpande.webp";
+import anurag from "../../public/images/Anurag Garg.webp";
+import geeta from "../../public/images/Geetha Thiagarajan.jpg";
+import paras from "../../public/images/Paras Nigam.webp";
+import rajesh from "../../public/images/Rajesh Puneyani.webp";
+import srinivas from "../../public/images/Srinivas Chamarthy.webp";
+import supriya from "../../public/images/Supriya Rao.webp";
+import yogesh from "../../public/images/Supriya Rao.webp";
+import rohit from "../../public/images/Rohit Khanna.webp";
+import rakesh from "../../public/images/Rakesh Chawla.webp";
+
 interface QuestionAnswer {
   question: string;
   answer: string;
@@ -7,7 +24,7 @@ interface LeaderData {
   name: string;
   date: string;
   linkedin: string;
-  image: string;
+  image: string | StaticImageData;
   designation: string;
   company?: string;
   quote: string;
@@ -36,7 +53,7 @@ export const leaders1: LeaderData[] = [
     date: "29th May - 2pm",
     designation: "Product & Engineering Leader",
     linkedin: "https://www.linkedin.com/in/uma-seetharaman-1769699/",
-    image: "https://drive.google.com/open?id=1JPQurAWpd--9VQLdEgCKltkQDKNURPeP",
+    image: uma,
     quote:
       "The best GCC leaders transform cost centers into innovation hubs by combining governance, patience, and long-term thinking.",
     questionaire: [
@@ -96,7 +113,7 @@ export const leaders1: LeaderData[] = [
     date: "29th May - 2pm",
     designation: "Vice President & Site Leader",
     linkedin: "https://www.linkedin.com/in/priji-thomas-04b31b/",
-    image: "https://drive.google.com/open?id=1C3mpxzzMkXdecDF9ivnLdvwnDhYZohGu",
+    image: priji,
     quote:
       "Build your differentiator and your moats. That’s what creates lasting value in a GCC.",
     questionaire: [
@@ -151,7 +168,7 @@ export const leaders1: LeaderData[] = [
     date: "18th May EOD",
     designation: "Global Director - Data and Analytics",
     linkedin: "https://www.linkedin.com/in/nitinsrivastava/",
-    image: "https://drive.google.com/open?id=1jrePbT1aaESYD3hTSG5yLqMiJR475xSg",
+    image: nitin,
     quote:
       "A GCC stops being a delivery center the moment it starts owning business outcomes.",
     questionaire: [
@@ -212,7 +229,7 @@ export const leaders1: LeaderData[] = [
     date: "",
     designation: "MD India",
     linkedin: "https://www.linkedin.com/in/supriya-y-rao/",
-    image: "https://drive.google.com/open?id=1AlNmQAfpNgHj6s3B5gg0nqmASmd3D5GY",
+    image: supriya,
     quote:
       "If you don’t define what your GCC stands for, it will default to being a cost centre.",
     questionaire: [
@@ -274,7 +291,7 @@ export const leaders1: LeaderData[] = [
     date: "1st April",
     designation: "VP, Engineering and AI | Site Leader",
     linkedin: "https://www.linkedin.com/in/parasnigam1/",
-    image: "https://drive.google.com/open?id=1ArESj0kJwQRPX0IC5J1H-95cxCkIo3aD",
+    image: paras,
     quote:
       "Great GCC leadership isn’t about control — it’s about orchestration, narrative, and trust.",
     questionaire: [
@@ -336,7 +353,7 @@ export const leaders1: LeaderData[] = [
     date: "28th February",
     designation: "Vice President & Site Leader",
     linkedin: "https://www.linkedin.com/in/rajeshpuneyani/",
-    image: "https://drive.google.com/open?id=1dYkf2NeZo4hKEJqLLuEJxECNzzkO9U8U",
+    image: rajesh,
     quote:
       "Collaboration builds momentum, but clear articulation of value builds credibility.",
     questionaire: [
@@ -397,7 +414,7 @@ export const leaders1: LeaderData[] = [
     date: "6th March",
     designation: "Global Engineering Executive",
     linkedin: "https://www.linkedin.com/in/agarg01/",
-    image: "https://drive.google.com/open?id=1mrogaI_ReGxT7a8fnpPBvp0ir-P_DOSv",
+    image: anurag,
     quote:
       "Building capability and ownership creates lasting value. Capacity built purely for cost arbitrage is temporary.",
     questionaire: [
@@ -459,7 +476,7 @@ export const leaders1: LeaderData[] = [
     date: "11th March",
     designation: "GCC Leader & Country Director",
     linkedin: "https://www.linkedin.com/in/amoddeshpande/",
-    image: "https://drive.google.com/open?id=1lx1BJvzbvKfdcxITWJEWdKkGRCxWmC_m",
+    image: amod,
     quote:
       "Technology can be bought and talent can be hired — but ownership at scale has to be inspired.",
     questionaire: [
@@ -521,7 +538,7 @@ export const leaders1: LeaderData[] = [
     date: "20th February",
     designation: "General Manager",
     linkedin: "http://linkedin.com/in/yogeshmore",
-    image: "https://drive.google.com/open?id=19vzo9GdT-ZkE0N5TdDGpmqrXoIcEknip",
+    image: yogesh,
     quote:
       "A GCC must evolve from a delivery outpost into an innovation engine the global enterprise cannot imagine operating without.",
     questionaire: [
@@ -582,7 +599,7 @@ export const leaders1: LeaderData[] = [
     date: "5th January",
     designation: "Chief Executive Officer",
     linkedin: "",
-    image: "",
+    image: rakesh,
     quote:
       "Right recruitment, at the right velocity, is the single biggest driver of GCC success.",
     questionaire: [
@@ -644,7 +661,7 @@ export const leaders1: LeaderData[] = [
     date: "",
     designation: "VP Engineering & Site Leader",
     linkedin: "https://www.linkedin.com/in/rrkhanna/",
-    image: "https://drive.google.com/open?id=1-3W1atDVfjGLuk965v00zcPeOVq1ijMV",
+    image: rohit,
     quote:
       "Work hard, show initiative, take high ownership, and stay structured.",
     questionaire: [
@@ -706,7 +723,7 @@ export const leaders1: LeaderData[] = [
     date: "",
     designation: "India Site Leader",
     linkedin: "https://www.linkedin.com/in/abhu85/",
-    image: "https://drive.google.com/open?id=1KMZifK3-jLGvIW65Qp5v-ANE8t1muFZL",
+    image: abhishek,
     quote:
       "A GCC creates real value only when it’s treated as a business and innovation hub, not as a cost center.",
     questionaire: [
@@ -767,7 +784,7 @@ export const leaders1: LeaderData[] = [
     date: "",
     designation: "SVP Engineering & India Site Leader",
     linkedin: "https://www.linkedin.com/in/srinivaschamarthy",
-    image: "https://drive.google.com/open?id=10Pm9puNThJ__mYx2VKpyWKL18kmVbyii",
+    image: srinivas,
     quote: "Communication and collaboration are the most important traits a leader can have.",
     questionaire: [
       {
@@ -828,7 +845,7 @@ export const leaders1: LeaderData[] = [
     designation: "Country Head | People & Culture",
     company: "Curriculum Associates",
     linkedin: "",
-    image: "",
+    image: geeta,
     quote:
       "I don’t hire for the role. I hire for the room - because the right person doesn’t just do the job, they elevate everyone around them.",
     questionaire: [

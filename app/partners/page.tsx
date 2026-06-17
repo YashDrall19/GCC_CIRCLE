@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { ArrowRight, Star, Eye, Network, Zap, Mail, Phone } from 'lucide-react';
+import { FaWhatsapp } from "react-icons/fa";
 
 const benefits = [
   {
@@ -125,7 +126,7 @@ export default function PartnersPage() {
       </section>
 
       {/* Partner tiers */}
-      <section className="py-24 px-6 bg-white/[0.02] border-y border-white/10">
+      {/* <section className="py-24 px-6 bg-white/[0.02] border-y border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 block">Options</span>
@@ -169,7 +170,7 @@ export default function PartnersPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Current partners */}
       <section className="py-24 px-6">
@@ -220,7 +221,8 @@ export default function PartnersPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#D2A679] hover:[#B87333] text-white/70 hover:text-white font-semibold rounded-full transition-all duration-200"
                 >
-                  <Phone size={15} /> +91 8505823013
+                  {/* <Phone size={15} /> +91 8505823013 */}
+                  <FaWhatsapp size={15} /> +91 8505823013
                 </a>
               </div>
             </div>
