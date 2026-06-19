@@ -11,7 +11,7 @@ import paras from "../../public/images/Paras Nigam.webp";
 import rajesh from "../../public/images/Rajesh Puneyani.webp";
 import srinivas from "../../public/images/Srinivas Chamarthy.webp";
 import supriya from "../../public/images/Supriya Rao.webp";
-import yogesh from "../../public/images/Supriya Rao.webp";
+import yogesh from "../../public/images/Yogesh More.webp";
 import rohit from "../../public/images/Rohit Khanna.webp";
 import rakesh from "../../public/images/Rakesh Chawla.webp";
 

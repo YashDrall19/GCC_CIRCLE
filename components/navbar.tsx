@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from "next/image";
+
 
 const navLinks = [
   { label: 'The Circle', href: '/' },
@@ -35,11 +37,15 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-full bg-[#B87333] flex items-center justify-center text-white font-bold text-sm tracking-tight">
-            GCC
-          </div>
-          <span className="text-white font-semibold text-lg tracking-wide">Circle</span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo/goldlogo.png"
+            alt="GCC Circle"
+            width={180}
+            height={60}
+            className="h-24 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}

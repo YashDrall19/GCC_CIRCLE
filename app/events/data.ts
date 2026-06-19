@@ -50,9 +50,16 @@ export const pastEvents = [
         { "name": "Gaurav", "company": "Samsung" },
         { "name": "Suraj Ganapathi", "company": "Bank of America" }
       ],
-      images: [
-
-      ]
+      carousel: Array.from(
+        { length: 5 },
+        (_, i) =>
+          `/events/april-2026-delhi/carousel/Delhi ${String(i + 1).padStart(2, "0")}.webp`
+      ),
+      images: Array.from(
+        { length: 55 },
+        (_, i) =>
+          `/events/april-2026-delhi/images/GCC DElhi Mixer ${String(i + 1).padStart(2, "0")}.webp`
+      ),
     },
     {
       id: "bangalore-feb-2026",
@@ -108,9 +115,14 @@ export const pastEvents = [
         { "name": "Srinivas Chamarthy", "company": "Diligent" },
         { "name": "Ramaswamy Narayanan", "company": "Bridgepath Innovations" }
       ],
-      images: [
+      carousel: [
 
-      ]
+      ],
+      images: Array.from(
+        { length: 51 },
+        (_, i) =>
+          `/events/feb-2026-bangalore/images/${String(i + 3)}.jpg`
+      ),
     },
     {
       id: "hyderabad-december-2025",
@@ -151,8 +163,13 @@ export const pastEvents = [
         { "name": "Yagneshwar Sreekanth", "company": "GUS Education India" },
         { "name": "Rajesh Ramaswami", "company": "Elevance Health" }
       ],
-      images: [
-
-      ]
+      carousel: [
+        
+      ],
+      images: Array.from(
+        { length: 30 },
+        (_, i) =>
+          `/events/dec-2025-hyderabad/images/Artboard ${String(i + 1)}.jpg`
+      ),
     },
   ];

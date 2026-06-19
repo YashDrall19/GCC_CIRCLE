@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Linkedin, Mail, Phone } from 'lucide-react';
+import Image from 'next/image';
 
 const circleLinks = [
   { label: 'Join the Community', href: '/join' },
@@ -26,15 +27,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-[#B87333] flex items-center justify-center text-white font-bold text-sm">
-                GCC
-              </div>
-              <span className="text-white font-semibold text-lg">Circle</span>
+            <div className="mb-4">
+              <Image
+                src="/logo/goldlogo.png"
+                alt="GCC Circle"
+                width={240}
+                height={80}
+                className="h-40 w-auto"
+              />
             </div>
-            <p className="text-white/50 text-sm leading-relaxed mb-6">
+            {/* <p className="text-white/50 text-sm leading-relaxed mb-6">
               India's foremost leadership community for top-tier professionals across GCCs. Curated, connected, and collaborative.
-            </p>
+            </p> */}
             <div className="flex items-center gap-3">
               <a
                 href="https://www.linkedin.com/company/gcc-circle"

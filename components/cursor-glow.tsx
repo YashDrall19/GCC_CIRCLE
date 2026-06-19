@@ -27,7 +27,7 @@ export default function CursorGlow() {
     // Animate ring position
     const animate = () => {
       // Move ringPos towards position
-      const speed = 0.15; // Lower is slower, 0.18 is smooth
+      const speed = 0.18; // Lower is slower, 0.18 is smooth
       ringPos.current.x += (position.x - ringPos.current.x) * speed;
       ringPos.current.y += (position.y - ringPos.current.y) * speed;
       if (ringRef.current) {

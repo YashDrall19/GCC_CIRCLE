@@ -12,10 +12,17 @@ import { useParams } from 'next/navigation';
 import { pastEvents } from '../data';
 import notfound from "../../../public/images/notfound.png";
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+
 export default function EventDetailPage() {
   const {id} = useParams();
   const event = pastEvents?.find(event => event?.id === id);
-
+  console.log(event)
   return (
     <main className="bg-[#070b14] text-white min-h-screen pt-20">
       {/* Back Button */}
@@ -34,18 +41,48 @@ export default function EventDetailPage() {
         <div className="max-w-6xl mx-auto">
           <div className="relative overflow-hidden rounded-3xl border border-[#D2A679]/30">
             <div className="aspect-[16/7] relative">
-              <Image
-                src={event?.img || notfound}
-                alt="Image not found"
-                fill
-                className="object-cover"
-                priority
-              />
+              {event?.carousel?.length ? (
+                <Swiper
+                  modules={[Autoplay, Pagination, EffectFade]}
+                  autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                  }}
+                  loop
+                  effect="fade"
+                  pagination={{
+                    clickable: true,
+                  }}
+                  className="h-full w-full"
+                >
+                  {event.carousel.map((image, index) => (
+                    <SwiperSlide key={index}>
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={image}
+                          alt={`Slide ${index + 1}`}
+                          fill
+                          priority={index === 0}
+                          className="object-cover"
+                        />
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              ) : (
+                <Image
+                  src={event?.img || notfound}
+                  alt="Image not found"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              )}
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent z-10 pointer-events-none" />
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-20">
               <span className="inline-flex px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest bg-[#D2A679]/20 text-[#D2A679] mb-4">
                 Event
               </span>
