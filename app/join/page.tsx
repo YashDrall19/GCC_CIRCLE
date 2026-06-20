@@ -55,7 +55,6 @@ export default function JoinPage() {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(form)
     });
-    // const res = await fetch(urls.joinAPI);
     const data = await res.json();
     if (data?.success) {
       setSubmitted(true);
@@ -65,37 +64,36 @@ export default function JoinPage() {
   };
 
   return (
-    <main className="bg-[#070b14] text-white pt-20">
+    <main className="bg-[#070b14] text-white pt-16 sm:pt-20">
       {/* Hero */}
-      <section className="relative py-20 px-6 overflow-hidden">
+      <section className="relative py-14 sm:py-20 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-[#D2A679]/8 blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[800px] h-[300px] sm:h-[600px] rounded-full bg-[#D2A679]/8 blur-[120px]" />
         </div>
         <div className="relative max-w-2xl mx-auto text-center">
-          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-5 block">Membership</span>
-          <h1 className="text-5xl md:text-6xl font-bold mb-5">
+          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 sm:mb-5 block">Membership</span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-5">
             Let&apos;s Connect.{' '}
-            {/* <span className="bg-gradient-to-r from-[#B87333] to-[#D2A679] bg-clip-text text-transparent"> */}
             <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
               Let&apos;s Collaborate.
             </span>
           </h1>
-          <p className="text-white/55 text-lg leading-relaxed">
+          <p className="text-white/55 text-base sm:text-lg leading-relaxed px-2">
             Whether you&apos;re looking to partner, share ideas, or simply say hello — we&apos;re all ears. And if you&apos;re ready to join India&apos;s top GCC leadership community, you can do that here too.
           </p>
         </div>
       </section>
 
-      <section className="px-6 pb-28">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-12 items-start">
+      <section className="px-4 sm:px-6 pb-16 sm:pb-28">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-8 sm:gap-12 items-start">
           {/* Benefits sidebar */}
           <div className="md:col-span-2">
-            <div className="sticky top-28">
-              <h2 className="text-2xl font-bold mb-6">Join our community</h2>
-              <p className="text-white/55 text-sm leading-relaxed mb-8">
+            <div className="md:sticky md:top-28">
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Join our community</h2>
+              <p className="text-white/55 text-sm leading-relaxed mb-6 sm:mb-8">
                 Join India&apos;s top GCC leadership community to network, collaborate, and gain exclusive access to curated insights, events, and discussions.
               </p>
-              <div className="space-y-3 mb-10">
+              <div className="space-y-2.5 sm:space-y-3 mb-8 sm:mb-10">
                 {benefits.map((b) => (
                   <div key={b} className="flex items-start gap-3">
                     <CheckCircle size={16} className="text-[#D2A679] flex-shrink-0 mt-0.5" />
@@ -104,23 +102,23 @@ export default function JoinPage() {
                 ))}
               </div>
 
-              <div className="p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
-                <div className="grid grid-cols-3 gap-4 text-center">
+              <div className="p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div className="grid grid-cols-3 gap-3 sm:gap-4 text-center">
                   {[
-                    { icon: <Users size={18} />, value: '500+', label: 'Members' },
-                    { icon: <Globe size={18} />, value: '10+', label: 'Cities' },
-                    { icon: <Zap size={18} />, value: '25+', label: 'Events' },
+                    { icon: <Users size={16} sm-size={18} />, value: '500+', label: 'Members' },
+                    { icon: <Globe size={16} sm-size={18} />, value: '10+', label: 'Cities' },
+                    { icon: <Zap size={16} sm-size={18} />, value: '25+', label: 'Events' },
                   ].map((s) => (
                     <div key={s.label}>
                       <div className="text-[#D2A679] flex justify-center mb-1">{s.icon}</div>
-                      <div className="text-white font-bold">{s.value}</div>
-                      <div className="text-white/35 text-xs">{s.label}</div>
+                      <div className="text-white font-bold text-sm sm:text-base">{s.value}</div>
+                      <div className="text-white/35 text-[10px] sm:text-xs">{s.label}</div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <p className="text-white/30 text-xs mt-6 leading-relaxed">
+              <p className="text-white/30 text-xs mt-4 sm:mt-6 leading-relaxed">
                 * We value your privacy. Your information will only be used to connect with you and share updates about the GCC Circle.
               </p>
             </div>
@@ -129,21 +127,21 @@ export default function JoinPage() {
           {/* Form */}
           <div className="md:col-span-3">
             {submitted ? (
-              <div className="rounded-3xl border border-emerald-500/30 bg-emerald-500/5 p-14 text-center">
-                <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-5">
-                  <CheckCircle size={32} className="text-emerald-400" />
+              <div className="rounded-2xl sm:rounded-3xl border border-emerald-500/30 bg-emerald-500/5 p-8 sm:p-14 text-center">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4 sm:mb-5">
+                  <CheckCircle size={28} sm-size={32} className="text-emerald-400" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3">You&apos;re on the list!</h3>
-                <p className="text-white/55 leading-relaxed max-w-sm mx-auto">
+                <h3 className="text-xl sm:text-2xl font-bold mb-3">You&apos;re on the list!</h3>
+                <p className="text-white/55 leading-relaxed max-w-sm mx-auto text-sm sm:text-base">
                   Thanks for reaching out. Our team will review your application and be in touch shortly to welcome you into the Circle.
                 </p>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-10 space-y-6"
+                className="rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:p-8 md:p-10 space-y-5 sm:space-y-6"
               >
-                <div className="grid sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
                     <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">
                       First Name *
@@ -189,7 +187,7 @@ export default function JoinPage() {
                   />
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
                     <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">
                       Mobile (India) *
@@ -317,7 +315,7 @@ export default function JoinPage() {
                 <button
                   type="submit"
                   disabled={!(form.agreed && form.whatsapp) || loading}
-                  className="w-full py-4 bg-[#D2A679] hover:bg-[#B87333] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.4)] flex items-center justify-center gap-2"
+                  className="w-full py-3.5 sm:py-4 bg-[#D2A679] hover:bg-[#B87333] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.4)] flex items-center justify-center gap-2 text-sm sm:text-base"
                 >
                   {loading ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

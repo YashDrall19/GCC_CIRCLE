@@ -12,6 +12,20 @@
       radial-gradient(ellipse 80% 50% at 50% -20%, rgba(26,108,255,0.15), transparent),
       radial-gradient(ellipse 60% 40% at 80% 100%, rgba(56,189,248,0.08), transparent);
   }
+
+  /* Responsive cursor handling - show default cursor on touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    * {
+      cursor: auto !important;
+    }
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 @layer components {
@@ -38,6 +52,16 @@
 
   .circuit-pattern {
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30h60M30 0v60M0 0l60 60M60 0L0 60' stroke='rgba(26,108,255,0.05)' fill='none' stroke-width='0.5'/%3E%3C/svg%3E");
+  }
+
+  /* Responsive section padding utility */
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Container utility for consistent max-width */
+  .container-responsive {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
 
@@ -68,274 +92,133 @@
   animation: scan-line 8s linear infinite;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @keyframes gridFade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.2;
-  }
+  from { opacity: 0; }
+  to { opacity: 0.2; }
 }
 
 @keyframes scanMove {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 @keyframes converge {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  30% {
-    opacity: 1;
-  }
-
+  0% { opacity: 0; transform: scale(0); }
+  30% { opacity: 1; }
   100% {
-    transform:
-      translate(
-        calc(50vw - 50%),
-        calc(50vh - 50%)
-      )
-      scale(0);
-
+    transform: translate(calc(50vw - 50%), calc(50vh - 50%)) scale(0);
     opacity: 0;
   }
 }
 
 @keyframes rotateRing {
-  from {
-    transform:
-      translate(-50%, -50%)
-      rotate(0deg);
-  }
-
-  to {
-    transform:
-      translate(-50%, -50%)
-      rotate(360deg);
-  }
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 @keyframes rotateRingReverse {
-  from {
-    transform:
-      translate(-50%, -50%)
-      rotate(360deg);
-  }
-
-  to {
-    transform:
-      translate(-50%, -50%)
-      rotate(0deg);
-  }
+  from { transform: translate(-50%, -50%) rotate(360deg); }
+  to { transform: translate(-50%, -50%) rotate(0deg); }
 }
 
 @keyframes loaderProgress {
-  from {
-    transform: scaleX(0);
-  }
-
-  to {
-    transform: scaleX(1);
-  }
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 @keyframes pulseCore {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.08);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
 }
 
 @keyframes logoReveal {
-  from {
-    opacity: 0;
-    letter-spacing: 20px;
-  }
-
-  to {
-    opacity: 1;
-    letter-spacing: 8px;
-  }
+  from { opacity: 0; letter-spacing: 20px; }
+  to { opacity: 1; letter-spacing: 8px; }
 }
 
 .reveal-flash {
   position: absolute;
   inset: 0;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(245, 214, 174, 1),
-      rgba(210, 166, 121, 0.9),
-      transparent
-    );
-
+  background: radial-gradient(circle, rgba(245, 214, 174, 1), rgba(210, 166, 121, 0.9), transparent);
   opacity: 0;
-
-  animation:
-    flashReveal 1s ease forwards 3.1s;
+  animation: flashReveal 1s ease forwards 3.1s;
 }
 
 @keyframes flashReveal {
-  0% {
-    opacity: 0;
-  }
-
-  30% {
-    opacity: 0.95;
-  }
-
-  100% {
-    opacity: 0;
-  }
+  0% { opacity: 0; }
+  30% { opacity: 0.95; }
+  100% { opacity: 0; }
 }
 
 @keyframes ripple {
-  0% {
-    transform: scale(0.75);
-    opacity: 0;
-  }
-
-  20% {
-    opacity: 0.4;
-  }
-
-  100% {
-    transform: scale(1.6);
-    opacity: 0;
-  }
+  0% { transform: scale(0.75); opacity: 0; }
+  20% { opacity: 0.4; }
+  100% { transform: scale(1.6); opacity: 0; }
 }
 
 .animate-ripple {
   animation: ripple 6s ease-out infinite;
 }
 
-@keyframes logoReveal {
-  from {
-    opacity: 0;
-    transform: translateY(25px) scale(.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes loaderProgress {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes orbit {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes orbitReverse {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
 }
 
 @keyframes scanner {
-  from {
-    transform: translateX(-250%);
-  }
-  to {
-    transform: translateX(250%);
-  }
+  from { transform: translateX(-250%); }
+  to { transform: translateX(250%); }
 }
 
 @keyframes aurora {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  50% {
-    transform: translate(-50%, -50%) scale(1.15);
-  }
-
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.15); }
+  100% { transform: translate(-50%, -50%) scale(1); }
 }
 
 @keyframes slowPulse {
-  0% {
-    opacity: .3;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: .3;
-  }
+  0% { opacity: .3; }
+  50% { opacity: 1; }
+  100% { opacity: .3; }
 }
 
 @keyframes spinReverse {
-  from {
-    transform: rotate(360deg);
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Responsive typography scale */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
   }
-  to {
-    transform: rotate(0deg);
+}
+
+/* Scrollbar hide utility for horizontal scrolling sections */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .glow-box {
+    box-shadow: none;
+  }
+  .glow-text {
+    text-shadow: none;
   }
 }

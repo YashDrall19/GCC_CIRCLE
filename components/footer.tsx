@@ -23,8 +23,8 @@ const reachLinks = [
 export default function Footer() {
   return (
     <footer className="bg-[#070b14] border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="mb-4">
@@ -33,12 +33,9 @@ export default function Footer() {
                 alt="GCC Circle"
                 width={240}
                 height={80}
-                className="h-40 w-auto"
+                className="h-28 sm:h-40 w-auto"
               />
             </div>
-            {/* <p className="text-white/50 text-sm leading-relaxed mb-6">
-              India's foremost leadership community for top-tier professionals across GCCs. Curated, connected, and collaborative.
-            </p> */}
             <div className="flex items-center gap-3">
               <a
                 href="https://www.linkedin.com/company/gcc-circle"
@@ -49,22 +46,13 @@ export default function Footer() {
               >
                 <Linkedin size={16} className="text-white" />
               </a>
-              {/* <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#e1306c] flex items-center justify-center transition-colors duration-200"
-                aria-label="Instagram"
-              >
-                <Instagram size={16} className="text-white" />
-              </a> */}
             </div>
           </div>
 
           {/* Circle */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-5">Circle</h4>
-            <ul className="space-y-3">
+            <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-4 sm:mb-5">Circle</h4>
+            <ul className="space-y-2.5 sm:space-y-3">
               {circleLinks.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -82,8 +70,8 @@ export default function Footer() {
 
           {/* Events */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-5">Events</h4>
-            <ul className="space-y-3">
+            <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-4 sm:mb-5">Events</h4>
+            <ul className="space-y-2.5 sm:space-y-3">
               {eventLinks.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -99,8 +87,8 @@ export default function Footer() {
 
           {/* Reach out */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-5">Reach Out</h4>
-            <ul className="space-y-3 mb-6">
+            <h4 className="text-white font-semibold text-sm uppercase tracking-widest mb-4 sm:mb-5">Reach Out</h4>
+            <ul className="space-y-2.5 sm:space-y-3 mb-4 sm:mb-6">
               {reachLinks.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -131,9 +119,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between gap-4 mt-10">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-white/10">
           <div
-            className="flex items-center gap-4 cursor-pointer self-start"
+            className="flex items-center gap-4 cursor-pointer"
             onClick={() =>
               window.open(
                 "https://talentiser.com/",
@@ -153,7 +141,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <p className="text-white/30 text-sm text-center sm:text-right self-center sm:self-auto">
+          <p className="text-white/30 text-xs sm:text-sm text-center">
             Copyright &copy; 2025 GCC Circle. All rights reserved.
           </p>
         </div>

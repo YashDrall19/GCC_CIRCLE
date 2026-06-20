@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { Mail, Phone, Linkedin, ArrowRight, CircleCheck as CheckCircle, MapPin } from 'lucide-react';
 import { urls } from '@/constants/api';
@@ -30,95 +30,86 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="bg-[#070b14] text-white pt-20">
+    <main className="bg-[#070b14] text-white pt-16 sm:pt-20">
       {/* Hero */}
-      <section className="relative py-24 px-6 overflow-hidden">
+      <section className="relative py-16 sm:py-24 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-[#D2A679]/8 blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[700px] h-[300px] sm:h-[500px] rounded-full bg-[#D2A679]/8 blur-[100px]" />
         </div>
         <div className="relative max-w-2xl mx-auto text-center">
-          <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-5 block">Get in Touch</span>
-          <h1 className="text-5xl md:text-6xl font-bold mb-5">
+          <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 sm:mb-5 block">Get in Touch</span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-5">
             Let&apos;s{' '}
             <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
-            {/* <span className="bg-gradient-to-r from-[#B87333] to-[#D2A679] bg-clip-text text-transparent"> */}
               Talk
             </span>
           </h1>
-          <p className="text-white/55 text-lg leading-relaxed">
+          <p className="text-white/55 text-base sm:text-lg leading-relaxed px-2">
             Whether you have a question, a partnership idea, or just want to say hello — we&apos;re always happy to hear from you.
           </p>
         </div>
       </section>
 
-      <section className="px-6 pb-28">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-12">
+      <section className="px-4 sm:px-6 pb-16 sm:pb-28">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-8 sm:gap-12">
           {/* Contact info */}
           <div className="md:col-span-2">
-            <div className="sticky top-28 space-y-8">
+            <div className="md:sticky md:top-28 space-y-6 sm:space-y-8">
               <div>
-                <h2 className="text-xl font-bold mb-5">Contact Info</h2>
-                <div className="space-y-4">
+                <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-5">Contact Info</h2>
+                <div className="space-y-3 sm:space-y-4">
                   <a
                     href="mailto:hello@gcccircle.com"
-                    className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/40 transition-all duration-200 group"
+                    className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/40 transition-all duration-200 group"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679] group-hover:bg-[#D2A679]/25 transition-colors">
-                      <Mail size={18} />
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679] group-hover:bg-[#D2A679]/25 transition-colors flex-shrink-0">
+                      <Mail size={16} sm-size={18} />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <div className="text-white/40 text-xs mb-0.5">Email</div>
-                      <div className="text-sm font-medium">hello@gcccircle.com</div>
+                      <div className="text-xs sm:text-sm font-medium truncate">hello@gcccircle.com</div>
                     </div>
                   </a>
                   <a
                     href="tel:+918505823013"
-                    className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/40 transition-all duration-200 group"
+                    className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/40 transition-all duration-200 group"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679] group-hover:bg-[#D2A679]/25 transition-colors">
-                      <Phone size={18} />
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679] group-hover:bg-[#D2A679]/25 transition-colors flex-shrink-0">
+                      <Phone size={16} sm-size={18} />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <div className="text-white/40 text-xs mb-0.5">Phone / WhatsApp</div>
-                      <div className="text-sm font-medium">+91 8505823013</div>
+                      <div className="text-xs sm:text-sm font-medium">+91 8505823013</div>
                     </div>
                   </a>
-                  <div className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.03]">
-                    <div className="w-10 h-10 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679]">
-                      <MapPin size={18} />
+                  <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border border-white/10 bg-white/[0.03]">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679] flex-shrink-0">
+                      <MapPin size={16} sm-size={18} />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <div className="text-white/40 text-xs mb-0.5">Based in</div>
-                      <div className="text-sm font-medium">India (Pan-India community)</div>
+                      <div className="text-xs sm:text-sm font-medium">India (Pan-India community)</div>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h2 className="text-xl font-bold mb-5">Let&apos;s get social</h2>
+                <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-5">Let&apos;s get social</h2>
                 <div className="flex gap-3">
                   <a
                     href="https://www.linkedin.com/company/gcc-circle"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.03] hover:border-[#1a6cff]/50 hover:bg-[#1a6cff]/10 text-white/60 hover:text-white transition-all duration-200 text-sm font-medium"
+                    className="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-white/15 bg-white/[0.03] hover:border-[#1a6cff]/50 hover:bg-[#1a6cff]/10 text-white/60 hover:text-white transition-all duration-200 text-xs sm:text-sm font-medium"
                   >
-                    <Linkedin size={15} /> LinkedIn
+                    <Linkedin size={14} sm-size={15} /> LinkedIn
                   </a>
-                  {/* <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.03] hover:border-pink-500/50 hover:bg-pink-500/10 text-white/60 hover:text-white transition-all duration-200 text-sm font-medium"
-                  >
-                    <Instagram size={15} /> Instagram
-                  </a> */}
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl border border-[#D2A679]/25 bg-[#D2A679]/5">
-                <h3 className="font-semibold mb-2 text-sm">Partnership inquiries?</h3>
+              <div className="p-4 sm:p-5 rounded-2xl border border-[#D2A679]/25 bg-[#D2A679]/5">
+                <h3 className="font-semibold mb-2 text-xs sm:text-sm">Partnership inquiries?</h3>
                 <p className="text-white/50 text-xs leading-relaxed mb-3">
                   For partnership and sponsorship opportunities, reach out directly to our partnerships team.
                 </p>
@@ -130,8 +121,8 @@ export default function ContactPage() {
                 </a>
               </div>
 
-              <div className="p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
-                <h3 className="font-semibold mb-2 text-sm">Ready to join?</h3>
+              <div className="p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+                <h3 className="font-semibold mb-2 text-xs sm:text-sm">Ready to join?</h3>
                 <p className="text-white/50 text-xs leading-relaxed mb-3">
                   Skip the form and join India&apos;s top GCC leadership community directly.
                 </p>
@@ -148,22 +139,22 @@ export default function ContactPage() {
           {/* Contact form */}
           <div className="md:col-span-3">
             {submitted ? (
-              <div className="rounded-3xl border border-emerald-500/30 bg-emerald-500/5 p-14 text-center">
-                <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-5">
-                  <CheckCircle size={32} className="text-emerald-400" />
+              <div className="rounded-2xl sm:rounded-3xl border border-emerald-500/30 bg-emerald-500/5 p-8 sm:p-14 text-center">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4 sm:mb-5">
+                  <CheckCircle size={28} sm-size={32} className="text-emerald-400" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3">Message Received!</h3>
-                <p className="text-white/55 leading-relaxed max-w-sm mx-auto">
+                <h3 className="text-xl sm:text-2xl font-bold mb-3">Message Received!</h3>
+                <p className="text-white/55 leading-relaxed max-w-sm mx-auto text-sm sm:text-base">
                   Thanks for reaching out. We&apos;ll get back to you within 1-2 business days.
                 </p>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-10 space-y-6"
+                className="rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:p-8 md:p-10 space-y-5 sm:space-y-6"
               >
-                <h2 className="text-2xl font-bold">Send us a message</h2>
-                <div className="grid sm:grid-cols-2 gap-5">
+                <h2 className="text-xl sm:text-2xl font-bold">Send us a message</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
                     <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">Name *</label>
                     <input
@@ -216,22 +207,6 @@ export default function ContactPage() {
                     className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                   />
                 </div>
-                {/* <div>
-                  <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">Subject</label>
-                  <select
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
-                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors appearance-none"
-                  >
-                    <option value="" className="bg-[#0a0e1a]">Select a topic...</option>
-                    <option value="membership" className="bg-[#0a0e1a]">Membership Inquiry</option>
-                    <option value="partnership" className="bg-[#0a0e1a]">Partnership / Sponsorship</option>
-                    <option value="events" className="bg-[#0a0e1a]">Events</option>
-                    <option value="media" className="bg-[#0a0e1a]">Media / Press</option>
-                    <option value="other" className="bg-[#0a0e1a]">Other</option>
-                  </select>
-                </div> */}
                 <div>
                   <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">Message *</label>
                   <textarea
@@ -239,7 +214,7 @@ export default function ContactPage() {
                     value={form.message}
                     onChange={handleChange}
                     required
-                    rows={6}
+                    rows={5}
                     placeholder="Tell us how we can help..."
                     className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors resize-none"
                   />
@@ -247,7 +222,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 bg-[#D2A679] hover:bg-[#B87333] disabled:opacity-60 text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.4)] flex items-center justify-center gap-2"
+                  className="w-full py-3.5 sm:py-4 bg-[#D2A679] hover:bg-[#B87333] disabled:opacity-60 text-white font-semibold rounded-xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.4)] flex items-center justify-center gap-2 text-sm sm:text-base"
                 >
                   {loading ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

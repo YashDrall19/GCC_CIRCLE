@@ -22,14 +22,14 @@ import 'swiper/css/effect-fade';
 export default function EventDetailPage() {
   const {id} = useParams();
   const event = pastEvents?.find(event => event?.id === id);
-  console.log(event)
+
   return (
-    <main className="bg-[#070b14] text-white min-h-screen pt-20">
+    <main className="bg-[#070b14] text-white min-h-screen pt-16 sm:pt-20">
       {/* Back Button */}
-      <div className="max-w-6xl mx-auto px-6 py-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <Link
           href="/events"
-          className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-200"
+          className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-200 text-sm sm:text-base"
         >
           <ArrowLeft size={18} />
           Back to Events
@@ -37,10 +37,10 @@ export default function EventDetailPage() {
       </div>
 
       {/* Hero */}
-      <section className="px-6 pb-16">
+      <section className="px-4 sm:px-6 pb-10 sm:pb-16">
         <div className="max-w-6xl mx-auto">
-          <div className="relative overflow-hidden rounded-3xl border border-[#D2A679]/30">
-            <div className="aspect-[16/7] relative">
+          <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#D2A679]/30">
+            <div className="aspect-[16/9] sm:aspect-[16/7] relative">
               {event?.carousel?.length ? (
                 <Swiper
                   modules={[Autoplay, Pagination, EffectFade]}
@@ -82,16 +82,16 @@ export default function EventDetailPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent z-10 pointer-events-none" />
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 z-20">
-              <span className="inline-flex px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest bg-[#D2A679]/20 text-[#D2A679] mb-4">
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8 md:p-12 z-20">
+              <span className="inline-flex px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-widest bg-[#D2A679]/20 text-[#D2A679] mb-2 sm:mb-4">
                 Event
               </span>
 
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-2 sm:mb-4">
                 {event?.city}
               </h1>
 
-              <p className="text-white/75 text-lg md:text-xl max-w-3xl">
+              <p className="text-white/75 text-sm sm:text-lg md:text-xl max-w-3xl">
                 {event?.type}
               </p>
             </div>
@@ -100,53 +100,38 @@ export default function EventDetailPage() {
       </section>
 
       {/* Info Cards */}
-      <section className="px-6 mb-16">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-5">
-          <div className="p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+      <section className="px-4 sm:px-6 mb-10 sm:mb-16">
+        <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
+          <div className="p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
             <div className="flex items-center gap-3">
-              <Calendar
-                size={20}
-                className="text-[#D2A679]"
-              />
+              <Calendar size={18} sm-size={20} className="text-[#D2A679] flex-shrink-0" />
               <div>
-                <p className="text-white/50 text-sm">
-                  Date
-                </p>
-                <p className="font-medium">
+                <p className="text-white/50 text-xs sm:text-sm">Date</p>
+                <p className="font-medium text-sm sm:text-base">
                   {event?.date} {event?.month} {event?.year}
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+          <div className="p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
             <div className="flex items-center gap-3">
-              <MapPin
-                size={20}
-                className="text-[#D2A679]"
-              />
+              <MapPin size={18} sm-size={20} className="text-[#D2A679] flex-shrink-0" />
               <div>
-                <p className="text-white/50 text-sm">
-                  Location
-                </p>
-                <p className="font-medium">
+                <p className="text-white/50 text-xs sm:text-sm">Location</p>
+                <p className="font-medium text-sm sm:text-base">
                   {event?.city}
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+          <div className="p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
             <div className="flex items-center gap-3">
-              <Users
-                size={20}
-                className="text-[#D2A679]"
-              />
+              <Users size={18} sm-size={20} className="text-[#D2A679] flex-shrink-0" />
               <div>
-                <p className="text-white/50 text-sm">
-                  Speakers
-                </p>
-                <p className="font-medium">
+                <p className="text-white/50 text-xs sm:text-sm">Speakers</p>
+                <p className="font-medium text-sm sm:text-base">
                   {event?.leaders?.length}
                 </p>
               </div>
@@ -156,14 +141,14 @@ export default function EventDetailPage() {
       </section>
 
       {/* Description */}
-      <section className="px-6 mb-16">
+      <section className="px-4 sm:px-6 mb-10 sm:mb-16">
         <div className="max-w-6xl mx-auto">
-          <div className="rounded-3xl border border-white/10 p-8 md:p-10 bg-white/[0.02]">
-            <h2 className="text-3xl font-bold mb-6">
+          <div className="rounded-2xl sm:rounded-3xl border border-white/10 p-5 sm:p-8 md:p-10 bg-white/[0.02]">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
               About The Event
             </h2>
 
-            <p className="text-white/70 leading-relaxed whitespace-pre-line text-lg">
+            <p className="text-white/70 leading-relaxed whitespace-pre-line text-sm sm:text-base md:text-lg">
               {event?.description1}
             </p>
           </div>
@@ -171,29 +156,29 @@ export default function EventDetailPage() {
       </section>
 
       {/* Speakers */}
-      <section className="px-6 mb-16">
+      <section className="px-4 sm:px-6 mb-10 sm:mb-16">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
             Featured Speakers
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {event?.leaders?.map((speaker, index) => (
               <div
                 key={index}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 hover:border-[#D2A679]/40 transition-all duration-300"
+                className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-5 hover:border-[#D2A679]/40 transition-all duration-300"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#D2A679]/20 flex items-center justify-center text-[#D2A679] font-bold shrink-0">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#D2A679]/20 flex items-center justify-center text-[#D2A679] font-bold shrink-0 text-sm sm:text-base">
                     {speaker?.name?.charAt(0)}
                   </div>
 
-                  <div className="flex flex-col">
-                    <h3 className="font-semibold text-lg">
+                  <div className="flex flex-col min-w-0">
+                    <h3 className="font-semibold text-base sm:text-lg truncate">
                       {speaker?.name}
                     </h3>
 
-                    <p className="text-white/50 text-sm">
+                    <p className="text-white/50 text-xs sm:text-sm truncate">
                       {speaker?.company}
                     </p>
                   </div>
@@ -205,17 +190,17 @@ export default function EventDetailPage() {
       </section>
 
       {/* Gallery */}
-      <section className="px-6 pb-20">
+      <section className="px-4 sm:px-6 pb-14 sm:pb-20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
             Event Gallery
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
             {event?.images.map((image, index) => (
               <div
                 key={index}
-                className="relative overflow-hidden rounded-2xl border border-white/10 group"
+                className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 group"
               >
                 <div className="aspect-[4/3] relative">
                   <Image

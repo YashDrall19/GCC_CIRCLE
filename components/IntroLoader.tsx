@@ -17,29 +17,27 @@ export default function IntroLoader({ onFinish }: Props) {
 
   return (
     <div className="fixed inset-0 z-[9999] overflow-hidden bg-[#070b14]">
-
       {/* Aurora */}
       <div
         className="
           absolute
           left-1/2
           top-1/2
-          h-[550px]
-          w-[550px]
+          h-[350px] sm:h-[550px]
+          w-[350px] sm:w-[550px]
           -translate-x-1/2
           -translate-y-1/2
           rounded-full
           bg-sky-500/10
-          blur-[140px]
+          blur-[100px] sm:blur-[140px]
           animate-[aurora_6s_ease-in-out_infinite]
         "
       />
 
       {/* Background Glow */}
       <div className="absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#1a6cff]/10 blur-[140px]" />
-
-        <div className="absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D2A679]/10 blur-[100px]" />
+        <div className="absolute left-1/2 top-1/2 h-[400px] sm:h-[700px] w-[400px] sm:w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#1a6cff]/10 blur-[100px] sm:blur-[140px]" />
+        <div className="absolute left-1/2 top-1/2 h-[250px] sm:h-[400px] w-[250px] sm:w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D2A679]/10 blur-[60px] sm:blur-[100px]" />
       </div>
 
       {/* Grid */}
@@ -47,54 +45,45 @@ export default function IntroLoader({ onFinish }: Props) {
         className="
           absolute inset-0 opacity-10
           bg-[linear-gradient(rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.05)_1px,transparent_1px)]
-          bg-[size:60px_60px]
+          bg-[size:40px_40px] sm:bg-[size:60px_60px]
         "
       />
 
       {/* Rings */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative w-[420px] h-[420px]">
-
+        <div className="relative w-[280px] sm:w-[420px] h-[280px] sm:h-[420px]">
           {/* Network Cross */}
           <div className="absolute inset-0 animate-[slowPulse_4s_ease-in-out_infinite]">
             <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
-
             <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#D2A679]/40 to-transparent" />
           </div>
 
           <div className="absolute inset-0 rounded-full border border-sky-400/20 animate-[spin_18s_linear_infinite]" />
+          <div className="absolute inset-[25px] sm:inset-[40px] rounded-full border border-[#D2A679]/30 animate-[spinReverse_14s_linear_infinite]" />
+          <div className="absolute inset-[50px] sm:inset-[80px] rounded-full border border-white/10 animate-[spin_10s_linear_infinite]" />
 
-          <div className="absolute inset-[40px] rounded-full border border-[#D2A679]/30 animate-[spinReverse_14s_linear_infinite]" />
-
-          <div className="absolute inset-[80px] rounded-full border border-white/10 animate-[spin_10s_linear_infinite]" />
-
-          {/* Orbit Node 1 */}
+          {/* Orbit Nodes */}
           <div className="absolute inset-0 animate-[orbit_8s_linear_infinite]">
-            <div className="absolute left-1/2 top-0 h-3 w-3 -translate-x-1/2 rounded-full bg-sky-400 shadow-[0_0_20px_#38bdf8]" />
+            <div className="absolute left-1/2 top-0 h-2.5 w-2.5 sm:h-3 sm:w-3 -translate-x-1/2 rounded-full bg-sky-400 shadow-[0_0_20px_#38bdf8]" />
           </div>
-
-          {/* Orbit Node 2 */}
-          <div className="absolute inset-[40px] animate-[orbitReverse_10s_linear_infinite]">
-            <div className="absolute left-1/2 top-0 h-3 w-3 -translate-x-1/2 rounded-full bg-[#D2A679] shadow-[0_0_20px_#D2A679]" />
+          <div className="absolute inset-[25px] sm:inset-[40px] animate-[orbitReverse_10s_linear_infinite]">
+            <div className="absolute left-1/2 top-0 h-2.5 w-2.5 sm:h-3 sm:w-3 -translate-x-1/2 rounded-full bg-[#D2A679] shadow-[0_0_20px_#D2A679]" />
           </div>
-
-          {/* Orbit Node 3 */}
-          <div className="absolute inset-[80px] animate-[orbit_12s_linear_infinite]">
-            <div className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 rounded-full bg-white shadow-[0_0_15px_white]" />
+          <div className="absolute inset-[50px] sm:inset-[80px] animate-[orbit_12s_linear_infinite]">
+            <div className="absolute left-1/2 top-0 h-1.5 w-1.5 sm:h-2 sm:w-2 -translate-x-1/2 rounded-full bg-white shadow-[0_0_15px_white]" />
           </div>
         </div>
       </div>
 
       {/* Content */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative z-10 text-center">
-
+        <div className="relative z-10 text-center px-4">
           <p
             className="
-              mb-5
-              text-xs
+              mb-4 sm:mb-5
+              text-[10px] sm:text-xs
               uppercase
-              tracking-[8px]
+              tracking-[6px] sm:tracking-[8px]
               text-sky-400
               opacity-0
               animate-[fadeUp_.7s_ease_forwards]
@@ -105,10 +94,10 @@ export default function IntroLoader({ onFinish }: Props) {
 
           <h1
             className="
-              text-6xl
+              text-4xl sm:text-6xl
               md:text-7xl
               font-black
-              tracking-[12px]
+              tracking-[8px] sm:tracking-[12px]
               text-white
               opacity-0
               animate-[logoReveal_.8s_cubic-bezier(.22,1,.36,1)_forwards]
@@ -120,9 +109,9 @@ export default function IntroLoader({ onFinish }: Props) {
           <p
             className="
               mt-2
-              text-xl
+              text-lg sm:text-xl
               uppercase
-              tracking-[8px]
+              tracking-[6px] sm:tracking-[8px]
               text-[#D2A679]
               font-medium
               opacity-0
@@ -134,10 +123,10 @@ export default function IntroLoader({ onFinish }: Props) {
 
           <div
             className="
-              mt-6
+              mt-4 sm:mt-6
               mx-auto
               h-px
-              w-44
+              w-32 sm:w-44
               bg-gradient-to-r
               from-transparent
               via-[#D2A679]
@@ -149,11 +138,11 @@ export default function IntroLoader({ onFinish }: Props) {
 
           <p
             className="
-              mt-6
+              mt-4 sm:mt-6
               text-white/60
-              text-sm
+              text-xs sm:text-sm
               md:text-base
-              tracking-[2px]
+              tracking-[1px] sm:tracking-[2px]
               opacity-0
               animate-[fadeUp_.7s_ease_forwards_.5s]
             "
@@ -162,8 +151,7 @@ export default function IntroLoader({ onFinish }: Props) {
           </p>
 
           {/* Loading Bar */}
-          <div className="relative mt-10 w-72 max-w-[80vw] mx-auto overflow-hidden">
-
+          <div className="relative mt-8 sm:mt-10 w-56 sm:w-72 max-w-[80vw] mx-auto overflow-hidden">
             <div className="h-[2px] bg-white/10 rounded-full overflow-hidden">
               <div
                 className="
@@ -179,12 +167,11 @@ export default function IntroLoader({ onFinish }: Props) {
                 "
               />
             </div>
-
             <div
               className="
                 absolute
                 inset-y-0
-                w-20
+                w-16 sm:w-20
                 bg-gradient-to-r
                 from-transparent
                 via-white/70
@@ -197,16 +184,13 @@ export default function IntroLoader({ onFinish }: Props) {
       </div>
 
       {/* Powered By */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center">
-
-        <p className="text-[10px] uppercase tracking-[5px] text-white/40">
+      <div className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 text-center">
+        <p className="text-[9px] sm:text-[10px] uppercase tracking-[4px] sm:tracking-[5px] text-white/40">
           Powered by
         </p>
-
-        <p className="mt-1 text-sm font-semibold tracking-[4px] uppercase text-[#D2A679]">
+        <p className="mt-1 text-xs sm:text-sm font-semibold tracking-[3px] sm:tracking-[4px] uppercase text-[#D2A679]">
           Talentiser
         </p>
-
       </div>
     </div>
   );

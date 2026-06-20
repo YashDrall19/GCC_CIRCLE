@@ -6,7 +6,6 @@ import type { Leader } from './data';
 import { leaderTypeMap, leaders1, slugify } from './data';
 import Image from 'next/image';
 
-
 const leaders: Leader[] = leaders1.map((leader) => ({
   ...leader,
   id: slugify(leader.name),
@@ -18,28 +17,27 @@ const hrLeaders = leaders.filter((l) => l.type === 'hr');
 
 export default function LeaguePage() {
   return (
-    <main className="bg-[#070b14] text-white pt-20">
+    <main className="bg-[#070b14] text-white pt-16 sm:pt-20">
       {/* Hero */}
-      <section className="relative py-28 px-6 overflow-hidden">
+      <section className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-[#D2A679]/8 blur-[120px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[800px] h-[400px] sm:h-[600px] rounded-full bg-[#D2A679]/8 blur-[120px]" />
         </div>
         <div className="relative max-w-3xl mx-auto text-center">
-          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-5 block">Membership</span>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 sm:mb-5 block">Membership</span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">
             The Inner Circle of{' '}
             <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
-            {/* <span className="bg-gradient-to-r from-[#B87333] to-[#D2A679] bg-clip-text text-transparent"> */}
               GCC Leadership
             </span>
           </h1>
-          <p className="text-white/55 text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="text-white/55 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto px-2">
             Join GCC Circle — a curated community for India&apos;s top tech leaders. Exchange ideas, stay ahead of what&apos;s next, and access sharp, no-noise insights, conversations, and closed-door forums.
           </p>
-          <div className="mt-8">
+          <div className="mt-6 sm:mt-8">
             <Link
               href="/join"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.5)]"
+              className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.5)] text-sm sm:text-base"
             >
               Join the Circle <ArrowRight size={16} />
             </Link>
@@ -48,17 +46,17 @@ export default function LeaguePage() {
       </section>
 
       {/* Stats bar */}
-      <section className="py-10 border-y border-white/10 bg-white/[0.02]">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="grid grid-cols-3 gap-8 text-center">
+      <section className="py-8 sm:py-10 border-y border-white/10 bg-white/[0.02]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 text-center">
             {[
               { value: '500+', label: 'Members' },
               { value: '50+', label: 'Companies' },
               { value: '10+', label: 'Cities' },
             ].map((s) => (
               <div key={s.label}>
-                <div className="text-3xl md:text-4xl font-bold text-[#D2A679]">{s.value}</div>
-                <div className="text-white/45 text-sm mt-1">{s.label}</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#D2A679]">{s.value}</div>
+                <div className="text-white/45 text-xs sm:text-sm mt-1">{s.label}</div>
               </div>
             ))}
           </div>
@@ -66,31 +64,31 @@ export default function LeaguePage() {
       </section>
 
       {/* Members grid */}
-      <section className="py-24 px-6">
+      <section className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 sm:mb-14">
             <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 block">Our Members</span>
-            <h2 className="text-4xl md:text-5xl font-bold">Inside the League</h2>
-            <p className="text-white/50 mt-4 text-lg max-w-xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Inside the League</h2>
+            <p className="text-white/50 mt-3 sm:mt-4 text-base sm:text-lg max-w-xl mx-auto px-2">
               India&apos;s most influential GCC leaders, all in one place.
             </p>
           </div>
 
           {/* Tech Leaders Section */}
-          <div className="mb-20">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 flex items-center gap-3">
-              <span className="w-2 h-2 bg-[#1a6cff] rounded-full"></span>
+          <div className="mb-14 sm:mb-20">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 flex items-center gap-3">
+              <span className="w-2 h-2 bg-[#1a6cff] rounded-full flex-shrink-0"></span>
               The League of Legends
             </h3>
-            <p className="text-white/60 max-w-2xl leading-relaxed mb-6">
-              Join GCC Circle – a curated community for India’s top tech leaders in GCCs. Exchange ideas, stay ahead of what’s next, and access sharp, no-noise insights, conversations, and closed-door forums.
+            <p className="text-white/60 text-sm sm:text-base max-w-2xl leading-relaxed mb-4 sm:mb-6">
+              Join GCC Circle – a curated community for India&apos;s top tech leaders in GCCs. Exchange ideas, stay ahead of what&apos;s next, and access sharp, no-noise insights, conversations, and closed-door forums.
             </p>
-            <div className="overflow-x-auto pb-4 -mx-6 px-6">
-              <div className="flex gap-6 min-w-min">
+            <div className="overflow-x-auto pb-4 -mx-4 sm:-mx-6 px-4 sm:px-6 scrollbar-hide">
+              <div className="flex gap-4 sm:gap-6 min-w-min">
                 {techLeaders.map((leader) => (
                   <Link key={leader.id} href={`/league/${leader.id}`}>
-                    <div className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300 cursor-pointer w-56 flex-shrink-0">
-                      <div className="aspect-[3/4] overflow-hidden">
+                    <div className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300 cursor-pointer w-44 sm:w-56 flex-shrink-0">
+                      <div className="aspect-[3/4] overflow-hidden relative">
                         <Image
                           src={leader.image}
                           alt={leader.name}
@@ -99,15 +97,13 @@ export default function LeaguePage() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
                       </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-4">
-                        <div className="font-semibold text-sm leading-tight">{leader.name}</div>
-                        <div className="text-[#D2A679] text-xs mt-0.5 leading-tight">{leader.designation}</div>
-                        {/* <div className="text-[#D2A679] text-xs font-semibold mt-1">{leader.date}</div>
-                        <p className="text-white/60 text-[11px] leading-snug mt-2">{leader.quote}</p> */}
+                      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                        <div className="font-semibold text-xs sm:text-sm leading-tight">{leader.name}</div>
+                        <div className="text-[#D2A679] text-[10px] sm:text-xs mt-0.5 leading-tight">{leader.designation}</div>
                       </div>
-                      <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <div className="w-7 h-7 rounded-full bg-[#1a6cff]/90 flex items-center justify-center">
-                          <Linkedin size={12} className="text-white" />
+                      <div className="absolute top-2 sm:top-3 right-2 sm:right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#1a6cff]/90 flex items-center justify-center">
+                          <Linkedin size={10} className="text-white" />
                         </div>
                       </div>
                     </div>
@@ -119,22 +115,22 @@ export default function LeaguePage() {
 
           {/* HR Leaders Section */}
           <div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 flex items-center gap-3">
-              <span className="w-2 h-2 bg-[#D2A679] rounded-full"></span>
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 flex items-center gap-3">
+              <span className="w-2 h-2 bg-[#D2A679] rounded-full flex-shrink-0"></span>
               The League of Titans
             </h3>
-            <p className="text-white/60 max-w-2xl leading-relaxed mb-3">
+            <p className="text-white/60 text-sm sm:text-base max-w-2xl leading-relaxed mb-2 sm:mb-3">
               Join GCC Circle – built for GCC talent leaders shaping the future of hiring and org design.
             </p>
-            <p className="text-white/60 max-w-2xl leading-relaxed mb-6">
+            <p className="text-white/60 text-sm sm:text-base max-w-2xl leading-relaxed mb-4 sm:mb-6">
               Tap into real conversations, proven playbooks, and a trusted network that actually moves the needle.
             </p>
-            <div className="overflow-x-auto pb-4 -mx-6 px-6">
-              <div className="flex gap-6 min-w-min">
+            <div className="overflow-x-auto pb-4 -mx-4 sm:-mx-6 px-4 sm:px-6 scrollbar-hide">
+              <div className="flex gap-4 sm:gap-6 min-w-min">
                 {hrLeaders.map((leader) => (
                   <Link key={leader.id} href={`/league/${leader.id}`}>
-                    <div className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300 cursor-pointer w-56 flex-shrink-0">
-                      <div className="aspect-[3/4] overflow-hidden">
+                    <div className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300 cursor-pointer w-44 sm:w-56 flex-shrink-0">
+                      <div className="aspect-[3/4] overflow-hidden relative">
                         <Image
                           src={leader.image}
                           alt={leader.name}
@@ -143,15 +139,13 @@ export default function LeaguePage() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
                       </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-4">
-                        <div className="font-semibold text-sm leading-tight">{leader.name}</div>
-                        <div className="text-[#D2A679] text-xs mt-0.5 leading-tight">{leader.designation}</div>
-                        {/* <div className="text-[#D2A679] text-xs font-semibold mt-1">{leader.date}</div>
-                        <p className="text-white/60 text-[11px] leading-snug mt-2">{leader.quote}</p> */}
+                      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                        <div className="font-semibold text-xs sm:text-sm leading-tight">{leader.name}</div>
+                        <div className="text-[#D2A679] text-[10px] sm:text-xs mt-0.5 leading-tight">{leader.designation}</div>
                       </div>
-                      <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <div className="w-7 h-7 rounded-full bg-[#D2A679]/90 flex items-center justify-center">
-                          <Linkedin size={12} className="text-white" />
+                      <div className="absolute top-2 sm:top-3 right-2 sm:right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#D2A679]/90 flex items-center justify-center">
+                          <Linkedin size={10} className="text-white" />
                         </div>
                       </div>
                     </div>
@@ -164,20 +158,20 @@ export default function LeaguePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6">
+      <section className="py-14 sm:py-20 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="relative rounded-3xl border border-[#D2A679]/30 bg-gradient-to-br from-[#D2A679]/10 to-transparent p-14">
-            <div className="absolute inset-0 pointer-events-none rounded-3xl overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#D2A679]/15 rounded-full blur-[60px]" />
+          <div className="relative rounded-2xl sm:rounded-3xl border border-[#D2A679]/30 bg-gradient-to-br from-[#D2A679]/10 to-transparent p-8 sm:p-14">
+            <div className="absolute inset-0 pointer-events-none rounded-2xl sm:rounded-3xl overflow-hidden">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 sm:w-72 h-48 sm:h-72 bg-[#D2A679]/15 rounded-full blur-[60px]" />
             </div>
             <div className="relative">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Want to be listed here?</h2>
-              <p className="text-white/55 mb-8 leading-relaxed max-w-lg mx-auto">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Want to be listed here?</h2>
+              <p className="text-white/55 mb-6 sm:mb-8 leading-relaxed max-w-lg mx-auto text-sm sm:text-base px-2">
                 Join the League and become part of India&apos;s most exclusive GCC leadership network.
               </p>
               <Link
                 href="/join"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)]"
+                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)] text-sm sm:text-base"
               >
                 Join the Circle <ArrowRight size={15} />
               </Link>

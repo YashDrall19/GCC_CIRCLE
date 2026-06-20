@@ -18,6 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = loading ? 'hidden' : 'auto';
@@ -28,12 +29,22 @@ export default function RootLayout({
   }, [loading]);
 
   useEffect(() => {
+    // Detect mobile/touch devices
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(hover: none) and (pointer: coarse)').matches || window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     // Fallback timeout in case video is slow or fails
     const timer = setTimeout(() => {
       setLoading(false);
     }, 5000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   const handleFinish = () => {
@@ -42,16 +53,18 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#070b14] antialiased`}>
+      <body className={`${inter.className} bg-[#070b14] antialiased overflow-x-hidden`}>
         {loading ? (
           <IntroLoader onFinish={handleFinish} />
         ) : (
           <>
             <ParticlesBackground />
-            <CursorGlow />
+            {!isMobile && <CursorGlow />}
             <Navbar />
 
-            {children}
+            <main className="min-h-screen">
+              {children}
+            </main>
 
             <Footer />
 

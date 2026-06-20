@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, Linkedin, MapPin } from 'lucide-react';
+import { ArrowLeft, Linkedin } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { leaders1, leaderTypeMap } from '../data';
@@ -24,16 +24,16 @@ export default function LeaderDetailPage() {
 
   if (!leader) {
     return (
-      <main className="bg-[#070b14] text-white min-h-screen pt-20">
-        <div className="max-w-4xl mx-auto px-6 py-20 text-center">
-          <h1 className="text-4xl font-bold mb-4">Leader not found</h1>
-          <p className="text-white/55 mb-8">
-            The leader you're looking for doesn't exist.
+      <main className="bg-[#070b14] text-white min-h-screen pt-16 sm:pt-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
+          <h1 className="text-3xl sm:text-4xl font-bold mb-4">Leader not found</h1>
+          <p className="text-white/55 mb-8 text-sm sm:text-base">
+            The leader you&apos;re looking for doesn&apos;t exist.
           </p>
 
           <Link
             href="/league"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200"
+            className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 text-sm sm:text-base"
           >
             <ArrowLeft size={16} />
             Back to League
@@ -47,12 +47,12 @@ export default function LeaderDetailPage() {
   const accentColor = leaderType === 'tech' ? '#1a6cff' : '#D2A679';
 
   return (
-    <main className="bg-[#070b14] text-white min-h-screen pt-20">
+    <main className="bg-[#070b14] text-white min-h-screen pt-16 sm:pt-20">
       {/* Back Button */}
-      <div className="max-w-4xl mx-auto px-6 py-4">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <Link
           href="/league"
-          className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-200"
+          className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-200 text-sm sm:text-base"
         >
           <ArrowLeft size={18} />
           Back to League
@@ -60,12 +60,12 @@ export default function LeaderDetailPage() {
       </div>
 
       {/* Content */}
-      <section className="py-12 px-6">
+      <section className="py-8 sm:py-12 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           {/* Image */}
-          <div className="flex justify-center mb-10">
-            <div className="relative rounded-2xl overflow-hidden border-2 border-[#B87333] w-full max-w-sm">
-              <div className="aspect-[3/4]">
+          <div className="flex justify-center mb-8 sm:mb-10">
+            <div className="relative rounded-2xl overflow-hidden border-2 border-[#B87333] w-full max-w-[280px] sm:max-w-sm">
+              <div className="aspect-[3/4] relative">
                 <Image
                   src={leader.image}
                   alt={leader.name}
@@ -79,10 +79,10 @@ export default function LeaderDetailPage() {
           </div>
 
           {/* Header */}
-          <div className="text-center mb-12">
-            <div className="flex justify-center mb-4">
+          <div className="text-center mb-10 sm:mb-12">
+            <div className="flex justify-center mb-3 sm:mb-4">
               <span
-                className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest"
+                className="px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-widest"
                 style={{
                   backgroundColor: `${accentColor}20`,
                   color: accentColor,
@@ -92,37 +92,33 @@ export default function LeaderDetailPage() {
               </span>
             </div>
 
-            <h1 className="text-5xl font-bold mb-3 bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-5xl font-bold mb-2 sm:mb-3 bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
               {leader.name}
             </h1>
 
             <p
-              className="text-xl font-semibold mb-2"
+              className="text-lg sm:text-xl font-semibold mb-2"
               style={{ color: accentColor }}
             >
               {leader.designation}
             </p>
-
-            {/* <p className="text-lg text-white/70">
-              {leader.date || 'GCC Leadership Spotlight'}
-            </p> */}
           </div>
 
           {/* About */}
-          <div className="mb-14">
-            <h2 className="text-2xl font-bold mb-4">About</h2>
+          <div className="mb-10 sm:mb-14">
+            <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">About</h2>
 
-            <p className="text-white/70 leading-relaxed text-lg">
+            <p className="text-white/70 leading-relaxed text-base sm:text-lg">
               {leader.quote}
             </p>
           </div>
 
           {/* Q&A */}
           {leader.questionaire && leader.questionaire.length > 0 && (
-            <div className="mb-14">
-              <h2 className="text-2xl font-bold mb-8">Q&A</h2>
+            <div className="mb-10 sm:mb-14">
+              <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Q&A</h2>
 
-              <div className="space-y-10">
+              <div className="space-y-8 sm:space-y-10">
                 {leader.questionaire
                   .filter(
                     (q: any) =>
@@ -132,13 +128,13 @@ export default function LeaderDetailPage() {
                   .map((q: any, idx: number) => (
                     <div
                       key={idx}
-                      className="border-b border-white/10 pb-8"
+                      className="border-b border-white/10 pb-6 sm:pb-8"
                     >
-                      <h3 className="text-xl font-semibold mb-4 text-[#D2A679]">
+                      <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-[#D2A679]">
                         {q.question}
                       </h3>
 
-                      <p className="text-white/70 leading-relaxed whitespace-pre-line">
+                      <p className="text-white/70 leading-relaxed whitespace-pre-line text-sm sm:text-base">
                         {q.answer}
                       </p>
                     </div>
@@ -148,48 +144,32 @@ export default function LeaderDetailPage() {
           )}
 
           {/* Connect */}
-          <div className="mb-10">
-            <h2 className="text-2xl font-bold mb-6">Connect</h2>
+          <div className="mb-8 sm:mb-10">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Connect</h2>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {leader.linkedin && (
                 <a
                   href={leader.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-xl border border-white/10 hover:border-white/30 hover:bg-white/5 transition-all duration-200"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border border-white/10 hover:border-white/30 hover:bg-white/5 transition-all duration-200"
                 >
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#D2A679]/20">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-[#D2A679]/20 flex-shrink-0">
                     <Linkedin
-                      size={20}
+                      size={18} sm-size={20}
                       style={{ color: '#D2A679' }}
                     />
                   </div>
 
-                  <div>
-                    <p className="text-sm text-white/55">LinkedIn</p>
-                    <p className="font-semibold">
+                  <div className="min-w-0">
+                    <p className="text-xs sm:text-sm text-white/55">LinkedIn</p>
+                    <p className="font-semibold text-sm sm:text-base truncate">
                       Connect on LinkedIn
                     </p>
                   </div>
                 </a>
               )}
-
-              {/* <div className="flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/5">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#D2A679]/20">
-                  <MapPin
-                    size={20}
-                    style={{ color: '#D2A679' }}
-                  />
-                </div>
-
-                <div>
-                  <p className="text-sm text-white/55">Session</p>
-                  <p className="font-semibold">
-                    {leader.date || 'GCC Leadership Spotlight'}
-                  </p>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

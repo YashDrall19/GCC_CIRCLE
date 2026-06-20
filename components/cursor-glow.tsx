@@ -1,16 +1,24 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+
 export default function CursorGlow() {
-  const [position, setPosition] = useState({ x: -100, y: -100 }); // dot
+  const [position, setPosition] = useState({ x: -100, y: -100 });
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const ringRef = useRef<HTMLDivElement>(null);
   const ringPos = useRef({ x: -100, y: -100 });
   const animationFrame = useRef<number>();
 
   useEffect(() => {
     setMounted(true);
+    
+    // Detect touch devices
+    const checkTouch = () => {
+      setIsTouchDevice(window.matchMedia('(hover: none) and (pointer: coarse)').matches);
+    };
+    checkTouch();
 
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -26,8 +34,7 @@ export default function CursorGlow() {
 
     // Animate ring position
     const animate = () => {
-      // Move ringPos towards position
-      const speed = 0.18; // Lower is slower, 0.18 is smooth
+      const speed = 0.18;
       ringPos.current.x += (position.x - ringPos.current.x) * speed;
       ringPos.current.y += (position.y - ringPos.current.y) * speed;
       if (ringRef.current) {
@@ -45,13 +52,14 @@ export default function CursorGlow() {
     };
   }, [position.x, position.y]);
 
-  if (!mounted) return null;
+  // Don't render on touch devices or server
+  if (!mounted || isTouchDevice) return null;
 
   return (
     <>
       {/* Main glow (dot) */}
       <div
-        className="pointer-events-none fixed z-[9999] transition-opacity duration-150"
+        className="pointer-events-none fixed z-[9999] transition-opacity duration-150 hidden md:block"
         style={{
           left: position.x,
           top: position.y,
@@ -73,7 +81,7 @@ export default function CursorGlow() {
       {/* Trailing glow ring (follows with lag) */}
       <div
         ref={ringRef}
-        className="pointer-events-none fixed z-[9998] transition-opacity duration-200"
+        className="pointer-events-none fixed z-[9998] transition-opacity duration-200 hidden md:block"
         style={{
           left: ringPos.current.x,
           top: ringPos.current.y,
