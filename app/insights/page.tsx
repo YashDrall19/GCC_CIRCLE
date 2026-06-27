@@ -62,7 +62,6 @@ export default function InsightsPage() {
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight mb-3 sm:mb-4 group-hover:text-[#B87333] transition-colors duration-200">
                   {featured.title}
                 </h2>
-                <p className="text-white/55 leading-relaxed mb-6 sm:mb-8 text-sm">{featured.excerpt}</p>
                 <div className="flex items-center gap-4 text-white/35 text-xs mb-6 sm:mb-8">
                   <span>{featured.date}</span>
                   <span className="flex items-center gap-1"><Clock size={10} /> {featured.readTime}</span>
@@ -108,7 +107,6 @@ export default function InsightsPage() {
                   <h3 className="font-semibold text-sm leading-snug mb-2 group-hover:text-[#B87333] transition-colors duration-200 line-clamp-3">
                     {a.title}
                   </h3>
-                  <p className="text-white/45 text-xs leading-relaxed mb-3 sm:mb-4 line-clamp-2 flex-1">{a.excerpt}</p>
                   <div className="flex items-center justify-between text-white/30 text-[10px] sm:text-xs pt-2 sm:pt-3 border-t border-white/10">
                     <span className="flex items-center gap-1"><Calendar size={9} /> {a.date}</span>
                     <Link href={`/insights/${a.id}`} className="text-[#D2A679] font-medium flex items-center gap-0.5 group-hover:gap-2 transition-all duration-200">
