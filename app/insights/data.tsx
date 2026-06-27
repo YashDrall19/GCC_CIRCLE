@@ -9,6 +9,7 @@ import crunch2 from "../../public/insights/crunch2.avif";
 import crunch3 from "../../public/insights/crunch3.avif";
 
 import future from "../../public/insights/future.avif";
+import attraction from "../../public/insights/attraction.avif";
 
 export const insights = [
   {
@@ -516,27 +517,29 @@ export const insights = [
     tag: 'Leadership',
     img: future.src,
     content: (
-      <div className="space-y-8 text-base leading-8 text-white/70 sm:text-lg">
+      <div className="space-y-16 text-base leading-8 text-white/70 sm:text-lg">
         
-        <p>
-          India has made a long-term, unapologetically ambitious bet. With Budget 2026 extending tax holiday benefits till 2047 to accelerate cloud computing and artificial intelligence, the country is no longer just positioning itself as a technology services powerhouse. It is signalling intent to become a global Cloud and AI hub for the next two decades.
-        </p>
+        <div className="space-y-8">
+          <p>
+            India has made a long-term, unapologetically ambitious bet. With Budget 2026 extending tax holiday benefits till 2047 to accelerate cloud computing and artificial intelligence, the country is no longer just positioning itself as a technology services powerhouse. It is signalling intent to become a global Cloud and AI hub for the next two decades.
+          </p>
 
-        <p>
-          For CXOs, founders, CHROs, PE stakeholders, and GCC leaders, this announcement is not a policy footnote. It is a structural shift that will directly impact where companies invest, how GCCs scale, what roles get hired, and which talent strategies will succeed or fail.
-        </p>
+          <p>
+            For CXOs, founders, CHROs, PE stakeholders, and GCC leaders, this announcement is not a policy footnote. It is a structural shift that will directly impact where companies invest, how GCCs scale, what roles get hired, and which talent strategies will succeed or fail.
+          </p>
 
-        <p>
-          Let’s answer the critical questions upfront.
-        </p>
+          <p>
+            Let’s answer the critical questions upfront.
+          </p>
 
-        <p>
-          What has changed is not just tax treatment, but India’s attractiveness as a long-term base for AI-native platforms, hyperscale cloud infrastructure, and global capability centres. Why it matters now is because capital, cloud workloads, and AI talent are already moving, and this policy removes one of the biggest friction points. How organisations respond will determine whether they build strategic hubs in India or merely execution centres. What’s next is a sharp divergence between companies that align talent, leadership, and capability strategy early and those that react too late.
-        </p>
+          <p>
+            What has changed is not just tax treatment, but India’s attractiveness as a long-term base for AI-native platforms, hyperscale cloud infrastructure, and global capability centres. Why it matters now is because capital, cloud workloads, and AI talent are already moving, and this policy removes one of the biggest friction points. How organisations respond will determine whether they build strategic hubs in India or merely execution centres. What’s next is a sharp divergence between companies that align talent, leadership, and capability strategy early and those that react too late.
+          </p>
 
-        <p>
-          This is not a future-of-work opinion piece. It is a hiring, leadership, and capability story unfolding in real time.
-        </p>
+          <p>
+            This is not a future-of-work opinion piece. It is a hiring, leadership, and capability story unfolding in real time.
+          </p>
+        </div>
 
         <div className="space-y-8">
           <h2 className="text-2xl font-bold text-white mb-4">The real tension behind India’s Cloud and AI push</h2>
@@ -787,6 +790,817 @@ export const insights = [
           </p>
           <p className="mt-2 text-center text-[#D2A679] font-semibold">
             The tax holiday opens the door. What leaders build behind it will decide who leads.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'gcc-hiring-playbooks-attrition-to-attraction-2026',
+    title: "From Attrition to Attraction: Strategic Hiring Playbooks GCCs in India Must Adopt in 2026",
+    date: "4 February 2026",
+    readTime: '7 min read',
+    tag: 'Leadership',
+    img: attraction.src,
+    content: (
+      <div className="space-y-16 text-base leading-8 text-white/70 sm:text-lg">
+
+        <div className="space-y-4">
+          <p>
+            India’s Global Capability Centres are not struggling to hire. They are struggling to attract the right talent and keep them long enough to matter.
+          </p>
+
+          <p>
+            On paper, resumes are flowing. Interview pipelines look healthy. Compensation benchmarks are competitive. Yet attrition remains stubbornly high, leadership roles stay open longer than planned, and critical teams reset every 18–24 months. The uncomfortable truth is this: most GCCs are still running 2022 hiring strategies in a 2026 talent market.
+          </p>
+
+          <p>
+            Let’s get the basics out of the way early.
+          </p>
+
+          <p>
+            What this shift is about is moving from reactive hiring to attraction-led talent systems. Why it matters now is because India’s GCC ecosystem has matured. Candidates are no longer impressed by scale alone. How GCCs hire today directly impacts speed to productivity, employer credibility, and long-term cost of talent. What’s next is a hard reset in how hiring, branding, DE&I, and recruitment marketing work together instead of in silos.
+          </p>
+
+          <p>
+            This is not a theory piece. These insights are shaped by live hiring data, leadership search patterns, and real conversations with candidates across Bangalore, Hyderabad, and Gurgaon.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-white mb-4">The hiring tension GCCs can no longer ignore</h2>
+          <p>
+            For years, attrition in GCCs was explained away as a “market issue.” Too many jobs. Too much funding. Too much churn.
+          </p>
+          <p>
+            That excuse no longer holds.
+          </p>
+          <p>
+            In 2026, attrition is a signal. It tells you whether your hiring promise matches your lived reality. GCCs that are still losing talent at scale usually suffer from one or more of these problems: misaligned role narratives, generic employer branding, shallow DE&I efforts, or recruitment teams optimised for volume instead of quality.
+          </p>
+          <p>
+            Meanwhile, a smaller set of GCCs are quietly winning. They hire slower, onboard better, and retain longer. Not because they pay dramatically more, but because they hire differently.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-white mb-4">Defining the shift: from attrition management to talent attraction</h2>
+          <p>
+            Attrition-focused hiring is defensive. It asks, “How do we backfill faster?” Attraction-led hiring is strategic. It asks, “Why would the right person choose us and stay?”
+          </p>
+          <p>
+            In plain English, attraction is not about perks, branding videos, or social media noise. It is about clarity, credibility, and consistency across every candidate touchpoint.
+          </p>
+          <p>
+            Candidates today are doing deeper diligence. They speak to former employees. They observe leadership behaviour online. They test interview quality as a proxy for company culture.
+          </p>
+          <p>
+            Attraction is earned, not announced.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-white mb-4">Defining the shift: from attrition management to talent attraction</h2>
+          <p>
+            Three structural shifts are reshaping GCC hiring in India.
+          </p>
+          <p>
+            First, talent density in core hubs like Bangalore, Hyderabad, and Gurgaon has peaked. The same senior engineers, product leaders, and functional heads are being chased by the same logos. Differentiation matters more than ever.
+          </p>
+          <p>
+            Second, leadership hiring failures are becoming expensive. A wrong senior hire now sets teams back by quarters, not weeks.
+          </p>
+          <p>
+            Third, private equity and global HQs are demanding faster ROI from GCC expansions. Hiring mistakes are no longer tolerated as learning curves.
+          </p>
+          <p>
+            In this environment, attraction-led hiring is not a branding exercise. It is a business requirement.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-white mb-4">Data-backed hiring strategies that actually work</h2>
+          <p>
+            Winning GCCs are moving away from vanity metrics like time-to-fill in isolation. They track quality-of-hire, hiring manager satisfaction, and 12-month retention as core success indicators.
+          </p>
+          <p>
+            They use hiring data to identify drop-off points. Where do candidates disengage? Which interview stages correlate with offer rejections? Which roles see the highest early attrition?
+          </p>
+          <p>
+            One insight we consistently see: roles hired through rushed, mandate-driven processes have significantly higher failure rates than those built with clear success metrics and realistic role narratives.
+          </p>
+          <p>
+            Another hard truth: speed without precision increases long-term cost. The best GCCs optimise for hiring right, not hiring fast.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-white mb-4">Employer branding in tech hubs: what still works and what doesn’t</h2>
+          <p>
+            Employer branding in India’s tech hubs has become noisy and repetitive. Everyone claims innovation. Everyone claims impact. Candidates are tuning out.
+          </p>
+          <p>
+            What works now is specificity.
+          </p>
+          <p>
+            Instead of saying “great culture,” winning GCCs articulate how decisions are made, how careers progress, and how leaders operate. They showcase real managers, not stock imagery. They talk about constraints honestly, not just opportunities.
+          </p>
+          <p>
+            In Bangalore, senior talent is looking for ownership and global influence. In Hyderabad, stability plus growth matters. In Gurgaon, leadership visibility and cross-functional exposure carry weight.
+          </p>
+          <p>
+            Employer branding that ignores local talent psychology fails quietly.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-white mb-4">DE&I as a competitive edge, not a checkbox</h2>
+          <p>
+            Most GCCs talk about DE&I. Very few operationalise it meaningfully.
+          </p>
+          <p>
+            In 2026, DE&I impacts hiring outcomes directly. Women leaders, returning professionals, and diverse senior talent evaluate companies based on flexibility, psychological safety, and leadership intent, not statements.
+          </p>
+          <p>
+            GCCs that design roles with inclusivity in mind attract wider, stronger talent pools. Those that treat DE&I as an HR initiative struggle to move the needle.
+          </p>
+          <p>
+            One pattern is clear. Companies with diverse leadership teams hire better across all demographics. DE&I is not about optics. It is about signal.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-white mb-4">Recruitment marketing tactics that actually convert</h2>
+
+          <p>
+            Recruitment marketing is not about posting more jobs. It is about telling the right story to the right audience at the right time.
+          </p>
+
+          <p>
+            Effective GCCs invest in role-specific narratives, not generic career pages. They use content to answer real candidate questions: What will I own? Who will I work with? How will success be measured?
+          </p>
+
+          <p>
+            They align recruiters and hiring managers on messaging. Mixed signals kill trust faster than slow responses.
+          </p>
+
+          <p>
+            They also respect candidate experience. Clear timelines, honest feedback, and decisive processes are now table stakes, not differentiators.
+          </p>
+
+          <p>
+            A blunt insight from the field: candidates judge companies by how they are treated when things don’t go perfectly.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-white mb-4">Common mistakes GCCs in India still make</h2>
+
+          <p>
+            The most common mistake is confusing brand size with brand strength. Big names assume automatic attraction. It no longer works that way.
+          </p>
+
+          <p>
+            The second mistake is over-indexing on compensation to solve deeper issues. Pay may get acceptance, but it does not buy loyalty.
+          </p>
+
+          <p>
+            The third mistake is decentralised hiring narratives. When recruiters, hiring managers, and leaders tell different stories, candidates disengage.
+          </p>
+
+          <p>
+            Finally, many GCCs underinvest in leadership hiring discipline. Senior roles are filled based on urgency, not fit. The downstream impact is costly.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-white mb-4">What best-in-class GCCs do differently</h2>
+
+          <p>
+            High-performing GCCs treat hiring as a strategic capability.
+          </p>
+
+          <p>
+            They define success before they interview. Every role has clear outcomes, not vague expectations.
+          </p>
+
+          <p>
+            They invest in interviewer quality. Interviewers are trained, calibrated, and accountable.
+          </p>
+
+          <p>
+            They build employer brands around truth, not aspiration alone.
+          </p>
+
+          <p>
+            They integrate DE&I into role design, not post-hire initiatives.
+          </p>
+
+          <p>
+            They use recruitment marketing as education, not promotion.
+          </p>
+
+          <p>
+            Most importantly, they listen. Candidate feedback is treated as market intelligence, not rejection noise.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-white mb-4">A practical attraction-led hiring checklist</h2>
+
+          <p>
+            Before launching or revising hiring plans, leading GCCs ask:
+          </p>
+
+          <p>
+            What problem does this role solve in the next 12 months?
+          </p>
+
+          <p>
+            Why would a top performer choose us over three similar options?
+          </p>
+
+          <p>
+            What part of our hiring process creates friction?
+          </p>
+
+          <p>
+            Does our leadership behaviour match our hiring promise?
+          </p>
+
+          <p>
+            What data are we using to improve decisions?
+          </p>
+
+          <p>
+            If these questions feel uncomfortable, that is the work.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-white mb-4">The next 12 to 24 months: what GCC leaders should expect</h2>
+
+          <p>
+            Hiring will become more selective, not slower.
+          </p>
+
+          <p>
+            Employer branding will shift from broadcast to conversation.
+          </p>
+
+          <p>
+            DE&amp;I outcomes will influence leadership credibility, not just reporting metrics.
+          </p>
+
+          <p>
+            Recruitment teams will be expected to think like market analysts, not coordinators.
+          </p>
+
+          <p>
+            Most importantly, attraction will outperform retention programs. You cannot retain talent you mis-hired in the first place.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            A closing POV worth sitting with
+          </h2>
+
+          <p>
+            Attrition is not a retention problem. It is a hiring truth surfacing late.
+          </p>
+
+          <p>
+            The GCCs that win in 2026 will not be those with the loudest brands or the fastest offers. They will be the ones that design hiring systems rooted in clarity, credibility, and respect for talent.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-[#D2A679]/30 bg-white/[0.03] p-6">
+          <p className="text-center text-lg font-medium text-white">
+            At Talentiser, working across leadership hiring, RPO, and talent intelligence, one pattern repeats itself across markets. When companies stop chasing talent and start earning it, everything changes.
+          </p>
+          <p className="mt-2 text-center text-[#D2A679] font-semibold">
+            To build attraction-led hiring systems for leadership, GCC scale, or RPO, connect with Talentiser at +91 9876543210.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+
+  {
+    id: 'remote-hybrid-back-to-office-india-gccs',
+    title: "Remote, Hybrid, or Back to Office? How India’s GCCs Are Rethinking Work Models and What Employees Really Want",
+    date: "23 January 2026",
+    readTime: '7 min read',
+    tag: 'Leadership',
+    img: attraction.src,
+    content: (
+      <div className="space-y-16 text-base leading-8 text-white/70 sm:text-lg">
+
+        <div className="space-y-4">
+          <p>
+            For India’s Global Capability Centers, the work model debate is no longer philosophical. It is operational, financial, and deeply tied to hiring outcomes. Over the last three years, GCC leaders have swung from fully remote optimism to office-first mandates, and now to something far messier in between. The result? Confused employees, uneven productivity, rising attrition in critical roles, and hiring pipelines that look strong on paper but collapse at offer stage.
+          </p>
+
+          <p>
+            Here’s the plain-English reality. Work models directly affect who you can hire, how fast you can scale, and whether talent stays beyond 18 months. In the first 300 words, let’s get the basics clear.
+          </p>
+
+          <p>
+            What is really being debated is not remote versus office. It is trust versus control. Why it matters now is simple: India’s GCC talent market has matured. Engineers, product leaders, data scientists, and functional heads now have options. How companies respond is showing up in offer drop-offs, joining ratios, and retention curves. What’s next is not a single model, but a deliberate, role-led, outcomes-driven approach to flexibility.
+          </p>
+
+          <p>
+            This article draws from live hiring data, candidate conversations, and GCC leadership patterns we see across India. No fluff. No nostalgia for 2019. Just what is working, what is failing, and why.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            The GCC work model debate in plain English
+          </h2>
+
+          <p>
+            Remote work means location independence. Hybrid usually means some mix of office and home, often poorly defined. Back to office means physical presence as a default, usually justified by culture or productivity.
+          </p>
+
+          <p>
+            Most GCCs claim to be hybrid. Very few have clearly articulated what hybrid actually means for different roles, seniority levels, or business outcomes. Candidates see through this instantly.
+          </p>
+
+          <p>
+            In interviews, talent is asking sharper questions now. How many days in office? Is it flexible or fixed? Who decides exceptions? Does leadership follow the same rules? These answers influence acceptance decisions more than compensation deltas in many cases.
+          </p>
+        </div>
+
+
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            Why this matters now for India’s GCCs
+          </h2>
+
+          <p>
+            India is no longer just a cost arbitrage destination. GCCs here are running global products, owning P&amp;Ls, and driving innovation. The talent you need for that work is globally mobile in mindset, if not physically.
+          </p>
+
+          <p>
+            Three market signals are impossible to ignore.
+          </p>
+
+          <p>
+            First, senior and niche talent is resisting rigid office mandates. Leadership hiring suffers the most when flexibility is unclear or performative.
+          </p>
+
+          <p>
+            Second, productivity has stopped being a location question. Teams that shipped consistently during remote years did so because of clarity, not proximity.
+          </p>
+
+          <p>
+            Third, employer branding is being rewritten quietly on platforms where candidates talk to each other. Work model rigidity is now a red flag, not a neutral policy.
+          </p>
+
+          <p>
+            GCCs that treat work models as policy decisions are losing out to those treating them as talent strategy.
+          </p>
+        </div>
+
+
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            The productivity myth that refuses to die
+          </h2>
+
+          <p>
+            Let’s address the elephant in the boardroom. Many leaders still believe productivity drops when people work remotely. The data tells a more nuanced story.
+          </p>
+
+          <p>
+            Productivity drops when expectations are vague, managers are undertrained, and outcomes are not clearly defined. These issues existed long before remote work. Offices just hid them better.
+          </p>
+
+          <p>
+            In GCCs where remote work failed, the real causes were usually poor onboarding, meeting overload, and lack of ownership clarity. In contrast, teams with strong goal-setting frameworks and manager accountability often outperformed their office-first peers.
+          </p>
+
+          <p>
+            One blunt insight we hear from candidates often: “If your managers need physical supervision to manage performance, location is not your problem.”
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            How work models impact hiring and retention
+          </h2>
+
+          <p>
+            Hiring friction shows up in predictable ways.
+          </p>
+
+          <p>
+            Offer acceptance rates drop when flexibility is unclear or changes mid-process. Candidates feel bait-and-switched.
+          </p>
+
+          <p>
+            Time to hire increases when talent pools are artificially restricted to specific cities, especially for leadership and niche tech roles.
+          </p>
+
+          <p>
+            Early attrition spikes when employees realise the lived experience does not match what was promised.
+          </p>
+
+          <p>
+            Retention beyond two years correlates strongly with perceived autonomy, not perks or office infrastructure.
+          </p>
+
+          <p>
+            GCCs that get this right design work models around roles, not hierarchy. A staff engineer’s needs are different from a finance operations lead. A global product owner operates differently from a local support role.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            Common mistakes GCCs in India are making
+          </h2>
+
+          <p>
+            The first mistake is copying global HQ mandates without local context. What works in New York or Frankfurt does not always map cleanly to Bangalore or Hyderabad.
+          </p>
+
+          <p>
+            The second mistake is one-size-fits-all hybrid policies. Mandating three days in office for every role signals control, not trust.
+          </p>
+
+          <p>
+            The third mistake is leadership hypocrisy. When senior leaders are remote but teams are not, credibility evaporates.
+          </p>
+
+          <p>
+            The fourth mistake is treating flexibility as a perk instead of a productivity lever. This framing makes it easy to revoke during tough quarters, damaging trust long-term.
+          </p>
+
+          <p>
+            Finally, many GCCs underestimate how much work model rigidity hurts diversity hiring. Women returning to work, caregivers, and senior specialists are disproportionately impacted.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            What best-in-class GCCs do differently
+          </h2>
+
+          <p>
+            High-performing GCCs treat work models as a design problem, not a moral debate.
+          </p>
+
+          <p>
+            They start with role segmentation. Which roles truly require physical presence? Which benefit from collaboration bursts rather than daily attendance? Which are outcome-driven and location-agnostic?
+          </p>
+
+          <p>
+            They define hybrid clearly. Not vague language like “flexible when needed,” but explicit expectations around core collaboration days, decision-making forums, and autonomy boundaries.
+          </p>
+
+          <p>
+            They invest in manager capability. Managing outcomes, not attendance, is a learned skill. The best GCCs train for it.
+          </p>
+
+          <p>
+            They align leadership behaviour. When CXOs follow the same rules as teams, trust compounds fast.
+          </p>
+
+          <p>
+            They communicate early and often. Candidates hear the truth in the first conversation, not the offer letter.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-white mb-4">A simple decision framework GCC leaders can use</h2>
+          <p>
+            Ask four questions before setting or revising work models.
+          </p>
+          <ul className="list-disc  pl-6 text-white/70">
+            <li>
+              What business outcome does this role drive?
+            </li>
+            <li>
+              What collaboration does it genuinely require?
+            </li>
+            <li>
+              What talent pool are we trying to attract or retain?
+            </li>
+            <li>
+              What trust assumptions are we making?
+            </li>
+          </ul>
+
+          <p>
+            If you cannot answer these clearly, your policy is likely reactive, not strategic.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            Case patterns: what works and what breaks
+          </h2>
+
+          <p>
+            GCCs that forced blanket return-to-office mandates without role differentiation saw immediate hiring slowdowns and higher senior attrition.
+          </p>
+
+          <p>
+            GCCs that went fully remote without investing in structure struggled with onboarding quality and leadership alignment.
+          </p>
+
+          <p>
+            GCCs that adopted role-based hybrid models, with clear norms and leadership buy-in, improved both hiring velocity and retention metrics within two quarters.
+          </p>
+
+          <p>
+            The difference was never ideology. It was execution.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            The next 12 to 24 months: what’s coming
+          </h2>
+
+          <p>
+            Work models will become a competitive differentiator, not a hygiene factor.
+          </p>
+
+          <p>
+            We expect sharper segmentation by role and career stage. Early-career talent may prefer office exposure. Senior specialists will prioritise autonomy.
+          </p>
+
+          <p>
+            AI-enabled productivity tracking will shift conversations from presence to output, making rigid attendance policies harder to justify.
+          </p>
+
+          <p>
+            Cities beyond Tier 1 hubs will matter more as GCCs tap distributed talent pools without opening new offices.
+          </p>
+
+          <p>
+            Most importantly, candidates will continue to vote with their feet. Quietly. Decisively.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-white mb-4">
+            A subtle but important POV
+          </h2>
+
+          <p>
+            The strongest GCCs in India are not asking “Should we be remote or office-first?” They are asking “What work model helps us hire, retain, and scale the right talent for the outcomes we own?”
+          </p>
+
+          <p>
+            That shift in question changes everything.
+          </p>
+        </div>
+
+
+
+
+        <div className="rounded-2xl border border-[#D2A679]/30 bg-white/[0.03] p-6">
+          <p className="text-center text-lg font-medium text-white">
+            At firms like Talentiser, where we sit at the intersection of leadership hiring, RPO, and talent intelligence, we see one truth repeat itself. Flexibility without clarity fails. Control without trust fails faster. The winners design work, not rules.
+          </p>
+          <p className="mt-2 text-center text-[#D2A679] font-semibold">
+            If you are rethinking leadership hiring, GCC scale, or work model impact on talent outcomes, speak to Talentiser at +91 9876543210.
+          </p>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: 'gccs-will-be-judged-on-decisions-made',
+    title: "2026 Prediction: GCCs Will Be Judged on Decisions Made, Not Costs Saved",
+    date: "13 January 2026",
+    readTime: '7 min read',
+    tag: 'Leadership',
+    img: attraction.src,
+    content: (
+      <div className="space-y-16 text-base leading-8 text-white/70 sm:text-lg">
+
+        <div className="space-y-4">
+          <p>
+            For over two decades, the primary justification for Global Capability Centers (GCCs) was simple and defensible: cost arbitrage. Build in India. Save money. Scale quietly.
+          </p>
+          <p>
+            That narrative is now obsolete.
+          </p>
+          <p>
+            As we move into 2026, GCCs will no longer be evaluated on how much cost they took out of the system, but on the quality, speed, and impact of decisions they help the enterprise make.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <p>
+            And this shift is already underway.
+          </p>
+          <ul className="list-disc  pl-6 text-white/70">
+            <li>Boards aren’t asking, “How lean is the GCC?” anymore.</li>
+            <li>They’re asking, “What decisions are we trusting this GCC with?”</li>
+            <li>That single question changes how GCCs are structured, staffed, measured, and led.</li>
+          </ul>
+
+          <p>
+            If you cannot answer these clearly, your policy is likely reactive, not strategic.
+          </p>
+
+          <p>
+            What, Why, How, and What’s Next (Clear and Early)
+          </p>
+
+          <ul>
+            <li><strong>What:</strong> GCC success metrics are shifting from cost efficiency to decision ownership and decision quality.</li>
+            <li><strong>Why:</strong> Cost advantages have plateaued, while business complexity has exploded.</li>
+            <li><strong>How:</strong> GCCs must evolve from execution hubs into decision-making engines with real accountability.</li>
+            <li><strong>What’s Next:</strong> Over the next 12–24 months, GCCs that don’t earn decision trust will lose relevance, budget, and strategic influence.</li>
+          </ul>
+
+          <p>
+            If you lead, build, or hire for GCCs, this is the reset moment.
+          </p>
+
+          <p>
+            Plain English: What Does “Judged on Decisions” Actually Mean?
+          </p>
+
+          <p><strong>It means this:</strong> A GCC is no longer valuable because it executes instructions efficiently.</p>
+
+          <strong>It is valuable because it makes or materially shapes high-stakes business decisions.</strong>
+
+          <p>
+            <strong>Examples:</strong>
+            <ul className="list-disc  pl-6 text-white/70">
+              <li>Product trade-offs, not just development velocity</li>
+              <li>Risk calls, not just compliance execution</li>
+              <li>Talent strategy decisions, not just hiring throughput</li>
+              <li>Data-led recommendations, not just reporting</li>
+            </ul>
+            Cost saved is historical.
+          </p>
+
+          <p><strong>Decisions made are forward-looking. </strong>And enterprises care far more about the future.</p>
+        </div>
+
+        <div className="space-y-8">
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-4">Why This Matters Now</h2>
+            <p>Three structural shifts are forcing this change.</p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {q: "Cost Arbitrage Has Matured", a: (<p>India remains competitive, but wage inflation, attrition, and parity roles mean cost alone no longer differentiates a GCC.</p>)},
+              {q: "Enterprises Are Operating in Permanent Uncertainty", a: (<p>AI adoption, regulatory flux, geopolitical risk, and rapid market shifts require faster, distributed decision-making.</p>)},
+              {q: "GCCs Have Grown Up", a: (<p>Many GCCs now house 5,000–20,000+ employees with deep domain expertise. The question is no longer can they decide , but why aren’t they deciding more?</p>)},
+              {q: "The Old GCC Model vs the New Reality", a: (<p>AI adoption, regulatory flux, geopolitical risk, and rapid market shifts require faster, distributed decision-making. <ul className="list-disc  pl-6 text-white/70"><li>Measure success by cost reduction</li><li>Reward execution efficiency</li><li>Centralize decisions at HQ</li><li>Optimize for predictability</li></ul></p>)},
+            ]?.map((v, i) => {
+              return (
+                <div key={i}>
+                  <p>{i+1}. {v.q}</p>
+                  <p>{v.a}</p>
+                </div>
+              )
+            })}
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-4">Now (and 2026 onwards):</h2>
+            <ul className="list-disc  pl-6 text-white/70">
+              <li>Measure success by decision impact</li>
+              <li>Reward judgment and accountability</li>
+              <li>Push decisions closer to execution</li>
+              <li>Optimize for speed and resilience</li>
+            </ul>
+            <strong>This is not a branding exercise. It’s an operating model shift.</strong>
+          </div>
+
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold text-white mb-4">Where GCCs Still Get This Wrong</h2>
+            {[
+              {q: "Rebranding Without Authority", a: "Calling teams “Centers of Excellence” without decision rights creates frustration, not value."},
+              {q: "Senior Talent Without Mandate", a: "Hiring strong leaders but limiting them to execution roles leads to attrition and underutilization."},
+              {q: "Measuring the Wrong Metrics", a: "If KPIs are still cost-per-head and utilization, don’t expect strategic behavior."},
+            ]?.map((v, i) => {
+              return (
+                <div key={i}>
+                  <p><strong>Mistake {i+1}:</strong> {v.q}</p>
+                  <p>{v.a}</p>
+                </div>
+              )
+            })}
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {q: "What Best-in-Class GCCs Are Doing Differently", a: (<p>The most advanced GCCs we see today share common patterns.</p>)},
+              {q: "They Redefine Success Metrics", a: (<ul className="list-disc  pl-6 text-white/70"><li>Decision turnaround time</li><li>Business outcomes influenced</li><li>Risk mitigated</li><li>Revenue enabled</li></ul>)},
+              {q: "They Push Decision Ownership", a: (<p>Not everything flows back to HQ. Local leaders own outcomes Downstream</p>)},
+              {q: "They Hire for Judgment, Not Just Capability", a: (<p>Experience in ambiguity matters more than functional depth alone. <strong>This is where leadership hiring becomes existential.</strong></p>)},
+              {q: "How Leadership Hiring Must Change for GCCs", a: (<div className="space-y-4">
+                <div>
+                  <p>A common search query we hear:</p>
+                  <strong>“How do companies hire leaders for next-gen GCCs?”</strong>
+                  <p>The answer: not by filling traditional roles.</p>
+                </div>
+                <p>
+                  They hire leaders who can:
+                  <ul className="list-disc  pl-6 text-white/70">
+                    <li>Operate with incomplete data</li>
+                    <li>Balance global context with local insight</li>
+                    <li>Influence without formal authority</li>
+                    <li>Make trade-offs, not just recommendations</li>
+                  </ul>
+                </p>
+                <p>This requires a shift from role-based hiring to <strong>decision-based leadership hiring</strong></p>
+                <p>At Talentiser, the most successful GCC leadership hires we’ve seen recently were framed around decision problems, not job descriptions.</p>
+              </div>)},
+              {q: "A Practical GCC Decision-Readiness Framework", a: (<div className="space-y-4">
+                <p>
+                  Before claiming strategic relevance, every GCC should ask:
+                  <ul className="list-disc  pl-6 text-white/70">
+                    <li>What decisions are we trusted to make today?</li>
+                    <li>What decisions do we want to own in 18 months?</li>
+                    <li>What capabilities block that transition?</li>
+                    <li>What leadership upgrades are required?</li>
+                    <li>What governance changes must follow?</li>
+                  </ul>
+                </p>
+                <p>If the answer to #1 is <strong>"very few"</strong>, everything else is theoretical.</p>
+              </div>)},
+              {q: "The Talent Implication No One Likes Talking About", a: (<div className="space-y-4">
+                <p>
+                  Decision ownership exposes leadership gaps.
+                  Some leaders excel in execution-heavy environments but struggle when:
+                  <ul className="list-disc  pl-6 text-white/70">
+                    <li>Stakes are higher</li>
+                    <li>Trade-offs are real</li>
+                    <li>Accountability is visible</li>
+                  </ul>
+                </p>
+                <p>2026 will force difficult conversations about leadership readiness in GCCs.</p>
+              </div>)},
+              {q: "The India Advantage (If Used Right)", a: (<div className="space-y-4">
+                <p>
+                  India-based GCCs have an edge:
+                  <ul className="list-disc  pl-6 text-white/70">
+                    <li>Scale of talent</li>
+                    <li>Increasing cross-domain expertise</li>
+                    <li>Exposure to complexity early</li>
+                  </ul>
+                </p>
+                <p>But advantage only converts to value when paired with decision authority</p>
+                <p>Without that, GCCs remain expensive back offices wearing strategic labels.</p>
+              </div>)},
+              {q: "What’s Coming Next (12–24 Month Outlook)", a: (<div className="space-y-4">
+                <p>
+                  Expect to see:
+                  <ul className="list-disc  pl-6 text-white/70">
+                    <li>GCC leaders reporting directly into global business heads</li>
+                    <li>More P&amp;L-linked accountability</li>
+                    <li>Leadership roles split between execution and decision ownership</li>
+                    <li>Boards explicitly tracking “decision velocity” metrics</li>
+                  </ul>
+                </p>
+                <p>The GCCs that win will look less like offshore teams and more like <strong>distributed headquarters</strong></p>
+              </div>)},
+              {q: "Final Thought", a: (<div className="space-y-4">
+                <p>
+                  In 2026, no board will applaud a GCC for being cheap.
+                  They will ask:
+                  <ul className="list-disc  pl-6 text-white/70">
+                    <li>Did it help us decide faster?</li>
+                    <li>Did it reduce risk?</li>
+                    <li>Did it unlock growth?</li>
+                  </ul>
+                </p>
+                <p>GCCs that answer <strong>“yes”</strong> will thrive.</p>
+                <p>Those that can’t will quietly be restructured, downsized, or ignored.</p>
+              </div>)},
+            ]?.map((v, i) => {
+              return (
+                <div key={i}>
+                  <p>{v.q}</p>
+                  <p>{v.a}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+
+
+        <div className="rounded-2xl border border-[#D2A679]/30 bg-white/[0.03] p-6">
+          <p className="text-center text-lg font-medium text-white">
+            Cost saved is yesterday’s win.
+          </p>
+          <p className="mt-2 text-center text-[#D2A679] font-semibold">
+            Decisions made are tomorrow’s moat.
           </p>
         </div>
       </div>
