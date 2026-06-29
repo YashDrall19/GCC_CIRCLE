@@ -67,9 +67,9 @@ export default function InsightDetailPage() {
                 {article.title}
               </h1>
 
-              <p className="text-white/75 text-sm sm:text-base md:text-lg max-w-3xl">
+              {/* <p className="text-white/75 text-sm sm:text-base md:text-lg max-w-3xl">
                 {article.excerpt}
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
