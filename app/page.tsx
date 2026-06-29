@@ -33,9 +33,8 @@ const pillars = [
 ];
 
 const upcomingEvents = [
-  { city: 'Hyderabad', month: 'May', year: '2026', type: 'Leadership Mixer' },
-  { city: 'Bangalore', month: 'Jun', year: '2026', type: 'Tech Roundtable' },
-  { city: 'Delhi', month: 'Jul', year: '2026', type: 'Executive Summit' },
+  { city: 'Hyderabad', month: 'June', year: '2026', type: 'HR Mixer' },
+  { city: 'Hyderabad', month: 'June', year: '2026', type: 'Tech Mixer' },
 ];
 
 const testimonials = [

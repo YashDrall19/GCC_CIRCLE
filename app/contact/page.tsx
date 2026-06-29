@@ -6,7 +6,7 @@ import { Mail, Phone, Linkedin, ArrowRight, CircleCheck as CheckCircle, MapPin }
 import { urls } from '@/constants/api';
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: '', email: '', message: '', phone: '', linkedin: '' });
+  const [form, setForm] = useState({ name: '', email: '', message: '', phone: '', linkedin: '', purpose: '' });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -194,6 +194,23 @@ export default function ContactPage() {
                       className="flex-1 bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
                     />
                   </div>
+                </div>
+                <div>
+                  <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">
+                    Purpose of Enquiry *
+                  </label>
+                  <select
+                    name="purpose"
+                    value={form.purpose}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors appearance-none"
+                  >
+                    <option value="" className="bg-[#0a0e1a]">Select...</option>
+                    {["Join the community", "Partnership Enquiry", "Collaboration/ Co-branding", "Content Publishing/ Personal branding", "Event", "Job opportunity"].map((m) => (
+                      <option key={m} value={m} className="bg-[#0a0e1a]">{m}</option>
+                    ))}
+                  </select>
                 </div>
                 <div>
                   <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">LinkedIn URL *</label>

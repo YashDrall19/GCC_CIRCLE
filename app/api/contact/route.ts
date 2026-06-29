@@ -4,11 +4,11 @@ import db from "@/lib/db";
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { name, phone, email, linkedin, message } = body;
+        const { name, phone, email, linkedin, message, purpose } = body;
 
         const [result] = await db.query(
-            "INSERT INTO contactform (name, phone, email, linkedin, message) VALUES (?, ?, ?, ?, ?)",
-            [name, phone, email, linkedin, message]
+            "INSERT INTO contactform (name, phone, email, linkedin, message, purpose) VALUES (?, ?, ?, ?, ?, ?)",
+            [name, phone, email, linkedin, message, purpose]
         );
 
         return NextResponse.json({

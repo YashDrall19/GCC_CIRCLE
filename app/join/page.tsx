@@ -30,7 +30,7 @@ export default function JoinPage() {
     phone: '',
     company: '',
     title: '',
-    role: '',
+    source: '',
     linkedin: '',
     whatsapp: false,
     agreed: false,
@@ -241,18 +241,27 @@ export default function JoinPage() {
                   <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">
                     How did you hear about us? *
                   </label>
-                  <select
-                    name="role"
-                    value={form.role}
+                  {/* <select
+                    name="source"
+                    value={form.source}
                     onChange={handleChange}
                     required
                     className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors appearance-none"
                   >
-                    <option value="" className="bg-[#0a0e1a]">Select your role...</option>
+                    <option value="" className="bg-[#0a0e1a]">Select...</option>
                     {memberTypes.map((m) => (
                       <option key={m.value} value={m.label} className="bg-[#0a0e1a]">{m.label}</option>
                     ))}
-                  </select>
+                  </select> */}
+                  <input
+                    type="text"
+                    name="source"
+                    value={form.source}
+                    onChange={handleChange}
+                    required
+                    placeholder="GCC Circle Event, LinkedIn, Referral, etc."
+                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
+                  />
                 </div>
 
                 <div>
