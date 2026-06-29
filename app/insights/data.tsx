@@ -10,51 +10,23 @@ import crunch3 from "../../public/insights/crunch3.avif";
 
 import future from "../../public/insights/future.avif";
 import attraction from "../../public/insights/attraction.avif";
+import earth from "../../public/insights/earth.avif";
+import window from "../../public/insights/window.avif";
+import analytics from "../../public/insights/analytics.avif";
+import crowd from "../../public/insights/crowd.avif";
 
 export const insights = [
-  {
-    id: 'women-leaders-reshaping-gcc',
-    title: "Why Women Leaders Are Reshaping GCC Culture Faster Than Traditional Enterprises",
-    date: "29 May 2026",
-    readTime: '5 min read',
-    tag: 'Culture',
-    img: future.src,
-    content: (
-      <div className="space-y-8 text-base leading-8 text-white/70 sm:text-lg">
-        <p>
-          Women leaders are changing decision rhythms and talent practices inside Global Capability Centers (GCCs) with speed and clarity. Their approach combines inclusive hiring, continuous upskilling, and a bias toward measurable outcomes — not process for its own sake.
-        </p>
-
-        <div>
-          <h2 className="text-2xl font-bold text-white mb-4">Practical moves driving change</h2>
-          <ul className="list-disc space-y-2 pl-6 text-white/70">
-            <li>Embedding mentorship programmes that link junior hires to senior sponsors.</li>
-            <li>Designing role families around capability rather than title, enabling lateral moves.</li>
-            <li>Using people analytics to target development investments where they move the needle.</li>
-          </ul>
-        </div>
-
-        <div className="flex justify-center">
-          <div className="overflow-hidden rounded-2xl max-w-2xl w-full">
-            <Image src={owning1} alt="Women leaders" className="w-full h-auto" />
-          </div>
-        </div>
-
-        <p>
-          The outcome is faster capability building and improved retention: teams report higher learning velocity and clearer pathways to responsibility. For GCCs, the imperative is simple — measure decisions, not headcount.
-        </p>
-
-        <div>
-          <p className="font-semibold text-white mb-3">What leaders should do this quarter:</p>
-          <ol className="list-decimal pl-6 space-y-2 text-white/70">
-            <li>Run a one-month capability audit to identify 3 high-value development pockets.</li>
-            <li>Pair senior sponsors with emerging leaders for focused 90-day projects.</li>
-            <li>Align performance metrics to decisions influenced, not tasks completed.</li>
-          </ol>
-        </div>
-      </div>
-    ),
-  },
+  // {
+  //   id: 'women-leaders-reshaping-gcc',
+  //   title: "Why Women Leaders Are Reshaping GCC Culture Faster Than Traditional Enterprises",
+  //   date: "29 May 2026",
+  //   readTime: '5 min read',
+  //   tag: 'Culture',
+  //   img: future.src,
+  //   content: (
+  //     <div className="space-y-8 text-base leading-8 text-white/70 sm:text-lg"></div>
+  //   ),
+  // },
   {
     id: 'owning-ai-stack',
     title: "Owning the AI Stack vs Renting It: The Strategic Trade-off No Leadership Team Can Ignore",
@@ -515,7 +487,7 @@ export const insights = [
     date: "4 February 2026",
     readTime: '7 min read',
     tag: 'Leadership',
-    img: future.src,
+    img: earth.src,
     content: (
       <div className="space-y-16 text-base leading-8 text-white/70 sm:text-lg">
         
@@ -1086,14 +1058,13 @@ export const insights = [
       </div>
     ),
   },
-
   {
     id: 'remote-hybrid-back-to-office-india-gccs',
     title: "Remote, Hybrid, or Back to Office? How India’s GCCs Are Rethinking Work Models and What Employees Really Want",
     date: "23 January 2026",
     readTime: '7 min read',
     tag: 'Leadership',
-    img: attraction.src,
+    img: earth.src,
     content: (
       <div className="space-y-16 text-base leading-8 text-white/70 sm:text-lg">
 
@@ -1380,7 +1351,7 @@ export const insights = [
     date: "13 January 2026",
     readTime: '7 min read',
     tag: 'Leadership',
-    img: attraction.src,
+    img: window.src,
     content: (
       <div className="space-y-16 text-base leading-8 text-white/70 sm:text-lg">
 
@@ -1603,6 +1574,644 @@ export const insights = [
             Decisions made are tomorrow’s moat.
           </p>
         </div>
+      </div>
+    ),
+  },
+  {
+    id: 'how-ai-reshaped-gcc',
+    title: "2025 Recap: How AI Reshaped GCC Mandates Faster Than Org Charts Could Keep Up",
+    date: "29 December 2025",
+    readTime: '7 min read',
+    tag: 'Leadership',
+    img: analytics.src,
+    content: (
+      <div className="space-y-16 text-base leading-8 text-white/70 sm:text-lg">
+
+        {/* Existing content above */}
+
+        <div className="space-y-8">
+          <strong>The most common mistakes GCCs made in 2025</strong>
+
+          <div className="space-y-8">
+            {[
+              {
+                title: "Treating AI as a capability add-on",
+                content: (
+                  <>
+                    <p>Many organizations bolted AI onto existing teams without redefining ownership. The result? Tools produced insights. No one owned the decision.</p>
+                    <p className="font-semibold text-[#D2A679]">AI without accountability is just faster confusion.</p>
+                  </>
+                ),
+              },
+              {
+                title: "Over-indexing on technical skills",
+                content: (
+                  <>
+                    <p>Hiring focused heavily on data scientists, ML engineers, and automation specialists — but ignored business translators.</p>
+                    <p>The real gap wasn't technical. It was <strong>contextual leadership.</strong></p>
+                  </>
+                ),
+              },
+              {
+                title: "Promoting managers without redesigning roles",
+                content: (
+                  <>
+                    <p>People were elevated into leadership positions designed for a pre-AI world. They suddenly had:</p>
+                    <ul className="list-disc pl-6">
+                      <li>Fewer people</li>
+                      <li>Faster decision cycles</li>
+                      <li>Higher visibility</li>
+                      <li>Unclear decision rights</li>
+                    </ul>
+                    <p>Burnout followed. Attrition wasn't far behind.</p>
+                  </>
+                ),
+              },
+              {
+                title: "Measuring output instead of impact",
+                content: (
+                  <>
+                    <p>Old metrics survived long after their relevance expired.</p>
+
+                    <div className="grid gap-6 md:grid-cols-2 mt-6">
+                      <div className="rounded-xl border border-white/10 p-5">
+                        <p className="font-semibold text-white mb-3">Yesterday's Metrics</p>
+                        <ul className="list-disc pl-6">
+                          <li>Tickets closed</li>
+                          <li>Reports delivered</li>
+                          <li>Models built</li>
+                        </ul>
+                      </div>
+
+                      <div className="rounded-xl border border-[#D2A679]/30 bg-[#D2A679]/5 p-5">
+                        <p className="font-semibold text-[#D2A679] mb-3">Business Expectations</p>
+                        <ul className="list-disc pl-6">
+                          <li>Decisions improved</li>
+                          <li>Risks anticipated</li>
+                          <li>Revenue influenced</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </>
+                ),
+              },
+            ].map((item, index) => (
+              <div key={index}>
+                <p>
+                  <strong>{index + 1}. </strong>
+                  {item.title}
+                </p>
+                <div className="mt-3">{item.content}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-8">
+          <strong>What best-in-class GCCs did differently</strong>
+
+          <p>
+            The highest-performing GCCs in 2025 didn't have better AI.
+            <strong> They had better leadership design.</strong>
+          </p>
+
+          {[
+            {
+              title: "They rewrote role charters",
+              body: (
+                <>
+                  <p>Job descriptions shifted from <em>responsible for</em> to <em>accountable for.</em></p>
+
+                  <div className="rounded-xl border border-white/10 p-5 mt-5 space-y-3">
+                    <p>From: <strong>Build dashboards</strong></p>
+                    <p>To: <strong>Influence commercial decisions through insight</strong></p>
+                  </div>
+
+                  <p className="mt-4">That clarity transformed hiring, performance reviews, and internal mobility.</p>
+                </>
+              ),
+            },
+            {
+              title: "They hired for judgment, not just skill",
+              body: (
+                <>
+                  <p>The most valuable leaders weren't necessarily the deepest specialists.</p>
+
+                  <ul className="list-disc pl-6 mt-4">
+                    <li>Comfortable with ambiguity</li>
+                    <li>Fluent in business trade-offs</li>
+                    <li>Able to challenge AI recommendations instead of accepting them blindly</li>
+                  </ul>
+
+                  <p className="mt-4 font-semibold text-[#D2A679]">
+                    AI made judgment visible—and valuable.
+                  </p>
+                </>
+              ),
+            },
+            {
+              title: "They collapsed hierarchy, not governance",
+              body: (
+                <>
+                  <p>Winning organizations reduced layers while strengthening decision clarity.</p>
+
+                  <ul className="list-disc pl-6 mt-4">
+                    <li>Fewer approvals</li>
+                    <li>Clear escalation paths</li>
+                    <li>Tighter feedback loops</li>
+                  </ul>
+
+                  <p className="mt-4">Governance didn't disappear—it became lighter and sharper.</p>
+                </>
+              ),
+            },
+            {
+              title: "They invested in translators",
+              body: (
+                <>
+                  <p>Roles that became dramatically more valuable included:</p>
+
+                  <ul className="list-disc pl-6 mt-4">
+                    <li>Analytics leaders who could speak P&amp;L</li>
+                    <li>Engineering heads who understood customer impact</li>
+                    <li>Operations leaders who could quantify business risk</li>
+                  </ul>
+
+                  <p className="mt-4">
+                    These weren't entirely new positions. They were <strong>new expectations.</strong>
+                  </p>
+                </>
+              ),
+            },
+          ].map((item, i) => (
+            <div key={i}>
+              <p>
+                <strong>{i + 1}. </strong>
+                {item.title}
+              </p>
+
+              <div className="mt-3">{item.body}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="space-y-8">
+          <strong>A practical framework: The GCC Intelligence Maturity Filter</strong>
+
+          <p>If you're evaluating your GCC today, ask these five questions:</p>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {[
+              "Decision Ownership — Who owns the final call when AI and human judgment disagree?",
+              "Speed vs Safety — Where have you explicitly decided speed matters more than certainty?",
+              "Leadership Density — Do leaders manage people or outcomes?",
+              "Signal Clarity — Can teams explain why a recommendation exists, not just what it is?",
+              "Talent Optionality — If your top leader leaves tomorrow, does capability stay intact?",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="rounded-xl border border-white/10 bg-white/[0.03] p-5"
+              >
+                <p>{item}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-2xl border border-[#D2A679]/30 bg-[#D2A679]/5 p-6">
+            <p className="text-center text-white">
+              If you struggle to answer more than two, your GCC is still operating like a
+              <strong> build center</strong> instead of an <strong>intelligence hub.</strong>
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-8">
+          <strong>How leadership hiring had to evolve in 2025</strong>
+
+          <p>
+            AI didn't reduce the need for leaders.
+            <strong> It raised the bar for them.</strong>
+          </p>
+
+          <p>Winning GCCs increasingly hired leaders who:</p>
+
+          <ul className="list-disc pl-6">
+            <li>Operate without detailed instructions</li>
+            <li>Understand system-level impact</li>
+            <li>Earn credibility with global stakeholders</li>
+            <li>Don't hide behind process</li>
+          </ul>
+
+          <p>
+            Titles mattered less.
+            <strong> Decision confidence mattered more.</strong>
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>What's next: The next 12–24 months</strong>
+
+          <div className="space-y-8">
+            <div>
+              <p><strong>1.</strong> GCC Heads become enterprise leaders</p>
+              <p>The strongest GCC leaders will sit closer to business strategy than operational delivery.</p>
+            </div>
+
+            <div>
+              <p><strong>2.</strong> Fewer roles, broader mandates</p>
+              <ul className="list-disc pl-6 mt-3">
+                <li>Fewer management layers</li>
+                <li>Wider spans of control</li>
+                <li>Greater outcome ownership</li>
+              </ul>
+            </div>
+
+            <div>
+              <p><strong>3.</strong> Talent intelligence replaces talent volume</p>
+
+              <p className="mt-3">
+                Organizations will increasingly invest in leadership diagnostics,
+                succession readiness, and talent mapping because replacing the wrong
+                leader in an AI-enabled GCC is becoming a high-cost mistake.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-3xl border border-[#D2A679]/30 bg-gradient-to-r from-[#D2A679]/10 to-transparent p-8">
+          <h3 className="text-2xl font-semibold text-white">
+            The Talentiser Point of View
+          </h3>
+
+          <div className="space-y-5 mt-6">
+            <p>
+              2025 made one thing clear: <strong>tools alone don't future-proof GCCs.</strong>
+            </p>
+
+            <p>Organizations need leaders who can:</p>
+
+            <ul className="list-disc pl-6">
+              <li>Think in systems</li>
+              <li>Decide under uncertainty</li>
+              <li>Translate intelligence into business action</li>
+            </ul>
+
+            <p>
+              The organizations that recognized this early didn't simply keep pace.
+              <strong> They pulled ahead.</strong>
+            </p>
+
+            <p className="text-[#D2A679] font-semibold text-xl">
+              The rest are still updating org charts.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    ),
+  },
+  {
+    id: 'why-global-capability-centers-are-powering-the-next-wave-of-enterprise-growth',
+    title: "Why Global Capability Centers Are Powering the Next Wave of Enterprise Growth",
+    date: "23 November 2025",
+    readTime: '7 min read',
+    tag: 'Leadership',
+    img: crowd.src,
+    content: (
+      <div className="space-y-16 text-base leading-8 text-white/70 sm:text-lg">
+
+        <div className="space-y-8">
+          <p>
+            In the last decade, Global Capability Centers (GCCs) have quietly evolved from being low-cost offshore units to becoming strategic powerhouses of innovation, efficiency, and digital transformation.
+            Today, GCCs are not just supporting global operations—they’re driving them.
+          </p>
+
+          <p>
+            Let’s unpack why leading organizations are doubling down on building and scaling their GCCs, and how these centers are redefining the global business landscape.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>1. Access to Global Talent That Fuels Innovation</strong>
+
+          <p>
+            One of the biggest benefits of Global Capability Centers is access to world-class talent pools across technology, analytics, design, and R&amp;D.
+            Companies no longer rely solely on their headquarters for expertise—GCCs in regions like India, Poland, and the Philippines bring in niche specialists who deliver at global standards.
+          </p>
+
+          <p>
+            From AI engineers and cybersecurity experts to UX strategists and data scientists, GCCs have become magnets for specialized skill sets that enable enterprises to innovate faster and scale smarter.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>2. Cost Efficiency Without Compromising Quality</strong>
+
+          <p>
+            Let’s be real—cost efficiency remains a major driver for setting up GCCs. But unlike the traditional outsourcing model, GCCs combine cost optimization with ownership and control.
+          </p>
+
+          <p>
+            Organizations can reduce operational expenses while maintaining end-to-end visibility into processes, data, and decision-making.
+            It’s a smarter, leaner model—one that delivers quality at scale without the hidden costs of vendor dependency.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>3. Driving Operational Excellence and Agility</strong>
+
+          <p>
+            Operational excellence isn’t just about efficiency anymore—it’s about agility, resilience, and consistent delivery.
+            GCCs are enabling companies to standardize processes, adopt automation and AI, and build Centers of Excellence (CoEs) that drive measurable performance improvements across business units.
+          </p>
+
+          <p>
+            This operational backbone allows enterprises to respond faster to market shifts, implement global best practices, and improve productivity across teams and time zones.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>4. The New Hub for Research, Development, and Innovation</strong>
+
+          <p>
+            Modern GCCs are innovation accelerators. They don’t just execute—they experiment, prototype, and create.
+            Many multinational corporations now rely on their capability centers to lead R&amp;D and product innovation initiatives, working closely with universities, startups, and innovation clusters in their host countries.
+          </p>
+
+          <p>
+            Whether it’s developing digital platforms, testing emerging technologies, or creating IP, GCCs are the new frontier of enterprise innovation ecosystems.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>5. Scalability and Flexibility for a Dynamic Market</strong>
+
+          <p>
+            As businesses grow and market demands fluctuate, GCCs offer scalability and operational flexibility that traditional structures often can’t.
+            Companies can scale teams up or down based on demand, expand into new geographies, or shift capabilities seamlessly—all without breaking operational rhythm.
+          </p>
+
+          <p>
+            This agility helps organizations adapt faster to disruptions, maintain productivity, and stay future-ready.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>6. Strengthening Risk Management and Compliance</strong>
+
+          <p>
+            By spreading operations across multiple geographies, GCCs minimize geopolitical, operational, and financial risks.
+            Most are designed with robust compliance frameworks, data security protocols, and business continuity plans, ensuring stability even in uncertain times.
+          </p>
+
+          <p>
+            In short, GCCs give global enterprises the resilience they need to withstand disruptions—be it economic slowdowns, regulatory shifts, or global crises.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>7. Aligning With the Enterprise Strategy</strong>
+
+          <p>
+            Unlike outsourced units, GCCs are extensions of the parent organization’s DNA.
+            They align closely with the company’s vision, culture, and long-term goals—acting as strategic enablers rather than transactional service providers.
+          </p>
+
+          <p>
+            From digital transformation to customer experience, GCCs now influence core business strategy and drive measurable impact on innovation and growth.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>8. Knowledge and Culture Hubs</strong>
+
+          <p>
+            Global Capability Centers foster cross-border collaboration and knowledge exchange, connecting global teams with local expertise.
+            They serve as training and innovation hubs, promoting continuous learning, upskilling, and internal mobility—all of which help retain top talent and sustain innovation momentum.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>9. Enhancing Global Customer Experience</strong>
+
+          <p>
+            At their core, GCCs help organizations deliver superior customer experiences by ensuring consistent quality, faster response times, and deeper market understanding.
+          </p>
+
+          <p>
+            Whether it’s customer support, product design, or data analytics, GCCs enable enterprises to stay closer to their customers—literally and figuratively.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>10. Building a Truly Global Presence</strong>
+
+          <p>
+            Setting up GCCs in strategic markets helps companies expand their global footprint, strengthen partnerships, and tap into new opportunities.
+            This global reach also reinforces brand reputation, making the organization more attractive to both clients and top-tier talent.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-[#D2A679]/30 bg-white/[0.03] p-6">
+          <p className="text-center text-lg font-medium text-white">
+            Global Capability Centers are no longer defined by where work gets done.
+          </p>
+          <p className="mt-2 text-center text-[#D2A679] font-semibold">
+            They're defined by the value they create.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>Final Thoughts: The Future of Global Capability Centers</strong>
+
+          <p>
+            The future of GCCs lies in how effectively they combine technology, talent, and strategy to create sustainable business advantage.
+            What started as a cost-saving model has now matured into a center of transformation and innovation—one that powers the world’s leading enterprises.
+          </p>
+
+          <p>
+            For organizations yet to explore this model, the message is clear: GCCs are not just the future of work—they’re the architecture of global business resilience.
+          </p>
+        </div>
+
+      </div>
+    ),
+  },
+  {
+    id: 'from-cost-hub-to-innovation-engine',
+    title: "From Cost-Hub to Innovation-Engine: Next Phase of Global Capability Centres in India",
+    date: "23 November 2025",
+    readTime: '7 min read',
+    tag: 'Leadership',
+    img: earth.src,
+    content: (
+      <div className="space-y-16 text-base leading-8 text-white/70 sm:text-lg">
+
+        <div className="space-y-8">
+          <strong>India's GCC Evolution: From Back Office to Global Innovation Engine</strong>
+
+          <p>
+            India has long been the dominant destination for Global Capability Centers (GCCs) — and it's now entering its next chapter.
+            The narrative isn't just about "offshoring for cost" anymore: Indian GCCs are transforming into innovation engines,
+            strategic hubs, and growth levers for global enterprises. This shift has profound implications for companies, talent,
+            cities, and ecosystems alike.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>Current State and Growth Trajectory</strong>
+
+          <p>
+            According to a recent report, India will have more than <strong>2,100 GCCs by March 2028</strong>, up from around
+            <strong>1,700 today.</strong>
+          </p>
+
+          <p>
+            The GCC market in India is projected to grow to
+            <strong> US$99–105 billion by 2030.</strong>
+          </p>
+
+          <p>
+            The dominant sectors remain <strong>IT-ITeS (about 49%)</strong> and BFSI, while healthcare, manufacturing, and
+            engineering services continue to increase their contribution.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>What's Changing: Key Trends</strong>
+
+          <div className="space-y-8">
+
+            <div>
+              <p><strong>1. Shift from Cost to Value</strong></p>
+              <p>
+                Indian GCCs aren't just delivery centres anymore. They're increasingly owning end-to-end product development,
+                AI/ML, cloud engineering, cybersecurity, and business-critical innovation initiatives.
+              </p>
+            </div>
+
+            <div>
+              <p><strong>2. Tech-and-Talent Transformation</strong></p>
+              <p>
+                The required skill stack is becoming more sophisticated. Professionals are expected to combine domain expertise
+                with technology capabilities and AI literacy. GCCs are also embracing hybrid work, digital collaboration, and
+                continuous upskilling.
+              </p>
+            </div>
+
+            <div>
+              <p><strong>3. Geography / Tier-2 Growth</strong></p>
+              <p>
+                While Bengaluru, Hyderabad, and Pune continue to dominate, organizations are increasingly expanding into
+                Tier-2 and Tier-3 cities such as Coimbatore, Indore, and Bhubaneswar, driven by talent availability and cost optimization.
+              </p>
+            </div>
+
+            <div>
+              <p><strong>4. Strategic Autonomy &amp; Governance</strong></p>
+              <p>
+                Modern Indian GCCs are increasingly treated as strategic peers to their global headquarters, with greater
+                ownership, accountability, and responsibility for core business functions rather than only support operations.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-[#D2A679]/30 bg-white/[0.03] p-6">
+          <p className="text-center text-lg font-medium text-white">
+            India's GCC story is no longer about where work is delivered.
+          </p>
+          <p className="mt-2 text-center text-[#D2A679] font-semibold">
+            It's about where enterprise innovation is created.
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          <strong>Why This Matters</strong>
+
+          <div className="space-y-6">
+
+            <div>
+              <p><strong>For Companies</strong></p>
+              <p>
+                Setting up or scaling a GCC in India now requires thinking beyond cost arbitrage.
+                Organizations must design capability centers that create innovation, accelerate product development,
+                and generate long-term business value.
+              </p>
+            </div>
+
+            <div>
+              <p><strong>For Talent</strong></p>
+              <p>
+                The evolution of GCCs creates opportunities to move beyond traditional support roles into product engineering,
+                fintech, AI, cloud, cybersecurity, and advanced analytics careers.
+              </p>
+            </div>
+
+            <div>
+              <p><strong>For Cities &amp; States</strong></p>
+              <p>
+                Continued GCC expansion drives employment, commercial real estate demand, startup ecosystems,
+                and regional economic development, while simultaneously increasing the need for stronger infrastructure
+                and supportive policy frameworks.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <div className="space-y-8">
+          <strong>Challenges &amp; Imperatives</strong>
+
+          <ul className="list-disc pl-6 text-white/70">
+            <li>Skill shortages in niche digital and AI capabilities remain a major challenge.</li>
+            <li>Talent attraction, engagement, and retention continue to require sustained investment.</li>
+            <li>Infrastructure limitations and rising costs in metro cities are encouraging expansion into emerging locations.</li>
+            <li>Maintaining cultural and operational alignment between global headquarters and India GCCs requires continuous collaboration.</li>
+          </ul>
+        </div>
+
+        <div className="space-y-8">
+          <strong>Actionable Recommendations</strong>
+
+          <div className="space-y-6">
+
+            <div>
+              <p><strong>1.</strong> Design the India GCC as a Centre of Excellence (CoE) with clearly defined value drivers such as innovation, product engineering, and customer insight.</p>
+            </div>
+
+            <div>
+              <p><strong>2.</strong> Build a long-term talent roadmap through continuous upskilling, hybrid work models, and local leadership development.</p>
+            </div>
+
+            <div>
+              <p><strong>3.</strong> Evaluate Tier-2 and Tier-3 cities for future expansion while balancing infrastructure, talent availability, and operating costs.</p>
+            </div>
+
+            <div>
+              <p><strong>4.</strong> Strengthen governance frameworks so increased autonomy is supported by accountability and measurable business outcomes.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div className="space-y-8">
+          <strong>Conclusion</strong>
+
+          <p>
+            If you're operating or advising a GCC in India, the question is no longer
+            <strong> "How can I save cost?" </strong>
+            but rather
+            <strong> "How can this GCC become a strategic asset in our global value chain?"</strong>
+          </p>
+
+          <p>
+            The shift is already underway. For India, the transformation from back-office hub to innovation engine is no longer
+            an aspiration—it's becoming the defining characteristic of the country's next GCC growth chapter.
+          </p>
+        </div>
+
       </div>
     ),
   },
