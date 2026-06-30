@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import * as crypto from 'crypto';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -48,23 +49,17 @@ export const clearSession = () => {
   }
 };
 
-// Hash password (simple implementation - in production use bcrypt or similar)
-export const hashPassword = async (password: string): Promise<string> => {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(password);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+// Hash password using Node.js crypto (works in both server and client)
+export const hashPassword = (password: string): string => {
+  return crypto.createHash('sha256').update(password).digest('hex');
 };
 
-export const verifyPassword = async (password: string, hash: string): Promise<boolean> => {
-  const passwordHash = await hashPassword(password);
+export const verifyPassword = (password: string, hash: string): boolean => {
+  const passwordHash = hashPassword(password);
   return passwordHash === hash;
 };
 
 // Generate simple token
 export const generateToken = (): string => {
-  return Array.from(crypto.getRandomValues(new Uint8Array(32)))
-    .map(b => b.toString(16).padStart(2, '0'))
-    .join('');
+  return crypto.randomBytes(32).toString('hex');
 };
