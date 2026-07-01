@@ -1,13 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
 import * as crypto from 'crypto';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
-
 export interface User {
-  id: string;
+  id: number;
   email: string;
   name: string;
   role: string;
@@ -21,7 +15,7 @@ export interface AuthResponse {
   error?: string;
 }
 
-// Simple token management
+// Simple token management (client-side only)
 const TOKEN_KEY = 'admin_token';
 const USER_KEY = 'admin_user';
 
@@ -49,7 +43,7 @@ export const clearSession = () => {
   }
 };
 
-// Hash password using Node.js crypto (works in both server and client)
+// Hash password using Node.js crypto (server-side only)
 export const hashPassword = (password: string): string => {
   return crypto.createHash('sha256').update(password).digest('hex');
 };
@@ -59,7 +53,7 @@ export const verifyPassword = (password: string, hash: string): boolean => {
   return passwordHash === hash;
 };
 
-// Generate simple token
+// Generate simple token (server-side only)
 export const generateToken = (): string => {
   return crypto.randomBytes(32).toString('hex');
 };

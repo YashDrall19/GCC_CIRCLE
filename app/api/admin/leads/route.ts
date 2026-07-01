@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/auth';
+import db from '@/lib/db';
 
 export async function GET(req: Request) {
   try {
@@ -7,35 +7,32 @@ export async function GET(req: Request) {
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '10');
     const search = searchParams.get('search') || '';
-    const from = (page - 1) * limit;
-    const to = from + limit - 1;
+    const offset = (page - 1) * limit;
 
-    let query = supabase
-      .from('leads')
-      .select('*', { count: 'exact' })
-      .order('created_at', { ascending: false });
+    let countQuery = 'SELECT COUNT(*) as total FROM leads';
+    let dataQuery = 'SELECT * FROM leads ORDER BY created_at DESC LIMIT ? OFFSET ?';
+    const params: any[] = [limit, offset];
 
     if (search) {
-      query = query.or(`first_name.ilike.%${search}%,last_name.ilike.%${search}%,email.ilike.%${search}%,company.ilike.%${search}%`);
+      const searchPattern = `%${search}%`;
+      countQuery = 'SELECT COUNT(*) as total FROM leads WHERE first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR company LIKE ?';
+      dataQuery = 'SELECT * FROM leads WHERE first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR company LIKE ? ORDER BY created_at DESC LIMIT ? OFFSET ?';
+      params.unshift(searchPattern, searchPattern, searchPattern, searchPattern);
     }
 
-    const { data: leads, error, count } = await query.range(from, to);
+    const [countRows] = await db.execute(countQuery, search ? [search, search, search, search] : []);
+    const [dataRows] = await db.execute(dataQuery, params);
 
-    if (error) {
-      return NextResponse.json(
-        { success: false, error: error.message },
-        { status: 500 }
-      );
-    }
+    const total = (countRows as any[])[0].total;
 
     return NextResponse.json({
       success: true,
-      data: leads,
+      data: dataRows,
       pagination: {
         page,
         limit,
-        total: count || 0,
-        totalPages: Math.ceil((count || 0) / limit),
+        total,
+        totalPages: Math.ceil(total / limit),
       },
     });
   } catch (error) {
@@ -59,17 +56,7 @@ export async function DELETE(req: Request) {
       );
     }
 
-    const { error } = await supabase
-      .from('leads')
-      .delete()
-      .eq('id', id);
-
-    if (error) {
-      return NextResponse.json(
-        { success: false, error: error.message },
-        { status: 500 }
-      );
-    }
+    await db.execute('DELETE FROM leads WHERE id = ?', [id]);
 
     return NextResponse.json({ success: true });
   } catch (error) {

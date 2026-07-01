@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { supabase, hashPassword, generateToken } from '@/lib/auth';
+import db from '@/lib/db';
+import { hashPassword, generateToken } from '@/lib/auth';
 
 export async function POST(req: Request) {
   try {
@@ -13,21 +14,23 @@ export async function POST(req: Request) {
     }
 
     // Find user by email
-    const { data: user, error } = await supabase
-      .from('users')
-      .select('*')
-      .eq('email', email)
-      .single();
+    const [rows] = await db.execute(
+      'SELECT * FROM users WHERE email = ?',
+      [email]
+    );
+    const users = rows as any[];
 
-    if (error || !user) {
+    if (!users || users.length === 0) {
       return NextResponse.json(
         { success: false, error: 'Invalid credentials' },
         { status: 401 }
       );
     }
 
+    const user = users[0];
+
     // Verify password
-    const passwordHash = await hashPassword(password);
+    const passwordHash = hashPassword(password);
     if (passwordHash !== user.password_hash) {
       return NextResponse.json(
         { success: false, error: 'Invalid credentials' },

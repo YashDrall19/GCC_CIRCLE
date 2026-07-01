@@ -1,33 +1,15 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/auth';
+import db from '@/lib/db';
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { first_name, last_name, email, phone, source, company, linkedin, title, agreed, whatsapp } = body;
 
-    const { error } = await supabase
-      .from('leads')
-      .insert({
-        first_name,
-        last_name,
-        email,
-        phone,
-        source,
-        company,
-        linkedin,
-        title,
-        agreed,
-        whatsapp,
-      });
-
-    if (error) {
-      console.error('Supabase error:', error);
-      return NextResponse.json(
-        { success: false, error: error.message },
-        { status: 500 }
-      );
-    }
+    await db.execute(
+      'INSERT INTO leads (first_name, last_name, email, phone, source, company, linkedin, title, agreed, whatsapp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [first_name, last_name, email, phone, source, company, linkedin, title, agreed, whatsapp]
+    );
 
     return NextResponse.json({
       success: true,
