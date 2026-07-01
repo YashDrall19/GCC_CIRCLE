@@ -35,10 +35,10 @@ export async function GET(req: Request) {
         totalPages: Math.ceil(total / limit),
       },
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Get leads error:', error);
     return NextResponse.json(
-      { success: false, error: 'Internal server error' },
+      { success: false, error: error?.message || 'Internal server error' },
       { status: 500 }
     );
   }
@@ -59,10 +59,10 @@ export async function DELETE(req: Request) {
     await db.execute('DELETE FROM leads WHERE id = ?', [id]);
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Delete lead error:', error);
     return NextResponse.json(
-      { success: false, error: 'Internal server error' },
+      { success: false, error: error?.message || 'Internal server error' },
       { status: 500 }
     );
   }

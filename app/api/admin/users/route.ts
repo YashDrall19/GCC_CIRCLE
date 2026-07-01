@@ -8,10 +8,10 @@ export async function GET() {
       'SELECT id, email, name, role, created_at, updated_at FROM users ORDER BY created_at DESC'
     );
     return NextResponse.json({ success: true, data: rows });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Get users error:', error);
     return NextResponse.json(
-      { success: false, error: 'Internal server error' },
+      { success: false, error: error?.message || 'Internal server error' },
       { status: 500 }
     );
   }
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
       );
     }
     return NextResponse.json(
-      { success: false, error: 'Internal server error' },
+      { success: false, error: error?.message || 'Internal server error' },
       { status: 500 }
     );
   }
@@ -75,10 +75,10 @@ export async function DELETE(req: Request) {
     await db.execute('DELETE FROM users WHERE id = ?', [id]);
 
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Delete user error:', error);
     return NextResponse.json(
-      { success: false, error: 'Internal server error' },
+      { success: false, error: error?.message || 'Internal server error' },
       { status: 500 }
     );
   }

@@ -55,10 +55,10 @@ export async function POST(req: Request) {
       message: 'Admin user created successfully',
       data: (newUser as any[])[0],
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Seed error:', error);
     return NextResponse.json(
-      { success: false, error: 'Internal server error' },
+      { success: false, error: error?.message || 'Internal server error' },
       { status: 500 }
     );
   }
