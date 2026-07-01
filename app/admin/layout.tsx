@@ -66,7 +66,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   return (
-    <div className="min-h-screen bg-[#070b14] text-white">
+    <div className="admin-layout min-h-screen bg-[#070b14] text-white">
       {/* Mobile menu overlay */}
       {mobileMenuOpen && (
         <div
