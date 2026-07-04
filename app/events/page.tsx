@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, MapPin, Calendar, Users, Coffee, Wind } from 'lucide-react';
+import { ArrowRight, MapPin, Calendar, Users, Coffee, Wind, CheckCircle2, Clock3 } from 'lucide-react';
 import CardBackgroundCarousel from '@/components/CardBackgroundCarousel';
-import { pastEvents } from './data';
+import { pastEvents, upcomingEvents } from './data';
 
 export default function EventsPage() {
 
@@ -22,37 +22,6 @@ export default function EventsPage() {
       icon: <Wind size={24} />,
       title: 'A Room to Let Loose',
       desc: 'Because even leaders need a space to breathe, laugh, and engage outside of the corporate grind.',
-    },
-  ];
-
-  const upcomingEvents = [
-    {
-      city: 'Hyderabad',
-      month: 'May',
-      date: '04',
-      year: '2026',
-      type: 'HR Mixer',
-      desc: 'Exclusively for GCC HR & Talent Leaders.',
-      spots: '40 seats',
-      images: [
-        'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?q=80&w=1600&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1621909321963-2276c9660298?q=80&w=2117&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        'https://plus.unsplash.com/premium_photo-1697730430283-7e4456c78375?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      ],
-    },
-    {
-      city: 'Hyderabad',
-      month: 'May',
-      date: '05',
-      year: '2026',
-      type: 'Tech Mixer',
-      desc: 'Exclusively for GCC Tech Leaders.',
-      spots: '35 seats',
-      images: [
-        'https://images.unsplash.com/photo-1551161242-b5af797b7233?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        'https://images.unsplash.com/photo-1470075446540-4391a96ec621?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        'https://images.unsplash.com/photo-1569596732936-4e06a8afee28?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      ],
     },
   ];
 
@@ -112,36 +81,53 @@ export default function EventsPage() {
           </div>
           <div className="grid sm:grid-cols-2 gap-5 sm:gap-8">
             {upcomingEvents.map((e, i) => (
-              <div
-                key={i}
-                className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/50 transition-all duration-300"
-              >
-                <CardBackgroundCarousel images={e?.images} />
-                <div className="absolute top-0 right-0 w-40 sm:w-56 h-40 sm:h-56 bg-[#D2A679]/5 rounded-full -translate-y-1/2 translate-x-1/3 group-hover:bg-[#D2A679]/10 transition-colors duration-300 pointer-events-none" />
-                <div className="relative p-6 sm:p-10">
-                  <div className="flex flex-col sm:flex-row items-start sm:items-start justify-between mb-4 sm:mb-6 gap-3">
-                    <div>
-                      <div className="flex items-center gap-2 text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-2">
-                        <Calendar size={12} />
-                        {e.date} {e.month} {e.year}
+              <Link key={i} href={`events/${e?.id}`}>
+                <div
+                  key={i}
+                  className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/50 transition-all duration-300"
+                >
+                  <CardBackgroundCarousel images={e?.images} />
+                  <div className="absolute top-0 right-0 w-40 sm:w-56 h-40 sm:h-56 bg-[#D2A679]/5 rounded-full -translate-y-1/2 translate-x-1/3 group-hover:bg-[#D2A679]/10 transition-colors duration-300 pointer-events-none" />
+                  <div className="relative p-6 sm:p-10">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-start justify-between mb-4 sm:mb-6 gap-3">
+                      <div>
+                        <div className="flex items-center gap-2 text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-2">
+                          <Calendar size={12} />
+                          {e.date} {e.month} {e.year}
+                        </div>
+                        <h3 className="text-2xl sm:text-3xl font-bold mb-1">{e.type}</h3>
+                        <p className="text-white/50 text-sm font-medium">{e.city}</p>
                       </div>
-                      <h3 className="text-2xl sm:text-3xl font-bold mb-1">{e.type}</h3>
-                      <p className="text-white/50 text-sm font-medium">{e.city}</p>
+                      <div
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-semibold whitespace-nowrap ${
+                        e?.registrations_open
+                          ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-400"
+                          : "bg-amber-500/15 border-amber-500/30 text-amber-400"
+                      }`}
+                    >
+                      {e?.registrations_open ? (
+                        <CheckCircle2 size={10} />
+                      ) : (
+                        <Clock3 size={10} />
+                      )}
+
+                      {e?.registrations_open
+                        ? "Registrations Open"
+                        : "Registrations Opening Soon"}
                     </div>
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-semibold whitespace-nowrap">
-                      <MapPin size={10} />
-                      Registration Open
                     </div>
+                    <p className="text-white/55 text-sm leading-relaxed mb-6 sm:mb-8">{e.desc}</p>
+                    {e.registrations_open &&
+                      <Link
+                        href="/join"
+                        className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#D2A679] hover:bg-[#B87333] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(26,108,255,0.4)]"
+                      >
+                        Register Now <ArrowRight size={14} />
+                      </Link>
+                    }
                   </div>
-                  <p className="text-white/55 text-sm leading-relaxed mb-6 sm:mb-8">{e.desc}</p>
-                  <Link
-                    href="/join"
-                    className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#D2A679] hover:bg-[#B87333] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(26,108,255,0.4)]"
-                  >
-                    Register Now <ArrowRight size={14} />
-                  </Link>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

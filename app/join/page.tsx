@@ -13,14 +13,7 @@ const benefits = [
   'Thought leadership and speaking opportunities',
 ];
 
-const memberTypes = [
-  { label: 'CXO / C-Suite Executive', value: 'cxo' },
-  { label: 'Site Head / Country Head', value: 'site_head' },
-  { label: 'VP / SVP Engineering', value: 'vp_engineering' },
-  { label: 'Director / Senior Director', value: 'director' },
-  { label: 'General Manager', value: 'gm' },
-  { label: 'Other Senior Leader', value: 'other' },
-];
+const memberTypes = ["Scaler school of Technology", "JLL", "CLL"];
 
 export default function JoinPage() {
   const [form, setForm] = useState({
@@ -241,7 +234,7 @@ export default function JoinPage() {
                   <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">
                     How did you hear about us? *
                   </label>
-                  {/* <select
+                  <select
                     name="source"
                     value={form.source}
                     onChange={handleChange}
@@ -250,10 +243,10 @@ export default function JoinPage() {
                   >
                     <option value="" className="bg-[#0a0e1a]">Select...</option>
                     {memberTypes.map((m) => (
-                      <option key={m.value} value={m.label} className="bg-[#0a0e1a]">{m.label}</option>
+                      <option key={m} value={m} className="bg-[#0a0e1a]">{m}</option>
                     ))}
-                  </select> */}
-                  <input
+                  </select>
+                  {/* <input
                     type="text"
                     name="source"
                     value={form.source}
@@ -261,7 +254,7 @@ export default function JoinPage() {
                     required
                     placeholder="GCC Circle Event, LinkedIn, Referral, etc."
                     className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
-                  />
+                  /> */}
                 </div>
 
                 <div>

@@ -6,52 +6,84 @@ import { ArrowRight, Users, Zap, Globe, ChevronDown, CircleDot } from 'lucide-re
 import ScrollReveal from '@/components/scroll-reveal';
 import HologramText from '@/components/hologram-text';
 import GeneratorText from '@/components/generator-text';
+import { upcomingEvents } from './events/data';
 
 const stats = [
-  { value: '500+', label: 'Senior Leaders' },
-  { value: '10+', label: 'Cities' },
-  { value: '50+', label: 'GCC Companies' },
-  { value: '25+', label: 'Events Hosted' },
+  { value: '400+', label: 'Leaders & Counting' },
+  { value: '250+', label: 'GCCs Represented' },
+  { value: '30+', label: 'Leadership Experiences' },
+  { value: '150+', label: 'Distinguished Speakers' },
 ];
 
 const pillars = [
   {
     icon: <Users size={28} />,
     title: 'Connect',
-    desc: "Build relationships with India's top GCC leaders — CXOs, Site Heads, and senior executives from across the ecosystem.",
+    desc: (
+      <div className='flex flex-col gap-5'>
+        <p>Build meaningful relationships with the people shaping India's GCC ecosystem.</p>
+        <ul className="list-disc space-y-2 pl-6 text-white/70">
+          <li>Executive Mixers</li>
+          <li>Strategic Networking</li>
+          <li>Executive Introductions</li>
+          <li>Fireside Chats</li>
+        </ul>
+      </div>
+    )
   },
   {
     icon: <Globe size={28} />,
     title: 'Network',
-    desc: 'Move beyond LinkedIn. Engage in curated, closed-door forums and premium events designed for peer-level exchange.',
+    desc: (
+      <div className='flex flex-col gap-5'>
+        <p>Stay ahead with curated intelligence and peer-led insights.</p>
+        <ul className="list-disc space-y-2 pl-6 text-white/70">
+          <li>Closed-door Roundtables</li>
+          <li>Peer Intelligence</li>
+          <li>Leadership Insights</li>
+          <li>Industry Updates</li>
+          <li>Exclusive Research & Reports</li>
+        </ul>
+      </div>
+    )
   },
   {
     icon: <Zap size={28} />,
     title: 'Influence',
-    desc: 'Shape the future of GCCs in India — share insights, tackle business challenges, and leave a lasting impact.',
+    desc: (
+      <div className='flex flex-col gap-5'>
+        <p>Build your executive brand and create new opportunities.</p>
+        <ul className="list-disc space-y-2 pl-6 text-white/70">
+          <li>Thought Leadership Opportunities</li>
+          <li>Speaking & Panel Opportunities</li>
+          <li>Career Opportunities</li>
+          <li>Community Leadership Initiatives</li>
+        </ul>
+      </div>
+    )
   },
 ];
 
-const upcomingEvents = [
-  { city: 'Hyderabad', month: 'June', year: '2026', type: 'HR Mixer' },
-  { city: 'Hyderabad', month: 'June', year: '2026', type: 'Tech Mixer' },
-];
+// const upcomingEvents = [
+//   { city: 'Gurgaon', month: 'July', year: '2026', type: 'HR Mixer' },
+//   { city: 'Hyderabad', month: 'June', year: '2026', type: 'Tech Mixer' },
+// ];
 
 const testimonials = [
   {
-    name: 'Ravi Wadhwa',
-    title: 'Founder, Talentiser',
-    quote: "The GCC Circle is the executive ecosystem India's GCC leaders have been waiting for — curated, connected, and built to create real impact.",
+    name: 'HEMANT GUPTA',
+    title: 'MD, Head of Engineering - HUB',
+    quote: "A GCC becomes truly valuable when teams stop owning tasks and start owning business outcomes.",
   },
   {
-    name: 'Arushi Jindal',
-    title: 'Co-Founder, Talentiser',
-    quote: 'We built the Circle because the best conversations happen when the right people are in the same room with no agenda other than growth.',
+    name: 'SUPRIYA RAO',
+    title: 'Managing Director - CLEARROUTE',
+    quote: 'If you don’t define what your GCC stands for, it will default to being a cost centre.',
   },
   {
-    name: 'Sahil Bains',
-    title: 'Site Leader, XYZ',
-    quote: 'Being part of the GCC Circle has fundamentally changed how I approach leadership and peer learning in this space.',
+    name: 'RAJESH PUNEYANI',
+    title: 'Vice President & Site Leader - KENVUE',
+    quote: 'Collaboration builds momentum, but clear articulation of value builds credibility.',
   },
 ];
 
@@ -216,24 +248,25 @@ export default function HomePage() {
               <div>
                 <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 block glow-text">What is GCC Circle?</span>
                 <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-                  Your executive ecosystem.
+                  The Inner Circle of GCC Leadership.
                 </h2>
                 <p className="text-white/60 text-lg leading-relaxed mb-6">
-                  The GCC Circle, launched by Talentiser, is India&apos;s foremost leadership community for
-                  top-tier professionals across GCCs.
+                  Created by Talentiser, the GCC Circle is India's premier invitation-only community for senior GCC leaders and enterprise decision makers.
                 </p>
                 <p className="text-white/60 text-lg leading-relaxed mb-6">
-                  It&apos;s where CXOs, Site Heads, and senior leaders come together to exchange insights,
-                  tackle business challenges, and shape the future of their organizations.
+                  We bring together the executives driving growth, innovation, and transformation across Global Capability Centres through exclusive roundtables, private networking experiences, executive intelligence, and peer collaboration.
+                </p>
+                <p className="text-white/60 text-lg leading-relaxed mb-6">
+                  Access is intentionally limited to preserve the quality of conversations and the value of every connection.
                 </p>
                 <p className="text-white/80 text-xl font-semibold italic glow-text">
-                  Think of it as your executive ecosystem — curated, connected, and collaborative.
+                  Because the most valuable conversations happen behind closed doors.
                 </p>
                 <Link
                   href="/join"
                   className="inline-flex items-center gap-2 text-[#D2A679] hover:text-[#B87333] font-semibold transition-colors duration-200 group mt-8"
                 >
-                  Become a member
+                  Join the Inner Circle
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -329,12 +362,15 @@ export default function HomePage() {
                       <div className="text-[#D2A679] text-sm font-semibold uppercase tracking-widest mb-1 glow-text">{e.month} {e.year}</div>
                       <div className="text-3xl font-bold mb-2">{e.city}</div>
                       <div className="text-white/50 text-sm">{e.type}</div>
-                      <Link
-                        href="/events"
-                        className="mt-6 inline-flex items-center gap-1.5 text-sm text-[#D2A679] font-medium hover:gap-3 transition-all duration-200"
-                      >
-                        Register <ArrowRight size={14} />
-                      </Link>
+                      {e.registrations_open ?
+                        <Link
+                          href="/events"
+                          className="mt-6 inline-flex items-center gap-1.5 text-sm text-[#D2A679] font-medium hover:gap-3 transition-all duration-200"
+                        >
+                          Register <ArrowRight size={14} />
+                        </Link> :
+                        <p className="mt-6 inline-flex items-center gap-1.5 text-sm text-[#D2A679] font-medium hover:gap-3 transition-all duration-200">Registrations Opening Soon</p>
+                      }
                     </div>
                   </div>
                 </ScrollReveal>
@@ -354,15 +390,21 @@ export default function HomePage() {
                 <h2 className="text-4xl md:text-5xl font-bold">Voices from the Circle</h2>
               </div>
             </ScrollReveal>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8 items-stretch">
               {testimonials.map((t, i) => (
-                <ScrollReveal key={t.name} delay={i * 100}>
-                  <div className="p-8 rounded-2xl border border-[#D2A679] bg-[#0a0e1a] backdrop-blur-sm hover:border-[#B87333] transition-all duration-300 group">
-                    <div className="text-4xl text-[#D2A679] font-serif mb-4 glow-text">&ldquo;</div>
-                    <p className="text-white/70 leading-relaxed mb-6 italic">{t.quote}</p>
-                    <div className="border-t border-[#D2A679]/20 pt-5">
+                <ScrollReveal key={t.name} delay={i * 100} className="h-full">
+                  <div className="h-full flex flex-col p-8 rounded-2xl border border-[#D2A679] bg-[#0a0e1a] backdrop-blur-sm hover:border-[#B87333] transition-all duration-300 group">
+                    <div className="text-4xl text-[#D2A679] font-serif mb-4 glow-text">
+                      &ldquo;
+                    </div>
+
+                    <p className="flex-1 text-white/70 leading-relaxed mb-6 italic">
+                      {t.quote}
+                    </p>
+
+                    <div className="border-t border-[#D2A679]/20 pt-5 mt-auto">
                       <div className="font-semibold text-white">{t.name}</div>
-                      <div className="text-white/45 text-sm mt-0.5">{t.title}</div>
+                      <div className="text-[#D2A679] text-sm mt-0.5">{t.title}</div>
                     </div>
                   </div>
                 </ScrollReveal>

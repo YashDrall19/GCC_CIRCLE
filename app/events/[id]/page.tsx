@@ -19,9 +19,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
+import { useState } from "react";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
+
 export default function EventDetailPage() {
   const {id} = useParams();
   const event = pastEvents?.find(event => event?.id === id);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <main className="bg-[#070b14] text-white min-h-screen pt-16 sm:pt-20">
@@ -130,9 +135,9 @@ export default function EventDetailPage() {
             <div className="flex items-center gap-3">
               <Users size={18} sm-size={20} className="text-[#D2A679] flex-shrink-0" />
               <div>
-                <p className="text-white/50 text-xs sm:text-sm">Speakers</p>
+                <p className="text-white/50 text-xs sm:text-sm">Attendees</p>
                 <p className="font-medium text-sm sm:text-base">
-                  {event?.leaders?.length}
+                  {event?.attendees}
                 </p>
               </div>
             </div>
@@ -148,7 +153,7 @@ export default function EventDetailPage() {
               About The Event
             </h2>
 
-            <p className="text-white/70 leading-relaxed whitespace-pre-line text-sm sm:text-base md:text-lg">
+            <p className="prose prose-invert max-w-none">
               {event?.description1}
             </p>
           </div>
@@ -197,10 +202,11 @@ export default function EventDetailPage() {
           </h2>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
-            {event?.images.map((image, index) => (
+            {event?.images?.map((image, index) => (
               <div
                 key={index}
-                className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 group"
+                onClick={() => setSelectedImage(image)}
+                className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 group cursor-pointer"
               >
                 <div className="aspect-[4/3] relative">
                   <Image
@@ -215,6 +221,74 @@ export default function EventDetailPage() {
           </div>
         </div>
       </section>
+
+      {event?.description2 &&
+        <section className="px-4 sm:px-6 mb-10 sm:mb-16">
+          <div className="max-w-6xl mx-auto">
+            <div className="rounded-2xl sm:rounded-3xl border border-white/10 p-5 sm:p-8 md:p-10 bg-white/[0.02]">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-[#D2A679]">
+              About GCC Circle
+            </h2>
+              <p className="text-white/70 leading-relaxed whitespace-pre-line text-sm sm:text-base md:text-lg">
+                <strong>GCC Circle</strong> is a leadership community powered by <strong>Talentiser</strong>, dedicated to bringing together the people shaping the future of Global Capability Centers in India.
+              </p>
+              <p className="text-white/70 leading-relaxed whitespace-pre-line text-sm sm:text-base md:text-lg">
+                Through executive roundtables, leadership forums, research, industry insights, and strategic partnerships, GCC Circle serves as a platform for senior leaders to exchange ideas, build meaningful relationships, and contribute to the continued evolution of India's GCC landscape.
+              </p>
+            </div>
+          </div>
+        </section>
+      }
+
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+          onClick={() => setSelectedImage(null)}
+        >
+          {/* Close button */}
+          <button
+            className="absolute top-5 right-5 z-50 text-white text-4xl"
+            onClick={() => setSelectedImage(null)}
+          >
+            ✕
+          </button>
+
+          <div
+            className="w-screen h-screen flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <TransformWrapper
+              initialScale={1}
+              minScale={1}
+              maxScale={5}
+              centerOnInit
+              wheel={{ step: 0.2 }}
+              doubleClick={{ mode: "zoomIn" }}
+            >
+              <TransformComponent
+                wrapperStyle={{
+                  width: "100vw",
+                  height: "100vh",
+                }}
+                contentStyle={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img
+                  src={selectedImage}
+                  alt="Selected"
+                  className="max-w-[90vw] max-h-[90vh] object-contain select-none"
+                  draggable={false}
+                />
+              </TransformComponent>
+            </TransformWrapper>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
