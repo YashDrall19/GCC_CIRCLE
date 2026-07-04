@@ -48,11 +48,12 @@ export default function LeaguePage() {
       {/* Stats bar */}
       <section className="py-8 sm:py-10 border-y border-white/10 bg-white/[0.02]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-3 gap-4 sm:gap-8 text-center">
+          <div className="grid grid-cols-4 gap-4 sm:gap-8 text-center">
             {[
-              { value: '500+', label: 'Members' },
-              { value: '50+', label: 'Companies' },
-              { value: '10+', label: 'Cities' },
+              { value: '400+', label: 'Leaders & Counting' },
+              { value: '250+', label: 'GCCs Represented' },
+              { value: '30+', label: 'Leadership Experiences' },
+              { value: '150+', label: 'Distinguished Speakers' },
             ].map((s) => (
               <div key={s.label}>
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#D2A679]">{s.value}</div>
