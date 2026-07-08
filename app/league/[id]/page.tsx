@@ -106,7 +106,7 @@ export default function LeaderDetailPage() {
 
           {/* About */}
           <div className="mb-10 sm:mb-14">
-            <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">About</h2>
+            <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Beyond the Title</h2>
 
             <p className="text-white/70 leading-relaxed text-base sm:text-lg">
               {leader.quote}
@@ -116,7 +116,7 @@ export default function LeaderDetailPage() {
           {/* Q&A */}
           {leader.questionaire && leader.questionaire.length > 0 && (
             <div className="mb-10 sm:mb-14">
-              <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Q&A</h2>
+              <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Leadership Conversations</h2>
 
               <div className="space-y-8 sm:space-y-10">
                 {leader.questionaire

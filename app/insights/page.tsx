@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Calendar, Clock, Tag } from 'lucide-react';
+import { ArrowRight, Calendar, Mail } from 'lucide-react';
 import { insights } from './data';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const tagColors: Record<string, string> = {
   'AI Strategy': 'bg-blue-500/15 text-blue-400 border-blue-500/30',
@@ -15,6 +16,30 @@ const tagColors: Record<string, string> = {
   'Innovation': 'bg-sky-500/15 text-sky-400 border-sky-500/30',
 };
 
+const categories = [
+  {
+    title: 'Industry news',
+    subtitle: "The stories shaping India's GCC landscape.",
+    description: 'Stay up to date with the latest GCC launches, leadership appointments, expansion announcements, policy updates, investments, mergers, acquisitions, and ecosystem developments—all curated in one place.',
+    href: '/insights/industry-updates',
+    cta: 'Explore Industry Updates',
+  },
+  {
+    title: 'Reports & Case Studies',
+    subtitle: 'Research that moves conversations forward.',
+    description: 'Access exclusive GCC Circle reports, talent intelligence, market research, compensation studies, benchmarking reports, and real-world case studies from India’s leading Global Capability Centres.',
+    href: '/insights/reports-and-case-studies',
+    cta: 'Browse Reports',
+  },
+  {
+    title: 'Blogs',
+    subtitle: 'Leadership perspectives from across the GCC ecosystem.',
+    description: 'Explore expert opinions, executive interviews, thought leadership, and practical insights on leadership, talent, AI, innovation, workplace transformation, and the future of Global Capability Centres.',
+    href: '/insights/blogs',
+    cta: 'Read the Latest Articles',
+  },
+];
+
 export default function InsightsPage() {
   const featured = insights[1] || insights[0];
 
@@ -26,59 +51,54 @@ export default function InsightsPage() {
           <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full bg-[#D2A679]/8 blur-[100px]" />
         </div>
         <div className="relative max-w-3xl mx-auto text-center">
-          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 sm:mb-5 block">Knowledge Hub</span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">Insights</h1>
-          <p className="text-white/55 text-base sm:text-lg leading-relaxed px-2">
-            Industry news, updates, and insights curated especially for GCC leaders. Sharp, no-noise, and always relevant.
+          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 sm:mb-5 block">Insights</span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-bold mb-4 sm:mb-6">
+            GCC Circle Intelligence <br className="hidden sm:block" />
+            <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
+              Ideas. Insights. Intelligence.
+            </span>
+          </h1>
+          <p className="text-white/55 text-base sm:text-lg leading-relaxed px-2 mb-4">
+            From executive thought leadership and industry developments to exclusive research and real-world case studies, discover the knowledge shaping India's next generation of Global Capability Centres.
           </p>
-          <p className="text-white/35 text-xs sm:text-sm mt-3 sm:mt-4">
+          <p className="text-white/55 text-base sm:text-lg leading-relaxed px-2">
+            This positions the page as a destination for leadership intelligence rather than simply a collection of articles, which aligns much better with GCC Circle's premium, executive-first brand.
+          </p>
+          {/* <p className="text-white/35 text-xs sm:text-sm mt-3 sm:mt-4">
             Want to get an article featured?{' '}
             <a href="mailto:hello@gcccircle.com" className="text-[#D2A679] hover:underline hover:text-[#B87333]">hello@gcccircle.com</a>
-          </p>
+          </p> */}
         </div>
       </section>
 
-      {/* Featured article */}
-      <section className="px-4 sm:px-6 pb-12 sm:pb-16">
+      {/* Topic cards */}
+      <section className="px-4 sm:px-6 pb-14 sm:pb-20">
         <div className="max-w-7xl mx-auto">
-          <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#B87333] hover:border-[#D2A679] transition-all duration-300 cursor-pointer">
-            <div className="grid md:grid-cols-2">
-              <div className="relative overflow-hidden aspect-[4/3] md:aspect-auto">
-                <img
-                  src={featured.img}
-                  alt={featured.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#070b14] hidden md:block" />
+          <div className="grid gap-5 lg:grid-cols-3">
+            {categories.map((category) => (
+              <div key={category.title} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:border-[#D2A679] hover:bg-white/[0.05]">
+                <div>
+                  <p className="text-[#D2A679] text-xs uppercase tracking-[0.24em] font-semibold mb-3">{category.title}</p>
+                  <h2 className="text-xl sm:text-2xl font-bold mb-4 text-white">{category.subtitle}</h2>
+                  <p className="text-white/70 text-sm sm:text-base leading-relaxed">
+                    {category.description}
+                  </p>
+                </div>
+                <Link
+                  href={category.href}
+                  className="mt-6 inline-flex items-center gap-2 text-[#D2A679] font-semibold text-sm sm:text-base hover:text-[#B87333]"
+                >
+                  {category.cta}
+                  <ArrowRight size={16} />
+                </Link>
               </div>
-              <div className="p-6 sm:p-10 md:p-14 flex flex-col justify-center bg-white/[0.03]">
-                <div className="flex items-center gap-3 mb-4 sm:mb-5">
-                  <span className={`px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold border ${tagColors[featured.tag] || 'bg-white/10 text-white/60 border-white/20'}`}>
-                    <Tag size={10} className="inline mr-1" />
-                    {featured.tag}
-                  </span>
-                  <span className="text-white/35 text-xs">Featured</span>
-                </div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight mb-3 sm:mb-4 group-hover:text-[#B87333] transition-colors duration-200">
-                  {featured.title}
-                </h2>
-                <div className="flex items-center gap-4 text-white/35 text-xs mb-6 sm:mb-8">
-                  <span>{featured.date}</span>
-                  <span className="flex items-center gap-1"><Clock size={10} /> {featured.readTime}</span>
-                </div>
-                <div className="inline-flex items-center gap-2 text-[#D2A679] text-sm font-semibold group-hover:gap-4 transition-all duration-200">
-                  <Link href={`/insights/${featured.id}`} className="inline-flex items-center gap-2">
-                    Read Article <ArrowRight size={14} />
-                  </Link>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Articles grid */}
-      <section className="px-4 sm:px-6 pb-20 sm:pb-28">
+      {/* <section className="px-4 sm:px-6 pb-20 sm:pb-28">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-8 sm:mb-10">
             <h2 className="text-xl sm:text-2xl font-bold">All Articles</h2>
@@ -118,7 +138,7 @@ export default function InsightsPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
       <section className="py-14 sm:py-20 px-4 sm:px-6">
@@ -128,18 +148,30 @@ export default function InsightsPage() {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 sm:w-72 h-48 sm:h-72 bg-[#D2A679]/15 rounded-full blur-[60px]" />
             </div>
             <div className="relative">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Got a Perspective the Industry Should Hear?</h2>
-              <p className="text-white/55 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base px-2">Whether it&apos;s leadership, talent, AI, innovation, or the future of GCCs, share your insights with a community of professionals driving India&apos;s next wave of growth.</p>
-              <Link
-                href="/join"
-                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)] text-sm sm:text-base"
-              >
-                Join the Circle <ArrowRight size={15} />
-              </Link>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Get Featured on GCC Circle</h2>
+              <p className="text-white/55 sm:mb-8 leading-relaxed text-sm sm:text-base px-2">Have a unique perspective, leadership story, or industry insight to share?</p>
+              <p className="text-white/55 sm:mb-8 leading-relaxed text-sm sm:text-base px-2">Publish your article, research, opinion piece, or case study and contribute to conversations shaping India's GCC ecosystem.</p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+                <a
+                  href="mailto:hello@gcccircle.com"
+                  className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)] text-sm sm:text-base w-full sm:w-auto justify-center"
+                >
+                  <Mail size={14} sm-size={15} /> hello@gcccircle.com
+                </a>
+                <a
+                  href="https://wa.me/918505823013"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 border border-[#D2A679] hover:border-[#B87333] text-white/70 hover:text-white font-semibold rounded-full transition-all duration-200 text-sm sm:text-base w-full sm:w-auto justify-center"
+                >
+                  <FaWhatsapp size={14} sm-size={15} /> +91 8505823013
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
+      
     </main>
   );
 }

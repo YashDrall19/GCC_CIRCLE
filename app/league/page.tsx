@@ -24,24 +24,24 @@ export default function LeaguePage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[800px] h-[400px] sm:h-[600px] rounded-full bg-[#D2A679]/8 blur-[120px]" />
         </div>
         <div className="relative max-w-3xl mx-auto text-center">
-          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 sm:mb-5 block">Membership</span>
+          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 sm:mb-5 block">League</span>
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">
-            The Inner Circle of{' '}
+            The League of <br className="hidden sm:block" />
             <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
-              GCC Leadership
+              GCC Leaders
             </span>
           </h1>
           <p className="text-white/55 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto px-2">
-            Join GCC Circle — a curated community for India&apos;s top tech leaders. Exchange ideas, stay ahead of what&apos;s next, and access sharp, no-noise insights, conversations, and closed-door forums.
+            Discover the leaders shaping the future of India's Global Capability Centres. Through candid conversations, leadership journeys, and hard-earned lessons, explore the experiences and perspectives behind some of the industry's most influential executives.
           </p>
-          <div className="mt-6 sm:mt-8">
+          {/* <div className="mt-6 sm:mt-8">
             <Link
               href="/join"
               className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.5)] text-sm sm:text-base"
             >
               Join the Circle <ArrowRight size={16} />
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -68,11 +68,11 @@ export default function LeaguePage() {
       <section className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
-            <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 block">Our Members</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Inside the League</h2>
-            <p className="text-white/50 mt-3 sm:mt-4 text-base sm:text-lg max-w-xl mx-auto px-2">
+            {/* <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 block">Our Members</span> */}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">Explore Leadership Stories below</h2>
+            {/* <p className="text-white/50 mt-3 sm:mt-4 text-base sm:text-lg max-w-xl mx-auto px-2">
               India&apos;s most influential GCC leaders, all in one place.
-            </p>
+            </p> */}
           </div>
 
           {/* Tech Leaders Section */}
@@ -81,8 +81,8 @@ export default function LeaguePage() {
               <span className="w-2 h-2 bg-[#1a6cff] rounded-full flex-shrink-0"></span>
               The League of Legends
             </h3>
-            <p className="text-white/60 text-sm sm:text-base max-w-2xl leading-relaxed mb-4 sm:mb-6">
-              Join GCC Circle – a curated community for India&apos;s top tech leaders in GCCs. Exchange ideas, stay ahead of what&apos;s next, and access sharp, no-noise insights, conversations, and closed-door forums.
+            <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
+              Celebrating the technology visionaries shaping the future of India's GCC ecosystem. Discover the journeys, leadership philosophies, and defining moments of the executives creating lasting impact.
             </p>
             <div className="overflow-x-auto pb-4 -mx-4 sm:-mx-6 px-4 sm:px-6 scrollbar-hide">
               <div className="flex gap-4 sm:gap-6 min-w-min">
@@ -120,11 +120,8 @@ export default function LeaguePage() {
               <span className="w-2 h-2 bg-[#D2A679] rounded-full flex-shrink-0"></span>
               The League of Titans
             </h3>
-            <p className="text-white/60 text-sm sm:text-base max-w-2xl leading-relaxed mb-2 sm:mb-3">
-              Join GCC Circle – built for GCC talent leaders shaping the future of hiring and org design.
-            </p>
-            <p className="text-white/60 text-sm sm:text-base max-w-2xl leading-relaxed mb-4 sm:mb-6">
-              Tap into real conversations, proven playbooks, and a trusted network that actually moves the needle.
+            <p className="text-white/60 text-sm sm:text-base leading-relaxed mb-2 sm:mb-3">
+              Conversations with the leading talent & people pioneers building tomorrow's Global Capability Centres. Explore bold ideas, strategic insights, and hard-earned lessons from the leaders driving transformation at scale.
             </p>
             <div className="overflow-x-auto pb-4 -mx-4 sm:-mx-6 px-4 sm:px-6 scrollbar-hide">
               <div className="flex gap-4 sm:gap-6 min-w-min">
@@ -166,9 +163,9 @@ export default function LeaguePage() {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 sm:w-72 h-48 sm:h-72 bg-[#D2A679]/15 rounded-full blur-[60px]" />
             </div>
             <div className="relative">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Want to be listed here?</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Want to Be Featured?</h2>
               <p className="text-white/55 mb-6 sm:mb-8 leading-relaxed max-w-lg mx-auto text-sm sm:text-base px-2">
-                Join the League and become part of India&apos;s most exclusive GCC leadership network.
+                If you're a GCC technology leader, CHRO, or Talent Acquisition leader driving impact, we'd love to hear your story.
               </p>
               <Link
                 href="/join"

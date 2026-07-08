@@ -39,13 +39,10 @@ export default function ContactPage() {
         <div className="relative max-w-2xl mx-auto text-center">
           <span className="text-[#B87333] text-xs font-semibold uppercase tracking-widest mb-4 sm:mb-5 block">Get in Touch</span>
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-5">
-            Let&apos;s{' '}
-            <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
-              Talk
-            </span>
+            Start the Conversation
           </h1>
           <p className="text-white/55 text-base sm:text-lg leading-relaxed px-2">
-            Whether you have a question, a partnership idea, or just want to say hello — we&apos;re always happy to hear from you.
+            Every great partnership, collaboration, and community begins with a conversation. Whether you're looking to engage, contribute, or collaborate, we'd love to connect.
           </p>
         </div>
       </section>

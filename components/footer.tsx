@@ -133,7 +133,7 @@ export default function Footer() {
             <div className="h-10 w-px bg-white/10" />
             <div>
               <p className="text-[10px] uppercase tracking-[0.35em] text-white">
-                Ecosystem Partner
+                Powered by
               </p>
               <p className="text-base font-semibold bg-[linear-gradient(210deg,_#0051B0_0%,_#9C65B8_100%)] bg-clip-text text-transparent">
                 Talentiser
@@ -142,7 +142,7 @@ export default function Footer() {
           </div>
 
           <p className="text-white/30 text-xs sm:text-sm text-center">
-            Copyright &copy; 2025 GCC Circle. All rights reserved.
+            Copyright &copy; 2026 GCC Circle. All rights reserved.
           </p>
         </div>
       </div>

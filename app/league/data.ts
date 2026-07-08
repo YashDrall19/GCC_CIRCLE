@@ -1,5 +1,5 @@
 import { StaticImageData } from "next/image";
-// import hemant from "../../public/images/Hemant Gupta.webp";
+import hemant from "../../public/images/Hemant Gupta.webp";
 import nitin from "../../public/images/Nitin Srivastava.webp";
 import priji from "../../public/images/Priji Thomas.webp";
 import uma from "../../public/images/Uma Seetharaman.webp";
@@ -45,6 +45,7 @@ export const slugify = (s: string) =>
 
 export const leaderTypeMap: Record<string, 'tech' | 'hr'> = {
   'geetha-thiagarajan': 'hr',
+  'sidharth-gupta': 'hr'
 };
 
 export const leaders1: LeaderData[] = [
@@ -840,11 +841,197 @@ export const leaders1: LeaderData[] = [
     ]
   },
   {
+    name: "Hemant Gupta",
+    date: "",
+    designation: "",
+    company: "",
+    linkedin: "https://www.linkedin.com/in/hemant-gupta-744bb35/",
+    image: hemant,
+    quote:
+      "A GCC becomes truly valuable when teams stop owning tasks and start owning business outcomes.",
+    questionaire: [
+      {
+        question: "What does a typical day look like for you as a GCC leader — honestly?",
+        answer:
+          "Honestly, my day starts before the formal workday begins. Around 7 AM, I review messages, customer updates, delivery risks, and overnight developments from our UK teams. Based on those inputs, I prioritize the day and identify what requires immediate attention. The mornings are largely India-focused. I work closely with a 40+ member team spanning engineering, cloud operations, customer support, implementation, finance, and HR operations. My focus is not only on execution but also on understanding team sentiment, identifying blockers, gathering customer feedback, and determining where leadership intervention is needed. A practice I strongly believe in is creating visibility. I continuously share company updates, customer priorities, product direction, and business context so that the India team operates with ownership rather than as an offshore execution unit. As the day progresses, my focus shifts to UK and global stakeholders. I collaborate with the CTO, CPO, product owners, security teams, sales leaders, and customer-facing functions on roadmap planning, architecture, customer commitments, security, production operations, and delivery risks. One-on-one conversations are also a critical part of ensuring alignment. Alongside operational responsibilities, I spend significant time on future-focused initiatives, particularly AI strategy, agentic workflows, and the practical implementation of AI-driven operational models. Staying close to technology allows me to contribute to prototypes, architecture discussions, and innovation efforts. Ultimately, my role is a blend of running today's business while building tomorrow's capabilities."
+      },
+      {
+        question: "How do you unwind after a tough week?",
+        answer:
+          "I try to disconnect from the constant flow of meetings, messages, and decision-making. Spending quality time with family, taking long walks, and allowing myself space for quiet reflection helps me reset. Walking, in particular, gives me the opportunity to evaluate what worked well, what could be improved, and what deserves attention in the coming week. I’ve also learned not to carry every unresolved issue into the weekend. Recovery is an important part of performance. Without it, you cannot show up with clarity and energy for your team. I also enjoy reading about technology, AI, and product innovation—not because I have to, but because I genuinely enjoy it."
+      },
+      {
+        question: "What’s the one skill every GCC leader must have today?",
+        answer:
+          "A GCC leader must be able to bridge business, product, technology, people, and operations. The role requires translating context between global strategy and local execution, product vision and engineering reality, and business objectives and team capability. That ability to create understanding and context is what transforms teams from task executors into true owners of outcomes."
+      },
+      {
+        question: "Do you have any quirky or unconventional leadership habits?",
+        answer:
+          "I pay close attention to what isn’t being said. When someone says, “Everything is fine,” I observe tone, confidence, hesitation, and energy levels—not just the status update itself. Often, the real risks aren't visible in reports; they are visible in team sentiment. I also remain deeply connected to technology, actively experimenting with AI workflows, architecture concepts, and prototypes. Staying hands-on helps me support and challenge teams more effectively."
+      },
+      {
+        question: "How do you personally spot high-potential talent in a GCC?",
+        answer:
+          "I observe how people behave when the path forward isn’t clearly defined. High-potential individuals ask the right questions rather than waiting for instructions, bring structure to ambiguity, connect their work to business outcomes, think beyond execution, and take ownership of recommendations and decisions. I also pay attention to how they elevate those around them. True leadership potential is reflected not just in individual performance, but in the impact they create for the wider team."
+      },
+      {
+        question: "What’s the worst piece of leadership advice you’ve ever received?",
+        answer:
+          "\"Leave emotions out of leadership.\" While leaders need to remain objective and accountable, completely ignoring emotions is a mistake. The best leaders combine data, governance, and decision-making with empathy and emotional awareness. Often, the biggest risks are not found in dashboards—they are found in fatigue, silence, confusion, or loss of ownership within teams."
+      },
+      {
+        question: "Do you have a secret productivity hack that actually works for you?",
+        answer:
+          "I start every day by converting noise into priorities. Rather than treating every message, escalation, or meeting as equally important, I categorize work into three buckets: what requires an immediate decision, what requires alignment, and what can be delegated or monitored. I also use walking time as thinking time. Some of my best ideas and clearest decisions emerge away from the screen."
+      },
+      {
+        question: "Share one fun or surprising fact about you that your team may not know.",
+        answer:
+          "Despite spending much of my time on leadership, operations, and strategy, I remain deeply passionate about technology. I continue to explore AI, agentic workflows, and automation hands-on because it keeps me connected to the builder mindset that originally drew me into technology."
+      },
+      {
+        question: "What’s one big lesson the GCC ecosystem has taught you?",
+        answer:
+          "The biggest transformation happens when teams move from execution ownership to business ownership. When people understand the customer, product vision, and business context, they stop merely completing tasks and begin owning outcomes. A GCC becomes truly valuable when it evolves into a capability center built on trust, context, visibility, and ownership."
+      },
+      {
+        question: "What advice would you give to future GCC leaders just starting out?",
+        answer:
+          "Focus on creating business context—not just managing delivery. Help teams understand the customer, product vision, roadmap, and business objectives. When people understand the \"why,\" they naturally take ownership of outcomes. Stay close to both people and technology. Leadership cannot happen solely through dashboards and status calls. Finally, build trust through transparency. Be honest about risks, avoid overpromising, and consistently provide solutions and visibility. The future GCC leader must be a bridge between global strategy and local execution, technology capability and business outcomes, and today's delivery and tomorrow's innovation."
+      }
+    ]
+  },
+  {
+    name: "Arun Kohli",
+    date: "",
+    designation: "",
+    company: "",
+    linkedin: "https://www.linkedin.com/in/kohliarun",
+    image: "",
+    quote:
+      "A GCC's mandate grows at the speed of trust. Credibility is earned through consistent delivery, business understanding, and stakeholder confidence.",
+    questionaire: [
+      {
+        question: "What does a typical day look like for you as a GCC leader — honestly?",
+        answer:
+          "A typical day is a mix of strategy, stakeholder conversations, people discussions, and unblocking initiatives that are moving more slowly than they should. There’s constant context-switching between GCC priorities and global expectations, with a significant amount of time spent translating broad ambitions into practical next steps. And honestly, the calendar often has a mind of its own."
+      },
+      {
+        question: "How do you unwind after a tough week?",
+        answer:
+          "Doing something selfless is usually the most meaningful part of my week."
+      },
+      {
+        question: "What’s the one skill every GCC leader must have today?",
+        answer:
+          "Adaptability and the ability to navigate ambiguity. We’re operating in an environment of constant change, and success depends on dynamic thinking and the ability to evolve quickly."
+      },
+      {
+        question: "Do you have any quirky or unconventional leadership habits?",
+        answer:
+          "I like testing new AI tools myself before discussing enterprise adoption. It helps me separate genuine capability from impressive demos and ensures I have first-hand experience before recommending any technology."
+      },
+      {
+        question: "How do you personally spot high-potential talent in a GCC?",
+        answer:
+          "I look for people who demonstrate curiosity, take ownership beyond their job description, and connect their work to broader business outcomes. High-potential talent isn't always the loudest voice in the room. More often, it's the individual who brings clarity to ambiguous problems, learns quickly, and earns trust across teams."
+      },
+      {
+        question: "What’s the worst piece of leadership advice you’ve ever received?",
+        answer:
+          "Stay in your lane."
+      },
+      {
+        question: "Do you have a secret productivity hack that actually works for you?",
+        answer:
+          "Prioritization. It's both an art and a science."
+      },
+      {
+        question: "Share one fun or surprising fact about you that your team may not know.",
+        answer:
+          "A surprising number of my best ideas come while walking my dog."
+      },
+      {
+        question: "What’s one big lesson the GCC ecosystem has taught you?",
+        answer:
+          "A GCC's mandate grows at the speed of trust. Strong talent is essential, but credibility is earned through consistent delivery, business understanding, and the confidence of global stakeholders."
+      },
+      {
+        question: "What advice would you give to future GCC leaders just starting out?",
+        answer:
+          "Learn the business before trying to transform it. Understanding the business context is the foundation for creating lasting impact."
+      }
+    ]
+  },
+  {
+    name: "Deepika Gandhi",
+    date: "",
+    designation: "",
+    company: "",
+    linkedin: "https://www.linkedin.com/in/deepika-gandhi-4b02417/",
+    image: "",
+    quote:
+      "Scale alone is not strategy. The strongest GCCs are the ones that grow more relevant—not just bigger.",
+    questionaire: [
+      {
+        question: "What does a typical day look like for you as a GCC leader — honestly?",
+        answer:
+          "Honestly, there’s no such thing as a \"typical\" day—and that’s exactly what makes it exciting. A large part of my day is spent context-switching between strategy and execution. One moment I’m focused on long-term capability building and talent strategy, and the next I’m unblocking a delivery issue, reviewing a transformation initiative, or aligning stakeholders across geographies. What remains constant is the people-centricity. A good day always includes time with my leadership team, conversations with emerging talent, and space to think about how we continue making the GCC a strategic asset for the global business."
+      },
+      {
+        question: "How do you unwind after a tough week?",
+        answer:
+          "I like switching off by doing something completely unrelated to dashboards, org charts, or operating models. One ritual that helps me reset is playing Sudoku—usually during my commute and more seriously over the weekend. It clears my mind while keeping it engaged. I also enjoy reading. A mentor once described this as \"tuning the radio\"—shifting out of the noise and back into clarity—and I've found that to be incredibly effective."
+      },
+      {
+        question: "What’s the one skill every GCC leader must have today?",
+        answer:
+          "The conscious ability to connect the dots between business strategy, talent, culture, technology, and execution. GCCs are no longer just delivery engines or cost-arbitrage centers—they are value creators. Leaders must navigate ambiguity, translate strategy into action, and align teams to a larger business narrative."
+      },
+      {
+        question: "Do you have any quirky or unconventional leadership habits?",
+        answer:
+          "I ask a lot of questions. Whenever someone presents an issue, my instinct is to ask: \"What's the issue behind the issue?\" It helps uncover root causes instead of simply reacting to symptoms. I also carry a notebook wherever I go, capturing observations, ideas, and recurring patterns. More often than not, solutions to complex problems emerge from revisiting those notes weeks—or even months—later."
+      },
+      {
+        question: "How do you personally spot high-potential talent in a GCC?",
+        answer:
+          "I look for four qualities: Curiosity, Collaboration, Ownership, and Breadth of thinking. High-potential individuals don't stop at doing their jobs well. They ask better questions, step outside their immediate responsibilities, and volunteer for broader initiatives. I also believe potential isn't defined by traditional career paths. In a GCC environment, some of the strongest leaders emerge from diverse backgrounds and unconventional journeys. The people who thrive are those who influence without authority and continue learning faster than the environment evolves."
+      },
+      {
+        question: "What’s the worst piece of leadership advice you’ve ever received?",
+        answer:
+          "\"Don't get too close to the team—leaders need distance.\" I've never believed that. Leadership isn't about creating distance; it's about building clarity, consistency, and trust. Teams aren't simply there to execute instructions—they amplify a leader's thinking, reach, and impact. The best leadership happens when people know they're understood, valued, and supported."
+      },
+      {
+        question: "Do you have a secret productivity hack that actually works for you?",
+        answer:
+          "Nothing revolutionary—I deliberately leave white space in my calendar. That space allows me to deal with the unexpected, learn, reflect, explore opportunities, or simply be available when someone on my team needs a sounding board. Another personal rule is simple: if something can be resolved with a quick phone call, I'd rather make the call than start a long email thread."
+      },
+      {
+        question: "Share one fun or surprising fact about you that your team may not know.",
+        answer:
+          "I'm probably far more of an observer than people realize. In group settings, I don't always react immediately. Instead, I'm quietly observing patterns, reading the room, noticing energy shifts, and paying close attention to what's not being said. Many of my leadership decisions are shaped by those observations and the notes I revisit later."
+      },
+      {
+        question: "What’s one big lesson the GCC ecosystem has taught you?",
+        answer:
+          "Scale alone is not strategy. The strongest GCCs aren't necessarily the biggest—they're the most relevant. Relevance comes from building trust, investing in diverse talent, and evolving from execution support to decision-shaping impact. Ultimately, long-term value is created when capability, culture, and business context come together. Future-ready GCCs won't just be high-performing—they'll be responsible institutions that contribute meaningfully to people, communities, and sustainable business growth."
+      },
+      {
+        question: "What advice would you give to future GCC leaders just starting out?",
+        answer:
+          "Don't build only for today's requirements—build for the role your GCC will need to play three years from now. Invest early in culture, leadership bench strength, and credibility with global stakeholders. Spend as much time understanding the business as you do understanding your role. Tomorrow's GCC leaders won't be defined solely by execution excellence, but by their ability to shape strategy, influence decision-making, and build inclusive talent ecosystems that create long-term value."
+      }
+    ]
+  },
+  {
     name: "Geetha Thiagarajan",
     date: "",
     designation: "Country Head | People & Culture",
     company: "Curriculum Associates",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/geetha-thiagarajan/",
     image: geeta,
     quote:
       "I don’t hire for the role. I hire for the room - because the right person doesn’t just do the job, they elevate everyone around them.",
@@ -903,6 +1090,78 @@ export const leaders1: LeaderData[] = [
         question: "What advice would you give to future Talent Leaders?",
         answer:
           "Learn the business obsessively. Not HR theory — the actual business. Revenue, product, customer. When you connect hiring to business outcomes, you stop being support and become strategic."
+      }
+    ]
+  },
+  {
+    name: "Sidharth Gupta",
+    date: "",
+    designation: "",
+    company: "Bupa GCC",
+    linkedin: "https://www.linkedin.com/in/amazon-leader",
+    image: "",
+    quote:
+      "Leadership isn't about saying 'yes' to every request. It's about earning trust through expertise, conviction, and sound judgment.",
+    questionaire: [
+      {
+        question: "What does a typical day look like for you as a Talent Leader — honestly?",
+        answer:
+          "Setting up the Bupa GCC is a dynamic, high-stakes balancing act. A typical day is defined by constant uncertainty, ad hoc requests, and managing complex internal teams and vendor ecosystems. At the same time, I'm in back-to-back meetings with global stakeholders. Success comes from seamlessly bridging real-time operational execution with international strategic alignment. It's a demanding role that tests resilience every day, requiring rapid adaptability to drive corporate strategy while keeping local execution firmly on track."
+      },
+      {
+        question: "What’s the toughest hiring challenge you’re solving right now in GCCs?",
+        answer:
+          "Building the Bupa GCC presents two major challenges. The first is accelerating talent acquisition while convincing business units to move away from long-standing external service providers. We have to demonstrate that the GCC can deliver exceptional talent and business outcomes at speed. The second is changing how global leadership views GCCs. Many still see them as transactional, cost-focused delivery centres rather than strategic capability hubs. The real challenge is balancing rapid execution with continuous advocacy—helping leadership see the GCC as an equal enterprise partner."
+      },
+      {
+        question: "How do you unwind after a long week of hiring chaos?",
+        answer:
+          "Spending time talking with my team, office friends, and my family."
+      },
+      {
+        question: "What’s the one skill every Talent Leader must have today?",
+        answer:
+          "Adaptability."
+      },
+      {
+        question: "How do you spot high-potential talent beyond what’s on a resume?",
+        answer:
+          "I use AI to assess how well a resume aligns with the role, conduct structured recruiter screening conversations, ask 'out-of-syllabus' questions to understand how candidates think, and review their LinkedIn presence and professional footprint."
+      },
+      {
+        question: "What’s the funniest or weirdest thing a candidate has said or done?",
+        answer:
+          "One candidate asked if we could hire her boyfriend as well."
+      },
+      {
+        question: "One hiring myth you strongly disagree with",
+        answer:
+          "That the HR interview is just a formality."
+      },
+      {
+        question: "Do you have a personal rule or non-negotiable when it comes to hiring?",
+        answer:
+          "Ethics are non-negotiable."
+      },
+      {
+        question: "Do you have a productivity hack that actually works for you?",
+        answer:
+          "I use time-blocked 'Global Windows' and 'Local Sprints.' Mornings are reserved for deep work, sourcing strategy, and vendor management with no global meetings. Afternoons and evenings are dedicated to global stakeholder discussions and leadership coaching. Grouping similar work together protects execution time and minimizes constant context switching."
+      },
+      {
+        question: "What’s one big lesson the GCC hiring ecosystem has taught you?",
+        answer:
+          "Joining a GCC requires a very different mindset from working in a traditional technology company. The challenges, stakeholders, and operating model are fundamentally different."
+      },
+      {
+        question: "What advice would you give to future Talent Leaders?",
+        answer:
+          "Many people assume they're Talent Acquisition experts simply because they've interviewed candidates. In a GCC, Talent Leaders must operate as strategic advisors—not order takers. Use talent intelligence and market data to shape hiring strategy, establish clear ownership of the hiring process, and have the courage to challenge stakeholders when quality is at risk. Leadership isn't about saying 'yes' to every request. It's about earning trust through expertise, conviction, and sound judgment."
+      },
+      {
+        question: "Fun / Surprising Fact",
+        answer:
+          "I always appear calm on the outside... but I'm usually feeling very chaotic on the inside."
       }
     ]
   }

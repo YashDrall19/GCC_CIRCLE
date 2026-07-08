@@ -1,27 +1,33 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, MapPin, Calendar, Users, Coffee, Wind, CheckCircle2, Clock3 } from 'lucide-react';
+import { ArrowRight, MapPin, Calendar, Users, Coffee, Wind, CheckCircle2, Clock3, Lightbulb } from 'lucide-react';
 import CardBackgroundCarousel from '@/components/CardBackgroundCarousel';
 import { pastEvents, upcomingEvents } from './data';
+import Script from 'next/script';
 
 export default function EventsPage() {
 
   const experienceFeatures = [
     {
       icon: <Users size={24} />,
-      title: 'Networking with Purpose',
-      desc: 'Build relationships that go beyond LinkedIn connections — exchange ideas, insights, and opportunities in a relaxed setting.',
+      title: 'Executive-Level Networking',
+      desc: "Meet senior leaders, GCC heads, functional leaders, and enterprise decision makers from India's leading Global Capability Centres.",
     },
     {
       icon: <Coffee size={24} />,
-      title: 'Casual Meet & Greet',
-      desc: 'Informal gatherings designed to spark authentic conversations and meaningful connections between industry peers.',
+      title: 'Curated Conversations',
+      desc: 'Participate in discussions that focus on strategy, leadership, innovation, talent, AI, workplace transformation, and the evolving role of GCCs.',
     },
     {
       icon: <Wind size={24} />,
-      title: 'A Room to Let Loose',
-      desc: 'Because even leaders need a space to breathe, laugh, and engage outside of the corporate grind.',
+      title: 'Meaningful Connections',
+      desc: 'Our events are intentionally small, allowing every attendee to contribute, engage, and build relationships that continue long after the event.',
+    },
+    {
+      icon: <Lightbulb size={24} />,
+      title: 'Executive Intelligence',
+      desc: "Walk away with perspectives, ideas, and peer insights you won't find in public conferences or webinars.",
     },
   ];
 
@@ -35,13 +41,16 @@ export default function EventsPage() {
         <div className="relative max-w-4xl mx-auto text-center">
           <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 sm:mb-5 block">GCC Circle Events</span>
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">
-            Where leaders unwind,<br className="hidden sm:block" />
+            Where India's GCC <br className="hidden sm:block" />
             <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
-              connect and inspire
+              Leaders Meet
             </span>
           </h1>
           <p className="text-white/55 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed px-2">
-            Exclusive, closed-door gatherings for India&apos;s top GCC executives. Every event is crafted for meaningful peer exchange, not surface-level networking.
+            The GCC Circle hosts invitation-only experiences designed for the leaders shaping the future of Global Capability Centres.
+          </p>
+          <p className="text-white/55 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed px-2">
+            From closed-door executive roundtables and private leadership mixers to fireside conversations and strategic networking experiences, every gathering is intentionally curated to encourage honest conversations, meaningful relationships, and practical insights.
           </p>
         </div>
       </section>
@@ -51,9 +60,12 @@ export default function EventsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 sm:mb-14">
             <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 block">The Experience</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">What to expect</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Why Attend</h2>
+            <p className="text-white/55 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed px-2">
+              Every GCC Circle experience is designed around one objective: creating conversations that move the industry forward.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5 sm:gap-8">
             {experienceFeatures.map((f) => (
               <div
                 key={f.title}
@@ -117,14 +129,16 @@ export default function EventsPage() {
                     </div>
                     </div>
                     <p className="text-white/55 text-sm leading-relaxed mb-6 sm:mb-8">{e.desc}</p>
-                    {e.registrations_open &&
-                      <Link
-                        href="/join"
-                        className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#D2A679] hover:bg-[#B87333] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(26,108,255,0.4)]"
+                    {e.registrations_open && (
+                      <a
+                        href={e.registrationLink}
+                        className="luma-checkout--button inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#D2A679] hover:bg-[#B87333] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(26,108,255,0.4)]"
+                        data-luma-action="checkout"
+                        data-luma-event-id={e.registrationLink.split("/").pop()}
                       >
                         Register Now <ArrowRight size={14} />
-                      </Link>
-                    }
+                      </a>
+                    )}
                   </div>
                 </div>
               </Link>
@@ -140,7 +154,7 @@ export default function EventsPage() {
             <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 block">We&apos;ve Been Busy</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Past Events</h2>
             <p className="text-white/50 mt-3 sm:mt-4 text-base sm:text-lg max-w-xl mx-auto px-2">
-              A glimpse into the circles we&apos;ve created across India&apos;s leading GCC cities.
+              Inside the Leadership Experiences Shaping India's GCC Ecosystem.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
@@ -201,6 +215,12 @@ export default function EventsPage() {
           </div>
         </div>
       </section>
+
+      <Script
+        id="luma-checkout"
+        src="https://embed.lu.ma/checkout-button.js"
+        strategy="lazyOnload"
+      />
     </main>
   );
 }

@@ -9,7 +9,7 @@ import {
   Users,
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
-import { pastEvents } from '../data';
+import { pastEvents, upcomingEvents } from '../data';
 import notfound from "../../../public/images/notfound.png";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -25,8 +25,10 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 export default function EventDetailPage() {
   const {id} = useParams();
-  const event = pastEvents?.find(event => event?.id === id);
+  const event = pastEvents?.find(event => event?.id === id) || upcomingEvents?.find(event => event?.id === id);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const images = event?.images || [];
+  const leaders = event?.leaders || [];
 
   return (
     <main className="bg-[#070b14] text-white min-h-screen pt-16 sm:pt-20">
@@ -161,66 +163,70 @@ export default function EventDetailPage() {
       </section>
 
       {/* Speakers */}
-      <section className="px-4 sm:px-6 mb-10 sm:mb-16">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
-            Featured Speakers
-          </h2>
+      {leaders?.length > 0  &&
+        <section className="px-4 sm:px-6 mb-10 sm:mb-16">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
+              Participating Organisations
+            </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-            {event?.leaders?.map((speaker, index) => (
-              <div
-                key={index}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-5 hover:border-[#D2A679]/40 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#D2A679]/20 flex items-center justify-center text-[#D2A679] font-bold shrink-0 text-sm sm:text-base">
-                    {speaker?.name?.charAt(0)}
-                  </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              {event?.leaders?.map((speaker, index) => (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-5 hover:border-[#D2A679]/40 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#D2A679]/20 flex items-center justify-center text-[#D2A679] font-bold shrink-0 text-sm sm:text-base">
+                      {speaker?.name?.charAt(0)}
+                    </div>
 
-                  <div className="flex flex-col min-w-0">
-                    <h3 className="font-semibold text-base sm:text-lg truncate">
-                      {speaker?.name}
-                    </h3>
+                    <div className="flex flex-col min-w-0">
+                      <h3 className="font-semibold text-base sm:text-lg truncate">
+                        {speaker?.name}
+                      </h3>
 
-                    <p className="text-white/50 text-xs sm:text-sm truncate">
-                      {speaker?.company}
-                    </p>
+                      <p className="text-white/50 text-xs sm:text-sm truncate">
+                        {speaker?.company}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      }
 
       {/* Gallery */}
-      <section className="px-4 sm:px-6 pb-14 sm:pb-20">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
-            Event Gallery
-          </h2>
+      {images?.length > 0  &&
+        <section className="px-4 sm:px-6 pb-14 sm:pb-20">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
+              Event Gallery
+            </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
-            {event?.images?.map((image, index) => (
-              <div
-                key={index}
-                onClick={() => setSelectedImage(image)}
-                className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 group cursor-pointer"
-              >
-                <div className="aspect-[4/3] relative">
-                  <Image
-                    src={image}
-                    alt={`Gallery ${index + 1}`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
+              {event?.images?.map((image, index) => (
+                <div
+                  key={index}
+                  onClick={() => setSelectedImage(image)}
+                  className="relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 group cursor-pointer"
+                >
+                  <div className="aspect-[4/3] relative">
+                    <Image
+                      src={image}
+                      alt={`Gallery ${index + 1}`}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      }
 
       {event?.description2 &&
         <section className="px-4 sm:px-6 mb-10 sm:mb-16">

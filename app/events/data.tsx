@@ -115,14 +115,16 @@ export const pastEvents = [
     //   { "name": "Yagneshwar Sreekanth", "company": "GUS Education India" },
     //   { "name": "Rajesh Ramaswami", "company": "Elevance Health" }
     // ],
-    carousel: [
-      
-    ],
-    // images: Array.from(
-    //   { length: 30 },
-    //   (_, i) =>
-    //     `/events/dec-2025-hyderabad/images/Artboard ${String(i + 1)}.jpg`
-    // ),
+    carousel: Array.from(
+      { length: 1 },
+      (_, i) =>
+        `/events/july-2026-gurugram/Gurugram${String(i).padStart(2, "0")}.jpeg`
+    ),
+    images: Array.from(
+      { length: 19 },
+      (_, i) =>
+        `/events/july-2026-gurugram/Gurugram${String(i + 1).padStart(2, "0")}.jpeg`
+    ),
   },
   {
     id: "delhi-april-2026",
@@ -310,26 +312,35 @@ export const upcomingEvents = [
     type: 'The GCC Circle Mixer.',
     desc: 'In partnership with JLL.',
     spots: '35 seats',
-    images: [
-      'https://images.unsplash.com/photo-1551161242-b5af797b7233?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1470075446540-4391a96ec621?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1569596732936-4e06a8afee28?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    ],
-    registrations_open: false
+    images: [],
+    registrations_open: true,
+    carousel: [],
+    img: "",
+    registrationLink: "https://luma.com/event/evt-FaBfExjNjQ6upjA",
+    description2: ``,
+    description1: (<div className="space-y-4">
+      <p>The GCC Circle Mixer is an exclusive, invitation-only networking evening that brings together senior leaders from India's Global Capability Center (GCC) ecosystem for meaningful conversations, strategic introductions, and lasting professional connections.</p>
+      <p>Designed as a relaxed, relationship-first experience, the Mixer moves beyond traditional conferences and formal panel discussions. It creates a trusted environment where GCC leaders can engage in candid discussions, exchange perspectives on the evolving business landscape, and connect with peers driving transformation across technology, operations, finance, HR, AI, engineering, and enterprise functions.</p>
+      <p>Hosted in Hyderabad, one of India's fastest-growing GCC hubs, this edition will bring together CEOs, Managing Directors, Site Heads, functional leaders, and decision-makers representing leading global organizations and emerging GCCs. The evening offers an opportunity to expand your leadership network, explore potential collaborations, and gain insights into the trends shaping the future of global capability centers.</p>
+      <p>Whether you're leading a mature GCC, building a new center, driving enterprise transformation, or scaling talent and innovation, the GCC Circle Mixer provides a platform to build authentic relationships with the people shaping the next chapter of India's GCC story.</p>
+      <p>Join us for an evening of thoughtful conversations, curated networking, and a community committed to advancing the future of Global Capability Centers.</p>
+    </div>),
+    leaders: [],
+    attendees: []
   },
-  {
-    city: 'Delhi',
-    month: '',
-    date: '',
-    year: 'TBD',
-    type: 'The GCC Circle Mixer.',
-    desc: 'Exclusively for CHROs & TA Heads.',
-    spots: '35 seats',
-    images: [
-      'https://images.unsplash.com/photo-1551161242-b5af797b7233?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1470075446540-4391a96ec621?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      'https://images.unsplash.com/photo-1569596732936-4e06a8afee28?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    ],
-    registrations_open: false
-  },
+  // {
+  //   city: 'Delhi',
+  //   month: '',
+  //   date: '',
+  //   year: 'TBD',
+  //   type: 'The GCC Circle Mixer.',
+  //   desc: 'Exclusively for CHROs & TA Heads.',
+  //   spots: '35 seats',
+  //   images: [
+  //     'https://images.unsplash.com/photo-1551161242-b5af797b7233?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //     'https://images.unsplash.com/photo-1470075446540-4391a96ec621?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //     'https://images.unsplash.com/photo-1569596732936-4e06a8afee28?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //   ],
+  //   registrations_open: false
+  // },
 ];
