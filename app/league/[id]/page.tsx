@@ -62,61 +62,79 @@ export default function LeaderDetailPage() {
       {/* Content */}
       <section className="py-8 sm:py-12 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          {/* Image */}
-          <div className="flex justify-center mb-8 sm:mb-10">
-            <div className="relative rounded-2xl overflow-hidden border-2 border-[#B87333] w-full max-w-[280px] sm:max-w-sm">
-              <div className="aspect-[3/4] relative">
-                <Image
-                  src={leader.image}
-                  alt={leader.name}
-                  fill
-                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
-                />
+          <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-8 lg:gap-14 items-start mb-12">
+            {/* Left Column */}
+            <div className="flex flex-col items-center lg:items-start">
+              <div className="relative rounded-2xl overflow-hidden border-2 border-[#B87333] w-full max-w-[320px]">
+                <div className="aspect-[3/4] relative">
+                  <Image
+                    src={leader.image}
+                    alt={leader.name}
+                    fill
+                    className="object-cover object-top transition-transform duration-500"
+                  />
+                </div>
+
+                <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-transparent" />
+              </div>
+            </div>
+
+            {/* Right Column */}
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+              <div className="mb-4">
+                <span
+                  className="inline-block px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-widest"
+                  style={{
+                    backgroundColor: `${accentColor}20`,
+                    color: accentColor,
+                  }}
+                >
+                  {leaderType === "tech" ? "Tech Leader" : "HR Leader"}
+                </span>
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-transparent" />
-            </div>
-          </div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-3">
+                {leader.name}
+              </h1>
 
-          {/* Header */}
-          <div className="text-center mb-10 sm:mb-12">
-            <div className="flex justify-center mb-3 sm:mb-4">
-              <span
-                className="px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-widest"
-                style={{
-                  backgroundColor: `${accentColor}20`,
-                  color: accentColor,
-                }}
+              <p
+                className="text-lg sm:text-xl lg:text-2xl font-semibold mb-6"
+                style={{ color: accentColor }}
               >
-                {leaderType === 'tech' ? 'Tech Leader' : 'HR Leader'}
-              </span>
+                {leader.designation}
+              </p>
+
+              {leader.linkedin && (
+                <a
+                  href={leader.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-5 py-3 mb-8 bg-white/[0.03] border border-white/10 rounded-xl text-sm font-semibold text-white/90 hover:bg-white/[0.05] transition-all duration-200"
+                >
+                  <div className="w-6 h-6 rounded-sm flex items-center justify-center bg-[#D2A679]/20">
+                    <Linkedin size={16} style={{ color: "#D2A679" }} />
+                  </div>
+
+                  Connect on LinkedIn
+                </a>
+              )}
+
+              <div className="w-full rounded-2xl border border-white/6 bg-white/[0.02] p-5 sm:p-6">
+                <h2 className="text-lg sm:text-xl font-bold mb-3">
+                  Beyond the Title
+                </h2>
+
+                <p className="text-white/70 leading-relaxed text-sm sm:text-base">
+                  {leader.quote}
+                </p>
+              </div>
             </div>
-
-            <h1 className="text-3xl sm:text-5xl font-bold mb-2 sm:mb-3 bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
-              {leader.name}
-            </h1>
-
-            <p
-              className="text-lg sm:text-xl font-semibold mb-2"
-              style={{ color: accentColor }}
-            >
-              {leader.designation}
-            </p>
-          </div>
-
-          {/* About */}
-          <div className="mb-10 sm:mb-14">
-            <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Beyond the Title</h2>
-
-            <p className="text-white/70 leading-relaxed text-base sm:text-lg">
-              {leader.quote}
-            </p>
           </div>
 
           {/* Q&A */}
           {leader.questionaire && leader.questionaire.length > 0 && (
             <div className="mb-10 sm:mb-14">
-              <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Leadership Conversations</h2>
+              <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">In Conversation</h2>
 
               <div className="space-y-8 sm:space-y-10">
                 {leader.questionaire
@@ -143,35 +161,7 @@ export default function LeaderDetailPage() {
             </div>
           )}
 
-          {/* Connect */}
-          <div className="mb-8 sm:mb-10">
-            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Connect</h2>
-
-            <div className="space-y-3 sm:space-y-4">
-              {leader.linkedin && (
-                <a
-                  href={leader.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border border-white/10 hover:border-white/30 hover:bg-white/5 transition-all duration-200"
-                >
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center bg-[#D2A679]/20 flex-shrink-0">
-                    <Linkedin
-                      size={18} sm-size={20}
-                      style={{ color: '#D2A679' }}
-                    />
-                  </div>
-
-                  <div className="min-w-0">
-                    <p className="text-xs sm:text-sm text-white/55">LinkedIn</p>
-                    <p className="font-semibold text-sm sm:text-base truncate">
-                      Connect on LinkedIn
-                    </p>
-                  </div>
-                </a>
-              )}
-            </div>
-          </div>
+          
         </div>
       </section>
     </main>
