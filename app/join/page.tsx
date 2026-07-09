@@ -269,6 +269,7 @@ export default function JoinPage() {
                       onChange={handleChange}
                       placeholder="Please specify..."
                       className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors mt-3"
+                      required
                     />
                   )}
                 </div>
