@@ -13,7 +13,7 @@ const benefits = [
   "Opportunities to contribute through thought leadership, speaking engagements, and community initiatives"
 ];
 
-const memberTypes = ["Scaler school of Technology", "JLL", "CLL"];
+const memberTypes = ["LinkedIn", "Email", "Whatsapp", "Colleague / Friend", "Talentiser Team", "GCC Circle Event", "Google Search", "Partner (JLL, CII, etc.)", "Social Media (Other than LinkedIn)", "Others"];
 
 export default function JoinPage() {
   const [form, setForm] = useState({
@@ -24,6 +24,7 @@ export default function JoinPage() {
     company: '',
     title: '',
     source: '',
+    sourceOther: '',
     linkedin: '',
     whatsapp: false,
     agreed: false,
@@ -44,10 +45,16 @@ export default function JoinPage() {
     e.preventDefault();
     if (!form.agreed) return;
     setLoading(true);
+    
+    const submitData = {
+      ...form,
+      source: form.source === 'Others' ? form.sourceOther : form.source,
+    };
+    
     const res = await fetch(urls.joincircle, {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(form)
+      body: JSON.stringify(submitData)
     });
     const data = await res.json();
     if (data?.success) {
@@ -254,15 +261,16 @@ export default function JoinPage() {
                       <option key={m} value={m} className="bg-[#0a0e1a]">{m}</option>
                     ))}
                   </select>
-                  {/* <input
-                    type="text"
-                    name="source"
-                    value={form.source}
-                    onChange={handleChange}
-                    required
-                    placeholder="GCC Circle Event, LinkedIn, Referral, etc."
-                    className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
-                  /> */}
+                  {form.source === 'Others' && (
+                    <input
+                      type="text"
+                      name="sourceOther"
+                      value={form.sourceOther}
+                      onChange={handleChange}
+                      placeholder="Please specify..."
+                      className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors mt-3"
+                    />
+                  )}
                 </div>
 
                 <div>
