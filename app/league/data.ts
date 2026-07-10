@@ -52,6 +52,68 @@ export const leaderTypeMap: Record<string, 'tech' | 'hr'> = {
 
 export const leaders1: LeaderData[] = [
   {
+    name: "Arun Kohli",
+    date: "",
+    designation: "",
+    company: "",
+    linkedin: "https://www.linkedin.com/in/kohliarun",
+    image: arun,
+    quote:
+      "A GCC's mandate grows at the speed of trust. Credibility is earned through consistent delivery, business understanding, and stakeholder confidence.",
+    questionaire: [
+      {
+        question: "What does a typical day look like for you as a GCC leader — honestly?",
+        answer:
+          "A typical day is a mix of strategy, stakeholder conversations, people discussions, and unblocking initiatives that are moving more slowly than they should. There’s constant context-switching between GCC priorities and global expectations, with a significant amount of time spent translating broad ambitions into practical next steps. And honestly, the calendar often has a mind of its own."
+      },
+      {
+        question: "How do you unwind after a tough week?",
+        answer:
+          "Doing something selfless is usually the most meaningful part of my week."
+      },
+      {
+        question: "What’s the one skill every GCC leader must have today?",
+        answer:
+          "Adaptability and the ability to navigate ambiguity. We’re operating in an environment of constant change, and success depends on dynamic thinking and the ability to evolve quickly."
+      },
+      {
+        question: "Do you have any quirky or unconventional leadership habits?",
+        answer:
+          "I like testing new AI tools myself before discussing enterprise adoption. It helps me separate genuine capability from impressive demos and ensures I have first-hand experience before recommending any technology."
+      },
+      {
+        question: "How do you personally spot high-potential talent in a GCC?",
+        answer:
+          "I look for people who demonstrate curiosity, take ownership beyond their job description, and connect their work to broader business outcomes. High-potential talent isn't always the loudest voice in the room. More often, it's the individual who brings clarity to ambiguous problems, learns quickly, and earns trust across teams."
+      },
+      {
+        question: "What’s the worst piece of leadership advice you’ve ever received?",
+        answer:
+          "Stay in your lane."
+      },
+      {
+        question: "Do you have a secret productivity hack that actually works for you?",
+        answer:
+          "Prioritization. It's both an art and a science."
+      },
+      {
+        question: "Share one fun or surprising fact about you that your team may not know.",
+        answer:
+          "A surprising number of my best ideas come while walking my dog."
+      },
+      {
+        question: "What’s one big lesson the GCC ecosystem has taught you?",
+        answer:
+          "A GCC's mandate grows at the speed of trust. Strong talent is essential, but credibility is earned through consistent delivery, business understanding, and the confidence of global stakeholders."
+      },
+      {
+        question: "What advice would you give to future GCC leaders just starting out?",
+        answer:
+          "Learn the business before trying to transform it. Understanding the business context is the foundation for creating lasting impact."
+      }
+    ]
+  },
+  {
     name: "Uma Seetharaman",
     date: "29th May - 2pm",
     designation: "Product & Engineering Leader",
@@ -901,68 +963,6 @@ export const leaders1: LeaderData[] = [
         question: "What advice would you give to future GCC leaders just starting out?",
         answer:
           "Focus on creating business context—not just managing delivery. Help teams understand the customer, product vision, roadmap, and business objectives. When people understand the \"why,\" they naturally take ownership of outcomes. Stay close to both people and technology. Leadership cannot happen solely through dashboards and status calls. Finally, build trust through transparency. Be honest about risks, avoid overpromising, and consistently provide solutions and visibility. The future GCC leader must be a bridge between global strategy and local execution, technology capability and business outcomes, and today's delivery and tomorrow's innovation."
-      }
-    ]
-  },
-  {
-    name: "Arun Kohli",
-    date: "",
-    designation: "",
-    company: "",
-    linkedin: "https://www.linkedin.com/in/kohliarun",
-    image: arun,
-    quote:
-      "A GCC's mandate grows at the speed of trust. Credibility is earned through consistent delivery, business understanding, and stakeholder confidence.",
-    questionaire: [
-      {
-        question: "What does a typical day look like for you as a GCC leader — honestly?",
-        answer:
-          "A typical day is a mix of strategy, stakeholder conversations, people discussions, and unblocking initiatives that are moving more slowly than they should. There’s constant context-switching between GCC priorities and global expectations, with a significant amount of time spent translating broad ambitions into practical next steps. And honestly, the calendar often has a mind of its own."
-      },
-      {
-        question: "How do you unwind after a tough week?",
-        answer:
-          "Doing something selfless is usually the most meaningful part of my week."
-      },
-      {
-        question: "What’s the one skill every GCC leader must have today?",
-        answer:
-          "Adaptability and the ability to navigate ambiguity. We’re operating in an environment of constant change, and success depends on dynamic thinking and the ability to evolve quickly."
-      },
-      {
-        question: "Do you have any quirky or unconventional leadership habits?",
-        answer:
-          "I like testing new AI tools myself before discussing enterprise adoption. It helps me separate genuine capability from impressive demos and ensures I have first-hand experience before recommending any technology."
-      },
-      {
-        question: "How do you personally spot high-potential talent in a GCC?",
-        answer:
-          "I look for people who demonstrate curiosity, take ownership beyond their job description, and connect their work to broader business outcomes. High-potential talent isn't always the loudest voice in the room. More often, it's the individual who brings clarity to ambiguous problems, learns quickly, and earns trust across teams."
-      },
-      {
-        question: "What’s the worst piece of leadership advice you’ve ever received?",
-        answer:
-          "Stay in your lane."
-      },
-      {
-        question: "Do you have a secret productivity hack that actually works for you?",
-        answer:
-          "Prioritization. It's both an art and a science."
-      },
-      {
-        question: "Share one fun or surprising fact about you that your team may not know.",
-        answer:
-          "A surprising number of my best ideas come while walking my dog."
-      },
-      {
-        question: "What’s one big lesson the GCC ecosystem has taught you?",
-        answer:
-          "A GCC's mandate grows at the speed of trust. Strong talent is essential, but credibility is earned through consistent delivery, business understanding, and the confidence of global stakeholders."
-      },
-      {
-        question: "What advice would you give to future GCC leaders just starting out?",
-        answer:
-          "Learn the business before trying to transform it. Understanding the business context is the foundation for creating lasting impact."
       }
     ]
   },
