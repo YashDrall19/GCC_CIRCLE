@@ -15,6 +15,7 @@ import yogesh from "../../public/images/Yogesh More.webp";
 import rohit from "../../public/images/Rohit Khanna.webp";
 import rakesh from "../../public/images/Rakesh Chawla.webp";
 import sidharth from "../../public/images/Sidharth Gupta.jpg";
+import arun from "../../public/images/Arun Kohli.jpg";
 
 interface QuestionAnswer {
   question: string;
@@ -909,7 +910,7 @@ export const leaders1: LeaderData[] = [
     designation: "",
     company: "",
     linkedin: "https://www.linkedin.com/in/kohliarun",
-    image: "",
+    image: arun,
     quote:
       "A GCC's mandate grows at the speed of trust. Credibility is earned through consistent delivery, business understanding, and stakeholder confidence.",
     questionaire: [
