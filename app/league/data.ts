@@ -14,6 +14,7 @@ import supriya from "../../public/images/Supriya Rao.webp";
 import yogesh from "../../public/images/Yogesh More.webp";
 import rohit from "../../public/images/Rohit Khanna.webp";
 import rakesh from "../../public/images/Rakesh Chawla.webp";
+import sidharth from "../../public/images/Sidharth Gupta.jpg";
 
 interface QuestionAnswer {
   question: string;
@@ -1099,7 +1100,7 @@ export const leaders1: LeaderData[] = [
     designation: "",
     company: "Bupa GCC",
     linkedin: "https://www.linkedin.com/in/amazon-leader",
-    image: "",
+    image: sidharth,
     quote:
       "Leadership isn't about saying 'yes' to every request. It's about earning trust through expertise, conviction, and sound judgment.",
     questionaire: [
