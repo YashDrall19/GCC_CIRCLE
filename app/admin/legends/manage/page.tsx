@@ -5,9 +5,8 @@ import { useRouter } from 'next/navigation';
 import { Plus, Trash2, CreditCard as Edit2, ExternalLink, X, CircleAlert as AlertCircle } from 'lucide-react';
 
 interface AnswerInput {
-  question_id: string;
+  question: string;
   answer: string;
-  display_order: number;
 }
 
 interface Legend {
@@ -21,12 +20,7 @@ interface Legend {
   type: string;
   date: string;
   created_at: string;
-  answers?: Array<{
-    id: string;
-    question_id: string;
-    answer: string;
-    display_order: number;
-  }>;
+  questionnaire?: AnswerInput[];
 }
 
 interface Question {
@@ -110,15 +104,14 @@ export default function LegendsManagementPage() {
         });
 
         // Map existing answers to questions
-        const existingAnswers = fullLegend.answers || [];
-        const mapped = questions.map((q, idx) => {
-          const existing = existingAnswers.find(
-            (a: any) => a.question_id === q.id
+        const existingQA = fullLegend.questionnaire || [];
+        const mapped = questions.map((q) => {
+          const existing = existingQA.find(
+            (a: AnswerInput) => a.question === q.question
           );
           return {
-            question_id: q.id,
+            question: q.question,
             answer: existing?.answer || '',
-            display_order: idx,
           };
         });
         setEditAnswers(mapped);
@@ -129,10 +122,10 @@ export default function LegendsManagementPage() {
     }
   };
 
-  const handleEditAnswerChange = (questionId: string, value: string) => {
+  const handleEditAnswerChange = (questionText: string, value: string) => {
     setEditAnswers((prev) =>
       prev.map((a) =>
-        a.question_id === questionId ? { ...a, answer: value } : a
+        a.question === questionText ? { ...a, answer: value } : a
       )
     );
   };
@@ -148,7 +141,7 @@ export default function LegendsManagementPage() {
       const res = await fetch(`/api/admin/legends?id=${editingLegend.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...editForm, answers: editAnswers }),
+        body: JSON.stringify({ ...editForm, questionnaire: editAnswers }),
       });
 
       const data = await res.json();
@@ -512,7 +505,7 @@ export default function LegendsManagementPage() {
                         <textarea
                           value={editAnswers[idx]?.answer || ''}
                           onChange={(e) =>
-                            handleEditAnswerChange(q.id, e.target.value)
+                            handleEditAnswerChange(q.question, e.target.value)
                           }
                           rows={3}
                           placeholder="Enter the answer..."

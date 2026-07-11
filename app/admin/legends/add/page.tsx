@@ -11,9 +11,8 @@ interface Question {
 }
 
 interface AnswerInput {
-  question_id: string;
+  question: string;
   answer: string;
-  display_order: number;
 }
 
 export default function AddLegendPage() {
@@ -47,10 +46,9 @@ export default function AddLegendPage() {
       if (data.success) {
         setQuestions(data.data);
         setAnswers(
-          data.data.map((q: Question, idx: number) => ({
-            question_id: q.id,
+          data.data.map((q: Question) => ({
+            question: q.question,
             answer: '',
-            display_order: idx,
           }))
         );
       }
@@ -65,9 +63,9 @@ export default function AddLegendPage() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleAnswerChange = (questionId: string, value: string) => {
+  const handleAnswerChange = (questionText: string, value: string) => {
     setAnswers((prev) =>
-      prev.map((a) => (a.question_id === questionId ? { ...a, answer: value } : a))
+      prev.map((a) => (a.question === questionText ? { ...a, answer: value } : a))
     );
   };
 
@@ -80,7 +78,7 @@ export default function AddLegendPage() {
       const res = await fetch('/api/admin/legends', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, answers }),
+        body: JSON.stringify({ ...form, questionnaire: answers }),
       });
       const data = await res.json();
 
@@ -293,7 +291,7 @@ export default function AddLegendPage() {
                   </div>
                   <textarea
                     value={answers[idx]?.answer || ''}
-                    onChange={(e) => handleAnswerChange(q.id, e.target.value)}
+                    onChange={(e) => handleAnswerChange(q.question, e.target.value)}
                     rows={3}
                     placeholder="Enter the answer..."
                     className="w-full bg-white/[0.05] border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors resize-none"

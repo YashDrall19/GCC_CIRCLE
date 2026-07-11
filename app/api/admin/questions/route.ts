@@ -1,18 +1,8 @@
 import { NextResponse } from 'next/server';
 import db from '@/lib/db';
 
-async function ensureTables() {
-  await db.execute(`CREATE TABLE IF NOT EXISTS legend_questions (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    question TEXT NOT NULL,
-    display_order INT NOT NULL DEFAULT 0,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
-}
-
 export async function GET() {
   try {
-    await ensureTables();
     const [rows] = await db.execute(
       'SELECT * FROM legend_questions ORDER BY display_order ASC, created_at ASC'
     );
@@ -28,7 +18,6 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
-    await ensureTables();
     const body = await req.json();
     const { question, display_order } = body;
 
@@ -62,7 +51,6 @@ export async function POST(req: Request) {
 
 export async function PUT(req: Request) {
   try {
-    await ensureTables();
     const { searchParams } = new URL(req.url);
     const id = searchParams.get('id');
     const body = await req.json();
@@ -116,7 +104,6 @@ export async function PUT(req: Request) {
 
 export async function DELETE(req: Request) {
   try {
-    await ensureTables();
     const { searchParams } = new URL(req.url);
     const id = searchParams.get('id');
 
