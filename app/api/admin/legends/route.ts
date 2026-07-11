@@ -1,21 +1,55 @@
 import { NextResponse } from 'next/server';
-import { getSupabase } from '@/lib/supabase';
+import db from '@/lib/db';
+
+async function ensureTables() {
+  await db.execute(`CREATE TABLE IF NOT EXISTS legend_questions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question TEXT NOT NULL,
+    display_order INT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
+
+  await db.execute(`CREATE TABLE IF NOT EXISTS legends (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    designation VARCHAR(255) DEFAULT '',
+    company VARCHAR(255) DEFAULT '',
+    linkedin TEXT DEFAULT '',
+    image_url TEXT DEFAULT '',
+    quote TEXT DEFAULT '',
+    type VARCHAR(50) NOT NULL DEFAULT 'tech',
+    date VARCHAR(100) DEFAULT '',
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
+
+  await db.execute(`CREATE TABLE IF NOT EXISTS legend_answers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    legend_id INT NOT NULL,
+    question_id INT NOT NULL,
+    answer TEXT NOT NULL,
+    display_order INT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uq_legend_question (legend_id, question_id),
+    CONSTRAINT fk_answers_legend FOREIGN KEY (legend_id)
+      REFERENCES legends(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_answers_question FOREIGN KEY (question_id)
+      REFERENCES legend_questions(id) ON DELETE CASCADE ON UPDATE CASCADE
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
+}
 
 export async function GET(req: Request) {
   try {
+    await ensureTables();
     const { searchParams } = new URL(req.url);
     const id = searchParams.get('id');
 
-    const supabase = getSupabase();
-
     if (id) {
-      const { data: legend, error: legendError } = await supabase
-        .from('legends')
-        .select('*')
-        .eq('id', id)
-        .maybeSingle();
+      const [legendRows] = await db.execute(
+        'SELECT * FROM legends WHERE id = ?',
+        [id]
+      );
+      const legend = (legendRows as any[])[0];
 
-      if (legendError) throw legendError;
       if (!legend) {
         return NextResponse.json(
           { success: false, error: 'Legend not found' },
@@ -23,28 +57,22 @@ export async function GET(req: Request) {
         );
       }
 
-      const { data: answers, error: answersError } = await supabase
-        .from('legend_answers')
-        .select('id, question_id, answer, display_order')
-        .eq('legend_id', id)
-        .order('display_order', { ascending: true });
-
-      if (answersError) throw answersError;
+      const [answerRows] = await db.execute(
+        'SELECT id, question_id, answer, display_order FROM legend_answers WHERE legend_id = ? ORDER BY display_order ASC',
+        [id]
+      );
 
       return NextResponse.json({
         success: true,
-        data: { ...legend, answers: answers || [] },
+        data: { ...legend, answers: answerRows },
       });
     }
 
-    const { data, error } = await supabase
-      .from('legends')
-      .select('*')
-      .order('created_at', { ascending: false });
+    const [rows] = await db.execute(
+      'SELECT * FROM legends ORDER BY created_at DESC'
+    );
 
-    if (error) throw error;
-
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({ success: true, data: rows });
   } catch (error: any) {
     console.error('Get legends error:', error);
     return NextResponse.json(
@@ -56,6 +84,7 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   try {
+    await ensureTables();
     const body = await req.json();
     const { name, designation, company, linkedin, image_url, quote, type, date, answers } = body;
 
@@ -66,45 +95,47 @@ export async function POST(req: Request) {
       );
     }
 
-    const supabase = getSupabase();
-
-    const { data: legend, error: legendError } = await supabase
-      .from('legends')
-      .insert({
+    const [result] = await db.execute(
+      `INSERT INTO legends (name, designation, company, linkedin, image_url, quote, type, date)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
         name,
-        designation: designation || '',
-        company: company || '',
-        linkedin: linkedin || '',
-        image_url: image_url || '',
-        quote: quote || '',
-        type: type || 'tech',
-        date: date || '',
-      })
-      .select()
-      .single();
+        designation || '',
+        company || '',
+        linkedin || '',
+        image_url || '',
+        quote || '',
+        type || 'tech',
+        date || '',
+      ]
+    );
 
-    if (legendError) throw legendError;
+    const legendId = (result as any).insertId;
 
     if (answers && answers.length > 0) {
-      const answerRows = answers
+      const validAnswers = answers
         .filter((a: any) => a.question_id && a.answer && a.answer.trim())
-        .map((a: any, idx: number) => ({
-          legend_id: legend.id,
-          question_id: a.question_id,
-          answer: a.answer,
-          display_order: a.display_order ?? idx,
-        }));
+        .map((a: any, idx: number) => [
+          legendId,
+          a.question_id,
+          a.answer,
+          a.display_order ?? idx,
+        ]);
 
-      if (answerRows.length > 0) {
-        const { error: answersError } = await supabase
-          .from('legend_answers')
-          .insert(answerRows);
-
-        if (answersError) throw answersError;
+      for (const ans of validAnswers) {
+        await db.execute(
+          'INSERT INTO legend_answers (legend_id, question_id, answer, display_order) VALUES (?, ?, ?, ?)',
+          ans
+        );
       }
     }
 
-    return NextResponse.json({ success: true, data: legend });
+    const [rows] = await db.execute(
+      'SELECT * FROM legends WHERE id = ?',
+      [legendId]
+    );
+
+    return NextResponse.json({ success: true, data: (rows as any[])[0] });
   } catch (error: any) {
     console.error('Create legend error:', error);
     return NextResponse.json(
@@ -116,8 +147,11 @@ export async function POST(req: Request) {
 
 export async function PUT(req: Request) {
   try {
+    await ensureTables();
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get('id');
     const body = await req.json();
-    const { id, name, designation, company, linkedin, image_url, quote, type, date, answers } = body;
+    const { name, designation, company, linkedin, image_url, quote, type, date, answers } = body;
 
     if (!id) {
       return NextResponse.json(
@@ -126,50 +160,49 @@ export async function PUT(req: Request) {
       );
     }
 
-    const supabase = getSupabase();
-
-    const { data: legend, error: legendError } = await supabase
-      .from('legends')
-      .update({
-        name,
-        designation: designation || '',
-        company: company || '',
-        linkedin: linkedin || '',
-        image_url: image_url || '',
-        quote: quote || '',
-        type: type || 'tech',
-        date: date || '',
-      })
-      .eq('id', id)
-      .select()
-      .single();
-
-    if (legendError) throw legendError;
+    await db.execute(
+      `UPDATE legends SET name = ?, designation = ?, company = ?, linkedin = ?, image_url = ?, quote = ?, type = ?, date = ? WHERE id = ?`,
+      [
+        name || '',
+        designation || '',
+        company || '',
+        linkedin || '',
+        image_url || '',
+        quote || '',
+        type || 'tech',
+        date || '',
+        id,
+      ]
+    );
 
     if (answers !== undefined) {
-      await supabase.from('legend_answers').delete().eq('legend_id', id);
+      await db.execute('DELETE FROM legend_answers WHERE legend_id = ?', [id]);
 
       if (answers && answers.length > 0) {
-        const answerRows = answers
+        const validAnswers = answers
           .filter((a: any) => a.question_id && a.answer && a.answer.trim())
-          .map((a: any, idx: number) => ({
-            legend_id: id,
-            question_id: a.question_id,
-            answer: a.answer,
-            display_order: a.display_order ?? idx,
-          }));
+          .map((a: any, idx: number) => [
+            id,
+            a.question_id,
+            a.answer,
+            a.display_order ?? idx,
+          ]);
 
-        if (answerRows.length > 0) {
-          const { error: answersError } = await supabase
-            .from('legend_answers')
-            .insert(answerRows);
-
-          if (answersError) throw answersError;
+        for (const ans of validAnswers) {
+          await db.execute(
+            'INSERT INTO legend_answers (legend_id, question_id, answer, display_order) VALUES (?, ?, ?, ?)',
+            ans
+          );
         }
       }
     }
 
-    return NextResponse.json({ success: true, data: legend });
+    const [rows] = await db.execute(
+      'SELECT * FROM legends WHERE id = ?',
+      [id]
+    );
+
+    return NextResponse.json({ success: true, data: (rows as any[])[0] });
   } catch (error: any) {
     console.error('Update legend error:', error);
     return NextResponse.json(
@@ -181,6 +214,7 @@ export async function PUT(req: Request) {
 
 export async function DELETE(req: Request) {
   try {
+    await ensureTables();
     const { searchParams } = new URL(req.url);
     const id = searchParams.get('id');
 
@@ -191,10 +225,7 @@ export async function DELETE(req: Request) {
       );
     }
 
-    const supabase = getSupabase();
-    const { error } = await supabase.from('legends').delete().eq('id', id);
-
-    if (error) throw error;
+    await db.execute('DELETE FROM legends WHERE id = ?', [id]);
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
