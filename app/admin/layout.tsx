@@ -13,14 +13,50 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
+  Trophy,
+  ChevronDown,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { label: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
-  { label: 'Contacts', href: '/admin/contacts', icon: Mail },
-  { label: 'Leads', href: '/admin/leads', icon: Users },
-  { label: 'Users', href: '/admin/users', icon: UserPlus },
+  {
+    label: 'Dashboard',
+    href: '/admin/dashboard',
+    icon: LayoutDashboard,
+  },
+  {
+    label: 'Contacts',
+    href: '/admin/contacts',
+    icon: Mail,
+  },
+  {
+    label: 'Leads',
+    href: '/admin/leads',
+    icon: Users,
+  },
+  {
+    label: 'Users',
+    href: '/admin/users',
+    icon: UserPlus,
+  },
+  {
+    label: 'Legends',
+    icon: Trophy,
+    children: [
+      {
+        label: 'Add Legend',
+        href: '/admin/legends/add',
+      },
+      {
+        label: 'Conversation Management',
+        href: '/admin/legends/conversations',
+      },
+      {
+        label: 'Legends Management',
+        href: '/admin/legends/manage',
+      },
+    ],
+  },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -30,6 +66,21 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
+
+  useEffect(() => {
+    const parent = navItems.find(
+      (item) =>
+        item.children &&
+        item.children.some((child) => pathname === child.href)
+    );
+
+    if (parent) {
+      setExpandedMenu(parent.label);
+    } else {
+      setExpandedMenu(null);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     setMounted(true);
@@ -112,24 +163,97 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {/* Navigation */}
         <nav className="p-3 space-y-1">
           {navItems.map((item) => {
-            const isActive = pathname === item.href;
+            const hasChildren = !!item.children;
+
+            if (!hasChildren) {
+              const isActive = pathname === item.href;
+
+              return (
+                <button
+                  key={item.href}
+                  onClick={() => {
+                    setExpandedMenu(null);
+                    router.push(item.href!);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={cn(
+                    'w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200',
+                    isActive
+                      ? 'bg-[#D2A679]/15 text-[#D2A679] border border-[#D2A679]/30'
+                      : 'text-white/60 hover:bg-white/5 hover:text-white'
+                  )}
+                >
+                  <item.icon size={20} className="flex-shrink-0" />
+                  {sidebarOpen && (
+                    <span className="text-sm font-medium">{item.label}</span>
+                  )}
+                </button>
+              );
+            }
+
+            const isExpanded = expandedMenu === item.label;
+            const isParentActive = item.children.some(
+              (child) => pathname === child.href
+            );
+
             return (
-              <button
-                key={item.href}
-                onClick={() => {
-                  router.push(item.href);
-                  setMobileMenuOpen(false);
-                }}
-                className={cn(
-                  'w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200',
-                  isActive
-                    ? 'bg-[#D2A679]/15 text-[#D2A679] border border-[#D2A679]/30'
-                    : 'text-white/60 hover:bg-white/5 hover:text-white'
+              <div key={item.label}>
+                <button
+                  onClick={() =>
+                    setExpandedMenu(isExpanded ? null : item.label)
+                  }
+                  className={cn(
+                    'w-full flex items-center px-3 py-2.5 rounded-xl transition-all duration-200',
+                    isParentActive
+                      ? 'bg-[#D2A679]/15 text-[#D2A679] border border-[#D2A679]/30'
+                      : 'text-white/60 hover:bg-white/5 hover:text-white'
+                  )}
+                >
+                  <item.icon size={20} />
+
+                  {sidebarOpen && (
+                    <>
+                      <span className="ml-3 flex-1 text-left text-sm font-medium">
+                        {item.label}
+                      </span>
+
+                      <ChevronDown
+                        size={16}
+                        className={cn(
+                          'transition-transform duration-200',
+                          isExpanded && 'rotate-180'
+                        )}
+                      />
+                    </>
+                  )}
+                </button>
+
+                {sidebarOpen && isExpanded && (
+                  <div className="ml-8 mt-1 space-y-1">
+                    {item.children.map((child) => {
+                      const active = pathname === child.href;
+
+                      return (
+                        <button
+                          key={child.href}
+                          onClick={() => {
+                            router.push(child.href);
+                            setMobileMenuOpen(false);
+                          }}
+                          className={cn(
+                            'w-full text-left rounded-lg px-3 py-2 text-sm transition-all',
+                            active
+                              ? 'bg-[#D2A679]/20 text-[#D2A679]'
+                              : 'text-white/60 hover:bg-white/5 hover:text-white'
+                          )}
+                        >
+                          {child.label}
+                        </button>
+                      );
+                    })}
+                  </div>
                 )}
-              >
-                <item.icon size={20} className="flex-shrink-0" />
-                {sidebarOpen && <span className="text-sm font-medium">{item.label}</span>}
-              </button>
+              </div>
             );
           })}
         </nav>
