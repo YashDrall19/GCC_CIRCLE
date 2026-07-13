@@ -16,6 +16,7 @@ interface Lead {
   title: string;
   agreed: boolean;
   whatsapp: boolean;
+  organic?: boolean;
   created_at: string;
 }
 
@@ -133,6 +134,21 @@ export default function AdminLeadsPage() {
       label: 'Source',
       render: (value: string) => (
         <span className="text-white/50 text-xs">{value || '-'}</span>
+      ),
+    },
+    {
+      key: 'organic',
+      label: 'Type',
+      render: (value: boolean) => (
+        <span
+          className={`px-2 py-1 rounded text-xs ${
+            value
+              ? 'bg-emerald-500/20 text-emerald-400'
+              : 'bg-white/5 text-white/30'
+          }`}
+        >
+          {value ? 'Organic' : 'Admin'}
+        </span>
       ),
     },
     {

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Linkedin, Mail, Phone } from 'lucide-react';
+import { ExternalLink, Linkedin, Mail, Phone } from 'lucide-react';
 import Image from 'next/image';
 
 const circleLinks = [
@@ -29,14 +29,14 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-4">
               <Image
-                src="/logo/goldlogo.png"
+                src="/logo/bluelogo.png"
                 alt="GCC Circle"
                 width={240}
                 height={80}
                 className="h-28 sm:h-40 w-auto"
               />
             </div>
-            <div className="flex items-center gap-3">
+            {/* <div className="flex items-center gap-3">
               <a
                 href="https://www.linkedin.com/company/gcc-circle"
                 target="_blank"
@@ -46,7 +46,7 @@ export default function Footer() {
               >
                 <Linkedin size={16} className="text-white" />
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Circle */}
@@ -115,6 +115,17 @@ export default function Footer() {
                 <Phone size={14} />
                 +91 8505823013
               </a>
+              <a
+                href="https://www.linkedin.com/company/gcc-circle"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="flex items-center gap-2 text-white/50 hover:text-white text-sm transition-colors duration-200"
+              >
+                <Linkedin size={14} />
+                Linked In
+                <ExternalLink size={14} />
+              </a>
             </div>
           </div>
         </div>
@@ -131,14 +142,20 @@ export default function Footer() {
             }
           >
             <div className="h-10 w-px bg-white/10" />
-            <div>
+            {/* <div>
               <p className="text-[10px] uppercase tracking-[0.35em] text-white">
                 Powered by
               </p>
               <p className="text-base font-semibold bg-[linear-gradient(210deg,_#0051B0_0%,_#9C65B8_100%)] bg-clip-text text-transparent">
                 Talentiser
               </p>
-            </div>
+            </div> */}
+            <Image
+              src="/logo/Talentiser.webp"
+              alt="GCC Circle"
+              width={150}
+              height={80}
+            />
           </div>
 
           <p className="text-white/30 text-xs sm:text-sm text-center">

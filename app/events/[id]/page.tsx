@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowLeft,
+  ArrowRight,
   Calendar,
   MapPin,
   Users,
@@ -133,17 +134,19 @@ export default function EventDetailPage() {
             </div>
           </div>
 
-          <div className="p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
-            <div className="flex items-center gap-3">
-              <Users size={18} sm-size={20} className="text-[#D2A679] flex-shrink-0" />
-              <div>
-                <p className="text-white/50 text-xs sm:text-sm">Attendees</p>
-                <p className="font-medium text-sm sm:text-base">
-                  {event?.attendees}
-                </p>
+          {event?.attendees &&
+            <div className="p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+              <div className="flex items-center gap-3">
+                <Users size={18} sm-size={20} className="text-[#D2A679] flex-shrink-0" />
+                <div>
+                  <p className="text-white/50 text-xs sm:text-sm">Attendees</p>
+                  <p className="font-medium text-sm sm:text-base">
+                    {event?.attendees}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          }
         </div>
       </section>
 
@@ -164,33 +167,29 @@ export default function EventDetailPage() {
 
       {/* Speakers */}
       {leaders?.length > 0  &&
-        <section className="px-4 sm:px-6 mb-10 sm:mb-16">
+        <section className="mb-10 sm:mb-16">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-8">
               Participating Organisations
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+            <div className="divide-y divide-white/10 border-y border-white/10">
               {event?.leaders?.map((speaker, index) => (
                 <div
                   key={index}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-5 hover:border-[#D2A679]/40 transition-all duration-300"
+                  className="flex items-center justify-between py-5"
                 >
-                  <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#D2A679]/20 flex items-center justify-center text-[#D2A679] font-bold shrink-0 text-sm sm:text-base">
-                      {speaker?.name?.charAt(0)}
-                    </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-medium text-white">
+                      {speaker?.name}
+                    </h3>
 
-                    <div className="flex flex-col min-w-0">
-                      <h3 className="font-semibold text-base sm:text-lg truncate">
-                        {speaker?.name}
-                      </h3>
-
-                      <p className="text-white/50 text-xs sm:text-sm truncate">
-                        {speaker?.company}
-                      </p>
-                    </div>
+                    <p className="mt-1 text-sm text-white/55">
+                      {speaker?.company}
+                    </p>
                   </div>
+
+                  <div className="h-2 w-2 rounded-full bg-[#D2A679]/80 shrink-0" />
                 </div>
               ))}
             </div>
@@ -245,6 +244,36 @@ export default function EventDetailPage() {
           </div>
         </section>
       }
+
+      {/* Registration CTA */}
+      {event?.registrations_open && event?.registrationLink && (
+        <section className="px-4 sm:px-6 pb-14 sm:pb-20">
+          <div className="max-w-6xl mx-auto">
+            <div className="rounded-2xl sm:rounded-3xl border border-[#D2A679]/30 bg-gradient-to-br from-[#D2A679]/10 via-white/[0.02] to-[#B87333]/10 p-8 sm:p-10 text-center">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-3">
+                Ready to Join This Event?
+              </h2>
+
+              <p className="text-white/60 max-w-2xl mx-auto mb-8 leading-relaxed">
+                Secure your spot today and become a part of an exclusive gathering of
+                GCC leaders, innovators, and industry experts.
+              </p>
+
+              <a
+                href={event.registrationLink}
+                className="luma-checkout--button inline-flex items-center gap-2 px-6 py-3 bg-[#D2A679] hover:bg-[#B87333] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(210,166,121,0.35)]"
+                data-luma-action="checkout"
+                data-luma-event-id={event.registrationLink.split('/').pop()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Register Now
+                <ArrowRight size={16} />
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
 
       {selectedImage && (
         <div

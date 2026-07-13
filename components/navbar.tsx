@@ -56,11 +56,11 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
             <Image
-              src="/logo/goldlogo.png"
+              src="/logo/bluelogo.png"
               alt="GCC Circle"
               width={180}
               height={60}
-              className="h-16 sm:h-24 w-auto"
+              className="h-14 sm:h-24 w-auto"
               priority
             />
           </Link>

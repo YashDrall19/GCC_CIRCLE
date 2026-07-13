@@ -4,26 +4,29 @@ import db from '@/lib/db';
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '10');
+    const page = Math.max(1, parseInt(searchParams.get('page') || '1'));
+    const limit = Math.max(1, Math.min(100, parseInt(searchParams.get('limit') || '10')));
     const search = searchParams.get('search') || '';
-    const offset = (page - 1) * limit;
+    const offset = Math.max(0, (page - 1) * limit);
+
+    const safeLimit = limit;
+    const safeOffset = offset;
 
     let countQuery = 'SELECT COUNT(*) as total FROM contactform';
-    let dataQuery = 'SELECT * FROM contactform ORDER BY created_at DESC LIMIT ? OFFSET ?';
-    const params: any[] = [limit, offset];
+    let dataQuery = `SELECT * FROM contactform ORDER BY created_at DESC LIMIT ${safeLimit} OFFSET ${safeOffset}`;
+    const params: any[] = [];
 
     if (search) {
       const searchPattern = `%${search}%`;
       countQuery = 'SELECT COUNT(*) as total FROM contactform WHERE name LIKE ? OR email LIKE ? OR company LIKE ?';
-      dataQuery = 'SELECT * FROM contactform WHERE name LIKE ? OR email LIKE ? OR company LIKE ? ORDER BY created_at DESC LIMIT ? OFFSET ?';
-      params.unshift(searchPattern, searchPattern, searchPattern);
+      dataQuery = `SELECT * FROM contactform WHERE name LIKE ? OR email LIKE ? OR company LIKE ? ORDER BY created_at DESC LIMIT ${safeLimit} OFFSET ${safeOffset}`;
+      params.push(searchPattern, searchPattern, searchPattern);
     }
 
-    const [countRows] = await db.execute(countQuery, search ? [search, search, search] : []);
+    const [countRows] = await db.execute(countQuery, params);
     const [dataRows] = await db.execute(dataQuery, params);
 
-    const total = (countRows as any[])[0].total;
+    const total = Number((countRows as any[])[0].total || 0);
 
     return NextResponse.json({
       success: true,

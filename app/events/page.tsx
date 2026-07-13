@@ -47,7 +47,7 @@ export default function EventsPage() {
             </span>
           </h1>
           <p className="text-white/55 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed px-2">
-            The GCC Circle hosts invitation-only experiences designed for the leaders shaping the future of Global Capability Centres.
+            The GCC Circle hosts invitation-only experiences designed <br className='sm:hidden' /> {" "}for the leaders shaping the future of Global Capability Centres.
           </p>
           <p className="text-white/55 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed px-2">
             From closed-door executive roundtables and private leadership mixers to fireside conversations and strategic networking experiences, every gathering is intentionally curated to encourage honest conversations, meaningful relationships, and practical insights.

@@ -19,6 +19,7 @@ interface Legend {
   quote: string;
   type: string;
   date: string;
+  active: boolean;
   created_at: string;
   questionnaire?: AnswerInput[];
 }
@@ -47,6 +48,7 @@ export default function LegendsManagementPage() {
     quote: '',
     type: 'tech',
     date: '',
+    active: true,
   });
   const [editAnswers, setEditAnswers] = useState<AnswerInput[]>([]);
   const [editLoading, setEditLoading] = useState(false);
@@ -101,6 +103,7 @@ export default function LegendsManagementPage() {
           quote: fullLegend.quote || '',
           type: fullLegend.type || 'tech',
           date: fullLegend.date || '',
+          active: fullLegend.active ?? true,
         });
 
         // Map existing answers to questions
@@ -175,6 +178,26 @@ export default function LegendsManagementPage() {
     }
   };
 
+  const handleToggleActive = async (legend: Legend, active: boolean) => {
+    try {
+      const res = await fetch(`/api/admin/legends?id=${legend.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...legend,
+          active,
+          questionnaire: legend.questionnaire || [],
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        fetchLegends();
+      }
+    } catch (error) {
+      console.error('Error toggling legend active state:', error);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -222,6 +245,9 @@ export default function LegendsManagementPage() {
                     Company
                   </th>
                   <th className="px-4 py-3 text-left text-white/50 font-medium uppercase tracking-wide text-xs">
+                    Active
+                  </th>
+                  <th className="px-4 py-3 text-left text-white/50 font-medium uppercase tracking-wide text-xs">
                     Type
                   </th>
                   <th className="px-4 py-3 text-left text-white/50 font-medium uppercase tracking-wide text-xs">
@@ -248,7 +274,7 @@ export default function LegendsManagementPage() {
                           />
                         ) : (
                           <div className="w-8 h-8 rounded-full bg-[#D2A679]/20 flex items-center justify-center text-[#D2A679] text-xs font-medium flex-shrink-0">
-                            {legend.name.charAt(0).toUpperCase()}
+                            {legend?.name?.charAt(0).toUpperCase()}
                           </div>
                         )}
                         <span className="font-medium">{legend.name}</span>
@@ -259,6 +285,20 @@ export default function LegendsManagementPage() {
                     </td>
                     <td className="px-4 py-3 text-white/70">
                       {legend.company || '-'}
+                    </td>
+                    <td className="px-4 py-3">
+                      <button
+                        type="button"
+                        onClick={() => handleToggleActive(legend, !legend.active)}
+                        className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                          legend.active
+                            ? 'bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/20'
+                            : 'bg-white/5 text-white/50 hover:bg-white/10'
+                        }`}
+                      >
+                        <span className={`w-2.5 h-2.5 rounded-full ${legend.active ? 'bg-emerald-400' : 'bg-white/30'}`} />
+                        {legend.active ? 'Active' : 'Inactive'}
+                      </button>
                     </td>
                     <td className="px-4 py-3">
                       <span
@@ -467,6 +507,22 @@ export default function LegendsManagementPage() {
                   placeholder="e.g. 15th March"
                   className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
                 />
+              </div>
+
+              <div className="flex items-center gap-3">
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={editForm.active}
+                    onChange={(e) =>
+                      setEditForm({ ...editForm, active: e.target.checked })
+                    }
+                    className="h-4 w-4 rounded border-white/15 bg-white/[0.05] text-[#D2A679] focus:ring-0"
+                  />
+                  <span className="text-white/70 text-sm">
+                    Active
+                  </span>
+                </label>
               </div>
 
               <div>

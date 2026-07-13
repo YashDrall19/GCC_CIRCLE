@@ -10,9 +10,9 @@ import { upcomingEvents } from './events/data';
 
 const stats = [
   { value: '400+', label: 'Leaders & Counting' },
-  { value: '250+', label: 'GCCs Represented' },
+  { value: '300+', label: 'GCCs Represented' },
   { value: '30+', label: 'Leadership Experiences' },
-  { value: '150+', label: 'Distinguished Speakers' },
+  { value: '200+', label: 'Distinguished Speakers' },
 ];
 
 const pillars = [
@@ -360,8 +360,8 @@ export default function HomePage() {
                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#D2A679]/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-[#D2A679]/20 transition-colors duration-300" />
                     <div className="relative">
                       <div className="text-[#D2A679] text-sm font-semibold uppercase tracking-widest mb-1 glow-text">{e.month} {e.year}</div>
-                      <div className="text-3xl font-bold mb-2">{e.city}</div>
-                      <div className="text-white/50 text-sm">{e.type}</div>
+                      <div className="text-3xl font-bold mb-2">{e.type}</div>
+                      <div className="text-white/50 text-sm">{e.city}</div>
                       {e.registrations_open ?
                         <Link
                           href="/events"
@@ -394,13 +394,15 @@ export default function HomePage() {
               {testimonials.map((t, i) => (
                 <ScrollReveal key={t.name} delay={i * 100} className="h-full">
                   <div className="h-full flex flex-col p-8 rounded-2xl border border-[#D2A679] bg-[#0a0e1a] backdrop-blur-sm hover:border-[#B87333] transition-all duration-300 group">
-                    <div className="text-4xl text-[#D2A679] font-serif mb-4 glow-text">
-                      &ldquo;
-                    </div>
+                    <div className='flex gap-2'>
+                      <div className="text-4xl text-[#D2A679] font-serif glow-text">
+                        &ldquo;
+                      </div>
 
-                    <p className="flex-1 text-white/70 leading-relaxed mb-6 italic">
-                      {t.quote}
-                    </p>
+                      <p className="flex-1 text-white/70 leading-relaxed mb-6 italic">
+                        {t.quote}
+                      </p>
+                    </div>
 
                     <div className="border-t border-[#D2A679]/20 pt-5 mt-auto">
                       <div className="font-semibold text-white">{t.name}</div>
@@ -423,7 +425,7 @@ export default function HomePage() {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#D2A679]/10 rounded-full blur-[80px]" />
               </div>
               <div className="relative">
-                <h2 className="text-4xl md:text-5xl font-bold mb-5 glow-text">Ready to join the Circle?</h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-5 glow-text">Join the Inner Circle</h2>
                 <p className="text-white/60 text-lg mb-10 max-w-xl mx-auto">
                   Connect with India&apos;s top GCC leaders. Exchange ideas, access exclusive events, and shape the future of your industry.
                 </p>
@@ -431,7 +433,7 @@ export default function HomePage() {
                   href="/join"
                   className="inline-flex items-center gap-2 px-10 py-4 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(26,108,255,0.6)]"
                 >
-                  Join the GCC Circle <ArrowRight size={16} />
+                  Express your Interest <ArrowRight size={16} />
                 </Link>
               </div>
             </div>

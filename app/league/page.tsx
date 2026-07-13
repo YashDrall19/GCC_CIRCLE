@@ -51,9 +51,9 @@ export default function LeaguePage() {
           <div className="grid grid-cols-4 gap-4 sm:gap-8 text-center">
             {[
               { value: '400+', label: 'Leaders & Counting' },
-              { value: '250+', label: 'GCCs Represented' },
+              { value: '300+', label: 'GCCs Represented' },
               { value: '30+', label: 'Leadership Experiences' },
-              { value: '150+', label: 'Distinguished Speakers' },
+              { value: '200+', label: 'Distinguished Speakers' },
             ].map((s) => (
               <div key={s.label}>
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#D2A679]">{s.value}</div>

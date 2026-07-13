@@ -79,7 +79,7 @@ export default function ContactPage() {
                       <div className="text-xs sm:text-sm font-medium">+91 8505823013</div>
                     </div>
                   </a>
-                  <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border border-white/10 bg-white/[0.03]">
+                  {/* <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl border border-white/10 bg-white/[0.03]">
                     <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#D2A679]/15 flex items-center justify-center text-[#D2A679] flex-shrink-0">
                       <MapPin size={16} sm-size={18} />
                     </div>
@@ -87,7 +87,7 @@ export default function ContactPage() {
                       <div className="text-white/40 text-xs mb-0.5">Based in</div>
                       <div className="text-xs sm:text-sm font-medium">India (Pan-India community)</div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
@@ -105,7 +105,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="p-4 sm:p-5 rounded-2xl border border-[#D2A679]/25 bg-[#D2A679]/5">
+              {/* <div className="p-4 sm:p-5 rounded-2xl border border-[#D2A679]/25 bg-[#D2A679]/5">
                 <h3 className="font-semibold mb-2 text-xs sm:text-sm">Partnership inquiries?</h3>
                 <p className="text-white/50 text-xs leading-relaxed mb-3">
                   For partnership and sponsorship opportunities, reach out directly to our partnerships team.
@@ -116,7 +116,7 @@ export default function ContactPage() {
                 >
                   partnerships@gcccircle.com
                 </a>
-              </div>
+              </div> */}
 
               <div className="p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
                 <h3 className="font-semibold mb-2 text-xs sm:text-sm">Ready to join?</h3>
@@ -140,9 +140,9 @@ export default function ContactPage() {
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4 sm:mb-5">
                   <CheckCircle size={28} sm-size={32} className="text-emerald-400" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3">Message Received!</h3>
+                <h3 className="text-xl sm:text-2xl font-bold mb-3">Welcome to the Conversation</h3>
                 <p className="text-white/55 leading-relaxed max-w-sm mx-auto text-sm sm:text-base">
-                  Thanks for reaching out. We&apos;ll get back to you within 1-2 business days.
+                  Your message has been received. We'll review your enquiry and respond within 1–2 business days.
                 </p>
               </div>
             ) : (
@@ -204,7 +204,18 @@ export default function ContactPage() {
                     className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors appearance-none"
                   >
                     <option value="" className="bg-[#0a0e1a]">Select...</option>
-                    {["Join the community", "Partnership Enquiry", "Collaboration/ Co-branding", "Content Publishing/ Personal branding", "Event", "Job opportunity"].map((m) => (
+                    {["Join the Community",
+                    "Membership Enquiry",
+                    "Partnerships & Sponsorships",
+                    "Collaboration & Co-branding",
+                    "Thought Leadership & Personal Branding",
+                    "Speaking Opportunities",
+                    "Executive Learning & Leadership Programs",
+                    "Research, Reports & Insights",
+                    "Events & Roundtables",
+                    "Talent & Hiring Solutions",
+                    "Media & PR",
+                    "General Enquiry"].map((m) => (
                       <option key={m} value={m} className="bg-[#0a0e1a]">{m}</option>
                     ))}
                   </select>

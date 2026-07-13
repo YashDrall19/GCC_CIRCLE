@@ -7,8 +7,8 @@ export async function POST(req: Request) {
     const { first_name, last_name, email, phone, source, company, linkedin, title, agreed, whatsapp } = body;
 
     await db.execute(
-      'INSERT INTO leads (first_name, last_name, email, phone, source, company, linkedin, title, agreed, whatsapp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-      [first_name, last_name, email, phone, source, company, linkedin, title, agreed, whatsapp]
+      'INSERT INTO leads (first_name, last_name, email, phone, source, company, linkedin, title, agreed, whatsapp, organic) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [first_name, last_name, email, phone, source, company, linkedin, title, agreed, whatsapp, true]
     );
 
     return NextResponse.json({

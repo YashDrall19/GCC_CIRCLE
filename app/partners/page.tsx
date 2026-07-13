@@ -99,9 +99,14 @@ export default function PartnersPage() {
                 key={p.name}
                 className="group p-4 sm:p-6 rounded-2xl border border-[#D2A679]/30 bg-white/[0.03] hover:border-[#B87333] transition-all duration-300 text-center"
               >
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden mx-auto mb-3 sm:mb-4 border border-white/10 flex items-center justify-center">
-                  <Image src={p.img} alt={p.name} className="max-w-full max-h-full object-contain"/>
-                </div>
+                <div className="relative w-full h-28 sm:h-36 rounded-xl overflow-hidden bg-white p-4 mb-4 border border-white/10">
+  <Image
+    src={p.img}
+    alt={p.name}
+    fill
+    className="object-contain"
+  />
+</div>
                 {/* <div className="font-semibold text-xs sm:text-sm">{p.category}</div> */}
                 <div className="text-[#B87333] text-[10px] sm:text-xs mt-1">{p.name}</div>
               </div>
@@ -118,17 +123,17 @@ export default function PartnersPage() {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 sm:w-72 h-48 sm:h-72 bg-[#D2A679]/15 rounded-full blur-[60px]" />
             </div>
             <div className="relative">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Become a GCC Circle Partner</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Partner with Us</h2>
               <p className="text-white/55 mb-6 sm:mb-8 leading-relaxed max-w-lg mx-auto text-sm sm:text-base px-2">
                 Position your brand alongside India's most influential GCC leaders through curated, invitation-only leadership experiences that build credibility, relationships, and lasting business impact.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-                <a
+                {/* <a
                   href="mailto:partnerships@gcccircle.com"
                   className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)] text-sm sm:text-base w-full sm:w-auto justify-center"
                 >
                   <Mail size={14} sm-size={15} /> partnerships@gcccircle.com
-                </a>
+                </a> */}
                 <a
                   href="https://wa.me/918505823013"
                   target="_blank"

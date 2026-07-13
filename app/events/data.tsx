@@ -8,6 +8,35 @@ export const pastEvents = [
     type: 'GCC Inner Circle Roundtable',
     img: 'https://images.unsplash.com/photo-1695667424131-a9680e0307ee?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z3VydWdyYW18ZW58MHx8MHx8fDA%3D',
     attendees: '45+',
+    leaders: [
+      { name: "Acuity Analytics", company: "" },
+      { name: "Baker & Taylor India", company: "" },
+      { name: "Bain & Company", company: "" },
+      { name: "Bupa", company: "" },
+      { name: "DB Schenker", company: "" },
+      { name: "ETS Assessment Services", company: "" },
+      { name: "EY", company: "" },
+      { name: "Fractal", company: "" },
+      { name: "Hatch", company: "" },
+      { name: "Hub Platform Technology", company: "" },
+      { name: "JAS Worldwide", company: "" },
+      { name: "LiveRamp", company: "" },
+      { name: "Mastech Digital", company: "" },
+      { name: "MongoDB", company: "" },
+      { name: "Morgan Stanley", company: "" },
+      { name: "NatWest Group", company: "" },
+      { name: "Optum", company: "" },
+      { name: "Payoneer", company: "" },
+      { name: "Persol", company: "" },
+      { name: "PwC", company: "" },
+      { name: "S&P Global", company: "" },
+      { name: "Synechron", company: "" },
+      { name: "Teads", company: "" },
+      { name: "Valvoline Cummins", company: "" },
+      { name: "Vertex Inc.", company: "" },
+      { name: "WAIPA", company: "" },
+      { name: "Wio Bank PJSC", company: "" },
+    ],
     description1: (<div className="space-y-16">
       <div className="space-y-4">
         <strong className="text-2xl">GCCs in the Decade Ahead: From Delivery Centers to What's Next?</strong>
@@ -29,7 +58,7 @@ export const pastEvents = [
         </ul>
       </div>
 
-      <div className="space-y-4">
+      {/* <div className="space-y-4">
         <div><strong className="text-2xl">A Curated Leadership Forum</strong></div>
         <p>The roundtable brought together an exceptional mix of senior leaders representing global enterprises across technology, financial services, healthcare, consulting, manufacturing, logistics, education, and digital-first organizations.</p>
         <p>Participating organisations included:
@@ -64,7 +93,7 @@ export const pastEvents = [
           </ul>
           The room featured GCC CEOs, Managing Directors, Country Directors, CFOs, Partners, Technology Leaders, Engineering Heads, HR Leaders, Shared Services Heads, and senior enterprise executives - creating a truly cross-functional perspective on the future of GCCs.
         </p>
-      </div>
+      </div> */}
 
       <div className="space-y-4">
         <div><strong className="text-2xl">Key Takeaways</strong></div>
@@ -125,6 +154,8 @@ export const pastEvents = [
       (_, i) =>
         `/events/july-2026-gurugram/Gurugram${String(i + 1).padStart(2, "0")}.jpeg`
     ),
+    registrations_open: false,
+    registrationLink: ""
   },
   {
     id: "delhi-april-2026",
@@ -132,7 +163,7 @@ export const pastEvents = [
     month: 'April',
     date: '10th',
     year: '2026',
-    type: 'Executive Summit',
+    type: 'Tech Leadership Mixer',
     img: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     attendees: '52',
     description1: `The overwhelming response to the mixer underscored the growing need for curated, high-intent GCC leadership communities in India.
@@ -187,6 +218,8 @@ export const pastEvents = [
       (_, i) =>
         `/events/april-2026-delhi/images/GCC DElhi Mixer ${String(i + 1).padStart(2, "0")}.webp`
     ),
+    registrations_open: false,
+    registrationLink: ""
   },
   {
     id: "bangalore-feb-2026",
@@ -194,7 +227,7 @@ export const pastEvents = [
     month: 'February',
     date: '13th',
     year: '2026',
-    type: 'Leadership Mixer',
+    type: 'Tech Leadership Mixer',
     img: 'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     attendees: '55+',
     description1: `The GCC Circle Mixer | Bengaluru, brought together a curated group of senior GCC leaders for an evening of candid conversations and meaningful connections. Designed as a closed-door gathering, the mixer focused on peer-level exchange, shared context, and real-world insights shaping India’s Global Capability Centres. Hosted in partnership with Scaler School of Technology and powered by Talentiser, the evening reflected a shared commitment to building future-ready GCC leadership.`,      
@@ -250,6 +283,8 @@ export const pastEvents = [
       (_, i) =>
         `/events/feb-2026-bangalore/images/${String(i + 3)}.jpg`
     ),
+    registrations_open: false,
+    registrationLink: ""
   },
   {
     id: "hyderabad-december-2025",
@@ -257,7 +292,7 @@ export const pastEvents = [
     month: 'December',
     date: '5th',
     year: '2025',
-    type: 'CXO Roundtable',
+    type: 'Tech Leadership Mixer',
     img: 'https://images.unsplash.com/photo-1551161242-b5af797b7233?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     attendees: '45+',
     description1: `The Hyderabad edition of the GCC Circle Mixer delivered exactly what it set out to create: a room full of senior GCC leaders engaged in sharp, meaningful conversation. From candid exchanges on scaling global capability operations to spontaneous problem-solving huddles, the evening flowed with energy and intent.`,      
@@ -298,6 +333,8 @@ export const pastEvents = [
       (_, i) =>
         `/events/dec-2025-hyderabad/images/Artboard ${String(i + 1)}.jpg`
     ),
+    registrations_open: false,
+    registrationLink: ""
   }
 ];
 
@@ -307,15 +344,15 @@ export const upcomingEvents = [
     id: "hyderabad-august-2026",
     city: 'Hyderabad',
     month: 'August',
-    date: '07',
+    date: '21',
     year: '2026',
-    type: 'The GCC Circle Mixer.',
+    type: 'The GCC Circle Mixer',
     desc: 'In partnership with JLL.',
     spots: '35 seats',
+    img: 'https://images.unsplash.com/photo-1551161242-b5af797b7233?q=80&w=2051&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     images: [],
     registrations_open: true,
     carousel: [],
-    img: "",
     registrationLink: "https://luma.com/event/evt-FaBfExjNjQ6upjA",
     description2: ``,
     description1: (<div className="space-y-4">
@@ -326,7 +363,7 @@ export const upcomingEvents = [
       <p>Join us for an evening of thoughtful conversations, curated networking, and a community committed to advancing the future of Global Capability Centers.</p>
     </div>),
     leaders: [],
-    attendees: []
+    attendees: ""
   },
   // {
   //   city: 'Delhi',

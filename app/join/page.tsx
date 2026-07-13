@@ -72,7 +72,7 @@ export default function JoinPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[800px] h-[300px] sm:h-[600px] rounded-full bg-[#D2A679]/8 blur-[120px]" />
         </div>
         <div className="relative max-w-2xl mx-auto text-center">
-          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 sm:mb-5 block">Join the GCC Circle</span>
+          <span className="text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-4 sm:mb-5 block">Join the Inner Circle</span>
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-bold mb-4 sm:mb-6">
             Where India's <br className="hidden sm:block" />
             <span className="bg-gradient-to-r from-[#1a6cff] to-[#38bdf8] bg-clip-text text-transparent">
@@ -85,7 +85,7 @@ export default function JoinPage() {
           <p className="text-white/55 text-base sm:text-lg leading-relaxed px-2 mb-6">
             Connect with peers, exchange ideas, access executive intelligence, and be part of meaningful conversations that happen beyond the boardroom.
           </p>
-          <i className="text-white/55 text-base sm:text-lg leading-relaxed px-2">
+          <i className="text-white/55 text-base sm:text-lg leading-relaxed px-2 glow-text text-bold">
             Membership at GCC Circle is carefully curated to preserve the quality of our leadership community. Complete the application below, and our team will review your profile. If your application meets our membership criteria, you'll receive an exclusive invitation to join the Circle.
           </i>
         </div>
@@ -113,9 +113,9 @@ export default function JoinPage() {
                 <div className="grid grid-cols-4 gap-3 sm:gap-4 text-center">
                   {[
                     { icon: <Users size={16} sm-size={18} />, value: '400+', label: 'Leaders & Counting' },
-                    { icon: <Globe size={16} sm-size={18} />, value: '250+', label: 'GCCs Represented' },
+                    { icon: <Globe size={16} sm-size={18} />, value: '300+', label: 'GCCs Represented' },
                     { icon: <Zap size={16} sm-size={18} />, value: '30+', label: 'Leadership Experiences' },
-                    { icon: <Mic size={16} />, value: '150+', label: 'Distinguished Speakers' },
+                    { icon: <Mic size={16} />, value: '200+', label: 'Distinguished Speakers' },
                   ].map((s) => (
                     <div key={s.label}>
                       <div className="text-[#D2A679] flex justify-center mb-1">{s.icon}</div>
@@ -276,7 +276,7 @@ export default function JoinPage() {
 
                 <div>
                   <label className="text-white/60 text-xs font-semibold uppercase tracking-wide block mb-2">
-                    LinkedIn Profile URL
+                    LinkedIn Profile URL *
                   </label>
                   <input
                     type="url"
@@ -285,6 +285,7 @@ export default function JoinPage() {
                     onChange={handleChange}
                     placeholder="https://linkedin.com/in/yourname"
                     className="w-full bg-white/[0.05] border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-white/25 focus:outline-none focus:border-[#D2A679] transition-colors"
+                    required
                   />
                 </div>
 

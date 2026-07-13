@@ -54,8 +54,8 @@ export const leaders1: LeaderData[] = [
   {
     name: "Arun Kohli",
     date: "",
-    designation: "",
-    company: "",
+    designation: "Managing Director",
+    company: "First Citizens India",
     linkedin: "https://www.linkedin.com/in/kohliarun",
     image: arun,
     quote:
@@ -292,7 +292,7 @@ export const leaders1: LeaderData[] = [
   {
     name: "Supriya Rao",
     date: "",
-    designation: "MD India",
+    designation: "Managing Director",
     linkedin: "https://www.linkedin.com/in/supriya-y-rao/",
     image: supriya,
     quote:
@@ -354,7 +354,7 @@ export const leaders1: LeaderData[] = [
   {
     name: "Paras Nigam",
     date: "1st April",
-    designation: "VP, Engineering and AI | Site Leader",
+    designation: "Vice President, Engineering and AI | Site Leader",
     linkedin: "https://www.linkedin.com/in/parasnigam1/",
     image: paras,
     quote:
@@ -724,7 +724,7 @@ export const leaders1: LeaderData[] = [
   {
     name: "Rohit Khanna",
     date: "",
-    designation: "VP Engineering & Site Leader",
+    designation: "Vice President - Engineering & Site Leader",
     linkedin: "https://www.linkedin.com/in/rrkhanna/",
     image: rohit,
     quote:
@@ -966,68 +966,68 @@ export const leaders1: LeaderData[] = [
       }
     ]
   },
-  {
-    name: "Deepika Gandhi",
-    date: "",
-    designation: "",
-    company: "",
-    linkedin: "https://www.linkedin.com/in/deepika-gandhi-4b02417/",
-    image: "",
-    quote:
-      "Scale alone is not strategy. The strongest GCCs are the ones that grow more relevant—not just bigger.",
-    questionaire: [
-      {
-        question: "What does a typical day look like for you as a GCC leader — honestly?",
-        answer:
-          "Honestly, there’s no such thing as a \"typical\" day—and that’s exactly what makes it exciting. A large part of my day is spent context-switching between strategy and execution. One moment I’m focused on long-term capability building and talent strategy, and the next I’m unblocking a delivery issue, reviewing a transformation initiative, or aligning stakeholders across geographies. What remains constant is the people-centricity. A good day always includes time with my leadership team, conversations with emerging talent, and space to think about how we continue making the GCC a strategic asset for the global business."
-      },
-      {
-        question: "How do you unwind after a tough week?",
-        answer:
-          "I like switching off by doing something completely unrelated to dashboards, org charts, or operating models. One ritual that helps me reset is playing Sudoku—usually during my commute and more seriously over the weekend. It clears my mind while keeping it engaged. I also enjoy reading. A mentor once described this as \"tuning the radio\"—shifting out of the noise and back into clarity—and I've found that to be incredibly effective."
-      },
-      {
-        question: "What’s the one skill every GCC leader must have today?",
-        answer:
-          "The conscious ability to connect the dots between business strategy, talent, culture, technology, and execution. GCCs are no longer just delivery engines or cost-arbitrage centers—they are value creators. Leaders must navigate ambiguity, translate strategy into action, and align teams to a larger business narrative."
-      },
-      {
-        question: "Do you have any quirky or unconventional leadership habits?",
-        answer:
-          "I ask a lot of questions. Whenever someone presents an issue, my instinct is to ask: \"What's the issue behind the issue?\" It helps uncover root causes instead of simply reacting to symptoms. I also carry a notebook wherever I go, capturing observations, ideas, and recurring patterns. More often than not, solutions to complex problems emerge from revisiting those notes weeks—or even months—later."
-      },
-      {
-        question: "How do you personally spot high-potential talent in a GCC?",
-        answer:
-          "I look for four qualities: Curiosity, Collaboration, Ownership, and Breadth of thinking. High-potential individuals don't stop at doing their jobs well. They ask better questions, step outside their immediate responsibilities, and volunteer for broader initiatives. I also believe potential isn't defined by traditional career paths. In a GCC environment, some of the strongest leaders emerge from diverse backgrounds and unconventional journeys. The people who thrive are those who influence without authority and continue learning faster than the environment evolves."
-      },
-      {
-        question: "What’s the worst piece of leadership advice you’ve ever received?",
-        answer:
-          "\"Don't get too close to the team—leaders need distance.\" I've never believed that. Leadership isn't about creating distance; it's about building clarity, consistency, and trust. Teams aren't simply there to execute instructions—they amplify a leader's thinking, reach, and impact. The best leadership happens when people know they're understood, valued, and supported."
-      },
-      {
-        question: "Do you have a secret productivity hack that actually works for you?",
-        answer:
-          "Nothing revolutionary—I deliberately leave white space in my calendar. That space allows me to deal with the unexpected, learn, reflect, explore opportunities, or simply be available when someone on my team needs a sounding board. Another personal rule is simple: if something can be resolved with a quick phone call, I'd rather make the call than start a long email thread."
-      },
-      {
-        question: "Share one fun or surprising fact about you that your team may not know.",
-        answer:
-          "I'm probably far more of an observer than people realize. In group settings, I don't always react immediately. Instead, I'm quietly observing patterns, reading the room, noticing energy shifts, and paying close attention to what's not being said. Many of my leadership decisions are shaped by those observations and the notes I revisit later."
-      },
-      {
-        question: "What’s one big lesson the GCC ecosystem has taught you?",
-        answer:
-          "Scale alone is not strategy. The strongest GCCs aren't necessarily the biggest—they're the most relevant. Relevance comes from building trust, investing in diverse talent, and evolving from execution support to decision-shaping impact. Ultimately, long-term value is created when capability, culture, and business context come together. Future-ready GCCs won't just be high-performing—they'll be responsible institutions that contribute meaningfully to people, communities, and sustainable business growth."
-      },
-      {
-        question: "What advice would you give to future GCC leaders just starting out?",
-        answer:
-          "Don't build only for today's requirements—build for the role your GCC will need to play three years from now. Invest early in culture, leadership bench strength, and credibility with global stakeholders. Spend as much time understanding the business as you do understanding your role. Tomorrow's GCC leaders won't be defined solely by execution excellence, but by their ability to shape strategy, influence decision-making, and build inclusive talent ecosystems that create long-term value."
-      }
-    ]
-  },
+  // {
+  //   name: "Deepika Gandhi",
+  //   date: "",
+  //   designation: "",
+  //   company: "",
+  //   linkedin: "https://www.linkedin.com/in/deepika-gandhi-4b02417/",
+  //   image: "",
+  //   quote:
+  //     "Scale alone is not strategy. The strongest GCCs are the ones that grow more relevant—not just bigger.",
+  //   questionaire: [
+  //     {
+  //       question: "What does a typical day look like for you as a GCC leader — honestly?",
+  //       answer:
+  //         "Honestly, there’s no such thing as a \"typical\" day—and that’s exactly what makes it exciting. A large part of my day is spent context-switching between strategy and execution. One moment I’m focused on long-term capability building and talent strategy, and the next I’m unblocking a delivery issue, reviewing a transformation initiative, or aligning stakeholders across geographies. What remains constant is the people-centricity. A good day always includes time with my leadership team, conversations with emerging talent, and space to think about how we continue making the GCC a strategic asset for the global business."
+  //     },
+  //     {
+  //       question: "How do you unwind after a tough week?",
+  //       answer:
+  //         "I like switching off by doing something completely unrelated to dashboards, org charts, or operating models. One ritual that helps me reset is playing Sudoku—usually during my commute and more seriously over the weekend. It clears my mind while keeping it engaged. I also enjoy reading. A mentor once described this as \"tuning the radio\"—shifting out of the noise and back into clarity—and I've found that to be incredibly effective."
+  //     },
+  //     {
+  //       question: "What’s the one skill every GCC leader must have today?",
+  //       answer:
+  //         "The conscious ability to connect the dots between business strategy, talent, culture, technology, and execution. GCCs are no longer just delivery engines or cost-arbitrage centers—they are value creators. Leaders must navigate ambiguity, translate strategy into action, and align teams to a larger business narrative."
+  //     },
+  //     {
+  //       question: "Do you have any quirky or unconventional leadership habits?",
+  //       answer:
+  //         "I ask a lot of questions. Whenever someone presents an issue, my instinct is to ask: \"What's the issue behind the issue?\" It helps uncover root causes instead of simply reacting to symptoms. I also carry a notebook wherever I go, capturing observations, ideas, and recurring patterns. More often than not, solutions to complex problems emerge from revisiting those notes weeks—or even months—later."
+  //     },
+  //     {
+  //       question: "How do you personally spot high-potential talent in a GCC?",
+  //       answer:
+  //         "I look for four qualities: Curiosity, Collaboration, Ownership, and Breadth of thinking. High-potential individuals don't stop at doing their jobs well. They ask better questions, step outside their immediate responsibilities, and volunteer for broader initiatives. I also believe potential isn't defined by traditional career paths. In a GCC environment, some of the strongest leaders emerge from diverse backgrounds and unconventional journeys. The people who thrive are those who influence without authority and continue learning faster than the environment evolves."
+  //     },
+  //     {
+  //       question: "What’s the worst piece of leadership advice you’ve ever received?",
+  //       answer:
+  //         "\"Don't get too close to the team—leaders need distance.\" I've never believed that. Leadership isn't about creating distance; it's about building clarity, consistency, and trust. Teams aren't simply there to execute instructions—they amplify a leader's thinking, reach, and impact. The best leadership happens when people know they're understood, valued, and supported."
+  //     },
+  //     {
+  //       question: "Do you have a secret productivity hack that actually works for you?",
+  //       answer:
+  //         "Nothing revolutionary—I deliberately leave white space in my calendar. That space allows me to deal with the unexpected, learn, reflect, explore opportunities, or simply be available when someone on my team needs a sounding board. Another personal rule is simple: if something can be resolved with a quick phone call, I'd rather make the call than start a long email thread."
+  //     },
+  //     {
+  //       question: "Share one fun or surprising fact about you that your team may not know.",
+  //       answer:
+  //         "I'm probably far more of an observer than people realize. In group settings, I don't always react immediately. Instead, I'm quietly observing patterns, reading the room, noticing energy shifts, and paying close attention to what's not being said. Many of my leadership decisions are shaped by those observations and the notes I revisit later."
+  //     },
+  //     {
+  //       question: "What’s one big lesson the GCC ecosystem has taught you?",
+  //       answer:
+  //         "Scale alone is not strategy. The strongest GCCs aren't necessarily the biggest—they're the most relevant. Relevance comes from building trust, investing in diverse talent, and evolving from execution support to decision-shaping impact. Ultimately, long-term value is created when capability, culture, and business context come together. Future-ready GCCs won't just be high-performing—they'll be responsible institutions that contribute meaningfully to people, communities, and sustainable business growth."
+  //     },
+  //     {
+  //       question: "What advice would you give to future GCC leaders just starting out?",
+  //       answer:
+  //         "Don't build only for today's requirements—build for the role your GCC will need to play three years from now. Invest early in culture, leadership bench strength, and credibility with global stakeholders. Spend as much time understanding the business as you do understanding your role. Tomorrow's GCC leaders won't be defined solely by execution excellence, but by their ability to shape strategy, influence decision-making, and build inclusive talent ecosystems that create long-term value."
+  //     }
+  //   ]
+  // },
   {
     name: "Geetha Thiagarajan",
     date: "",

@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, Linkedin } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Linkedin, Mail } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { leaders1, leaderTypeMap } from '../data';
 import Image from 'next/image';
+import ScrollReveal from '@/components/scroll-reveal';
 
 export default function LeaderDetailPage() {
   const params = useParams();
@@ -93,15 +94,20 @@ export default function LeaderDetailPage() {
                 </span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-3">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
                 {leader.name}
               </h1>
 
               <p
-                className="text-lg sm:text-xl lg:text-2xl font-semibold mb-6"
-                style={{ color: accentColor }}
+                className="text-lg sm:text-xl lg:text-2xl font-semibold text-[#1a6cff]"
               >
                 {leader.designation}
+              </p>
+
+              <p
+                className="text-lg sm:text-xl lg:text-2xl font-semibold mb-6 text-[#B87333]"
+              >
+                {leader.company}
               </p>
 
               {leader.linkedin && (
@@ -121,12 +127,17 @@ export default function LeaderDetailPage() {
 
               <div className="w-full rounded-2xl border border-white/6 bg-white/[0.02] p-5 sm:p-6">
                 <h2 className="text-lg sm:text-xl font-bold mb-3">
-                  Beyond the Title
+                  Leadership Voice
                 </h2>
 
-                <p className="text-white/70 leading-relaxed text-sm sm:text-base">
-                  {leader.quote}
-                </p>
+                <div className='flex gap-2'>
+                  <div className="text-4xl text-[#D2A679] font-serif glow-text">
+                    &ldquo;
+                  </div>
+                  <p className="text-white/70 leading-relaxed text-sm sm:text-base">
+                    {leader.quote}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -164,6 +175,36 @@ export default function LeaderDetailPage() {
           
         </div>
       </section>
+
+      <ScrollReveal>
+        <section className="py-24 px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="relative rounded-3xl overflow-hidden border border-[#D2A679]/40 bg-gradient-to-br from-[#0a0e1a]/80 to-[#070b14]/90 p-16 glow-box">
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#D2A679]/10 rounded-full blur-[80px]" />
+              </div>
+              <div className="relative">
+                <h2 className="text-2xl md:text-4xl font-bold mb-5 glow-text">Ready to elevate your leadership brand?</h2>
+                <p className="text-white/60 text-lg mb-10 max-w-xl mx-auto">
+                  League of Legends celebrates the leaders redefining India's GCC landscape. If you'd like to be featured or explore executive branding, thought leadership, media visibility, keynote opportunities, or strategic partnerships, write to:
+                </p>
+                {/* <Link
+                  href="/join"
+                  className="inline-flex items-center gap-2 px-10 py-4 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_40px_rgba(26,108,255,0.6)]"
+                >
+                  Express your Interest <ArrowRight size={16} />
+                </Link> */}
+                <a
+                  href="mailto:hello@gcccircle.com"
+                  className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 bg-[#D2A679] hover:bg-[#B87333] text-white font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_30px_rgba(26,108,255,0.45)] text-sm sm:text-base w-full sm:w-auto justify-center"
+                >
+                  <Mail size={14} sm-size={15} /> hello@gcccircle.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
     </main>
   );
 }
