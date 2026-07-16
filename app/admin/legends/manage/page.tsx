@@ -11,8 +11,9 @@ interface AnswerInput {
 
 interface Legend {
   id: string;
-  name: string;
-  designation: string;
+  first_name: string;
+  last_name: string;
+  title: string;
   company: string;
   linkedin: string;
   image_url: string;
@@ -40,8 +41,9 @@ export default function LegendsManagementPage() {
   const [editingLegend, setEditingLegend] = useState<Legend | null>(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [editForm, setEditForm] = useState({
-    name: '',
-    designation: '',
+    first_name: '',
+    last_name: '',
+    title: '',
     company: '',
     linkedin: '',
     image_url: '',
@@ -53,6 +55,60 @@ export default function LegendsManagementPage() {
   const [editAnswers, setEditAnswers] = useState<AnswerInput[]>([]);
   const [editLoading, setEditLoading] = useState(false);
   const [editError, setEditError] = useState('');
+  // Image upload handling for edit modal
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string>('');
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreviewUrl('');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPreviewUrl(reader.result as string);
+    };
+    reader.readAsDataURL(selectedFile);
+  }, [selectedFile]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null;
+    setSelectedFile(file);
+  };
+
+  const removeSelectedFile = () => {
+    setSelectedFile(null);
+    setPreviewUrl('');
+    setEditForm((prev) => ({ ...prev, image_url: '' }));
+  };
+
+  const uploadImageAndSetUrl = async () => {
+    if (!selectedFile) return null;
+
+    const b64 = await new Promise<string>((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => {
+        const res = r.result as string;
+        const idx = res.indexOf(',');
+        resolve(res.slice(idx + 1));
+      };
+      r.onerror = reject;
+      r.readAsDataURL(selectedFile);
+    });
+
+    const res = await fetch('/api/admin/uploads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ filename: selectedFile.name, data: b64 }),
+    });
+    const data = await res.json();
+    if (data.success && data.url) {
+      setEditForm((prev) => ({ ...prev, image_url: data.url }));
+      return data.url;
+    }
+    return null;
+  };
 
   const fetchLegends = useCallback(async () => {
     setLoading(true);
@@ -95,8 +151,9 @@ export default function LegendsManagementPage() {
         const fullLegend = data.data;
         setEditingLegend(fullLegend);
         setEditForm({
-          name: fullLegend.name || '',
-          designation: fullLegend.designation || '',
+          first_name: fullLegend.first_name || '',
+          last_name: fullLegend.last_name || '',
+          title: fullLegend.title || '',
           company: fullLegend.company || '',
           linkedin: fullLegend.linkedin || '',
           image_url: fullLegend.image_url || '',
@@ -141,6 +198,13 @@ export default function LegendsManagementPage() {
     if (!editingLegend) return;
 
     try {
+      // If a new image file is selected, upload it first and set `image_url`
+      if (selectedFile && !editForm.image_url) {
+        const url = await uploadImageAndSetUrl();
+        if (url) {
+          // editForm.image_url already set in uploadImageAndSetUrl
+        }
+      }
       const res = await fetch(`/api/admin/legends?id=${editingLegend.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -236,6 +300,9 @@ export default function LegendsManagementPage() {
               <thead>
                 <tr className="border-b border-white/10">
                   <th className="px-4 py-3 text-left text-white/50 font-medium uppercase tracking-wide text-xs">
+                    Image
+                  </th>
+                  <th className="px-4 py-3 text-left text-white/50 font-medium uppercase tracking-wide text-xs">
                     Name
                   </th>
                   <th className="px-4 py-3 text-left text-white/50 font-medium uppercase tracking-wide text-xs">
@@ -269,19 +336,22 @@ export default function LegendsManagementPage() {
                         {legend.image_url ? (
                           <img
                             src={legend.image_url}
-                            alt={legend.name}
+                            alt={legend.first_name}
                             className="w-8 h-8 rounded-full object-cover flex-shrink-0"
                           />
                         ) : (
                           <div className="w-8 h-8 rounded-full bg-[#D2A679]/20 flex items-center justify-center text-[#D2A679] text-xs font-medium flex-shrink-0">
-                            {legend?.name?.charAt(0).toUpperCase()}
+                            {legend?.first_name?.charAt(0).toUpperCase()}
                           </div>
                         )}
-                        <span className="font-medium">{legend.name}</span>
+                        <span className="font-medium">{legend.first_name}</span>
                       </div>
                     </td>
                     <td className="px-4 py-3 text-white/70">
-                      {legend.designation || '-'}
+                      {legend.first_name || '-'} {legend.last_name || '-'}
+                    </td>
+                    <td className="px-4 py-3 text-white/70">
+                      {legend.title || '-'}
                     </td>
                     <td className="px-4 py-3 text-white/70">
                       {legend.company || '-'}
@@ -396,14 +466,14 @@ export default function LegendsManagementPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
-                    Name *
+                    First Name *
                   </label>
                   <input
                     type="text"
-                    name="name"
-                    value={editForm.name}
+                    name="first_name"
+                    value={editForm.first_name}
                     onChange={(e) =>
-                      setEditForm({ ...editForm, name: e.target.value })
+                      setEditForm({ ...editForm, first_name: e.target.value })
                     }
                     required
                     className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors"
@@ -411,21 +481,36 @@ export default function LegendsManagementPage() {
                 </div>
                 <div>
                   <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
-                    Designation
+                    Last Name *
                   </label>
                   <input
                     type="text"
-                    name="designation"
-                    value={editForm.designation}
+                    name="last_name"
+                    value={editForm.last_name}
                     onChange={(e) =>
-                      setEditForm({ ...editForm, designation: e.target.value })
+                      setEditForm({ ...editForm, last_name: e.target.value })
                     }
+                    required
                     className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
+                    Designation
+                  </label>
+                  <input
+                    type="text"
+                    name="title"
+                    value={editForm.title}
+                    onChange={(e) =>
+                      setEditForm({ ...editForm, title: e.target.value })
+                    }
+                    className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors"
+                  />
+                </div>
                 <div>
                   <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
                     Company
@@ -440,6 +525,9 @@ export default function LegendsManagementPage() {
                     className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors"
                   />
                 </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
                     LinkedIn URL
@@ -454,23 +542,38 @@ export default function LegendsManagementPage() {
                     className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors"
                   />
                 </div>
+                <div>
+                  <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
+                    Image
+                  </label>
+                  {previewUrl || editForm.image_url ? (
+                    <div className="relative inline-block">
+                      <img
+                        src={previewUrl || editForm.image_url}
+                        alt={editForm.first_name || 'legend'}
+                        className="object-cover rounded-lg"
+                      />
+                      <button
+                        type="button"
+                        onClick={removeSelectedFile}
+                        className="absolute -top-2 -right-2 bg-red-600 rounded-full p-1 text-white"
+                        aria-label="Remove image"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ) : (
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                      className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
+                    />
+                  )}
+                </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
-                    Image URL
-                  </label>
-                  <input
-                    type="url"
-                    name="image_url"
-                    value={editForm.image_url}
-                    onChange={(e) =>
-                      setEditForm({ ...editForm, image_url: e.target.value })
-                    }
-                    className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors"
-                  />
-                </div>
                 <div>
                   <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
                     Type
@@ -491,22 +594,22 @@ export default function LegendsManagementPage() {
                     </option>
                   </select>
                 </div>
-              </div>
-
-              <div>
-                <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
-                  Date (optional label)
-                </label>
-                <input
-                  type="text"
-                  name="date"
-                  value={editForm.date}
-                  onChange={(e) =>
-                    setEditForm({ ...editForm, date: e.target.value })
-                  }
-                  placeholder="e.g. 15th March"
-                  className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
-                />
+                <div>
+                  <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
+                    Date *
+                  </label>
+                  <input
+                    type="date"
+                    name="date"
+                    value={editForm.date}
+                    onChange={(e) =>
+                      setEditForm({ ...editForm, date: e.target.value })
+                    }
+                    placeholder="e.g. 15th March"
+                    className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
+                    required
+                  />
+                </div>
               </div>
 
               <div className="flex items-center gap-3">

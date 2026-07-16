@@ -23,10 +23,17 @@ export default function AddLegendPage() {
   const [success, setSuccess] = useState(false);
 
   const [form, setForm] = useState({
-    name: '',
-    designation: '',
+    first_name: '',
+    last_name: '',
+    title: '',
+    email: '',
+    phone: '',
     company: '',
+    source: '',
+    sourceOther: '',
     linkedin: '',
+    whatsapp: false,
+    agreed: true,
     image_url: '',
     quote: '',
     type: 'tech',
@@ -76,10 +83,25 @@ export default function AddLegendPage() {
     setLoading(true);
 
     try {
+      // If an image file is selected, upload it first and set `image_url`
+      if (selectedFile && !form.image_url) {
+        const url = await uploadImageAndSetUrl();
+        if (url) {
+          // image_url already set in form by uploadImageAndSetUrl
+        }
+      }
+
+      const submitData = {
+        ...form,
+        source: form.source === 'Others' ? form.sourceOther : form.source,
+        questionnaire: answers,
+        organic: false,
+      };
+
       const res = await fetch('/api/admin/legends', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, questionnaire: answers }),
+        body: JSON.stringify(submitData),
       });
       const data = await res.json();
 
@@ -94,6 +116,63 @@ export default function AddLegendPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  // Image upload handling
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string>('');
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreviewUrl('');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPreviewUrl(reader.result as string);
+    };
+    reader.readAsDataURL(selectedFile);
+  }, [selectedFile]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null;
+    setSelectedFile(file);
+  };
+
+  const removeSelectedFile = () => {
+    setSelectedFile(null);
+    setPreviewUrl('');
+    setForm((prev) => ({ ...prev, image_url: '' }));
+  };
+
+  const uploadImageAndSetUrl = async () => {
+    if (!selectedFile) return null;
+
+    // convert to base64
+    const b64 = await new Promise<string>((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => {
+        const res = r.result as string;
+        // remove prefix
+        const idx = res.indexOf(',');
+        resolve(res.slice(idx + 1));
+      };
+      r.onerror = reject;
+      r.readAsDataURL(selectedFile);
+    });
+
+    const res = await fetch('/api/admin/uploads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ filename: selectedFile.name, data: b64 }),
+    });
+    const data = await res.json();
+    if (data.success && data.url) {
+      setForm((prev) => ({ ...prev, image_url: data.url }));
+      return data.url;
+    }
+    return null;
   };
 
   if (success) {
@@ -140,12 +219,12 @@ export default function AddLegendPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
-                Name *
+                First Name *
               </label>
               <input
                 type="text"
-                name="name"
-                value={form.name}
+                name="first_name"
+                value={form.first_name}
                 onChange={handleChange}
                 required
                 placeholder="John Doe"
@@ -154,20 +233,65 @@ export default function AddLegendPage() {
             </div>
             <div>
               <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
-                Designation
+                Last Name *
               </label>
               <input
                 type="text"
-                name="designation"
-                value={form.designation}
+                name="last_name"
+                value={form.last_name}
                 onChange={handleChange}
-                placeholder="VP Engineering & Site Leader"
+                required
+                placeholder="John Doe"
                 className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
+                Designation
+              </label>
+              <input
+                type="text"
+                name="title"
+                value={form.title}
+                onChange={handleChange}
+                placeholder="VP Engineering & Site Leader"
+                className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
+              />
+            </div>
+            <div>
+              <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">Email *</label>
+              <input
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                required
+                placeholder="john@company.com"
+                className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">Mobile (India) *</label>
+              <div className="flex gap-2">
+                <span className="bg-white/[0.05] border border-white/15 rounded-xl px-3 py-3 text-sm text-white/50 flex-shrink-0">+91</span>
+                <input
+                  type="tel"
+                  maxLength={10}
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  required
+                  placeholder="9876543210"
+                  className="flex-1 bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
+                />
+              </div>
+            </div>
             <div>
               <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
                 Company
@@ -180,6 +304,42 @@ export default function AddLegendPage() {
                 placeholder="Acme GCC India"
                 className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
               />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
+                How did you hear about us?
+              </label>
+              <select
+                name="source"
+                value={form.source}
+                onChange={handleChange}
+                className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#D2A679] transition-colors appearance-none"
+              >
+                <option value="" className="bg-[#0a0e1a]">Select...</option>
+                <option value="LinkedIn" className="bg-[#0a0e1a]">LinkedIn</option>
+                <option value="Email" className="bg-[#0a0e1a]">Email</option>
+                <option value="Whatsapp" className="bg-[#0a0e1a]">Whatsapp</option>
+                <option value="Colleague / Friend" className="bg-[#0a0e1a]">Colleague / Friend</option>
+                <option value="Talentiser Team" className="bg-[#0a0e1a]">Talentiser Team</option>
+                <option value="GCC Circle Event" className="bg-[#0a0e1a]">GCC Circle Event</option>
+                <option value="Google Search" className="bg-[#0a0e1a]">Google Search</option>
+                <option value="Partner (JLL, CII, etc.)" className="bg-[#0a0e1a]">Partner (JLL, CII, etc.)</option>
+                <option value="Social Media (Other than LinkedIn)" className="bg-[#0a0e1a]">Social Media (Other than LinkedIn)</option>
+                <option value="Others" className="bg-[#0a0e1a]">Others</option>
+              </select>
+              {form.source === 'Others' && (
+                <input
+                  type="text"
+                  name="sourceOther"
+                  value={form.sourceOther}
+                  onChange={handleChange}
+                  placeholder="Please specify..."
+                  className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors mt-3"
+                />
+              )}
             </div>
             <div>
               <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
@@ -201,14 +361,26 @@ export default function AddLegendPage() {
               <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
                 Image URL
               </label>
-              <input
-                type="url"
-                name="image_url"
-                value={form.image_url}
-                onChange={handleChange}
-                placeholder="https://images.pexels.com/..."
-                className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
-              />
+              {previewUrl ? (
+                <div className="relative inline-block">
+                  <img src={previewUrl} alt="preview" className="w-40 h-40 object-cover rounded-lg" />
+                  <button
+                    type="button"
+                    onClick={removeSelectedFile}
+                    className="absolute -top-2 -right-2 bg-red-600 rounded-full p-1 text-white"
+                    aria-label="Remove image"
+                  >
+                    ×
+                  </button>
+                </div>
+              ) : (
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
+                />
+              )}
             </div>
             <div>
               <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
@@ -226,19 +398,51 @@ export default function AddLegendPage() {
             </div>
           </div>
 
-          <div>
-            <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
-              Date (optional label)
-            </label>
-            <input
-              type="text"
-              name="date"
-              value={form.date}
-              onChange={handleChange}
-              placeholder="e.g. 15th March"
-              className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">
+                Date *
+              </label>
+              <input
+                type="date"
+                name="date"
+                value={form.date}
+                onChange={handleChange}
+                placeholder="e.g. 15th March"
+                className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
+                required
+              />
+            </div>
+            <div className="flex flex-col justify-end">
+              <div className="flex items-start gap-3">
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="whatsapp"
+                    checked={form.whatsapp}
+                    onChange={(e) => setForm((prev) => ({ ...prev, whatsapp: e.target.checked }))}
+                    className="h-4 w-4 rounded border-white/15 bg-white/[0.05] text-[#D2A679] focus:ring-0"
+                  />
+                  <span className="text-white/70 text-sm">Send me a link to join the WhatsApp community</span>
+                </label>
+              </div>
+              <div className="mt-3">
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="agreed"
+                    checked={form.agreed}
+                    onChange={(e) => setForm((prev) => ({ ...prev, agreed: e.target.checked }))}
+                    className="h-4 w-4 rounded border-white/15 bg-white/[0.05] text-[#D2A679] focus:ring-0"
+                  />
+                  <span className="text-white/70 text-sm">Agreed to terms</span>
+                </label>
+              </div>
+            </div>
           </div>
+
+          
+          
 
           <div className="flex items-center gap-3">
             <label className="flex items-center gap-3 cursor-pointer">

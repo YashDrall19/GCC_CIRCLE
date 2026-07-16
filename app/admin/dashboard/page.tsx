@@ -83,7 +83,7 @@ export default function AdminDashboard() {
       icon: Users,
       color: 'from-[#D2A679] to-[#B87333]',
       change: `+${stats.recentLeads} this week`,
-      href: '/admin/leads',
+      href: '/admin/legends/manage',
     },
     {
       label: 'Admin Users',
@@ -151,7 +151,7 @@ export default function AdminDashboard() {
         <div className="bg-[#0a0e1a]/80 backdrop-blur-md rounded-2xl border border-white/10 p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold">Recent Leads</h2>
-            <Link href="/admin/leads" className="text-[#D2A679] text-sm hover:underline">
+            <Link href="/admin/legends/manage" className="text-[#D2A679] text-sm hover:underline">
               View all
             </Link>
           </div>

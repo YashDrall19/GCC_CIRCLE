@@ -2,72 +2,10 @@ import { randomUUID } from 'crypto';
 import { NextResponse } from 'next/server';
 import db from '@/lib/db';
 
-interface QuestionAnswer {
-  question: string;
-  answer: string;
-}
-
-async function getLegendById(id: string) {
-  const [rows] = await db.execute('SELECT * FROM legends WHERE id = ?', [id]);
-  return (rows as any[])[0] || null;
-}
-
-async function fetchLegendQuestionnaire(legendId: string) {
-  const [rows] = await db.execute(
-    `SELECT q.question, a.answer
-     FROM legend_answers a
-     JOIN legend_questions q ON a.question_id = q.id
-     WHERE a.legend_id = ?
-     ORDER BY q.display_order ASC`,
-    [legendId]
-  );
-  return (rows as any[]).map((row) => ({
-    question: row.question,
-    answer: row.answer,
-  }));
-}
-
-async function fetchQuestionIdMap(questionnaire: QuestionAnswer[]) {
-  const questions = questionnaire
-    .map((item) => item.question?.trim())
-    .filter((question): question is string => Boolean(question));
-
-  if (!questions.length) {
-    return {} as Record<string, string>;
-  }
-
-  const placeholders = questions.map(() => '?').join(', ');
-  const [rows] = await db.execute(
-    `SELECT id, question FROM legend_questions WHERE question IN (${placeholders})`,
-    questions
-  );
-
-  const map: Record<string, string> = {};
-  for (const row of rows as any[]) {
-    const question = row.question?.trim();
-    if (question) {
-      map[question] = row.id;
-    }
-  }
-
-  return map;
-}
-
-async function persistLegendAnswers(legendId: string, questionnaire: QuestionAnswer[]) {
-  const questionIdMap = await fetchQuestionIdMap(questionnaire);
-  const inserts = questionnaire
-    .map((item, index) => {
-      const questionId = questionIdMap[item.question?.trim() || ''];
-      if (!questionId) return null;
-      return db.execute(
-        'INSERT INTO legend_answers (id, legend_id, question_id, answer, display_order) VALUES (?, ?, ?, ?, ?)',
-        [randomUUID(), legendId, questionId, item.answer || '', index]
-      );
-    })
-    .filter(Boolean) as Array<Promise<any>>;
-
-  await Promise.all(inserts);
-}
+// We store legends data in the canonical `leads` table. Admin-only fields
+// such as image_url, active, questionnaire (JSON), and type are persisted
+// into the `leads` table. Public join submissions continue to insert into
+// `leads` with organic = true.
 
 export async function GET(req: Request) {
   try {
@@ -75,34 +13,37 @@ export async function GET(req: Request) {
     const id = searchParams.get('id');
 
     if (id) {
-      const legend = await getLegendById(id);
+      const [rows] = await db.execute('SELECT * FROM leads WHERE id = ?', [id]);
+      const row = (rows as any[])[0];
 
-      if (!legend) {
-        return NextResponse.json(
-          { success: false, error: 'Legend not found' },
-          { status: 404 }
-        );
+      if (!row) {
+        return NextResponse.json({ success: false, error: 'Legend not found' }, { status: 404 });
       }
 
-      const questionnaire = await fetchLegendQuestionnaire(id);
+      // parse questionnaire JSON if present
+      try {
+        row.questionnaire = row.questionnaire ? JSON.parse(row.questionnaire) : [];
+      } catch (e) {
+        row.questionnaire = [];
+      }
 
-      return NextResponse.json({
-        success: true,
-        data: { ...legend, questionnaire },
-      });
+      return NextResponse.json({ success: true, data: row });
     }
 
-    const [allRows] = await db.execute(
-      'SELECT * FROM legends ORDER BY created_at DESC'
-    );
+    const [allRows] = await db.execute('SELECT * FROM leads ORDER BY created_at DESC');
+    const data = (allRows as any[]).map((r) => {
+      try {
+        r.questionnaire = r.questionnaire ? JSON.parse(r.questionnaire) : [];
+      } catch (e) {
+        r.questionnaire = [];
+      }
+      return r;
+    });
 
-    return NextResponse.json({ success: true, data: allRows });
+    return NextResponse.json({ success: true, data });
   } catch (error: any) {
-    console.error('Get legends error:', error);
-    return NextResponse.json(
-      { success: false, error: error?.message || 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('Get legends (leads) error:', error);
+    return NextResponse.json({ success: false, error: error?.message || 'Internal server error' }, { status: 500 });
   }
 }
 
@@ -110,55 +51,97 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const {
-      name,
-      designation,
+      first_name,
+      last_name,
+      title,
+      email,
+      phone,
+      source,
       company,
       linkedin,
-      image_url,
-      quote,
-      type,
-      date,
+      agreed = false,
+      whatsapp = false,
+      image_url = '',
+      quote = '',
+      type = 'tech',
+      date = '',
       active = true,
-      questionnaire,
+      questionnaire = [],
+      organic = false,
     } = body;
 
-    if (!name) {
+    if (!first_name || !last_name || !email) {
       return NextResponse.json(
-        { success: false, error: 'Name is required' },
+        { success: false, error: 'first_name, last_name and email are required' },
         { status: 400 }
       );
     }
 
-    const legendId = randomUUID();
-    await db.execute(
-      `INSERT INTO legends (id, name, designation, company, linkedin, image_url, quote, type, date, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    const questionnaireJson = Array.isArray(questionnaire)
+      ? JSON.stringify(questionnaire)
+      : JSON.stringify([]);
+
+    const [result]: any = await db.execute(
+      `INSERT INTO leads (
+        first_name,
+        last_name,
+        email,
+        phone,
+        source,
+        company,
+        linkedin,
+        title,
+        agreed,
+        whatsapp,
+        image_url,
+        quote,
+        type,
+        date,
+        active,
+        questionnaire,
+        organic
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
-        legendId,
-        name,
-        designation || '',
+        first_name,
+        last_name,
+        email,
+        phone || '',
+        source || '',
         company || '',
         linkedin || '',
+        title || '',
+        agreed ? 1 : 0,
+        whatsapp ? 1 : 0,
         image_url || '',
         quote || '',
         type || 'tech',
         date || '',
         active ? 1 : 0,
+        questionnaireJson,
+        organic ? 1 : 0,
       ]
     );
 
-    if (Array.isArray(questionnaire) && questionnaire.length > 0) {
-      await persistLegendAnswers(legendId, questionnaire);
+    const insertId = result.insertId;
+
+    const [rows] = await db.execute(
+      'SELECT * FROM leads WHERE id = ?',
+      [insertId]
+    );
+
+    const row = (rows as any[])[0];
+
+    try {
+      row.questionnaire = row.questionnaire
+        ? JSON.parse(row.questionnaire)
+        : [];
+    } catch {
+      row.questionnaire = [];
     }
 
-    const legend = await getLegendById(legendId);
-    const legendQuestionnaire = await fetchLegendQuestionnaire(legendId);
-
-    return NextResponse.json({
-      success: true,
-      data: { ...legend, questionnaire: legendQuestionnaire },
-    });
+    return NextResponse.json({ success: true, data: row });
   } catch (error: any) {
-    console.error('Create legend error:', error);
+    console.error('Create legend (lead) error:', error);
     return NextResponse.json(
       { success: false, error: error?.message || 'Internal server error' },
       { status: 500 }
@@ -171,61 +154,68 @@ export async function PUT(req: Request) {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get('id');
     const body = await req.json();
-    const {
-      name,
-      designation,
-      company,
-      linkedin,
-      image_url,
-      quote,
-      type,
-      date,
-      active = true,
-      questionnaire,
-    } = body;
-
     if (!id) {
-      return NextResponse.json(
-        { success: false, error: 'Legend ID is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ success: false, error: 'Legend ID is required' }, { status: 400 });
     }
 
+    const {
+      first_name,
+      last_name,
+      title,
+      email,
+      phone,
+      source,
+      company,
+      linkedin,
+      agreed = false,
+      whatsapp = false,
+      image_url = '',
+      quote = '',
+      type = 'tech',
+      date = '',
+      active = true,
+      questionnaire = [],
+      organic = false,
+    } = body;
+
+    const questionnaireJson = Array.isArray(questionnaire) ? JSON.stringify(questionnaire) : JSON.stringify([]);
+
     await db.execute(
-      `UPDATE legends SET name = ?, designation = ?, company = ?, linkedin = ?, image_url = ?, quote = ?, type = ?, date = ?, active = ? WHERE id = ?`,
+      `UPDATE leads SET first_name = ?, last_name = ?, email = ?, phone = ?, source = ?, company = ?, linkedin = ?, title = ?, agreed = ?, whatsapp = ?, image_url = ?, quote = ?, type = ?, date = ?, active = ?, questionnaire = ?, organic = ? WHERE id = ?`,
       [
-        name || '',
-        designation || '',
+        first_name || '',
+        last_name || '',
+        email || '',
+        phone || '',
+        source || '',
         company || '',
         linkedin || '',
+        title || '',
+        agreed ? 1 : 0,
+        whatsapp ? 1 : 0,
         image_url || '',
         quote || '',
         type || 'tech',
         date || '',
         active ? 1 : 0,
+        questionnaireJson,
+        organic ? 1 : 0,
         id,
       ]
     );
 
-    await db.execute('DELETE FROM legend_answers WHERE legend_id = ?', [id]);
-
-    if (Array.isArray(questionnaire) && questionnaire.length > 0) {
-      await persistLegendAnswers(id, questionnaire);
+    const [rows] = await db.execute('SELECT * FROM leads WHERE id = ?', [id]);
+    const row = (rows as any[])[0];
+    try {
+      row.questionnaire = row.questionnaire ? JSON.parse(row.questionnaire) : [];
+    } catch (e) {
+      row.questionnaire = [];
     }
 
-    const legend = await getLegendById(id);
-    const legendQuestionnaire = await fetchLegendQuestionnaire(id);
-
-    return NextResponse.json({
-      success: true,
-      data: { ...legend, questionnaire: legendQuestionnaire },
-    });
+    return NextResponse.json({ success: true, data: row });
   } catch (error: any) {
-    console.error('Update legend error:', error);
-    return NextResponse.json(
-      { success: false, error: error?.message || 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('Update legend (lead) error:', error);
+    return NextResponse.json({ success: false, error: error?.message || 'Internal server error' }, { status: 500 });
   }
 }
 
@@ -235,20 +225,14 @@ export async function DELETE(req: Request) {
     const id = searchParams.get('id');
 
     if (!id) {
-      return NextResponse.json(
-        { success: false, error: 'Legend ID is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ success: false, error: 'Legend ID is required' }, { status: 400 });
     }
 
-    await db.execute('DELETE FROM legends WHERE id = ?', [id]);
+    await db.execute('DELETE FROM leads WHERE id = ?', [id]);
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    console.error('Delete legend error:', error);
-    return NextResponse.json(
-      { success: false, error: error?.message || 'Internal server error' },
-      { status: 500 }
-    );
+    console.error('Delete legend (lead) error:', error);
+    return NextResponse.json({ success: false, error: error?.message || 'Internal server error' }, { status: 500 });
   }
 }

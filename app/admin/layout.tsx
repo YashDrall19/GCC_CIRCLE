@@ -30,11 +30,6 @@ const navItems = [
     icon: Mail,
   },
   {
-    label: 'Leads',
-    href: '/admin/leads',
-    icon: Users,
-  },
-  {
     label: 'Users',
     href: '/admin/users',
     icon: UserPlus,

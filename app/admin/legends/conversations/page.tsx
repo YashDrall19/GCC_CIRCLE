@@ -47,7 +47,7 @@ export default function ConversationManagementPage() {
 
   const handleAddNew = () => {
     setEditingId(null);
-    setFormData({ question: '', display_order: questions.length });
+    setFormData({ question: '', display_order: questions.length + 1 });
     setShowForm(true);
   };
 

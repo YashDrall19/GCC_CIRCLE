@@ -19,10 +19,10 @@ export default function JoinPage() {
   const [form, setForm] = useState({
     first_name: '',
     last_name: '',
+    title: '',
     email: '',
     phone: '',
     company: '',
-    title: '',
     source: '',
     sourceOther: '',
     linkedin: '',
