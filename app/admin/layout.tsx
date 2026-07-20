@@ -35,6 +35,24 @@ const navItems = [
     icon: UserPlus,
   },
   {
+    label: 'Blogs',
+    icon: Trophy,
+    children: [
+      {
+        label: 'Add Blog',
+        href: '/admin/blogs/add',
+      },
+      {
+        label: 'Blogs Management',
+        href: '/admin/blogs/manage',
+      },
+      // {
+      //   label: 'Legends Management',
+      //   href: '/admin/legends/manage',
+      // },
+    ],
+  },
+  {
     label: 'Legends',
     icon: Trophy,
     children: [
