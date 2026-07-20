@@ -5,6 +5,7 @@ import { ArrowRight, MapPin, Calendar, Users, Coffee, Wind, CheckCircle2, Clock3
 import CardBackgroundCarousel from '@/components/CardBackgroundCarousel';
 import { pastEvents, upcomingEvents } from './data';
 import Script from 'next/script';
+import Image from 'next/image';
 
 export default function EventsPage() {
 
@@ -164,10 +165,12 @@ export default function EventsPage() {
                   className="group overflow-hidden rounded-2xl border border-white/10 hover:border-[#B87333] hover:bg-[#D2A679] transition-all duration-300"
                 >
                   <div className="relative overflow-hidden aspect-video">
-                    <img
+                    <Image
                       src={e.img}
                       alt={`${e.city} event`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-transparent" />
                     <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">

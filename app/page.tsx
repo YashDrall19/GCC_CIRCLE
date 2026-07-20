@@ -7,6 +7,7 @@ import ScrollReveal from '@/components/scroll-reveal';
 import HologramText from '@/components/hologram-text';
 import GeneratorText from '@/components/generator-text';
 import { upcomingEvents } from './events/data';
+import Image from 'next/image';
 
 const stats = [
   { value: '400+', label: 'Leaders & Counting' },
@@ -275,10 +276,12 @@ export default function HomePage() {
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#D2A679]/30 to-[#38bdf8]/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" />
                 <div className="absolute inset-0 hologram-border rounded-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
-                <img
-                  src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800"
+                <Image
+                  src="/banners/gcchomepage.png"
                   alt="Leaders collaborating"
-                  className="relative rounded-3xl w-full object-cover aspect-[4/3] border border-[#D2A679]/20 group-hover:border-[#D2A679]/40 transition-colors duration-300"
+                  width={800}
+                  height={600}
+                  className="relative rounded-3xl w-full aspect-[4/3] object-cover border border-[#D2A679]/20 group-hover:border-[#D2A679]/40 transition-colors duration-300"
                 />
               </div>
             </ScrollReveal>

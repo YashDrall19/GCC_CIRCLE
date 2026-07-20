@@ -1,3 +1,5 @@
+import ggn from "../../public/events/july-2026-gurugram/gurugram-jll-event.jpg"
+
 export const pastEvents = [
   {
     id: "gurugram-august-2026",
@@ -6,7 +8,8 @@ export const pastEvents = [
     date: '2nd',
     year: '2026',
     type: 'GCC Inner Circle Roundtable',
-    img: 'https://images.unsplash.com/photo-1695667424131-a9680e0307ee?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z3VydWdyYW18ZW58MHx8MHx8fDA%3D',
+    // img: 'https://images.unsplash.com/photo-1695667424131-a9680e0307ee?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z3VydWdyYW18ZW58MHx8MHx8fDA%3D',
+    img: ggn,
     attendees: '45+',
     leaders: [
       { name: "Acuity Analytics", company: "" },
@@ -147,12 +150,12 @@ export const pastEvents = [
     carousel: Array.from(
       { length: 1 },
       (_, i) =>
-        `/events/july-2026-gurugram/Gurugram${String(i).padStart(2, "0")}.jpeg`
+        `/events/july-2026-gurugram/images/Gurugram${String(i).padStart(2, "0")}.jpeg`
     ),
     images: Array.from(
       { length: 19 },
       (_, i) =>
-        `/events/july-2026-gurugram/Gurugram${String(i + 1).padStart(2, "0")}.jpeg`
+        `/events/july-2026-gurugram/images/Gurugram${String(i + 1).padStart(2, "0")}.jpeg`
     ),
     registrations_open: false,
     registrationLink: ""
