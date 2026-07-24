@@ -7,7 +7,7 @@ import {
   LayoutDashboard,
   Users,
   Mail,
-  UserPlus,
+  BookOpen,
   LogOut,
   Menu,
   X,
@@ -15,6 +15,9 @@ import {
   ChevronRight,
   Trophy,
   ChevronDown,
+  BarChart2,
+  FileText,
+  Newspaper,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -32,11 +35,11 @@ const navItems = [
   {
     label: 'Users',
     href: '/admin/users',
-    icon: UserPlus,
+    icon: Users,
   },
   {
     label: 'Blogs',
-    icon: Trophy,
+    icon: BookOpen,
     children: [
       {
         label: 'Add Blog',
@@ -50,6 +53,34 @@ const navItems = [
       //   label: 'Legends Management',
       //   href: '/admin/legends/manage',
       // },
+    ],
+  },
+  {
+    label: 'Reports & Case Studies',
+    icon: FileText,
+    children: [
+      {
+        label: 'Add Report',
+        href: '/admin/insights/reports/add',
+      },
+      {
+        label: 'Reports Management',
+        href: '/admin/insights/reports/manage',
+      },
+    ],
+  },
+  {
+    label: 'Industry News',
+    icon: Newspaper,
+    children: [
+      {
+        label: 'Add News',
+        href: '/admin/insights/news/add',
+      },
+      {
+        label: 'News Management',
+        href: '/admin/insights/news/manage',
+      },
     ],
   },
   {

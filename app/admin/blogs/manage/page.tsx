@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { CreditCard as Edit2 } from 'lucide-react';
 import BlogForm, { BlogFormValues } from '@/components/admin/BlogForm';
 
 type BlogRecord = BlogFormValues & {
@@ -137,18 +138,14 @@ export default function BlogsManagement() {
       }
 
       setSuccessMessage('Blog updated successfully');
-      setSelectedBlog(data.data);
-      setForm({
-        title: data.data.title,
-        category: data.data.category,
-        read_time: data.data.read_time,
-        cover_image: data.data.cover_image,
-        content: data.data.content,
-        active: data.data.active,
-      });
-      setPreviewUrl(data.data.cover_image);
+      // close editor and return to list
+      setSelectedBlog(null);
+      setForm(emptyFormState);
+      setPreviewUrl('');
       setSelectedFile(null);
       fetchBlogs();
+      // auto-hide success message after a short delay
+      setTimeout(() => setSuccessMessage(''), 3000);
     } catch (err: any) {
       setError(err?.message || 'An error occurred while updating the blog');
     } finally {
@@ -190,7 +187,7 @@ export default function BlogsManagement() {
           onRemoveFile={handleRemoveFile}
           onSubmit={handleSubmit}
           loading={loading}
-          error={error || successMessage}
+          error={error}
           pageTitle={`Editing: ${selectedBlog.title}`}
           pageSubtitle="Update the blog post and publish status."
           submitLabel="Save Changes"
@@ -198,6 +195,14 @@ export default function BlogsManagement() {
           onCancel={handleCancel}
         />
       ) : (
+        <div>
+          {successMessage ? (
+            <div className="mb-4 p-3 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 text-sm">
+              {successMessage}
+            </div>
+          ) : null}
+
+        {/* list view */}
         <div className="overflow-x-auto rounded-3xl border border-white/10 bg-white/[0.03] p-4">
           <table className="min-w-full divide-y divide-white/10 text-left text-sm">
             <thead>
@@ -229,9 +234,9 @@ export default function BlogsManagement() {
                       <button
                         type="button"
                         onClick={() => startEditing(blog)}
-                        className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white transition hover:border-[#D2A679] hover:text-[#D2A679]"
+                        className="p-1.5 rounded-lg hover:bg-white/10 text-white/50 hover:text-[#38bdf8] transition-colors"
                       >
-                        Edit
+                        <Edit2 size={16} />
                       </button>
                     </td>
                   </tr>
@@ -239,6 +244,7 @@ export default function BlogsManagement() {
               )}
             </tbody>
           </table>
+        </div>
         </div>
       )}
     </div>
