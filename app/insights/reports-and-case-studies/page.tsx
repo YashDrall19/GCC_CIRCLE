@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { ArrowRight, Calendar } from 'lucide-react';
-import { insights } from '../data';
-import { tagColors } from '../tag-colors';
+import { ArrowRight } from 'lucide-react';
+import { reportPdfs } from '../pdf-data';
+import PdfCard from '@/components/PdfCard';
 
 export default function ReportsAndCaseStudiesPage() {
   return (
@@ -29,39 +29,11 @@ export default function ReportsAndCaseStudiesPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-8 sm:mb-10">
             <h2 className="text-xl sm:text-2xl font-bold">Reports & Case Studies</h2>
-            <span className="text-white/35 text-xs sm:text-sm">{insights.length} articles</span>
+            <span className="text-white/35 text-xs sm:text-sm">{reportPdfs.length} documents</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-            {insights.map((a) => (
-              <article
-                key={a.id}
-                className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679] hover:bg-white/[0.05] transition-all duration-300 cursor-pointer flex flex-col"
-              >
-                <div className="relative overflow-hidden aspect-video">
-                  <img
-                    src={a.img}
-                    alt={a.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070b14]/80 to-transparent" />
-                  <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
-                    <span className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold border ${tagColors[a.tag] || 'bg-white/10 text-white/60 border-white/20'}`}>
-                      {a.tag}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-4 sm:p-5 flex flex-col flex-1">
-                  <h3 className="font-semibold text-sm leading-snug mb-2 group-hover:text-[#B87333] transition-colors duration-200 line-clamp-3">
-                    {a.title}
-                  </h3>
-                  <div className="flex items-center justify-between text-white/30 text-[10px] sm:text-xs pt-2 sm:pt-3 border-t border-white/10">
-                    <span className="flex items-center gap-1"><Calendar size={9} /> {a.date}</span>
-                    <Link href={`/insights/${a.id}`} className="text-[#D2A679] font-medium flex items-center gap-0.5 group-hover:gap-2 transition-all duration-200">
-                      Read <ArrowRight size={10} />
-                    </Link>
-                  </div>
-                </div>
-              </article>
+            {reportPdfs.map((item) => (
+              <PdfCard key={item.id} item={item} />
             ))}
           </div>
         </div>
