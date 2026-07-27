@@ -23,6 +23,7 @@ const categories = [
     description: 'Stay up to date with the latest GCC launches, leadership appointments, expansion announcements, policy updates, investments, mergers, acquisitions, and ecosystem developments—all curated in one place.',
     href: '/insights/industry-updates',
     cta: 'Explore Industry Updates',
+    image: '/insights/Industry news.png',
   },
   {
     title: 'Reports & Case Studies',
@@ -30,6 +31,7 @@ const categories = [
     description: 'Access exclusive GCC Circle reports, talent intelligence, market research, compensation studies, benchmarking reports, and real-world case studies from India’s leading Global Capability Centres.',
     href: '/insights/reports-and-case-studies',
     cta: 'Browse Reports',
+    image: '/insights/Reports.png',
   },
   {
     title: 'Blogs',
@@ -37,6 +39,7 @@ const categories = [
     description: 'Explore expert opinions, executive interviews, thought leadership, and practical insights on leadership, talent, AI, innovation, workplace transformation, and the future of Global Capability Centres.',
     href: '/insights/blogs',
     cta: 'Read the Latest Articles',
+    image: '/insights/Blogs.png',
   },
 ];
 
@@ -76,21 +79,47 @@ export default function InsightsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid gap-5 lg:grid-cols-3">
             {categories.map((category) => (
-              <div key={category.title} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:border-[#D2A679] hover:bg-white/[0.05]">
-                <div>
-                  <p className="text-[#D2A679] text-xs uppercase tracking-[0.24em] font-semibold mb-3">{category.title}</p>
-                  <h2 className="text-xl sm:text-2xl font-bold mb-4 text-white">{category.subtitle}</h2>
-                  <p className="text-white/70 text-sm sm:text-base leading-relaxed">
-                    {category.description}
-                  </p>
+              <div
+                key={category.title}
+                className="group relative overflow-hidden rounded-3xl border border-white/10 transition-all duration-300 hover:border-[#D2A679]"
+              >
+                {/* Background Image */}
+                <img
+                  src={category.image}
+                  alt={category.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[#070b14]/70 via-[#070b14]/80 to-[#070b14]/95" />
+
+                {/* Optional Gold Glow */}
+                <div className="absolute inset-0 bg-[#D2A679]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Content */}
+                <div className="relative z-10 flex h-full min-h-[340px] flex-col justify-between p-4 sm:p-5">
+                  <div>
+                    <p className="text-[#D2A679] text-xs uppercase tracking-[0.24em] font-semibold mb-3">
+                      {category.title}
+                    </p>
+
+                    <h2 className="text-xl sm:text-2xl font-bold mb-4 text-white">
+                      {category.subtitle}
+                    </h2>
+
+                    <p className="text-white/80 text-sm sm:text-base leading-relaxed">
+                      {category.description}
+                    </p>
+                  </div>
+
+                  <Link
+                    href={category.href}
+                    className="mt-6 inline-flex items-center gap-2 text-[#D2A679] font-semibold text-sm sm:text-base hover:text-white transition-colors"
+                  >
+                    {category.cta}
+                    <ArrowRight size={16} />
+                  </Link>
                 </div>
-                <Link
-                  href={category.href}
-                  className="mt-6 inline-flex items-center gap-2 text-[#D2A679] font-semibold text-sm sm:text-base hover:text-[#B87333]"
-                >
-                  {category.cta}
-                  <ArrowRight size={16} />
-                </Link>
               </div>
             ))}
           </div>

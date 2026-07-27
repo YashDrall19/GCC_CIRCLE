@@ -27,13 +27,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="mb-4">
+            <div>
               <Image
-                src="/logo/bluelogo.png"
+                src="/logo/whitelogo.png"
                 alt="GCC Circle"
-                width={240}
-                height={80}
-                className="h-28 sm:h-40 w-auto"
+                width={500}
+                height={180}
+                className="h-52 sm:h-40 lg:h-48 xl:h-56 w-auto"
+                priority
               />
             </div>
             {/* <div className="flex items-center gap-3">
