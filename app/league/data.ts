@@ -966,68 +966,78 @@ export const leaders1: LeaderData[] = [
       }
     ]
   },
-  // {
-  //   name: "Deepika Gandhi",
-  //   date: "",
-  //   designation: "",
-  //   company: "",
-  //   linkedin: "https://www.linkedin.com/in/deepika-gandhi-4b02417/",
-  //   image: "",
-  //   quote:
-  //     "Scale alone is not strategy. The strongest GCCs are the ones that grow more relevant—not just bigger.",
-  //   questionaire: [
-  //     {
-  //       question: "What does a typical day look like for you as a GCC leader — honestly?",
-  //       answer:
-  //         "Honestly, there’s no such thing as a \"typical\" day—and that’s exactly what makes it exciting. A large part of my day is spent context-switching between strategy and execution. One moment I’m focused on long-term capability building and talent strategy, and the next I’m unblocking a delivery issue, reviewing a transformation initiative, or aligning stakeholders across geographies. What remains constant is the people-centricity. A good day always includes time with my leadership team, conversations with emerging talent, and space to think about how we continue making the GCC a strategic asset for the global business."
-  //     },
-  //     {
-  //       question: "How do you unwind after a tough week?",
-  //       answer:
-  //         "I like switching off by doing something completely unrelated to dashboards, org charts, or operating models. One ritual that helps me reset is playing Sudoku—usually during my commute and more seriously over the weekend. It clears my mind while keeping it engaged. I also enjoy reading. A mentor once described this as \"tuning the radio\"—shifting out of the noise and back into clarity—and I've found that to be incredibly effective."
-  //     },
-  //     {
-  //       question: "What’s the one skill every GCC leader must have today?",
-  //       answer:
-  //         "The conscious ability to connect the dots between business strategy, talent, culture, technology, and execution. GCCs are no longer just delivery engines or cost-arbitrage centers—they are value creators. Leaders must navigate ambiguity, translate strategy into action, and align teams to a larger business narrative."
-  //     },
-  //     {
-  //       question: "Do you have any quirky or unconventional leadership habits?",
-  //       answer:
-  //         "I ask a lot of questions. Whenever someone presents an issue, my instinct is to ask: \"What's the issue behind the issue?\" It helps uncover root causes instead of simply reacting to symptoms. I also carry a notebook wherever I go, capturing observations, ideas, and recurring patterns. More often than not, solutions to complex problems emerge from revisiting those notes weeks—or even months—later."
-  //     },
-  //     {
-  //       question: "How do you personally spot high-potential talent in a GCC?",
-  //       answer:
-  //         "I look for four qualities: Curiosity, Collaboration, Ownership, and Breadth of thinking. High-potential individuals don't stop at doing their jobs well. They ask better questions, step outside their immediate responsibilities, and volunteer for broader initiatives. I also believe potential isn't defined by traditional career paths. In a GCC environment, some of the strongest leaders emerge from diverse backgrounds and unconventional journeys. The people who thrive are those who influence without authority and continue learning faster than the environment evolves."
-  //     },
-  //     {
-  //       question: "What’s the worst piece of leadership advice you’ve ever received?",
-  //       answer:
-  //         "\"Don't get too close to the team—leaders need distance.\" I've never believed that. Leadership isn't about creating distance; it's about building clarity, consistency, and trust. Teams aren't simply there to execute instructions—they amplify a leader's thinking, reach, and impact. The best leadership happens when people know they're understood, valued, and supported."
-  //     },
-  //     {
-  //       question: "Do you have a secret productivity hack that actually works for you?",
-  //       answer:
-  //         "Nothing revolutionary—I deliberately leave white space in my calendar. That space allows me to deal with the unexpected, learn, reflect, explore opportunities, or simply be available when someone on my team needs a sounding board. Another personal rule is simple: if something can be resolved with a quick phone call, I'd rather make the call than start a long email thread."
-  //     },
-  //     {
-  //       question: "Share one fun or surprising fact about you that your team may not know.",
-  //       answer:
-  //         "I'm probably far more of an observer than people realize. In group settings, I don't always react immediately. Instead, I'm quietly observing patterns, reading the room, noticing energy shifts, and paying close attention to what's not being said. Many of my leadership decisions are shaped by those observations and the notes I revisit later."
-  //     },
-  //     {
-  //       question: "What’s one big lesson the GCC ecosystem has taught you?",
-  //       answer:
-  //         "Scale alone is not strategy. The strongest GCCs aren't necessarily the biggest—they're the most relevant. Relevance comes from building trust, investing in diverse talent, and evolving from execution support to decision-shaping impact. Ultimately, long-term value is created when capability, culture, and business context come together. Future-ready GCCs won't just be high-performing—they'll be responsible institutions that contribute meaningfully to people, communities, and sustainable business growth."
-  //     },
-  //     {
-  //       question: "What advice would you give to future GCC leaders just starting out?",
-  //       answer:
-  //         "Don't build only for today's requirements—build for the role your GCC will need to play three years from now. Invest early in culture, leadership bench strength, and credibility with global stakeholders. Spend as much time understanding the business as you do understanding your role. Tomorrow's GCC leaders won't be defined solely by execution excellence, but by their ability to shape strategy, influence decision-making, and build inclusive talent ecosystems that create long-term value."
-  //     }
-  //   ]
-  // },
+  {
+    name: "Bhargavi Divi",
+    date: "24th July",
+    designation: "",
+    company: "",
+    linkedin: "https://www.linkedin.com/in/bhargavi-d-a77156157/",
+    image: "",
+    quote:
+      "If we hire only for today's skills instead of tomorrow's potential, we may fill the role—but we won't secure the talent.",
+    questionaire: [
+      {
+        question: "What does a typical day look like for you as a Talent Leader — honestly?",
+        answer:
+          "Honestly, my day isn't spent filling positions. It's spent changing mindsets. Part of my day goes into helping global stakeholders understand that hiring in India isn't what it was five—or even three—years ago. Exceptional talent has choices, and employer brand, candidate experience, and the quality of leadership conversations influence decisions just as much as compensation. The other part is working with hiring managers searching for the 'perfect' resume. Some of the best hires I've seen weren't perfect on paper—they had the aptitude to learn, the attitude to grow, and the potential to outperform expectations. If a skill is trainable, I'd rather hire for capability than familiarity. So yes, I recruit people. But more often, I find myself recruiting people into a different way of thinking about talent."
+      },
+      {
+        question: "What’s the toughest hiring challenge you’re solving right now in GCCs?",
+        answer:
+          "Finding great talent isn't the hardest part anymore. Getting them—and keeping them—is. Today's Talent Acquisition teams don't just hire people; they influence the work itself. The challenge is helping leaders create globally relevant, meaningful roles that ambitious talent wants to build a career around. Because if we don't build roles people aspire to join, someone else will. And if we hire only for today's skills instead of tomorrow's potential, we may fill the role—but we won't secure the talent."
+      },
+      {
+        question: "How do you unwind after a long week of hiring chaos?",
+        answer:
+          "The best reset isn't switching off my laptop—it's switching on to the people who matter. Spending time with family and friends reminds me that while we build careers, it's relationships that build us. I also enjoy gardening, cooking for my family, picking vegetables, and the occasional lazy day."
+      },
+      {
+        question: "What’s the one skill every Talent Leader must have today?",
+        answer:
+          "The ability to continuously identify and nurture talent—not just recruit it."
+      },
+      {
+        question: "How do you spot high-potential talent beyond what’s on a resume?",
+        answer:
+          "Great recruiters are always looking for talent, long before a resume reaches them. It becomes instinctive. Beyond experience, I look at how candidates solve problems, how they navigate ambiguity, their balance of IQ and EQ, and their cultural behaviours during every interaction. The real skill is seeing beyond what's written on paper and recognising hidden potential."
+      },
+      {
+        question: "What’s the funniest or weirdest thing a candidate has ever said or done?",
+        answer:
+          "During a hiring event, one candidate spent more time negotiating for our company-branded chocolates than discussing the role. Before leaving, he even tried convincing me to invest in a real estate deal he was brokering! It was a reminder that some people are always interviewing—and always selling."
+      },
+      {
+        question: "One hiring myth you strongly disagree with",
+        answer:
+          "That Indian talent is driven primarily by compensation. In my experience, most professionals still choose meaningful work, growth opportunities, culture, and strong leadership over simply chasing the highest offer."
+      },
+      {
+        question: "Do you have a personal rule or non-negotiable when it comes to hiring?",
+        answer:
+          "Integrity and humility are non-negotiable. I pay as much attention to how a candidate treats the receptionist or office support staff as I do to how they interact with senior leaders. Character is revealed by how we treat people who have nothing to offer us in return."
+      },
+      {
+        question: "Do you have a productivity hack that actually works for you?",
+        answer:
+          "I don't have a productivity hack—I have a leadership philosophy. Build self-sufficient, empowered teams. The stronger your team becomes, the less time you spend firefighting and the more time you can invest in strategy, coaching, and solving problems that truly require your attention."
+      },
+      {
+        question: "What’s one big lesson the GCC hiring ecosystem has taught you?",
+        answer:
+          "Talent Acquisition cannot compensate for an unempowered role. If a role lacks ownership, purpose, or impact, even the best recruiters will struggle to attract—and retain—the best talent."
+      },
+      {
+        question: "What advice would you give to future Talent Leaders?",
+        answer:
+          "Never forget the responsibility that comes with this role. You have the power to shape careers and businesses. Hire for mutual success—not just what's good for the employer or the candidate, but what's right for both. The best hiring decisions create lasting value for everyone involved."
+      },
+      {
+        question: "Share one fun or surprising fact about you that your team may not know.",
+        answer:
+          "Honestly, my team probably knows every fun fact about me—and I prefer it that way. I enjoy knowing the people I work with beyond their job titles, and I think they've returned the favour."
+      }
+    ]
+  },
   {
     name: "Geetha Thiagarajan",
     date: "",
