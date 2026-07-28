@@ -18,6 +18,7 @@ import {
   BarChart2,
   FileText,
   Newspaper,
+  FileDown,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -36,6 +37,11 @@ const navItems = [
     label: 'Users',
     href: '/admin/users',
     icon: Users,
+  },
+  {
+    label: 'Download Leads',
+    href: '/admin/report-downloads',
+    icon: FileDown,
   },
   {
     label: 'Blogs',

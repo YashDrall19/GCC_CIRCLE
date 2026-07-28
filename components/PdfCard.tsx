@@ -7,9 +7,10 @@ interface PdfCardProps {
   title: string;
   url: string;
   fileName: string;
+  onDownload?: () => void;
 }
 
-export default function PdfCard({ title, url, fileName }: PdfCardProps) {
+export default function PdfCard({ title, url, fileName, onDownload }: PdfCardProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
 
@@ -109,7 +110,13 @@ export default function PdfCard({ title, url, fileName }: PdfCardProps) {
 
         <button
           type="button"
-          onClick={handleDownload}
+          onClick={() => {
+            if (onDownload) {
+              onDownload();
+            } else {
+              window.open(url, "_blank");
+            }
+          }}
           className="mt-auto inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#D2A679]/15 text-[#D2A679] text-xs font-semibold hover:bg-[#D2A679] hover:text-white transition-all duration-200"
         >
           <Download size={14} />

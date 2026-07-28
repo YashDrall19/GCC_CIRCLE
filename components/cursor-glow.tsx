@@ -59,7 +59,7 @@ export default function CursorGlow() {
     <>
       {/* Main glow (dot) */}
       <div
-        className="pointer-events-none fixed z-[9999] transition-opacity duration-150 hidden md:block"
+        className="pointer-events-none fixed z-[99999] transition-opacity duration-150 hidden md:block"
         style={{
           left: position.x,
           top: position.y,
@@ -81,7 +81,7 @@ export default function CursorGlow() {
       {/* Trailing glow ring (follows with lag) */}
       <div
         ref={ringRef}
-        className="pointer-events-none fixed z-[9998] transition-opacity duration-200 hidden md:block"
+        className="pointer-events-none fixed z-[99998] transition-opacity duration-200 hidden md:block"
         style={{
           left: ringPos.current.x,
           top: ringPos.current.y,
