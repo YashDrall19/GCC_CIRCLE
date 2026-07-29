@@ -166,36 +166,53 @@ export default function EventDetailPage() {
       </section>
 
       {/* Speakers */}
-      {leaders?.length > 0  &&
-        <section className="mb-10 sm:mb-16">
+      {leaders?.length > 0 && (
+        <section className="px-4 sm:px-6 mb-14 sm:mb-20">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-8">
-              Participating Organisations
-            </h2>
 
-            <div className="divide-y divide-white/10 border-y border-white/10">
-              {event?.leaders?.map((speaker, index) => (
+            {/* Header */}
+            <div className="mb-8">
+              <span className="text-[#D2A679] text-xs sm:text-sm uppercase tracking-[0.25em]">
+                Partners
+              </span>
+
+              <h2 className="text-2xl sm:text-3xl font-bold mt-2">
+                Participating Organisations
+              </h2>
+
+              <p className="text-white/60 mt-3 max-w-2xl text-sm sm:text-base">
+                Industry leaders, innovators and organisations participating in this
+                event.
+              </p>
+            </div>
+
+            {/* Organisations */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12 gap-x-8">
+
+              {leaders.map((org, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between py-5"
+                  className="group cursor-pointer"
                 >
-                  <div>
-                    <h3 className="text-base sm:text-lg font-medium text-white">
-                      {speaker?.name}
-                    </h3>
+                  {/* Gold line */}
+                  <div className="w-8 h-[2px] bg-[#D2A679] mb-5 transition-all duration-300 group-hover:w-14" />
 
-                    <p className="mt-1 text-sm text-white/55">
-                      {speaker?.company}
-                    </p>
-                  </div>
+                  {/* Name */}
+                  <h3 className="text-xl font-semibold leading-tight transition-colors duration-300 group-hover:text-[#D2A679]">
+                    {org.name}
+                  </h3>
 
-                  <div className="h-2 w-2 rounded-full bg-[#D2A679]/80 shrink-0" />
+                  {/* Company */}
+                  <p className="mt-3 text-sm leading-7 text-white/60">
+                    {org.company}
+                  </p>
                 </div>
               ))}
+
             </div>
           </div>
         </section>
-      }
+      )}
 
       {/* Gallery */}
       {images?.length > 0  &&
