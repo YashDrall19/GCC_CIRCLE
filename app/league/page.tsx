@@ -5,17 +5,52 @@ import { ArrowRight, Linkedin } from 'lucide-react';
 import type { Leader } from './data';
 import { leaderTypeMap, leaders1, slugify } from './data';
 import Image from 'next/image';
+import { useCallback, useEffect, useState } from 'react';
 
-const leaders: Leader[] = leaders1.map((leader) => ({
-  ...leader,
-  id: slugify(leader.name),
-  type: leaderTypeMap[slugify(leader.name)] ?? 'tech',
-}));
+// const legends: Leader[] = leaders1.map((legend) => ({
+//   ...legend,
+//   id: slugify(legend.first_name),
+//   type: leaderTypeMap[slugify(legend.name)] ?? 'tech',
+// }));
 
-const techLeaders = leaders.filter((l) => l.type === 'tech');
-const hrLeaders = leaders.filter((l) => l.type === 'hr');
+// const techLeaders = leaders.filter((l) => l.type === 'tech');
+// const hrLeaders = leaders.filter((l) => l.type === 'hr');
+
+
+interface Legend {
+  id: number;
+  first_name: string;
+  last_name: string;
+  image_url: string;
+  title: string;
+  company: string;
+  active: number;
+  type: string;
+}
 
 export default function LeaguePage() {
+  const [loading, setloading] = useState(false);
+  const [legends, setLegends] = useState<Legend[]>([]);
+
+  const fetchLegends = useCallback(async() => {
+    setloading(true);
+    try {
+      const res = await fetch("/api/admin/legends?active=1");
+      const data = await res.json();
+      if (data?.success) {
+        setLegends(data?.data);
+      }
+    } catch (error) {
+      console.log("Error fetching Legends: ", error);
+    } finally {
+      setloading(false);
+    }
+  }, []);
+
+  console.log(legends?.filter(l => l?.type === "hr"));
+  useEffect(() => {
+    fetchLegends();
+  }, []);
   return (
     <main className="bg-[#070b14] text-white pt-16 sm:pt-20">
       {/* Hero */}
@@ -86,30 +121,34 @@ export default function LeaguePage() {
             </p>
             <div className="overflow-x-auto pb-4 -mx-4 sm:-mx-6 px-4 sm:px-6 scrollbar-hide">
               <div className="flex gap-4 sm:gap-6 min-w-min">
-                {techLeaders.map((leader) => (
-                  <Link key={leader.id} href={`/league/${leader.id}`}>
-                    <div className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300 cursor-pointer w-44 sm:w-56 flex-shrink-0">
-                      <div className="aspect-[3/4] overflow-hidden relative">
-                        <Image
-                          src={leader.image}
-                          alt={leader.name}
-                          fill
-                          className="object-cover object-top group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-                        <div className="font-semibold text-xs sm:text-sm leading-tight">{leader.name}</div>
-                        <div className="text-[#D2A679] text-[10px] sm:text-xs mt-0.5 leading-tight">{leader.designation}</div>
-                      </div>
-                      <div className="absolute top-2 sm:top-3 right-2 sm:right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#1a6cff]/90 flex items-center justify-center">
-                          <Linkedin size={10} className="text-white" />
+                {legends?.filter(l => l?.type === "tech")?.length === 0 && <p>No data found</p>}
+                {legends?.filter(l => l?.type === "tech")?.length > 0 &&
+                  legends?.filter(l => l?.type === "tech").map((leader) => (
+                    <Link key={leader.id} href={`/league/${leader.id}`}>
+                      <div className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300 cursor-pointer w-44 sm:w-56 flex-shrink-0">
+                        <div className="aspect-[3/4] overflow-hidden relative">
+                          <Image
+                            src={leader.image_url}
+                            alt={`${leader.first_name} ${leader.last_name}`}
+                            fill
+                            className="object-cover object-top group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                          <div className="font-semibold text-xs sm:text-sm leading-tight">{`${leader.first_name} ${leader.last_name}`}</div>
+                          <div className="text-[#38bdf8] text-[10px] sm:text-xs mt-0.5 leading-tight">{leader.title}</div>
+                          <div className="text-[#1a6cff] text-[10px] sm:text-xs mt-0.5 leading-tight">{leader.company}</div>
+                        </div>
+                        <div className="absolute top-2 sm:top-3 right-2 sm:right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#1a6cff]/90 flex items-center justify-center">
+                            <Linkedin size={10} className="text-white" />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))
+                }
               </div>
             </div>
           </div>
@@ -125,30 +164,34 @@ export default function LeaguePage() {
             </p>
             <div className="overflow-x-auto pb-4 -mx-4 sm:-mx-6 px-4 sm:px-6 scrollbar-hide">
               <div className="flex gap-4 sm:gap-6 min-w-min">
-                {hrLeaders.map((leader) => (
-                  <Link key={leader.id} href={`/league/${leader.id}`}>
-                    <div className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300 cursor-pointer w-44 sm:w-56 flex-shrink-0">
-                      <div className="aspect-[3/4] overflow-hidden relative">
-                        <Image
-                          src={leader.image}
-                          alt={leader.name}
-                          fill
-                          className="object-cover object-top group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
-                      </div>
-                      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-                        <div className="font-semibold text-xs sm:text-sm leading-tight">{leader.name}</div>
-                        <div className="text-[#D2A679] text-[10px] sm:text-xs mt-0.5 leading-tight">{leader.designation}</div>
-                      </div>
-                      <div className="absolute top-2 sm:top-3 right-2 sm:right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#D2A679]/90 flex items-center justify-center">
-                          <Linkedin size={10} className="text-white" />
+                {legends?.filter(l => l?.type === "hr")?.length === 0 && <p>No data found</p>}
+                {legends?.filter(l => l?.type === "hr")?.length > 0 &&
+                  legends?.filter(l => l?.type === "hr").map((leader) => (
+                    <Link key={leader.id} href={`/league/${leader.id}`}>
+                      <div className="group relative overflow-hidden rounded-2xl border border-[#B87333] bg-white/[0.03] hover:border-[#D2A679] transition-all duration-300 cursor-pointer w-44 sm:w-56 flex-shrink-0">
+                        <div className="aspect-[3/4] overflow-hidden relative">
+                          <Image
+                            src={leader.image_url}
+                            alt={`${leader.first_name} ${leader.last_name}`}
+                            fill
+                            className="object-cover object-top group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-[#070b14]/40 to-transparent" />
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                          <div className="font-semibold text-xs sm:text-sm leading-tight">{`${leader.first_name} ${leader.last_name}`}</div>
+                          <div className="text-[#38bdf8] text-[10px] sm:text-xs mt-0.5 leading-tight">{leader.title}</div>
+                          <div className="text-[#1a6cff] text-[10px] sm:text-xs mt-0.5 leading-tight">{leader.company}</div>
+                        </div>
+                        <div className="absolute top-2 sm:top-3 right-2 sm:right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#D2A679]/90 flex items-center justify-center">
+                            <Linkedin size={10} className="text-white" />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))
+                }
               </div>
             </div>
           </div>

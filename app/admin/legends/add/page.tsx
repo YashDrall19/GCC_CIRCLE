@@ -81,11 +81,11 @@ export default function AddLegendPage() {
     e.preventDefault();
     setError('');
     setLoading(true);
-
+    let url = "";
     try {
       // If an image file is selected, upload it first and set `image_url`
       if (selectedFile && !form.image_url) {
-        const url = await uploadImageAndSetUrl();
+        url = await uploadImageAndSetUrl();
         if (url) {
           // image_url already set in form by uploadImageAndSetUrl
         }
@@ -93,6 +93,7 @@ export default function AddLegendPage() {
 
       const submitData = {
         ...form,
+        image_url: url,
         source: form.source === 'Others' ? form.sourceOther : form.source,
         questionnaire: answers,
         organic: false,

@@ -196,11 +196,11 @@ export default function LegendsManagementPage() {
     setEditLoading(true);
 
     if (!editingLegend) return;
-
+    let url = "";
     try {
       // If a new image file is selected, upload it first and set `image_url`
       if (selectedFile && !editForm.image_url) {
-        const url = await uploadImageAndSetUrl();
+        url = await uploadImageAndSetUrl();
         if (url) {
           // editForm.image_url already set in uploadImageAndSetUrl
         }
@@ -208,7 +208,7 @@ export default function LegendsManagementPage() {
       const res = await fetch(`/api/admin/legends?id=${editingLegend.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...editForm, questionnaire: editAnswers }),
+        body: JSON.stringify({ ...editForm, image_url: url, questionnaire: editAnswers }),
       });
 
       const data = await res.json();

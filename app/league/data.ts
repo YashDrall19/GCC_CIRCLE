@@ -16,6 +16,7 @@ import rohit from "../../public/images/Rohit Khanna.webp";
 import rakesh from "../../public/images/Rakesh Chawla.webp";
 import sidharth from "../../public/images/Sidharth Gupta.jpg";
 import arun from "../../public/images/Arun Kohli.jpg";
+import bhargavi from "../../public/images/Bhargavi Devi.jpeg";
 
 interface QuestionAnswer {
   question: string;
@@ -972,7 +973,7 @@ export const leaders1: LeaderData[] = [
     designation: "",
     company: "",
     linkedin: "https://www.linkedin.com/in/bhargavi-d-a77156157/",
-    image: "",
+    image: bhargavi,
     quote:
       "If we hire only for today's skills instead of tomorrow's potential, we may fill the role—but we won't secure the talent.",
     questionaire: [

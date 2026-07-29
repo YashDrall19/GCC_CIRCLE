@@ -10,40 +10,58 @@ import db from '@/lib/db';
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const id = searchParams.get('id');
 
+    const id = searchParams.get("id");
+    const active = searchParams.get("active");
+
+    // Get single record
     if (id) {
-      const [rows] = await db.execute('SELECT * FROM leads WHERE id = ?', [id]);
+      const [rows] = await db.execute(
+        "SELECT * FROM leads WHERE id = ?",
+        [id]
+      );
+
       const row = (rows as any[])[0];
 
       if (!row) {
-        return NextResponse.json({ success: false, error: 'Legend not found' }, { status: 404 });
+        return NextResponse.json(
+          { success: false, error: "Legend not found" },
+          { status: 404 }
+        );
       }
 
-      // parse questionnaire JSON if present
-      try {
-        row.questionnaire = row.questionnaire ? JSON.parse(row.questionnaire) : [];
-      } catch (e) {
-        row.questionnaire = [];
-      }
+      row.questionnaire = row.questionnaire
+        ? JSON.parse(row.questionnaire)
+        : [];
 
       return NextResponse.json({ success: true, data: row });
     }
 
-    const [allRows] = await db.execute('SELECT * FROM leads ORDER BY created_at DESC');
-    const data = (allRows as any[]).map((r) => {
-      try {
-        r.questionnaire = r.questionnaire ? JSON.parse(r.questionnaire) : [];
-      } catch (e) {
-        r.questionnaire = [];
-      }
-      return r;
-    });
+    let query = "SELECT * FROM leads";
+    const params: any[] = [];
+
+    if (active !== null) {
+      query += " WHERE active = ?";
+      params.push(active);
+    }
+
+    query += " ORDER BY created_at DESC";
+
+    const [rows] = await db.execute(query, params);
+
+    const data = (rows as any[]).map((r) => ({
+      ...r,
+      questionnaire: r.questionnaire
+        ? JSON.parse(r.questionnaire)
+        : [],
+    }));
 
     return NextResponse.json({ success: true, data });
   } catch (error: any) {
-    console.error('Get legends (leads) error:', error);
-    return NextResponse.json({ success: false, error: error?.message || 'Internal server error' }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: error.message },
+      { status: 500 }
+    );
   }
 }
 
