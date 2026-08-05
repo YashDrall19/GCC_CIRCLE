@@ -4,7 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, BookOpen } from 'lucide-react';
 import { useParams } from 'next/navigation';
-import { insights } from '../data';
+import { insights } from '../../data';
+import { useCallback, useEffect, useState } from 'react';
 
 const tagColors: Record<string, string> = {
   'AI Strategy': 'bg-blue-500/15 text-blue-400 border-blue-500/30',
@@ -17,22 +18,93 @@ const tagColors: Record<string, string> = {
   'Innovation': 'bg-sky-500/15 text-sky-400 border-sky-500/30',
 };
 
-export default function InsightDetailPage() {
-  const { id } = useParams();
-  const article = insights.find((i) => i.id === id);
+interface Blog {
+  id: number;
+  title: string;
+  slug: string;
+  category: string;
+  read_time: number;
+  cover_image: string;
+  content: string;
+  active: boolean;
+  created_at: string;
+}
 
-  if (!article) {
+export default function InsightDetailPage() {
+  const { slug } = useParams();
+  const article = insights.find((i) => i.id === slug);
+
+  const [loading, setLoading] = useState(false);
+  const [blog, setBlog] = useState<Blog | null>(null);
+
+
+  const fetchBlog = useCallback(async () => {
+    if (!slug) return;
+
+    setLoading(true);
+
+    try {
+      const res = await fetch(`/api/admin/blogs?slug=${slug}`);
+      const data = await res.json();
+
+      if (data.success) {
+        setBlog(data.data);
+      } else {
+        setBlog(null);
+      }
+    } catch (error) {
+      console.error(error);
+      setBlog(null);
+    } finally {
+      setLoading(false);
+    }
+  }, [slug]);
+
+  useEffect(() => {
+    fetchBlog();
+  }, [fetchBlog]);
+
+  if (loading) {
     return (
-      <main className="bg-[#070b14] text-white min-h-screen pt-16 sm:pt-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
-          <Link href="/insights" className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm sm:text-base">
-            <ArrowLeft size={18} /> Back to Insights
-          </Link>
-        </div>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center text-white/60">Article not found.</div>
+      <main className="bg-[#070b14] text-white min-h-screen flex items-center justify-center">
+        Loading...
       </main>
     );
   }
+
+  if (!blog) {
+    return (
+      <main className="bg-[#070b14] text-white min-h-screen pt-20">
+        <div className="max-w-6xl mx-auto px-6 py-6">
+          <Link
+            href="/insights"
+            className="inline-flex items-center gap-2 text-white/70 hover:text-white"
+          >
+            <ArrowLeft size={18} />
+            Back to Insights
+          </Link>
+        </div>
+
+        <div className="text-center text-white/60 mt-20">
+          Article not found.
+        </div>
+      </main>
+    );
+  }
+
+  const htmlContent = blog.content.replace(
+    /\.\.\/\.\.\/uploads\//g,
+    "/uploads/"
+  );
+
+  const publishedDate = new Date(blog.created_at).toLocaleDateString(
+    "en-US",
+    {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }
+  );
 
   return (
     <main className="bg-[#070b14] text-white min-h-screen pt-16 sm:pt-20">
@@ -49,8 +121,8 @@ export default function InsightDetailPage() {
           <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#D2A679]/30">
             <div className="aspect-[16/9] sm:aspect-[16/7] relative">
               <Image
-                src={article.img}
-                alt={article.title}
+                src={blog.cover_image}
+                alt={blog.title}
                 fill
                 priority
                 className="object-cover"
@@ -59,12 +131,12 @@ export default function InsightDetailPage() {
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-10 z-20">
-              <span className={`inline-flex px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-3 sm:mb-4 border ${tagColors[article.tag] || 'bg-white/10 text-white/60 border-white/20'}`}>
-                {article.tag}
+              <span className={`inline-flex px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-widest mb-3 sm:mb-4 border ${tagColors[blog.category] || "bg-white/10 text-white/60 border-white/20"}`}>
+                {blog.category}
               </span>
 
               <h1 className="text-xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4">
-                {article.title}
+                {blog.title}
               </h1>
 
               {/* <p className="text-white/75 text-sm sm:text-base md:text-lg max-w-3xl">
@@ -83,7 +155,7 @@ export default function InsightDetailPage() {
               <Calendar size={18} sm-size={20} className="text-[#D2A679] flex-shrink-0" />
               <div>
                 <p className="text-white/50 text-xs sm:text-sm">Published</p>
-                <p className="font-medium text-sm sm:text-base">{article.date}</p>
+                <p className="font-medium text-sm sm:text-base">{publishedDate}</p>
               </div>
             </div>
           </div>
@@ -93,7 +165,7 @@ export default function InsightDetailPage() {
               <Clock size={18} sm-size={20} className="text-[#D2A679] flex-shrink-0" />
               <div>
                 <p className="text-white/50 text-xs sm:text-sm">Read Time</p>
-                <p className="font-medium text-sm sm:text-base">{article.readTime}</p>
+                <p className="font-medium text-sm sm:text-base">{blog.read_time} minutes</p>
               </div>
             </div>
           </div>
@@ -103,7 +175,7 @@ export default function InsightDetailPage() {
               <BookOpen size={18} sm-size={20} className="text-[#D2A679] flex-shrink-0" />
               <div>
                 <p className="text-white/50 text-xs sm:text-sm">Category</p>
-                <p className="font-medium text-sm sm:text-base">{article.tag}</p>
+                <p className="font-medium text-sm sm:text-base">{blog.category}</p>
               </div>
             </div>
           </div>
@@ -114,9 +186,25 @@ export default function InsightDetailPage() {
       <section className="px-4 sm:px-6 mb-4">
         <div className="max-w-6xl mx-auto">
           <div className="rounded-2xl sm:rounded-3xl border border-white/10 p-5 sm:p-8 md:p-10 bg-white/[0.02]">
-            <div className="text-justify">
-              {article.content}
-            </div>
+            <div
+              className="
+                prose
+                prose-invert
+                max-w-none
+                prose-headings:text-white
+                prose-p:text-white/80
+                prose-strong:text-white
+                prose-a:text-[#D2A679]
+                prose-img:rounded-xl
+                prose-img:mx-auto
+                prose-img:max-w-full
+                prose-li:text-white/80
+                prose-blockquote:border-[#D2A679]
+              "
+              dangerouslySetInnerHTML={{
+                __html: htmlContent,
+              }}
+            />
           </div>
         </div>
       </section>

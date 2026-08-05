@@ -32,10 +32,10 @@ const generateUniqueSlug = async (title: string, excludeId?: string) => {
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const id = searchParams.get('id');
+    const slug = searchParams.get('slug');
 
-    if (id) {
-      const [rows] = await db.execute('SELECT * FROM blogs WHERE id = ?', [id]);
+    if (slug) {
+      const [rows] = await db.execute('SELECT * FROM blogs WHERE slug = ?', [slug]);
       const row = (rows as any[])[0];
 
       if (!row) {

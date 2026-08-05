@@ -4,10 +4,12 @@ import { useEffect, useState } from 'react';
 import { X, ArrowRight } from 'lucide-react';
 
 interface PdfItem {
-  id: string;
+  id: number;
   title: string;
-  url: string;
-  fileName: string;
+  description: string;
+  pdf_url: string;
+  active: boolean;
+  created_at: string;
 }
 
 interface Props {
@@ -36,7 +38,11 @@ export default function DownloadReportModal({
 
     const saved = localStorage.getItem('gcc-report-user');
     if (saved) {
-      setForm(JSON.parse(saved));
+      try {
+        setForm(JSON.parse(saved));
+      } catch {
+        // ignore invalid local storage
+      }
     }
   }, [open]);
 
@@ -66,16 +72,16 @@ export default function DownloadReportModal({
         },
         body: JSON.stringify({
           ...form,
+          report_id: pdf.id,
           report_name: pdf.title,
-          report_file: pdf.fileName,
+          report_url: pdf.pdf_url,
         }),
       });
 
       const data = await response.json();
 
-      if (!data.success) {
-        alert(data.message || 'Something went wrong.');
-        return;
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Unable to process request.');
       }
 
       localStorage.setItem(
@@ -83,12 +89,13 @@ export default function DownloadReportModal({
         JSON.stringify(form)
       );
 
-      window.open(pdf.url, '_blank');
+      // Download/Open PDF
+      window.open(pdf.pdf_url, '_blank', 'noopener,noreferrer');
 
       onClose();
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert('Unable to download report.');
+      alert(err.message || 'Unable to download report.');
     } finally {
       setLoading(false);
     }
@@ -97,14 +104,13 @@ export default function DownloadReportModal({
   if (!open || !pdf) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-
+    <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
       <div className="relative w-full max-w-2xl rounded-3xl border border-white/10 bg-[#070b14] shadow-2xl">
 
         {/* Close */}
         <button
           onClick={onClose}
-          className="absolute right-5 top-5 text-white/50 hover:text-white transition"
+          className="absolute top-5 right-5 text-white/50 hover:text-white transition-colors"
         >
           <X size={22} />
         </button>
@@ -113,7 +119,7 @@ export default function DownloadReportModal({
 
           <div className="text-center mb-8">
             <p className="text-[#D2A679] uppercase tracking-[0.3em] text-xs mb-3">
-              Report Download
+              REPORT DOWNLOAD
             </p>
 
             <h2 className="text-3xl font-bold text-white">
@@ -121,15 +127,24 @@ export default function DownloadReportModal({
             </h2>
 
             <p className="mt-3 text-white/60 text-sm leading-relaxed">
-              Fill in your details to download this exclusive GCC Circle report.
+              Fill in your details to access this exclusive GCC Circle report.
             </p>
+
+            <div className="mt-5 rounded-xl border border-[#D2A679]/20 bg-[#D2A679]/10 p-4">
+              <p className="text-sm text-white/50">
+                Selected Report
+              </p>
+
+              <p className="mt-1 font-semibold text-[#D2A679]">
+                {pdf.title}
+              </p>
+            </div>
           </div>
 
           <form
             onSubmit={handleDownload}
             className="space-y-5"
           >
-
             <div className="grid md:grid-cols-2 gap-5">
 
               <div>
@@ -219,11 +234,10 @@ export default function DownloadReportModal({
             </div>
 
             <div className="pt-4">
-
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full rounded-xl bg-[#D2A679] hover:bg-[#B87333] transition py-4 font-semibold text-white flex items-center justify-center gap-2 disabled:opacity-60"
+                className="w-full rounded-xl bg-[#D2A679] hover:bg-[#B87333] transition-colors py-4 font-semibold text-white flex items-center justify-center gap-2 disabled:opacity-60"
               >
                 {loading ? (
                   <>
@@ -237,15 +251,12 @@ export default function DownloadReportModal({
                   </>
                 )}
               </button>
-
             </div>
 
           </form>
 
         </div>
-
       </div>
-
     </div>
   );
 }

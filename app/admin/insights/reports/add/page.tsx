@@ -137,7 +137,7 @@ export default function AddReportPage() {
           </div>
 
           <div className='flex flex-wrap gap-24'>
-            <div>
+            {/* <div>
               <label className="block text-white/60 text-xs font-semibold uppercase mb-2">Cover Image</label>
               {imagePreview ? (
                 <div className="relative inline-block">
@@ -159,7 +159,7 @@ export default function AddReportPage() {
                   className="w-full text-sm text-white"
                 />
               )}
-            </div>
+            </div> */}
 
             <div>
               <label className="block text-white/60 text-xs font-semibold uppercase mb-2">PDF</label>

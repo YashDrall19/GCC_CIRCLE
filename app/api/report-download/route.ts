@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
       company,
       linkedin,
       report_name,
-      report_file,
+      report_url,
     } = body;
 
     if (
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
       `,
       [
         report_name,
-        report_file,
+        report_url, // <-- store the URL
         name,
         email,
         phone,

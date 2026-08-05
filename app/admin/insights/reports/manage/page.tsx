@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { AlertCircle, Trash2, CreditCard as Edit2, X } from 'lucide-react';
+import { AlertCircle, Trash2, CreditCard as Edit2, X, ExternalLink } from 'lucide-react';
 
 type Report = {
   id: number;
@@ -234,7 +234,7 @@ export default function ReportsManagePage() {
               />
             </div>
 
-            <div>
+            {/* <div>
               <label className="block text-white/60 text-xs font-semibold uppercase mb-2">Cover Image</label>
               {imagePreview ? (
                 <div className="relative inline-block">
@@ -254,13 +254,24 @@ export default function ReportsManagePage() {
               ) : (
                 <input type="file" accept="image/*" onChange={(e) => setSelectedImageFile(e.target.files?.[0] ?? null)} className="w-full text-sm text-white" />
               )}
-            </div>
+            </div> */}
 
             <div>
               <label className="block text-white/60 text-xs font-semibold uppercase mb-2">PDF</label>
               {form.pdf_url && !selectedPdfFile ? (
                 <div className="flex items-center justify-between p-3 bg-white/[0.05] border border-white/10 rounded-lg">
-                  <span className="text-sm text-white">PDF attached</span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm text-white">PDF attached</span>
+                    <a
+                      href={form.pdf_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-[#D2A679] hover:text-[#B87333] text-sm"
+                    >
+                      View PDF
+                      <ExternalLink size={14} />
+                    </a>
+                  </div>
                   <button type="button" onClick={() => setForm({ ...form, pdf_url: '' })} className="text-red-400 hover:text-red-300">
                     Remove
                   </button>

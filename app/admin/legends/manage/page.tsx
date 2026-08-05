@@ -144,6 +144,8 @@ export default function LegendsManagementPage() {
 
   const handleEdit = async (legend: Legend) => {
     // Fetch full legend data with answers
+    setSelectedFile(null);
+    setPreviewUrl('');
     try {
       const res = await fetch(`/api/admin/legends?id=${legend.id}`);
       const data = await res.json();
@@ -196,7 +198,7 @@ export default function LegendsManagementPage() {
     setEditLoading(true);
 
     if (!editingLegend) return;
-    let url = "";
+    let url = editForm.image_url;
     try {
       // If a new image file is selected, upload it first and set `image_url`
       if (selectedFile && !editForm.image_url) {
@@ -260,6 +262,13 @@ export default function LegendsManagementPage() {
     } catch (error) {
       console.error('Error toggling legend active state:', error);
     }
+  };
+
+  const closeModal = () => {
+    setShowEditModal(false);
+    setEditingLegend(null);
+    setSelectedFile(null);
+    setPreviewUrl('');
   };
 
   return (
@@ -441,13 +450,13 @@ export default function LegendsManagementPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-            onClick={() => setShowEditModal(false)}
+            onClick={closeModal}
           />
           <div className="relative w-full max-w-3xl bg-[#0a0e1a] rounded-2xl border border-white/10 p-6 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6 sticky top-0 bg-[#0a0e1a] pb-4 -mt-2 pt-2 z-10">
               <h2 className="text-lg font-semibold">Edit Legend</h2>
               <button
-                onClick={() => setShowEditModal(false)}
+                onClick={closeModal}
                 className="p-2 rounded-lg hover:bg-white/10 transition-colors"
               >
                 <X size={18} />
@@ -680,7 +689,7 @@ export default function LegendsManagementPage() {
               <div className="flex gap-3 pt-2 sticky bottom-0 bg-[#0a0e1a] pb-2">
                 <button
                   type="button"
-                  onClick={() => setShowEditModal(false)}
+                  onClick={closeModal}
                   className="flex-1 py-2.5 border border-white/10 hover:bg-white/5 rounded-xl transition-colors text-sm font-medium"
                 >
                   Cancel

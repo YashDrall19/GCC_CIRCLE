@@ -15,6 +15,8 @@ import window from "../../public/insights/window.avif";
 import analytics from "../../public/insights/analytics.avif";
 import crowd from "../../public/insights/crowd.avif";
 
+import gcc2030 from "../../public/insights/gcc2030.png";
+
 export const insights = [
   // {
   //   id: 'women-leaders-reshaping-gcc',
@@ -2038,7 +2040,7 @@ export const insights = [
     ),
   },
   {
-    id: 'from-cost-hub-to-innovation-engine',
+    id: 'title-1',
     title: "From Cost-Hub to Innovation-Engine: Next Phase of Global Capability Centres in India",
     date: "23 November 2025",
     readTime: '7 min read',
@@ -2214,5 +2216,108 @@ export const insights = [
 
       </div>
     ),
+  },
+
+  {
+    id: 'india-gcc-2030-beyond-5000-global-capability-centres',
+    title: "Beyond 5,000 GCCs: India's Next Leadership Opportunity",
+    date: "30 July 2026",
+    readTime: "8 min read",
+    tag: "Leadership",
+    img: gcc2030.src,
+    content: (
+      <div className="space-y-16 text-base leading-8 text-white/70 sm:text-lg">
+
+        <section className="space-y-8">
+          <p>When Finance Minister Nirmala Sitharaman recently stated that India could realistically host 5,000 Global Capability Centres (GCCs) by 2030, it reinforced what many across the industry have believed for some time: India's GCC story is no longer an emerging opportunity. It is a global strategic movement.</p>
+          <p>But from GCC Circle's perspective, the announcement raises a far more important question.</p>
+          <div className="rounded-2xl border border-[#D2A679]/30 bg-[#D2A679]/10 p-6">
+            <p className="text-xl font-semibold text-white">The real question isn't whether India can build 5,000 GCCs.</p>
+            <p className="mt-3 text-[#D2A679] font-semibold">It's whether those 5,000 centres will create the world's next generation of products, patents, platforms and enterprise leadership.</p>
+          </div>
+          <p>The next phase of India's GCC journey cannot simply be measured by the number of centres established. It must be measured by the influence those centres have on global business strategy, innovation and decision making. The opportunity ahead is not one of expansion alone. It is one of evolution.</p>
+        </section>
+
+        <section className="space-y-8">
+          <h3 className="text-3xl font-bold text-white">India's GCC Story Is Entering Version 3.0</h3>
+          <p>Version 1.0 focused on efficiency. Version 2.0 transformed GCCs into capability centres responsible for engineering, finance, analytics, cybersecurity and enterprise operations. Today's GCCs are becoming strategic command centres driving product roadmaps, AI adoption, customer experience and boardroom decisions.</p>
+
+          <Image src="/insights/Inline 1.png" alt="India GCC evolution" width={1200} height={700} className="w-full rounded-2xl border border-white/10" />
+
+          <p>The shift from execution engine to strategic leadership changes everything.</p>
+        </section>
+
+        <section className="space-y-8">
+          <h3 className="text-3xl font-bold text-white">Scale Alone Will Not Define Success</h3>
+          <p>The next decade belongs to AI-native GCCs rather than simply larger GCCs.</p>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              "Enterprise AI","Generative AI Engineering","Intelligent Automation","Cybersecurity",
+              "Digital Twins","Product Engineering","Global R&D","Data Science","Platform Engineering","Responsible AI Governance"
+            ].map(item=>(
+              <div key={item} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                <p className="font-medium text-white">{item}</p>
+              </div>
+            ))}
+          </div>
+
+          <blockquote className="rounded-2xl border-l-4 border-[#D2A679] bg-white/[0.03] p-6 italic">
+            “India has already proven it can scale Global Capability Centres. The next decade won't be defined by how many centres we build, but by how many become global command centres for innovation, AI and enterprise transformation.”
+            <footer className="mt-4 text-[#D2A679] not-italic font-semibold">— Ravi Wadhwa, Founder, Talentiser & GCC Circle</footer>
+          </blockquote>
+        </section>
+
+        <section className="space-y-8">
+          <h3 className="text-3xl font-bold text-white">India's Biggest Opportunity Is Talent Evolution</h3>
+          <p>The greatest opportunity is no longer infrastructure. It is leadership.</p>
+
+          <Image src="/insights/Inline 2.png" alt="Leadership evolution" width={1200} height={700} className="w-full rounded-2xl border border-white/10" />
+
+          <p>Tomorrow's GCC leaders must combine technological expertise with commercial thinking, geopolitical awareness and customer-centric innovation.</p>
+        </section>
+
+        <section className="space-y-8">
+          <h3 className="text-3xl font-bold text-white">Tier-2 Cities Will Rewrite India's GCC Map</h3>
+          <p>Emerging cities including Chandigarh, Jaipur, Kochi, Coimbatore, Indore, Bhubaneswar and Visakhapatnam are becoming credible destinations because of talent, infrastructure and quality of life.</p>
+
+          <Image src="/insights/Inline 3.png" alt="Tier 2 GCC growth" width={1200} height={700} className="w-full rounded-2xl border border-white/10" />
+
+          <blockquote className="rounded-2xl border-l-4 border-[#D2A679] bg-white/[0.03] p-6 italic">
+            “The future of Global Capability Centres will emerge through connected ecosystems where enterprises, academia, government, startups and talent collectively solve problems.”
+            <footer className="mt-4 text-[#D2A679] not-italic font-semibold">— Arushi Jindal, Co-founder, Talentiser</footer>
+          </blockquote>
+        </section>
+
+        <section className="space-y-8">
+          <h3 className="text-3xl font-bold text-white">Communities Have Become Strategic Infrastructure</h3>
+          <p>Trusted executive communities enable peer learning, collaboration and knowledge exchange. As GCCs move beyond operational excellence, communities such as GCC Circle become catalysts for industry-wide leadership.</p>
+
+          <Image src="/insights/Inline 4.png" alt="Community leadership" width={1200} height={700} className="w-full rounded-2xl border border-white/10" />
+
+          <blockquote className="rounded-2xl border-l-4 border-[#D2A679] bg-white/[0.03] p-6 italic">
+            “Communities have become strategic infrastructure for modern industries.”
+            <footer className="mt-4 text-[#D2A679] not-italic font-semibold">— Valentina Burgess, Marketing & Community Lead</footer>
+          </blockquote>
+        </section>
+
+        <section className="space-y-8">
+          <h3 className="text-3xl font-bold text-white">Executive Takeaways</h3>
+          <ul className="list-disc space-y-3 pl-6">
+            <li>Scale alone is no longer enough.</li>
+            <li>AI capability will define competitive advantage.</li>
+            <li>Leadership development must become a strategic priority.</li>
+            <li>Tier-2 cities represent the next growth frontier.</li>
+            <li>Executive communities accelerate ecosystem maturity.</li>
+          </ul>
+        </section>
+
+        <section className="space-y-8">
+          <h3 className="text-3xl font-bold text-white">Looking Beyond 2030</h3>
+          <p>India's ambition should not be measured only by the number of GCCs it hosts. It should be measured by how many global strategies, breakthrough products, transformative technologies and enterprise leaders emerge from the country.</p>
+        </section>
+
+      </div>
+    )
   },
 ];

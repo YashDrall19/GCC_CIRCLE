@@ -3,16 +3,30 @@ import db from '@/lib/db';
 
 export async function GET() {
   try {
-    const [rows] = await db.execute('SELECT * FROM reports ORDER BY created_at DESC');
+    const [rows] = await db.execute(
+      `SELECT *
+       FROM reports
+       WHERE active = 1
+       ORDER BY created_at DESC`
+    );
 
-    const data = (rows as any[]).map((row: any) => ({
+    const data = (rows as any[]).map((row) => ({
       ...row,
       active: Boolean(row.active),
     }));
 
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json({
+      success: true,
+      data,
+    });
   } catch (error: any) {
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message || "Internal server error",
+      },
+      { status: 500 }
+    );
   }
 }
 

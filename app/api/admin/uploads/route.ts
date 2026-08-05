@@ -24,6 +24,9 @@ export async function POST(req: Request) {
     const buffer = Buffer.from(data, 'base64');
     // convert to Uint8Array for strict typing compatibility with fs.writeFileSync
     const uint8 = Uint8Array.from(buffer as any);
+    console.log("process.cwd():", process.cwd());
+    console.log("uploadsDir:", uploadsDir);
+    console.log("filePath:", filePath);
     fs.writeFileSync(filePath, uint8);
 
     const publicPath = `/uploads/${safeName}`;
