@@ -11,6 +11,8 @@ const initialFormState: BlogFormValues = {
   cover_image: '',
   content: '',
   active: true,
+  slug: '',
+  publish_date: ''
 };
 
 export default function AddBlogs() {

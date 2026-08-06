@@ -28,6 +28,7 @@ interface Blog {
   content: string;
   active: boolean;
   created_at: string;
+  publish_date: string;
 }
 
 export default function InsightDetailPage() {
@@ -97,7 +98,7 @@ export default function InsightDetailPage() {
     "/uploads/"
   );
 
-  const publishedDate = new Date(blog.created_at).toLocaleDateString(
+  const publishedDate = new Date(blog.publish_date).toLocaleDateString(
     "en-US",
     {
       day: "numeric",

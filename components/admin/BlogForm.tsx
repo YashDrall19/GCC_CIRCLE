@@ -10,6 +10,8 @@ export type BlogFormValues = {
   cover_image: string;
   content: string;
   active: boolean;
+  slug: string;
+  publish_date: string;
 };
 
 interface BlogFormProps {
@@ -178,6 +180,29 @@ export default function BlogForm({
                 onChange={handleChange}
                 min={1}
                 placeholder="8"
+                className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
+              />
+            </div>
+            <div>
+              <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">Slug</label>
+              <input
+                type="text"
+                name="slug"
+                value={form.slug}
+                onChange={handleChange}
+                className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-white/60 text-xs font-semibold uppercase tracking-wide mb-2">Publish Date</label>
+              <input
+                type="date"
+                name="publish_date"
+                value={form.publish_date}
+                onChange={handleChange}
                 className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
               />
             </div>

@@ -19,6 +19,8 @@ const emptyFormState: BlogFormValues = {
   cover_image: '',
   content: '',
   active: true,
+  publish_date: '',
+  slug: ''
 };
 
 export default function BlogsManagement() {
@@ -56,6 +58,8 @@ export default function BlogsManagement() {
       cover_image: blog.cover_image,
       content: blog.content,
       active: blog.active,
+      slug: blog.slug,
+      publish_date: blog.publish_date
     });
     setPreviewUrl(blog.cover_image);
     setSelectedFile(null);

@@ -72,15 +72,20 @@ export async function POST(req: Request) {
       cover_image = '',
       content = '',
       active = true,
+      publish_date = '',
+      slug: providedSlug,
     } = body;
 
     if (!title || !category) {
       return NextResponse.json({ success: false, error: 'Title and category are required' }, { status: 400 });
     }
 
-    const slug = await generateUniqueSlug(title);
+    const slug = providedSlug
+      ? await generateUniqueSlug(String(providedSlug).trim())
+      : await generateUniqueSlug(title);
+
     const [result]: any = await db.execute(
-      'INSERT INTO blogs (title, slug, category, read_time, cover_image, content, active) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      'INSERT INTO blogs (title, slug, category, read_time, cover_image, content, active, publish_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
       [
         title,
         slug,
@@ -89,6 +94,7 @@ export async function POST(req: Request) {
         cover_image || '',
         content || '',
         active ? 1 : 0,
+        publish_date || ''
       ]
     );
 
@@ -127,15 +133,20 @@ export async function PUT(req: Request) {
     const cover_image = body.cover_image ?? existing.cover_image;
     const content = body.content ?? existing.content;
     const active = body.active !== undefined ? Boolean(body.active) : Boolean(existing.active);
+    const publish_date = body.publish_date !== undefined ? String(body.publish_date) : existing.publish_date ?? '';
 
     let slug = existing.slug;
-    if (body.title && body.title !== existing.title) {
+    const providedSlug = typeof body.slug === 'string' ? body.slug.trim() : '';
+
+    if (providedSlug) {
+      slug = await generateUniqueSlug(providedSlug, id);
+    } else if (body.title && body.title !== existing.title) {
       slug = await generateUniqueSlug(title, id);
     }
 
     await db.execute(
-      'UPDATE blogs SET title = ?, slug = ?, category = ?, read_time = ?, cover_image = ?, content = ?, active = ? WHERE id = ?',
-      [title, slug, category, read_time, cover_image || '', content || '', active ? 1 : 0, id]
+      'UPDATE blogs SET title = ?, slug = ?, category = ?, read_time = ?, cover_image = ?, content = ?, active = ?, publish_date = ? WHERE id = ?',
+      [title, slug, category, read_time, cover_image || '', content || '', active ? 1 : 0, publish_date, id]
     );
 
     const [rows] = await db.execute('SELECT * FROM blogs WHERE id = ?', [id]);
