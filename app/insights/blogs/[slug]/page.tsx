@@ -188,9 +188,9 @@ export default function InsightDetailPage() {
         <div className="max-w-6xl mx-auto">
           <div className="rounded-2xl sm:rounded-3xl border border-white/10 p-5 sm:p-8 md:p-10 bg-white/[0.02]">
             <div
-  className="article-content prose prose-invert max-w-none"
-  dangerouslySetInnerHTML={{ __html: htmlContent }}
-/>
+              className="article-content prose prose-invert max-w-none"
+              dangerouslySetInnerHTML={{ __html: htmlContent }}
+            />
           </div>
         </div>
       </section>

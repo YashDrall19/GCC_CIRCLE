@@ -35,11 +35,18 @@ export async function GET(req: Request) {
     const slug = searchParams.get('slug');
 
     if (slug) {
-      const [rows] = await db.execute('SELECT * FROM blogs WHERE slug = ?', [slug]);
+      const [rows] = await db.execute(
+        'SELECT * FROM blogs WHERE slug = ? AND active = 1',
+        [slug]
+      );
+
       const row = (rows as any[])[0];
 
       if (!row) {
-        return NextResponse.json({ success: false, error: 'Blog not found' }, { status: 404 });
+        return NextResponse.json(
+          { success: false, error: 'Blog not found' },
+          { status: 404 }
+        );
       }
 
       row.active = Boolean(row.active);
@@ -48,7 +55,10 @@ export async function GET(req: Request) {
       return NextResponse.json({ success: true, data: row });
     }
 
-    const [rows] = await db.execute('SELECT * FROM blogs ORDER BY created_at DESC');
+    const [rows] = await db.execute(
+      'SELECT * FROM blogs WHERE active = 1 ORDER BY created_at DESC'
+    );
+
     const data = (rows as any[]).map((item) => ({
       ...item,
       active: Boolean(item.active),
@@ -58,7 +68,13 @@ export async function GET(req: Request) {
     return NextResponse.json({ success: true, data });
   } catch (error: any) {
     console.error('Get blogs error:', error);
-    return NextResponse.json({ success: false, error: error.message || 'Internal server error' }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message || 'Internal server error',
+      },
+      { status: 500 }
+    );
   }
 }
 
