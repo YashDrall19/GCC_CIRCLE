@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+const uploadsDir = path.resolve(process.cwd(), 'public', 'uploads');
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -11,7 +13,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: 'filename and data required' }, { status: 400 });
     }
 
-    const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
     if (!fs.existsSync(uploadsDir)) {
       fs.mkdirSync(uploadsDir, { recursive: true });
     }
@@ -22,11 +23,7 @@ export async function POST(req: Request) {
 
     // data is expected to be base64 without data:<mime>;base64, prefix
     const buffer = Buffer.from(data, 'base64');
-    // convert to Uint8Array for strict typing compatibility with fs.writeFileSync
-    const uint8 = Uint8Array.from(buffer as any);
-    console.log("process.cwd():", process.cwd());
-    console.log("uploadsDir:", uploadsDir);
-    console.log("filePath:", filePath);
+    const uint8 = new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength);
     fs.writeFileSync(filePath, uint8);
 
     const publicPath = `/uploads/${safeName}`;
