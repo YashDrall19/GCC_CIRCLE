@@ -19,6 +19,7 @@ import {
   FileText,
   Newspaper,
   FileDown,
+  Play,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -44,6 +45,20 @@ const navItems = [
     icon: FileDown,
   },
   {
+    label: 'Events',
+    icon: Play,
+    children: [
+      {
+        label: 'Add Event',
+        href: '/admin/events/add',
+      },
+      {
+        label: 'Events Management',
+        href: '/admin/events/manage',
+      }
+    ],
+  },
+  {
     label: 'Blogs',
     icon: BookOpen,
     children: [
@@ -54,11 +69,7 @@ const navItems = [
       {
         label: 'Blogs Management',
         href: '/admin/blogs/manage',
-      },
-      // {
-      //   label: 'Legends Management',
-      //   href: '/admin/legends/manage',
-      // },
+      }
     ],
   },
   {

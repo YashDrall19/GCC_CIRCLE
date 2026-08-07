@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -20,16 +21,39 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-import { useState } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 
 export default function EventDetailPage() {
   const {id} = useParams();
-  const event = pastEvents?.find(event => event?.id === id) || upcomingEvents?.find(event => event?.id === id);
+  const [event, setEvent] = useState<any>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
   const images = event?.images || [];
   const leaders = event?.leaders || [];
+
+  useEffect(() => {
+    const fetchEvent = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`/api/admin/events?slug=${encodeURIComponent(String(id || ''))}`);
+        const data = await response.json();
+        if (data.success) {
+          setEvent(data.data);
+        } else {
+          setEvent(pastEvents?.find((event) => event?.id === id) || upcomingEvents?.find((event) => event?.id === id) || null);
+        }
+      } catch (error) {
+        setEvent(pastEvents?.find((event) => event?.id === id) || upcomingEvents?.find((event) => event?.id === id) || null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (id) {
+      fetchEvent();
+    }
+  }, [id]);
 
   return (
     <main className="bg-[#070b14] text-white min-h-screen pt-16 sm:pt-20">
@@ -63,7 +87,7 @@ export default function EventDetailPage() {
                   }}
                   className="h-full w-full"
                 >
-                  {event.carousel.map((image, index) => (
+                  {(event?.carousel || []).map((image: string, index: number) => (
                     <SwiperSlide key={index}>
                       <div className="relative w-full h-full">
                         <Image
@@ -79,7 +103,7 @@ export default function EventDetailPage() {
                 </Swiper>
               ) : (
                 <Image
-                  src={event?.img || notfound}
+                  src={event?.cover_image || event?.img || notfound}
                   alt="Image not found"
                   fill
                   className="object-cover"
@@ -96,11 +120,11 @@ export default function EventDetailPage() {
               </span>
 
               <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-2 sm:mb-4">
-                {event?.city}
+                {event?.name || event?.city}
               </h1>
 
               <p className="text-white/75 text-sm sm:text-lg md:text-xl max-w-3xl">
-                {event?.type}
+                {event?.type || event?.city}
               </p>
             </div>
           </div>
@@ -116,7 +140,9 @@ export default function EventDetailPage() {
               <div>
                 <p className="text-white/50 text-xs sm:text-sm">Date</p>
                 <p className="font-medium text-sm sm:text-base">
-                  {event?.date} {event?.month} {event?.year}
+                  {event?.date && /^\d{4}-\d{2}-\d{2}$/.test(event.date)
+                    ? new Date(event.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+                    : `${event?.date || ''} ${event?.month || ''} ${event?.year || ''}`.trim()}
                 </p>
               </div>
             </div>
@@ -158,9 +184,13 @@ export default function EventDetailPage() {
               About The Event
             </h2>
 
-            <p className="prose prose-invert max-w-none">
-              {event?.description1}
-            </p>
+            {/* <div className="prose prose-invert max-w-none"> */}
+              {event?.description ? (
+                <div dangerouslySetInnerHTML={{ __html: event.description }} />
+              ) : (
+                <p>{event?.description1}</p>
+              )}
+            {/* </div> */}
           </div>
         </div>
       </section>
@@ -189,7 +219,7 @@ export default function EventDetailPage() {
             {/* Organisations */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12 gap-x-8">
 
-              {leaders.map((org, index) => (
+              {leaders.map((org: any, index: number) => (
                 <div
                   key={index}
                   className="group cursor-pointer"
@@ -199,12 +229,12 @@ export default function EventDetailPage() {
 
                   {/* Name */}
                   <h3 className="text-xl font-semibold leading-tight transition-colors duration-300 group-hover:text-[#D2A679]">
-                    {org.name}
+                    {org.person_name || org.name}
                   </h3>
 
                   {/* Company */}
                   <p className="mt-3 text-sm leading-7 text-white/60">
-                    {org.company}
+                    {org.company_name || org.company}
                   </p>
                 </div>
               ))}
@@ -223,7 +253,7 @@ export default function EventDetailPage() {
             </h2>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
-              {event?.images?.map((image, index) => (
+              {event?.images?.map((image: string, index: number) => (
                 <div
                   key={index}
                   onClick={() => setSelectedImage(image)}
@@ -244,7 +274,7 @@ export default function EventDetailPage() {
         </section>
       }
 
-      {event?.description2 &&
+      {/* {event?.description2 &&
         <section className="px-4 sm:px-6 mb-10 sm:mb-16">
           <div className="max-w-6xl mx-auto">
             <div className="rounded-2xl sm:rounded-3xl border border-white/10 p-5 sm:p-8 md:p-10 bg-white/[0.02]">
@@ -260,10 +290,10 @@ export default function EventDetailPage() {
             </div>
           </div>
         </section>
-      }
+      } */}
 
       {/* Registration CTA */}
-      {event?.registrations_open && event?.registrationLink && (
+      {event?.registrations_open && event?.registration_link && (
         <section className="px-4 sm:px-6 pb-14 sm:pb-20">
           <div className="max-w-6xl mx-auto">
             <div className="rounded-2xl sm:rounded-3xl border border-[#D2A679]/30 bg-gradient-to-br from-[#D2A679]/10 via-white/[0.02] to-[#B87333]/10 p-8 sm:p-10 text-center">
@@ -277,10 +307,10 @@ export default function EventDetailPage() {
               </p>
 
               <a
-                href={event.registrationLink}
+                href={event.registration_link}
                 className="luma-checkout--button inline-flex items-center gap-2 px-6 py-3 bg-[#D2A679] hover:bg-[#B87333] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(210,166,121,0.35)]"
                 data-luma-action="checkout"
-                data-luma-event-id={event.registrationLink.split('/').pop()}
+                data-luma-event-id={event.registration_link.split('/').pop()}
                 target="_blank"
                 rel="noopener noreferrer"
               >

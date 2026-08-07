@@ -1,13 +1,75 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, MapPin, Calendar, Users, Coffee, Wind, CheckCircle2, Clock3, Lightbulb } from 'lucide-react';
-import CardBackgroundCarousel from '@/components/CardBackgroundCarousel';
-import { pastEvents, upcomingEvents } from './data';
+import { ArrowRight, Calendar, Users, Coffee, Wind, CheckCircle2, Clock3, Lightbulb } from 'lucide-react';
 import Script from 'next/script';
 import Image from 'next/image';
 
 export default function EventsPage() {
+  const [events, setEvents] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch('/api/admin/events');
+        const data = await response.json();
+        if (data.success) {
+          setEvents(data.data || []);
+        }
+      } catch (error) {
+        console.error('Failed to fetch events', error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+  const parseEventDate = (event: any) => {
+    if (!event) return null;
+
+    if (event.date && /^\d{4}-\d{2}-\d{2}$/.test(event.date)) {
+      return new Date(event.date);
+    }
+
+    if (event.year && event.month && event.date) {
+      const numericDay = Number(String(event.date).replace(/\D/g, ''));
+      const monthIndex = new Date(`${event.month} 1, ${event.year}`).getMonth();
+      return new Date(Number(event.year), monthIndex, numericDay);
+    }
+
+    return null;
+  };
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const isUpcomingEvent = (event: any) => {
+    const parsedDate = parseEventDate(event);
+    if (parsedDate) {
+      return parsedDate >= today;
+    }
+
+    return Boolean(event?.registrations_open);
+  };
+
+  const upcomingData = events.filter(isUpcomingEvent);
+  const pastData = events.filter((event) => !isUpcomingEvent(event));
+
+  const getEventImage = (event: any) => event?.cover_image || event?.img || event?.images?.[0] || '';
+  const getEventTitle = (event: any) => event?.name || event?.type || event?.city || 'Event';
+  const getEventLocation = (event: any) => event?.city || '';
+  const getEventDateLabel = (event: any) => {
+    if (event?.date && /^\d{4}-\d{2}-\d{2}$/.test(event.date)) {
+      return new Date(event.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
+
+    if (event?.date && event?.month && event?.year) {
+      return `${event.date} ${event.month} ${event.year}`;
+    }
+
+    return '';
+  };
 
   const experienceFeatures = [
     {
@@ -93,57 +155,73 @@ export default function EventsPage() {
             </div>
           </div>
           <div className="grid sm:grid-cols-2 gap-5 sm:gap-8">
-            {upcomingEvents.map((e, i) => (
-              <Link key={i} href={`events/${e?.id}`}>
-                <div
-                  key={i}
-                  className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/50 transition-all duration-300"
-                >
-                  <CardBackgroundCarousel images={e?.images} />
-                  <div className="absolute top-0 right-0 w-40 sm:w-56 h-40 sm:h-56 bg-[#D2A679]/5 rounded-full -translate-y-1/2 translate-x-1/3 group-hover:bg-[#D2A679]/10 transition-colors duration-300 pointer-events-none" />
-                  <div className="relative p-6 sm:p-10">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-start justify-between mb-4 sm:mb-6 gap-3">
-                      <div>
-                        <div className="flex items-center gap-2 text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-2">
-                          <Calendar size={12} />
-                          {e.date} {e.month} {e.year}
+            {upcomingData.length === 0 ? (
+              <div className="col-span-full flex min-h-[180px] items-center justify-center text-center text-white/50 text-lg sm:text-xl">
+                No Events to show
+              </div>
+            ) : (
+              upcomingData.map((e, i) => (
+                <Link key={e?.slug || `${e?.id || i}` } href={`events/${e?.slug || e?.id}`}>
+                  <div
+                    key={i}
+                    className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 bg-white/[0.03] hover:border-[#D2A679]/50 transition-all duration-300"
+                  >
+                    <div className="absolute inset-0">
+                      {e?.cover_image || e?.img ? (
+                        <img src={getEventImage(e)} alt={getEventTitle(e)} className="w-full h-full object-cover" />
+                      ) : null}
+                      <div className="absolute inset-0 bg-black/40 sm:bg-black/30" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#070b14]/40 via-[#070b14]/70 to-[#070b14]/95 sm:from-[#070b14]/30 sm:via-[#070b14]/60 sm:to-[#070b14]/90" />
+                    </div>
+                    <div className="absolute top-0 right-0 w-40 sm:w-56 h-40 sm:h-56 bg-[#D2A679]/5 rounded-full -translate-y-1/2 translate-x-1/3 group-hover:bg-[#D2A679]/10 transition-colors duration-300 pointer-events-none" />
+                    <div className="relative p-6 sm:p-10">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-start justify-between mb-4 sm:mb-6 gap-3">
+                        <div>
+                          <div className="flex items-center gap-2 text-[#D2A679] text-xs font-semibold uppercase tracking-widest mb-2">
+                            <Calendar size={12} />
+                            {getEventDateLabel(e)}
+                          </div>
+                          <h3 className="text-2xl sm:text-3xl font-bold mb-1">{getEventTitle(e)}</h3>
+                          <p className="text-white/50 text-sm font-medium">{getEventLocation(e)}</p>
                         </div>
-                        <h3 className="text-2xl sm:text-3xl font-bold mb-1">{e.type}</h3>
-                        <p className="text-white/50 text-sm font-medium">{e.city}</p>
-                      </div>
-                      <div
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-semibold whitespace-nowrap ${
-                        e?.registrations_open
-                          ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-400"
-                          : "bg-amber-500/15 border-amber-500/30 text-amber-400"
-                      }`}
-                    >
-                      {e?.registrations_open ? (
-                        <CheckCircle2 size={10} />
-                      ) : (
-                        <Clock3 size={10} />
-                      )}
-
-                      {e?.registrations_open
-                        ? "Registrations Open"
-                        : "Registrations Opening Soon"}
-                    </div>
-                    </div>
-                    <p className="text-white/55 text-sm leading-relaxed mb-6 sm:mb-8">{e.desc}</p>
-                    {e.registrations_open && (
-                      <a
-                        href={e.registrationLink}
-                        className="luma-checkout--button inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#D2A679] hover:bg-[#B87333] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(26,108,255,0.4)]"
-                        data-luma-action="checkout"
-                        data-luma-event-id={e.registrationLink.split("/").pop()}
+                        <div
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-semibold whitespace-nowrap ${
+                          e?.registrations_open
+                            ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-400"
+                            : "bg-amber-500/15 border-amber-500/30 text-amber-400"
+                        }`}
                       >
-                        Register Now <ArrowRight size={14} />
-                      </a>
-                    )}
+                        {e?.registrations_open ? (
+                          <CheckCircle2 size={10} />
+                        ) : (
+                          <Clock3 size={10} />
+                        )}
+
+                        {e?.registrations_open
+                          ? "Registrations Open"
+                          : "Registrations Opening Soon"}
+                      </div>
+                      </div>
+                      <br /><br />
+                      <p className="text-white/55 text-sm leading-relaxed mb-6 sm:mb-8">{e?.desc || e?.description?.replace(/<[^>]+>/g, ' ').slice(0, 160) || ''}...</p>
+                      {e?.registrations_open && e?.registration_link && (
+                        <a
+                          href={e.registration_link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="luma-checkout--button inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#D2A679] hover:bg-[#B87333] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(26,108,255,0.4)]"
+                          data-luma-action="checkout"
+                          data-luma-event-id={e.registration_link.split("/").pop()}
+                          onClick={e => e.stopPropagation()}
+                        >
+                          Register Now <ArrowRight size={14} />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))
+            )}
           </div>
         </div>
       </section>
@@ -159,30 +237,35 @@ export default function EventsPage() {
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
-            {pastEvents.map((e, i) => (
-              <Link key={i} href={`events/${e?.id}`}>
-                <div
-                  className="group overflow-hidden rounded-2xl border border-white/10 hover:border-[#B87333] hover:bg-[#D2A679] transition-all duration-300"
-                >
+            {pastData.length === 0 ? (
+              <div className="col-span-full flex min-h-[180px] items-center justify-center text-center text-white/50 text-lg sm:text-xl">
+                No Events to show
+              </div>
+            ) : (
+              pastData.map((e, i) => (
+                <Link key={e?.slug || `${e?.id || i}`} href={`events/${e?.slug || e?.id}`}>
+                  <div
+                    className="group overflow-hidden rounded-2xl border border-white/10 hover:border-[#B87333] hover:bg-[#D2A679] transition-all duration-300"
+                  >
                   <div className="relative overflow-hidden aspect-video">
                     <Image
-                      src={e.img}
-                      alt={`${e.city} event`}
+                      src={getEventImage(e) || '/images/notfound.png'}
+                      alt={`${getEventLocation(e)} event`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-transparent" />
                     <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
-                      <div className="text-white font-bold text-lg sm:text-xl">{e.city}</div>
-                      <div className="text-[#D2A679] text-xs font-semibold uppercase tracking-wide">{e.date} {e.month} {e.year}</div>
+                      <div className="text-white font-bold text-lg sm:text-xl">{getEventLocation(e)}</div>
+                      <div className="text-[#D2A679] text-xs font-semibold uppercase tracking-wide">{getEventDateLabel(e)}</div>
                     </div>
                   </div>
                   <div className="p-4 sm:p-6 bg-white/[0.03]">
                     <div className="flex items-center justify-between">
                       <div>
-                        <div className="text-white font-semibold text-sm sm:text-base">{e.type}</div>
-                        <div className="text-white/40 text-xs sm:text-sm mt-1">{e.attendees} attendees</div>
+                        <div className="text-white font-semibold text-sm sm:text-base">{getEventTitle(e)}</div>
+                        <div className="text-white/40 text-xs sm:text-sm mt-1">{e?.attendees ? `${e.attendees} attendees` : 'Open event'}</div>
                       </div>
                       <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                         <ArrowRight size={14} className="text-white/50" />
@@ -191,7 +274,8 @@ export default function EventsPage() {
                   </div>
                 </div>
               </Link>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </section>
