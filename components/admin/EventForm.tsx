@@ -375,14 +375,14 @@ export default function EventForm({
                 <div key={index} className="grid grid-cols-1 sm:grid-cols-[1fr_1fr_auto] gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-3">
                   <input
                     type="text"
-                    value={leader.person_name || leader.name}
+                    value={leader.person_name}
                     onChange={(e) => handleLeaderChange(index, 'person_name', e.target.value)}
                     placeholder="Person name"
                     className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
                   />
                   <input
                     type="text"
-                    value={leader.company_name || leader.company}
+                    value={leader.company_name}
                     onChange={(e) => handleLeaderChange(index, 'company_name', e.target.value)}
                     placeholder="Company"
                     className="w-full bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#D2A679] transition-colors"
